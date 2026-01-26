@@ -13,6 +13,7 @@ import Center from "./blocks/Center";
 import Image from "./blocks/Image";
 import Progress from "./blocks/Progress";
 import Spinner from "./blocks/Spinner";
+import Alert from "./blocks/Alert";
 
 export const config: Config = {
   categories: {
@@ -20,16 +21,10 @@ export const config: Config = {
       components: ["Heading", "Text"],
     },
     layout: {
-      components: [
-        "Box",
-        "Divider",
-        "HStack",
-        "VStack",
-        "Grid",
-        "GridItem",
-        "Progress",
-        "Spinner",
-      ],
+      components: ["Box", "Divider", "HStack", "VStack", "Grid", "GridItem"],
+    },
+    feedback: {
+      components: ["Progress", "Spinner", "Alert"],
     },
     forms: {
       components: ["Button", "ButtonText"],
@@ -50,6 +45,7 @@ export const config: Config = {
     Image,
     Progress,
     Spinner,
+    Alert,
   },
 };
 
