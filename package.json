@@ -18,7 +18,7 @@
     "@legendapp/motion": "^2.4.0",
     "@puckeditor/core": "^0.21.1",
     "dom-helpers": "^5.2.1",
-    "lucide-react-native": "^0.510.0",
+    "lucide-react-native": "^0.563.0",
     "nativewind": "^4.1.23",
     "next": "15.3.8",
     "react": "^19.2.1",

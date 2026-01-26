@@ -14,6 +14,7 @@ import Image from "./blocks/Image";
 import Progress from "./blocks/Progress";
 import Spinner from "./blocks/Spinner";
 import Alert from "./blocks/Alert";
+import Icon from "./blocks/Icon";
 
 export const config: Config = {
   categories: {
@@ -25,6 +26,9 @@ export const config: Config = {
     },
     feedback: {
       components: ["Progress", "Spinner", "Alert"],
+    },
+    media: {
+      components: ["Image", "Icon"],
     },
     forms: {
       components: ["Button", "ButtonText"],
@@ -46,6 +50,7 @@ export const config: Config = {
     Progress,
     Spinner,
     Alert,
+    Icon,
   },
 };
 
