@@ -1,9 +1,11 @@
 import type { ComponentConfig } from "@puckeditor/core";
 import { Text as GluestackText } from "../../components/ui/text";
 import CheckboxField from "../fields/Checkbox";
+import AlignmentField from "../fields/Alignment";
 
 export type TextProps = {
   className?: string;
+  alignmentClassName: string;
   text: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
   isTruncated: boolean;
@@ -30,6 +32,7 @@ const sizeOptions = [
 const Text: ComponentConfig<TextProps> = {
   fields: {
     className: { type: "text" },
+    alignmentClassName: AlignmentField("Alignment"),
     text: { type: "text" },
     size: {
       type: "select",
@@ -46,6 +49,7 @@ const Text: ComponentConfig<TextProps> = {
   defaultProps: {
     text: "Text",
     size: "md",
+    alignmentClassName: "",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -57,6 +61,7 @@ const Text: ComponentConfig<TextProps> = {
   render: ({
     text,
     className,
+    alignmentClassName,
     size,
     isTruncated,
     bold,
@@ -67,7 +72,7 @@ const Text: ComponentConfig<TextProps> = {
     highlight,
   }) => (
     <GluestackText
-      className={className}
+      className={[className, alignmentClassName].filter(Boolean).join(" ")}
       size={size}
       isTruncated={isTruncated}
       bold={bold}

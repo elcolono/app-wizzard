@@ -1,10 +1,14 @@
 import type { ComponentConfig } from "@puckeditor/core";
 import { Heading as GluestackHeading } from "../../components/ui/heading";
 import CheckboxField from "../fields/Checkbox";
+import AlignmentField from "../fields/Alignment";
+import PaddingField from "../fields/Padding";
 
 export type HeadingProps = {
   title: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
+  alignmentClassName: string;
+  paddingClassName: string;
   isTruncated: boolean;
   bold: boolean;
   underline: boolean;
@@ -33,6 +37,8 @@ const Heading: ComponentConfig<HeadingProps> = {
       type: "select",
       options: sizeOptions,
     },
+    alignmentClassName: AlignmentField("Alignment"),
+    paddingClassName: PaddingField("Padding"),
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
     underline: CheckboxField("Underline"),
@@ -44,6 +50,8 @@ const Heading: ComponentConfig<HeadingProps> = {
   defaultProps: {
     title: "Heading",
     size: "md",
+    alignmentClassName: "",
+    paddingClassName: "",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -55,6 +63,8 @@ const Heading: ComponentConfig<HeadingProps> = {
   render: ({
     title,
     size,
+    alignmentClassName,
+    paddingClassName,
     isTruncated,
     bold,
     underline,
@@ -64,6 +74,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     highlight,
   }) => (
     <GluestackHeading
+      className={[alignmentClassName, paddingClassName].filter(Boolean).join(" ")}
       size={size}
       isTruncated={isTruncated}
       bold={bold}
