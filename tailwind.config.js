@@ -39,7 +39,7 @@ module.exports = {
       pattern: /(border|border-[trbl]|border-[xy])-(0|2|4|8)/,
     },
     {
-      pattern: /(text)-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)/,
+      pattern: /(text)-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl|left|center|right|justify)/,
     },
     {
       pattern: /(font)-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)/,

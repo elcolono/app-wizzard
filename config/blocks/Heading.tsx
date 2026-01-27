@@ -16,6 +16,7 @@ export type HeadingProps = {
   sub: boolean;
   italic: boolean;
   highlight: boolean;
+  textAlign: "text-left" | "text-center" | "text-right" | "text-justify";
 };
 
 const sizeOptions = [
@@ -30,12 +31,24 @@ const sizeOptions = [
   { label: "5XL", value: "5xl" },
 ];
 
+const textAlignOptions = [
+  { label: "Left", value: "text-left" },
+  { label: "Center", value: "text-center" },
+  { label: "Right", value: "text-right" },
+  { label: "Justify", value: "text-justify" },
+];
+
 const Heading: ComponentConfig<HeadingProps> = {
   fields: {
     title: { type: "text" },
     size: {
       type: "select",
       options: sizeOptions,
+    },
+    textAlign: {
+      type: "radio",
+      label: "Text align",
+      options: textAlignOptions,
     },
     alignmentClassName: AlignmentField("Alignment"),
     paddingClassName: PaddingField("Padding"),
@@ -50,6 +63,7 @@ const Heading: ComponentConfig<HeadingProps> = {
   defaultProps: {
     title: "Heading",
     size: "md",
+    textAlign: "text-left",
     alignmentClassName: "",
     paddingClassName: "",
     isTruncated: false,
@@ -65,6 +79,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     size,
     alignmentClassName,
     paddingClassName,
+    textAlign,
     isTruncated,
     bold,
     underline,
@@ -74,7 +89,9 @@ const Heading: ComponentConfig<HeadingProps> = {
     highlight,
   }) => (
     <GluestackHeading
-      className={[alignmentClassName, paddingClassName].filter(Boolean).join(" ")}
+      className={[alignmentClassName, paddingClassName, textAlign]
+        .filter(Boolean)
+        .join(" ")}
       size={size}
       isTruncated={isTruncated}
       bold={bold}
