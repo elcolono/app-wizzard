@@ -31,7 +31,10 @@ const sizeOptions = [
 
 const Text: ComponentConfig<TextProps> = {
   fields: {
-    className: { type: "text" },
+    className: {
+      type: "text",
+      visible: false,
+    },
     alignmentClassName: AlignmentField("Alignment"),
     text: { type: "text" },
     size: {
