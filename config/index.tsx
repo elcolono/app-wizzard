@@ -7,6 +7,7 @@ import HStack from "./blocks/HStack";
 import VStack from "./blocks/VStack";
 import Grid from "./blocks/Grid";
 import GridItem from "./blocks/GridItem";
+import Container from "./blocks/Container";
 import Button from "./blocks/Button";
 import ButtonText from "./blocks/ButtonText";
 import Center from "./blocks/Center";
@@ -22,7 +23,15 @@ export const config: Config = {
       components: ["Heading", "Text"],
     },
     layout: {
-      components: ["Box", "Divider", "HStack", "VStack", "Grid", "GridItem"],
+      components: [
+        "Box",
+        "Divider",
+        "HStack",
+        "VStack",
+        "Grid",
+        "GridItem",
+        "Container",
+      ],
     },
     feedback: {
       components: ["Progress", "Spinner", "Alert"],
@@ -43,6 +52,7 @@ export const config: Config = {
     VStack,
     Grid,
     GridItem,
+    Container,
     Button,
     ButtonText,
     Center,

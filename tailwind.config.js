@@ -18,6 +18,75 @@ module.exports = {
       pattern:
         /(p|px|py|pt|pr|pb|pl)-(0|0\.5|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|52|56|60|64|72|80|96)/,
     },
+    {
+      pattern: /max-w-(sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|full)/,
+    },
+    {
+      pattern:
+        /(m|mx|my|mt|mr|mb|ml)-(auto|0|0\.5|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|52|56|60|64|72|80|96)/,
+    },
+    {
+      pattern:
+        /(w|h|min-w|min-h|max-w|max-h)-(0|px|0\.5|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|52|56|60|64|72|80|96|full|screen)/,
+    },
+    {
+      pattern: /(gap|gap-x|gap-y)-(0|0\.5|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|52|56|60|64|72|80|96)/,
+    },
+    {
+      pattern: /(rounded|rounded-[trbl]|rounded-[trbl][trbl])-(none|sm|md|lg|xl|2xl|3xl|full)/,
+    },
+    {
+      pattern: /(border|border-[trbl]|border-[xy])-(0|2|4|8)/,
+    },
+    {
+      pattern: /(text)-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)/,
+    },
+    {
+      pattern: /(font)-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)/,
+    },
+    {
+      pattern: /(leading)-(none|tight|snug|normal|relaxed|loose)/,
+    },
+    {
+      pattern: /(tracking)-(tighter|tight|normal|wide|wider|widest)/,
+    },
+    {
+      pattern: /(shadow)-(sm|md|lg|xl|2xl|inner|none|hard-1|hard-2|hard-3|hard-4|hard-5|soft-1|soft-2|soft-3|soft-4)/,
+    },
+    {
+      pattern: /(flex|inline-flex|grid|inline-grid)/,
+    },
+    {
+      pattern:
+        /(items|justify|content|self|place-items|place-content)-(start|end|center|between|around|evenly|stretch|baseline)/,
+    },
+    {
+      pattern: /(flex)-(row|row-reverse|col|col-reverse|wrap|wrap-reverse|nowrap)/,
+    },
+    {
+      pattern: /(grid-cols|grid-rows)-(1|2|3|4|5|6|7|8|9|10|11|12)/,
+    },
+    {
+      pattern: /(col-span|row-span)-(1|2|3|4|5|6|7|8|9|10|11|12|full)/,
+    },
+    {
+      pattern: /(overflow)-(auto|hidden|clip|visible|scroll)/,
+    },
+    {
+      pattern: /(position|relative|absolute|fixed|sticky)/,
+    },
+    {
+      pattern: /(top|right|bottom|left|inset|inset-x|inset-y)-(0|0\.5|1|1\.5|2|2\.5|3|3\.5|4|5|6|7|8|9|10|11|12|14|16|20|24|28|32|36|40|44|48|52|56|60|64|72|80|96|px)/,
+    },
+    {
+      pattern: /(z)-(0|10|20|30|40|50)/,
+    },
+    {
+      pattern: /(opacity)-(0|5|10|20|25|30|40|50|60|70|75|80|90|95|100)/,
+    },
+    {
+      pattern: /(bg|text|border|ring|outline)-(white|black|transparent|current)/,
+    },
   ],
   theme: {
     extend: {
