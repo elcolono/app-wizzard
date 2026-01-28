@@ -34,6 +34,9 @@ const Text: ComponentConfig<TextProps> = {
     className: {
       type: "text",
       visible: false,
+      ai: {
+        instructions: "Use tailwind classes to style the text.",
+      },
     },
     alignmentClassName: AlignmentField("Alignment"),
     text: { type: "text" },

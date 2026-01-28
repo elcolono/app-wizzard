@@ -1,0 +1,1380 @@
+{
+    "chatId": "",
+    "trigger": "submit-message",
+    "messages": [
+        {
+            "parts": [
+                {
+                    "type": "text",
+                    "text": "Bitte baue business website"
+                }
+            ],
+            "id": "msg_01KG0AP8NYTH0WSZ4T9HFXS2SH",
+            "role": "user"
+        }
+    ],
+    "pageData": {
+        "root": {
+            "props": {
+                "content": [],
+                "title": ""
+            }
+        },
+        "content": [
+            {
+                "type": "Alert",
+                "props": {
+                    "className": "",
+                    "text": "Alert message",
+                    "variant": "solid",
+                    "action": "success",
+                    "size": "md",
+                    "isTruncated": false,
+                    "bold": false,
+                    "underline": false,
+                    "strikeThrough": false,
+                    "sub": false,
+                    "italic": false,
+                    "highlight": false,
+                    "id": "Alert-9781399a-4375-43a4-ac77-ab19254efa72"
+                }
+            },
+            {
+                "type": "Container",
+                "props": {
+                    "content": [
+                        {
+                            "type": "Heading",
+                            "props": {
+                                "id": "Heading-d9ff5faf-8664-4f4e-87e6-88507f29d2af",
+                                "title": "Accounting made simple for small businesses.",
+                                "size": "4xl",
+                                "alignmentClassName": "flex items-start justify-center",
+                                "paddingClassName": "pt-20 pb-2.5",
+                                "isTruncated": false,
+                                "bold": false,
+                                "underline": false,
+                                "strikeThrough": false,
+                                "sub": false,
+                                "italic": false,
+                                "highlight": false,
+                                "textAlign": "text-center"
+                            }
+                        },
+                        {
+                            "type": "Text",
+                            "props": {
+                                "id": "Text-8479ad21-6b0f-43b3-a994-4c1021b645ee",
+                                "text": "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.",
+                                "size": "xl",
+                                "alignmentClassName": "",
+                                "isTruncated": false,
+                                "bold": false,
+                                "underline": false,
+                                "strikeThrough": false,
+                                "sub": false,
+                                "italic": false,
+                                "highlight": false
+                            }
+                        },
+                        {
+                            "type": "Button",
+                            "props": {
+                                "content": [
+                                    {
+                                        "type": "ButtonText",
+                                        "props": {
+                                            "id": "ButtonText-56165911-b6a7-4f21-9bd7-a5d995d0e8e7",
+                                            "text": "Button"
+                                        }
+                                    }
+                                ],
+                                "id": "Button-6ddd8e86-e537-45cb-a6bf-4b3ca3f6a426",
+                                "variant": "solid",
+                                "action": "primary",
+                                "size": "md"
+                            }
+                        }
+                    ],
+                    "backgroundClassName": "bg-background-50",
+                    "className": "mx-auto w-full px-4",
+                    "maxWidth": "2xl",
+                    "id": "Container-79b927d6-0cb9-4a88-a4f9-c11accea2b20"
+                }
+            },
+            {
+                "type": "Spinner",
+                "props": {
+                    "className": "",
+                    "size": "small",
+                    "color": "",
+                    "animating": true,
+                    "id": "Spinner-35b30c21-f7ca-4bc3-9994-7b97700826d8"
+                }
+            },
+            {
+                "type": "Icon",
+                "props": {
+                    "className": "text-typography-500",
+                    "icon": "SettingsIcon",
+                    "size": "xl",
+                    "id": "Icon-c417531d-7777-4938-93eb-fe4d7e10c9c2"
+                }
+            }
+        ],
+        "zones": {}
+    },
+    "config": {
+        "categories": {
+            "typography": {
+                "components": [
+                    "Heading",
+                    "Text"
+                ]
+            },
+            "layout": {
+                "components": [
+                    "Box",
+                    "Divider",
+                    "HStack",
+                    "VStack",
+                    "Grid",
+                    "GridItem",
+                    "Container"
+                ]
+            },
+            "feedback": {
+                "components": [
+                    "Progress",
+                    "Spinner",
+                    "Alert"
+                ]
+            },
+            "media": {
+                "components": [
+                    "Image",
+                    "Icon"
+                ]
+            },
+            "forms": {
+                "components": [
+                    "Button",
+                    "ButtonText"
+                ]
+            }
+        },
+        "components": {
+            "Heading": {
+                "fields": {
+                    "title": {
+                        "type": "text"
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            },
+                            {
+                                "label": "5XL",
+                                "value": "5xl"
+                            }
+                        ]
+                    },
+                    "textAlign": {
+                        "type": "radio",
+                        "label": "Text align",
+                        "options": [
+                            {
+                                "label": "Left",
+                                "value": "text-left"
+                            },
+                            {
+                                "label": "Center",
+                                "value": "text-center"
+                            },
+                            {
+                                "label": "Right",
+                                "value": "text-right"
+                            },
+                            {
+                                "label": "Justify",
+                                "value": "text-justify"
+                            }
+                        ]
+                    },
+                    "alignmentClassName": {
+                        "type": "custom",
+                        "label": "Alignment"
+                    },
+                    "paddingClassName": {
+                        "type": "custom",
+                        "label": "Padding"
+                    },
+                    "isTruncated": {
+                        "type": "custom",
+                        "label": "Truncate"
+                    },
+                    "bold": {
+                        "type": "custom",
+                        "label": "Bold"
+                    },
+                    "underline": {
+                        "type": "custom",
+                        "label": "Underline"
+                    },
+                    "strikeThrough": {
+                        "type": "custom",
+                        "label": "Strikethrough"
+                    },
+                    "sub": {
+                        "type": "custom",
+                        "label": "Sub"
+                    },
+                    "italic": {
+                        "type": "custom",
+                        "label": "Italic"
+                    },
+                    "highlight": {
+                        "type": "custom",
+                        "label": "Highlight"
+                    }
+                },
+                "defaultProps": {
+                    "title": "Heading",
+                    "size": "md",
+                    "textAlign": "text-left",
+                    "alignmentClassName": "",
+                    "paddingClassName": "",
+                    "isTruncated": false,
+                    "bold": false,
+                    "underline": false,
+                    "strikeThrough": false,
+                    "sub": false,
+                    "italic": false,
+                    "highlight": false
+                }
+            },
+            "Text": {
+                "fields": {
+                    "className": {
+                        "type": "text",
+                        "visible": false
+                    },
+                    "alignmentClassName": {
+                        "type": "custom",
+                        "label": "Alignment"
+                    },
+                    "text": {
+                        "type": "text"
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            },
+                            {
+                                "label": "5XL",
+                                "value": "5xl"
+                            }
+                        ]
+                    },
+                    "isTruncated": {
+                        "type": "custom",
+                        "label": "Truncate"
+                    },
+                    "bold": {
+                        "type": "custom",
+                        "label": "Bold"
+                    },
+                    "underline": {
+                        "type": "custom",
+                        "label": "Underline"
+                    },
+                    "strikeThrough": {
+                        "type": "custom",
+                        "label": "Strikethrough"
+                    },
+                    "sub": {
+                        "type": "custom",
+                        "label": "Sub"
+                    },
+                    "italic": {
+                        "type": "custom",
+                        "label": "Italic"
+                    },
+                    "highlight": {
+                        "type": "custom",
+                        "label": "Highlight"
+                    }
+                },
+                "defaultProps": {
+                    "text": "Text",
+                    "size": "md",
+                    "alignmentClassName": "",
+                    "isTruncated": false,
+                    "bold": false,
+                    "underline": false,
+                    "strikeThrough": false,
+                    "sub": false,
+                    "italic": false,
+                    "highlight": false
+                }
+            },
+            "Box": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "content": {
+                        "type": "slot"
+                    }
+                },
+                "defaultProps": {
+                    "className": "bg-gray-500 w-24 h-24"
+                }
+            },
+            "Divider": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "orientation": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Horizontal",
+                                "value": "horizontal"
+                            },
+                            {
+                                "label": "Vertical",
+                                "value": "vertical"
+                            }
+                        ]
+                    }
+                }
+            },
+            "HStack": {
+                "fields": {
+                    "content": {
+                        "type": "slot"
+                    },
+                    "className": {
+                        "type": "text"
+                    },
+                    "space": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "content": [
+                        {
+                            "type": "Box",
+                            "props": {
+                                "className": "h-60 w-60 bg-light-500"
+                            }
+                        },
+                        {
+                            "type": "Box",
+                            "props": {
+                                "className": "h-60 w-60 bg-light-500"
+                            }
+                        }
+                    ],
+                    "className": "",
+                    "space": "md"
+                }
+            },
+            "VStack": {
+                "fields": {
+                    "content": {
+                        "type": "slot"
+                    },
+                    "className": {
+                        "type": "text"
+                    },
+                    "space": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "content": [
+                        {
+                            "type": "Box",
+                            "props": {
+                                "className": "h-60 w-60 bg-light-500"
+                            }
+                        },
+                        {
+                            "type": "Box",
+                            "props": {
+                                "className": "h-60 w-60 bg-light-500"
+                            }
+                        }
+                    ],
+                    "className": "",
+                    "space": "md"
+                }
+            },
+            "Grid": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "columnsClassName": {
+                        "type": "text",
+                        "label": "Columns (e.g. grid-cols-12)"
+                    },
+                    "content": {
+                        "type": "slot",
+                        "allow": [
+                            "GridItem"
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "className": "gap-4",
+                    "columnsClassName": "grid-cols-10",
+                    "content": [
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-3"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-5"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-2"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-4"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-6"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-2"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-4"
+                            }
+                        },
+                        {
+                            "type": "GridItem",
+                            "props": {
+                                "className": "bg-background-50 p-6 rounded-md",
+                                "columnsClassName": "col-span-4"
+                            }
+                        }
+                    ]
+                }
+            },
+            "GridItem": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "columnsClassName": {
+                        "type": "text",
+                        "label": "Column span (e.g. col-span-3)"
+                    },
+                    "content": {
+                        "type": "slot"
+                    }
+                },
+                "defaultProps": {
+                    "className": "bg-background-50 p-6 rounded-md",
+                    "columnsClassName": "col-span-3",
+                    "content": []
+                }
+            },
+            "Container": {
+                "fields": {
+                    "backgroundClassName": {
+                        "type": "text",
+                        "label": "Background classes"
+                    },
+                    "className": {
+                        "type": "text",
+                        "label": "Container classes"
+                    },
+                    "maxWidth": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            },
+                            {
+                                "label": "5XL",
+                                "value": "5xl"
+                            },
+                            {
+                                "label": "6XL",
+                                "value": "6xl"
+                            },
+                            {
+                                "label": "7XL",
+                                "value": "7xl"
+                            },
+                            {
+                                "label": "Full",
+                                "value": "full"
+                            },
+                            {
+                                "label": "None",
+                                "value": "none"
+                            }
+                        ],
+                        "label": "Max width"
+                    },
+                    "content": {
+                        "type": "slot"
+                    }
+                },
+                "defaultProps": {
+                    "backgroundClassName": "bg-background-50 py-8",
+                    "className": "mx-auto w-full px-4",
+                    "maxWidth": "6xl"
+                }
+            },
+            "Button": {
+                "fields": {
+                    "content": {
+                        "type": "slot",
+                        "allow": [
+                            "ButtonText"
+                        ]
+                    },
+                    "variant": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Solid",
+                                "value": "solid"
+                            },
+                            {
+                                "label": "Outline",
+                                "value": "outline"
+                            },
+                            {
+                                "label": "Link",
+                                "value": "link"
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Primary",
+                                "value": "primary"
+                            },
+                            {
+                                "label": "Secondary",
+                                "value": "secondary"
+                            },
+                            {
+                                "label": "Positive",
+                                "value": "positive"
+                            },
+                            {
+                                "label": "Negative",
+                                "value": "negative"
+                            }
+                        ]
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "content": [
+                        {
+                            "type": "ButtonText",
+                            "props": {
+                                "text": "Button"
+                            }
+                        }
+                    ],
+                    "variant": "solid",
+                    "action": "primary",
+                    "size": "md"
+                }
+            },
+            "ButtonText": {
+                "fields": {
+                    "text": {
+                        "type": "text"
+                    }
+                },
+                "defaultProps": {
+                    "text": "Button"
+                }
+            },
+            "Center": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "content": {
+                        "type": "slot"
+                    }
+                }
+            },
+            "Image": {
+                "fields": {
+                    "source": {
+                        "type": "text"
+                    },
+                    "alt": {
+                        "type": "text"
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "2XS",
+                                "value": "2xs"
+                            },
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "Full",
+                                "value": "full"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "source": "https://gluestack.github.io/public-blog-video-assets/mountains.png",
+                    "alt": "Image",
+                    "size": "md"
+                }
+            },
+            "Progress": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "value": {
+                        "type": "number"
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            }
+                        ]
+                    },
+                    "orientation": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Horizontal",
+                                "value": "horizontal"
+                            },
+                            {
+                                "label": "Vertical",
+                                "value": "vertical"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "className": "w-full",
+                    "value": 40,
+                    "size": "md",
+                    "orientation": "horizontal"
+                }
+            },
+            "Spinner": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Small",
+                                "value": "small"
+                            },
+                            {
+                                "label": "Large",
+                                "value": "large"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "type": "text"
+                    },
+                    "animating": {
+                        "type": "custom",
+                        "label": "Animating"
+                    }
+                },
+                "defaultProps": {
+                    "className": "",
+                    "size": "small",
+                    "color": "",
+                    "animating": true
+                }
+            },
+            "Alert": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "text": {
+                        "type": "text"
+                    },
+                    "variant": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Solid",
+                                "value": "solid"
+                            },
+                            {
+                                "label": "Outline",
+                                "value": "outline"
+                            }
+                        ]
+                    },
+                    "action": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Error",
+                                "value": "error"
+                            },
+                            {
+                                "label": "Warning",
+                                "value": "warning"
+                            },
+                            {
+                                "label": "Success",
+                                "value": "success"
+                            },
+                            {
+                                "label": "Info",
+                                "value": "info"
+                            },
+                            {
+                                "label": "Muted",
+                                "value": "muted"
+                            }
+                        ]
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "2XS",
+                                "value": "2xs"
+                            },
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            },
+                            {
+                                "label": "2XL",
+                                "value": "2xl"
+                            },
+                            {
+                                "label": "3XL",
+                                "value": "3xl"
+                            },
+                            {
+                                "label": "4XL",
+                                "value": "4xl"
+                            },
+                            {
+                                "label": "5XL",
+                                "value": "5xl"
+                            },
+                            {
+                                "label": "6XL",
+                                "value": "6xl"
+                            }
+                        ]
+                    },
+                    "isTruncated": {
+                        "type": "custom",
+                        "label": "Truncate"
+                    },
+                    "bold": {
+                        "type": "custom",
+                        "label": "Bold"
+                    },
+                    "underline": {
+                        "type": "custom",
+                        "label": "Underline"
+                    },
+                    "strikeThrough": {
+                        "type": "custom",
+                        "label": "Strikethrough"
+                    },
+                    "sub": {
+                        "type": "custom",
+                        "label": "Sub"
+                    },
+                    "italic": {
+                        "type": "custom",
+                        "label": "Italic"
+                    },
+                    "highlight": {
+                        "type": "custom",
+                        "label": "Highlight"
+                    }
+                },
+                "defaultProps": {
+                    "className": "",
+                    "text": "Alert message",
+                    "variant": "solid",
+                    "action": "muted",
+                    "size": "md",
+                    "isTruncated": false,
+                    "bold": false,
+                    "underline": false,
+                    "strikeThrough": false,
+                    "sub": false,
+                    "italic": false,
+                    "highlight": false
+                }
+            },
+            "Icon": {
+                "fields": {
+                    "className": {
+                        "type": "text"
+                    },
+                    "icon": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "Add",
+                                "value": "AddIcon"
+                            },
+                            {
+                                "label": "Alert Circle",
+                                "value": "AlertCircleIcon"
+                            },
+                            {
+                                "label": "Arrow Up",
+                                "value": "ArrowUpIcon"
+                            },
+                            {
+                                "label": "Arrow Down",
+                                "value": "ArrowDownIcon"
+                            },
+                            {
+                                "label": "Arrow Right",
+                                "value": "ArrowRightIcon"
+                            },
+                            {
+                                "label": "Arrow Left",
+                                "value": "ArrowLeftIcon"
+                            },
+                            {
+                                "label": "At Sign",
+                                "value": "AtSignIcon"
+                            },
+                            {
+                                "label": "Bell",
+                                "value": "BellIcon"
+                            },
+                            {
+                                "label": "Calendar Days",
+                                "value": "CalendarDaysIcon"
+                            },
+                            {
+                                "label": "Check",
+                                "value": "CheckIcon"
+                            },
+                            {
+                                "label": "Check Circle",
+                                "value": "CheckCircleIcon"
+                            },
+                            {
+                                "label": "Chevron Up",
+                                "value": "ChevronUpIcon"
+                            },
+                            {
+                                "label": "Chevron Down",
+                                "value": "ChevronDownIcon"
+                            },
+                            {
+                                "label": "Chevron Left",
+                                "value": "ChevronLeftIcon"
+                            },
+                            {
+                                "label": "Chevron Right",
+                                "value": "ChevronRightIcon"
+                            },
+                            {
+                                "label": "Chevrons Left",
+                                "value": "ChevronsLeftIcon"
+                            },
+                            {
+                                "label": "Chevrons Right",
+                                "value": "ChevronsRightIcon"
+                            },
+                            {
+                                "label": "Chevrons Up Down",
+                                "value": "ChevronsUpDownIcon"
+                            },
+                            {
+                                "label": "Circle",
+                                "value": "CircleIcon"
+                            },
+                            {
+                                "label": "Clock",
+                                "value": "ClockIcon"
+                            },
+                            {
+                                "label": "Close",
+                                "value": "CloseIcon"
+                            },
+                            {
+                                "label": "Close Circle",
+                                "value": "CloseCircleIcon"
+                            },
+                            {
+                                "label": "Copy",
+                                "value": "CopyIcon"
+                            },
+                            {
+                                "label": "Download",
+                                "value": "DownloadIcon"
+                            },
+                            {
+                                "label": "Edit",
+                                "value": "EditIcon"
+                            },
+                            {
+                                "label": "Eye",
+                                "value": "EyeIcon"
+                            },
+                            {
+                                "label": "Eye Off",
+                                "value": "EyeOffIcon"
+                            },
+                            {
+                                "label": "Favourite",
+                                "value": "FavouriteIcon"
+                            },
+                            {
+                                "label": "Globe",
+                                "value": "GlobeIcon"
+                            },
+                            {
+                                "label": "Grip Vertical",
+                                "value": "GripVerticalIcon"
+                            },
+                            {
+                                "label": "Help Circle",
+                                "value": "HelpCircleIcon"
+                            },
+                            {
+                                "label": "Info",
+                                "value": "InfoIcon"
+                            },
+                            {
+                                "label": "Link",
+                                "value": "LinkIcon"
+                            },
+                            {
+                                "label": "External Link",
+                                "value": "ExternalLinkIcon"
+                            },
+                            {
+                                "label": "Loader",
+                                "value": "LoaderIcon"
+                            },
+                            {
+                                "label": "Lock",
+                                "value": "LockIcon"
+                            },
+                            {
+                                "label": "Mail",
+                                "value": "MailIcon"
+                            },
+                            {
+                                "label": "Menu",
+                                "value": "MenuIcon"
+                            },
+                            {
+                                "label": "Message Circle",
+                                "value": "MessageCircleIcon"
+                            },
+                            {
+                                "label": "Moon",
+                                "value": "MoonIcon"
+                            },
+                            {
+                                "label": "Paperclip",
+                                "value": "PaperclipIcon"
+                            },
+                            {
+                                "label": "Phone",
+                                "value": "PhoneIcon"
+                            },
+                            {
+                                "label": "Play",
+                                "value": "PlayIcon"
+                            },
+                            {
+                                "label": "Remove",
+                                "value": "RemoveIcon"
+                            },
+                            {
+                                "label": "Repeat",
+                                "value": "RepeatIcon"
+                            },
+                            {
+                                "label": "Repeat1",
+                                "value": "Repeat1Icon"
+                            },
+                            {
+                                "label": "Search",
+                                "value": "SearchIcon"
+                            },
+                            {
+                                "label": "Settings",
+                                "value": "SettingsIcon"
+                            },
+                            {
+                                "label": "Share",
+                                "value": "ShareIcon"
+                            },
+                            {
+                                "label": "Slash",
+                                "value": "SlashIcon"
+                            },
+                            {
+                                "label": "Star",
+                                "value": "StarIcon"
+                            },
+                            {
+                                "label": "Sun",
+                                "value": "SunIcon"
+                            },
+                            {
+                                "label": "Three Dots",
+                                "value": "ThreeDotsIcon"
+                            },
+                            {
+                                "label": "Trash",
+                                "value": "TrashIcon"
+                            },
+                            {
+                                "label": "Unlock",
+                                "value": "UnlockIcon"
+                            }
+                        ]
+                    },
+                    "size": {
+                        "type": "select",
+                        "options": [
+                            {
+                                "label": "2XS",
+                                "value": "2xs"
+                            },
+                            {
+                                "label": "XS",
+                                "value": "xs"
+                            },
+                            {
+                                "label": "SM",
+                                "value": "sm"
+                            },
+                            {
+                                "label": "MD",
+                                "value": "md"
+                            },
+                            {
+                                "label": "LG",
+                                "value": "lg"
+                            },
+                            {
+                                "label": "XL",
+                                "value": "xl"
+                            }
+                        ]
+                    }
+                },
+                "defaultProps": {
+                    "className": "text-typography-500",
+                    "icon": "AddIcon",
+                    "size": "md"
+                }
+            }
+        },
+        "root": {
+            "fields": {
+                "title": {
+                    "type": "text",
+                    "ai": {
+                        "instructions": "The title for the page"
+                    }
+                }
+            }
+        }
+    }
+}
