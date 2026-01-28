@@ -1,14 +1,12 @@
 import type { ComponentConfig } from "@puckeditor/core";
 import { Heading as GluestackHeading } from "../../components/ui/heading";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
-import AlignmentField from "../fields/Alignment";
-import PaddingField from "../fields/Padding";
 
 export type HeadingProps = {
   title: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
-  alignmentClassName: string;
-  paddingClassName: string;
+  className: string;
   isTruncated: boolean;
   bold: boolean;
   underline: boolean;
@@ -16,7 +14,6 @@ export type HeadingProps = {
   sub: boolean;
   italic: boolean;
   highlight: boolean;
-  textAlign: "text-left" | "text-center" | "text-right" | "text-justify";
 };
 
 const sizeOptions = [
@@ -31,13 +28,6 @@ const sizeOptions = [
   { label: "5XL", value: "5xl" },
 ];
 
-const textAlignOptions = [
-  { label: "Left", value: "text-left" },
-  { label: "Center", value: "text-center" },
-  { label: "Right", value: "text-right" },
-  { label: "Justify", value: "text-justify" },
-];
-
 const Heading: ComponentConfig<HeadingProps> = {
   fields: {
     title: { type: "text" },
@@ -45,13 +35,12 @@ const Heading: ComponentConfig<HeadingProps> = {
       type: "select",
       options: sizeOptions,
     },
-    textAlign: {
-      type: "radio",
-      label: "Text align",
-      options: textAlignOptions,
-    },
-    alignmentClassName: AlignmentField("Alignment"),
-    paddingClassName: PaddingField("Padding"),
+    className: ClassNameGeneratorField("Classes", {
+      text: false,
+      padding: true,
+      margin: true,
+      alignment: true,
+    }),
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
     underline: CheckboxField("Underline"),
@@ -62,10 +51,8 @@ const Heading: ComponentConfig<HeadingProps> = {
   },
   defaultProps: {
     title: "Heading",
+    className: "",
     size: "md",
-    textAlign: "text-left",
-    alignmentClassName: "",
-    paddingClassName: "",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -76,10 +63,8 @@ const Heading: ComponentConfig<HeadingProps> = {
   },
   render: ({
     title,
+    className,
     size,
-    alignmentClassName,
-    paddingClassName,
-    textAlign,
     isTruncated,
     bold,
     underline,
@@ -89,9 +74,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     highlight,
   }) => (
     <GluestackHeading
-      className={[alignmentClassName, paddingClassName, textAlign]
-        .filter(Boolean)
-        .join(" ")}
+      className={className}
       size={size}
       isTruncated={isTruncated}
       bold={bold}

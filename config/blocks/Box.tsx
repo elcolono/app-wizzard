@@ -1,6 +1,7 @@
 import React from "react";
 import type { ComponentConfig, SlotComponent } from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type BoxProps = {
   className: string;
@@ -9,11 +10,15 @@ export type BoxProps = {
 
 const Box: ComponentConfig<BoxProps> = {
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     content: { type: "slot" },
   },
   defaultProps: {
-    className: "bg-gray-500 w-24 h-24",
+    className: "",
   },
   render: ({ content: Content, className }) => {
     const BoxDropZone = React.forwardRef<any, any>(
@@ -28,7 +33,7 @@ const Box: ComponentConfig<BoxProps> = {
       },
     );
 
-    return <Content as={BoxDropZone} />;
+    return <Content as={BoxDropZone} minEmptyHeight={300} />;
   },
 };
 

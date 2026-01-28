@@ -51,6 +51,9 @@ module.exports = {
       pattern: /(tracking)-(tighter|tight|normal|wide|wider|widest)/,
     },
     {
+      pattern: /(italic|not-italic|underline|line-through|no-underline)/,
+    },
+    {
       pattern: /(shadow)-(sm|md|lg|xl|2xl|inner|none|hard-1|hard-2|hard-3|hard-4|hard-5|soft-1|soft-2|soft-3|soft-4)/,
     },
     {

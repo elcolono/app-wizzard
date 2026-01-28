@@ -64,7 +64,7 @@ const Container: ComponentConfig<ContainerProps> = {
 
     return (
       <GluestackBox className={backgroundClassName}>
-        <Content as={ContainerDropZone} />
+        <Content as={ContainerDropZone} minEmptyHeight={300} />
       </GluestackBox>
     );
   },

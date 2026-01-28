@@ -28,12 +28,19 @@ const Image: ComponentConfig<ImageProps> = {
     },
   },
   defaultProps: {
-    source: "https://gluestack.github.io/public-blog-video-assets/mountains.png",
+    source:
+      "https://gluestack.github.io/public-blog-video-assets/mountains.png",
     alt: "Image",
     size: "md",
   },
-  render: ({ source, alt, size }) => (
-    <GluestackImage source={source} alt={alt} size={size} />
+  inline: true,
+  render: ({ source, alt, size, puck }) => (
+    <GluestackImage
+      source={source}
+      alt={alt}
+      size={size}
+      ref={puck.dragRef as React.Ref<React.ComponentRef<typeof GluestackImage>>}
+    />
   ),
 };
 

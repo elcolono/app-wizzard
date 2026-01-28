@@ -1,6 +1,7 @@
 import React from "react";
 import type { ComponentConfig } from "@puckeditor/core";
 import { HStack as GluestackHStack } from "../../components/ui/hstack";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type HStackProps = {
   className: string;
@@ -22,17 +23,18 @@ const spaceOptions = [
 const HStack: ComponentConfig<HStackProps> = {
   fields: {
     content: { type: "slot" },
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     space: {
       type: "select",
       options: spaceOptions,
     },
   },
   defaultProps: {
-    content: [
-      { type: "Box", props: { className: "h-60 w-60 bg-light-500" } },
-      { type: "Box", props: { className: "h-60 w-60 bg-light-500" } },
-    ],
+    content: [],
     className: "",
     space: "md",
   },

@@ -1,11 +1,10 @@
 import type { ComponentConfig } from "@puckeditor/core";
 import { Text as GluestackText } from "../../components/ui/text";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
-import AlignmentField from "../fields/Alignment";
 
 export type TextProps = {
   className?: string;
-  alignmentClassName: string;
   text: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
   isTruncated: boolean;
@@ -31,16 +30,13 @@ const sizeOptions = [
 
 const Text: ComponentConfig<TextProps> = {
   fields: {
-    className: {
-      type: "text",
-      visible: false,
-      ai: {
-        instructions: "Use tailwind classes to style the text.",
-      },
-    },
-    alignmentClassName: AlignmentField("Alignment"),
+    className: ClassNameGeneratorField("Classes", {
+      text: false,
+      padding: true,
+      margin: true,
+    }),
     text: { type: "text" },
-    size: {
+    size: { 
       type: "select",
       options: sizeOptions,
     },
@@ -54,8 +50,8 @@ const Text: ComponentConfig<TextProps> = {
   },
   defaultProps: {
     text: "Text",
+    className: "",
     size: "md",
-    alignmentClassName: "",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -67,7 +63,6 @@ const Text: ComponentConfig<TextProps> = {
   render: ({
     text,
     className,
-    alignmentClassName,
     size,
     isTruncated,
     bold,
@@ -78,7 +73,7 @@ const Text: ComponentConfig<TextProps> = {
     highlight,
   }) => (
     <GluestackText
-      className={[className, alignmentClassName].filter(Boolean).join(" ")}
+      className={className}
       size={size}
       isTruncated={isTruncated}
       bold={bold}
