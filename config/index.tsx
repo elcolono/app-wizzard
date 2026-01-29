@@ -8,6 +8,7 @@ import VStack from "./blocks/VStack";
 import Grid from "./blocks/Grid";
 import GridItem from "./blocks/GridItem";
 import Container from "./blocks/Container";
+import Card from "./blocks/Card";
 import Button from "./blocks/Button";
 import ButtonText from "./blocks/ButtonText";
 import Center from "./blocks/Center";
@@ -31,6 +32,7 @@ export const config: Config = {
         "Grid",
         "GridItem",
         "Container",
+        "Card",
       ],
     },
     feedback: {
@@ -53,6 +55,7 @@ export const config: Config = {
     Grid,
     GridItem,
     Container,
+    Card,
     Button,
     ButtonText,
     Center,
