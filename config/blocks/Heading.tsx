@@ -1,4 +1,5 @@
-import type { ComponentConfig } from "@puckeditor/core";
+import React from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Heading as GluestackHeading } from "../../components/ui/heading";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
@@ -29,6 +30,7 @@ const sizeOptions = [
 ];
 
 const Heading: ComponentConfig<HeadingProps> = {
+  inline: false,
   fields: {
     title: { type: "text" },
     size: {
@@ -72,7 +74,8 @@ const Heading: ComponentConfig<HeadingProps> = {
     sub,
     italic,
     highlight,
-  }) => (
+    puck,
+  }: WithPuckProps<HeadingProps>) => (
     <GluestackHeading
       className={className}
       size={size}
@@ -83,6 +86,11 @@ const Heading: ComponentConfig<HeadingProps> = {
       sub={sub}
       italic={italic}
       highlight={highlight}
+      ref={
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackHeading>
+        >
+      }
     >
       {title}
     </GluestackHeading>

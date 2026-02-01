@@ -1,5 +1,7 @@
-import type { ComponentConfig } from "@puckeditor/core";
+import React from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Divider as GluestackDivider } from "../../components/ui/divider";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type DividerProps = {
   className: string;
@@ -7,8 +9,12 @@ export type DividerProps = {
 };
 
 const Divider: ComponentConfig<DividerProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      padding: true,
+      margin: true,
+    }),
     orientation: {
       type: "select",
       options: [
@@ -17,8 +23,16 @@ const Divider: ComponentConfig<DividerProps> = {
       ],
     },
   },
-  render: ({ className, orientation }) => (
-    <GluestackDivider className={className} orientation={orientation} />
+  render: ({ className, orientation, puck }: WithPuckProps<DividerProps>) => (
+    <GluestackDivider
+      ref={
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackDivider>
+        >
+      }
+      className={className}
+      orientation={orientation}
+    />
   ),
 };
 

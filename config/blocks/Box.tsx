@@ -1,5 +1,9 @@
 import React from "react";
-import type { ComponentConfig, SlotComponent } from "@puckeditor/core";
+import type {
+  ComponentConfig,
+  SlotComponent,
+  WithPuckProps,
+} from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
@@ -9,6 +13,7 @@ export type BoxProps = {
 };
 
 const Box: ComponentConfig<BoxProps> = {
+  inline: false,
   fields: {
     className: ClassNameGeneratorField("Classes", {
       alignment: true,
@@ -20,7 +25,7 @@ const Box: ComponentConfig<BoxProps> = {
   defaultProps: {
     className: "",
   },
-  render: ({ content: Content, className }) => {
+  render: ({ content: Content, className, puck }: WithPuckProps<BoxProps>) => {
     const BoxDropZone = React.forwardRef<any, any>(
       function BoxDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -28,7 +33,15 @@ const Box: ComponentConfig<BoxProps> = {
           .join(" ");
 
         return (
-          <GluestackBox {...props} ref={ref} className={mergedClassName} />
+          <GluestackBox
+            {...props}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackBox>
+              >
+            }
+            className={mergedClassName}
+          />
         );
       },
     );

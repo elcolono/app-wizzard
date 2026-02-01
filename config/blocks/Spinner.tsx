@@ -1,6 +1,8 @@
-import type { ComponentConfig } from "@puckeditor/core";
+import React from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Spinner as GluestackSpinner } from "../../components/ui/spinner";
 import CheckboxField from "../fields/Checkbox";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type SpinnerProps = {
   className: string;
@@ -10,8 +12,12 @@ export type SpinnerProps = {
 };
 
 const Spinner: ComponentConfig<SpinnerProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      padding: true,
+      margin: true,
+    }),
     size: {
       type: "select",
       options: [
@@ -28,7 +34,13 @@ const Spinner: ComponentConfig<SpinnerProps> = {
     color: "",
     animating: true,
   },
-  render: ({ className, size, color, animating }) => {
+  render: ({
+    className,
+    size,
+    color,
+    animating,
+    puck,
+  }: WithPuckProps<SpinnerProps>) => {
     const resolvedColor = color?.trim() || undefined;
 
     return (
@@ -37,6 +49,11 @@ const Spinner: ComponentConfig<SpinnerProps> = {
         size={size}
         color={resolvedColor}
         animating={animating}
+        ref={
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackSpinner>
+          >
+        }
       />
     );
   },

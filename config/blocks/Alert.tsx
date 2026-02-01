@@ -1,6 +1,8 @@
-import type { ComponentConfig } from "@puckeditor/core";
+import React from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Alert as GluestackAlert, AlertText } from "../../components/ui/alert";
 import CheckboxField from "../fields/Checkbox";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type AlertProps = {
   className: string;
@@ -43,8 +45,13 @@ const sizeOptions = [
 ];
 
 const Alert: ComponentConfig<AlertProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     text: { type: "text" },
     variant: {
       type: "select",
@@ -102,8 +109,18 @@ const Alert: ComponentConfig<AlertProps> = {
     sub,
     italic,
     highlight,
-  }) => (
-    <GluestackAlert className={className} variant={variant} action={action}>
+    puck,
+  }: WithPuckProps<AlertProps>) => (
+    <GluestackAlert
+      className={className}
+      variant={variant}
+      action={action}
+      ref={
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackAlert>
+        >
+      }
+    >
       <AlertText
         size={size}
         isTruncated={isTruncated}

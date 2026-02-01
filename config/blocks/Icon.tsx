@@ -1,5 +1,6 @@
-import type { ComponentType } from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import React, { type ComponentType } from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import {
   Icon as GluestackIcon,
   AddIcon,
@@ -201,8 +202,12 @@ const iconOptions = iconNames.map((name) => ({
 }));
 
 const IconBlock: ComponentConfig<IconProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      padding: true,
+      margin: true,
+    }),
     icon: {
       type: "select",
       options: iconOptions,
@@ -217,10 +222,21 @@ const IconBlock: ComponentConfig<IconProps> = {
     icon: "AddIcon",
     size: "md",
   },
-  render: ({ className, icon, size }) => {
+  render: ({ className, icon, size, puck }: WithPuckProps<IconProps>) => {
     const SelectedIcon = iconMap[icon] as ComponentType<any>;
 
-    return <GluestackIcon as={SelectedIcon} className={className} size={size} />;
+    return (
+      <GluestackIcon
+        as={SelectedIcon}
+        className={className}
+        size={size}
+        ref={
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackIcon>
+          >
+        }
+      />
+    );
   },
 };
 

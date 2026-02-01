@@ -1,6 +1,11 @@
 import React from "react";
-import type { ComponentConfig, SlotComponent } from "@puckeditor/core";
+import type {
+  ComponentConfig,
+  SlotComponent,
+  WithPuckProps,
+} from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type ContainerProps = {
   backgroundClassName: string;
@@ -37,9 +42,14 @@ const maxWidthOptions = [
 ];
 
 const Container: ComponentConfig<ContainerProps> = {
+  inline: false,
   fields: {
     backgroundClassName: { type: "text", label: "Background classes" },
-    className: { type: "text", label: "Container classes" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     maxWidth: { type: "select", options: maxWidthOptions, label: "Max width" },
     content: { type: "slot" },
   },
@@ -48,7 +58,13 @@ const Container: ComponentConfig<ContainerProps> = {
     className: "mx-auto w-full px-4",
     maxWidth: "6xl",
   },
-  render: ({ content: Content, className, backgroundClassName, maxWidth }) => {
+  render: ({
+    content: Content,
+    className,
+    backgroundClassName,
+    maxWidth,
+    puck,
+  }: WithPuckProps<ContainerProps>) => {
     const ContainerDropZone = React.forwardRef<any, any>(
       function ContainerDropZone(props, ref) {
         const maxWidthClass = maxWidth === "none" ? "" : `max-w-${maxWidth}`;
@@ -63,7 +79,14 @@ const Container: ComponentConfig<ContainerProps> = {
     );
 
     return (
-      <GluestackBox className={backgroundClassName}>
+      <GluestackBox
+        className={backgroundClassName}
+        ref={
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackBox>
+          >
+        }
+      >
         <Content as={ContainerDropZone} minEmptyHeight={300} />
       </GluestackBox>
     );

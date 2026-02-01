@@ -1,7 +1,8 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { HStack as GluestackHStack } from "../../components/ui/hstack";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { Box as GluestackBox } from "../../components/ui/box";
 
 export type HStackProps = {
   className: string;
@@ -21,6 +22,7 @@ const spaceOptions = [
 ];
 
 const HStack: ComponentConfig<HStackProps> = {
+  inline: false,
   fields: {
     content: { type: "slot" },
     className: ClassNameGeneratorField("Classes", {
@@ -38,7 +40,12 @@ const HStack: ComponentConfig<HStackProps> = {
     className: "",
     space: "md",
   },
-  render: ({ className, space, content: Content }) => {
+  render: ({
+    className,
+    space,
+    content: Content,
+    puck,
+  }: WithPuckProps<HStackProps>) => {
     const HStackDropZone = React.forwardRef<any, any>(
       function HStackDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -46,12 +53,18 @@ const HStack: ComponentConfig<HStackProps> = {
           .join(" ");
 
         return (
-          <GluestackHStack
-            {...props}
-            ref={ref}
-            className={mergedClassName}
-            space={space}
-          />
+          <GluestackBox>
+            <GluestackHStack
+              {...props}
+              ref={
+                puck.dragRef as unknown as React.Ref<
+                  React.ComponentRef<typeof GluestackHStack>
+                >
+              }
+              className={mergedClassName}
+              space={space}
+            />
+          </GluestackBox>
         );
       },
     );

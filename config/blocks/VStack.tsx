@@ -1,6 +1,7 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { VStack as GluestackVStack } from "../../components/ui/vstack";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type VStackProps = {
   className: string;
@@ -20,9 +21,14 @@ const spaceOptions = [
 ];
 
 const VStack: ComponentConfig<VStackProps> = {
+  inline: false,
   fields: {
     content: { type: "slot" },
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     space: {
       type: "select",
       options: spaceOptions,
@@ -36,7 +42,12 @@ const VStack: ComponentConfig<VStackProps> = {
     className: "",
     space: "md",
   },
-  render: ({ className, space, content: Content }) => {
+  render: ({
+    className,
+    space,
+    content: Content,
+    puck,
+  }: WithPuckProps<VStackProps>) => {
     const VStackDropZone = React.forwardRef<any, any>(
       function VStackDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -46,7 +57,11 @@ const VStack: ComponentConfig<VStackProps> = {
         return (
           <GluestackVStack
             {...props}
-            ref={ref}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackVStack>
+              >
+            }
             className={mergedClassName}
             space={space}
           />

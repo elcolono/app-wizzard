@@ -1,6 +1,7 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { GridItem as GluestackGridItem } from "../../components/ui/grid";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type GridItemProps = {
   className: string;
@@ -9,8 +10,13 @@ export type GridItemProps = {
 };
 
 const GridItem: ComponentConfig<GridItemProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     columnsClassName: { type: "text", label: "Column span (e.g. col-span-3)" },
     content: { type: "slot" },
   },
@@ -19,7 +25,12 @@ const GridItem: ComponentConfig<GridItemProps> = {
     columnsClassName: "col-span-3",
     content: [],
   },
-  render: ({ className, columnsClassName, content: Content }) => {
+  render: ({
+    className,
+    columnsClassName,
+    content: Content,
+    puck,
+  }: WithPuckProps<GridItemProps>) => {
     const GridItemDropZone = React.forwardRef<any, any>(
       function GridItemDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -35,7 +46,11 @@ const GridItem: ComponentConfig<GridItemProps> = {
         return (
           <GluestackGridItem
             {...props}
-            ref={ref}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackGridItem>
+              >
+            }
             className={mergedClassName}
             _extra={{ className: mergedColumnsClassName }}
           />

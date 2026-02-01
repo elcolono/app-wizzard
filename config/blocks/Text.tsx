@@ -1,7 +1,9 @@
-import type { ComponentConfig } from "@puckeditor/core";
+import React from "react";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Text as GluestackText } from "../../components/ui/text";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
+import { Box as GluestackBox } from "../../components/ui/box";
 
 export type TextProps = {
   className?: string;
@@ -29,6 +31,7 @@ const sizeOptions = [
 ];
 
 const Text: ComponentConfig<TextProps> = {
+  inline: false,
   fields: {
     className: ClassNameGeneratorField("Classes", {
       text: false,
@@ -36,7 +39,7 @@ const Text: ComponentConfig<TextProps> = {
       margin: true,
     }),
     text: { type: "text" },
-    size: { 
+    size: {
       type: "select",
       options: sizeOptions,
     },
@@ -71,20 +74,27 @@ const Text: ComponentConfig<TextProps> = {
     sub,
     italic,
     highlight,
-  }) => (
-    <GluestackText
-      className={className}
-      size={size}
-      isTruncated={isTruncated}
-      bold={bold}
-      underline={underline}
-      strikeThrough={strikeThrough}
-      sub={sub}
-      italic={italic}
-      highlight={highlight}
-    >
-      {text}
-    </GluestackText>
+    puck,
+  }: WithPuckProps<TextProps>) => (
+    <GluestackBox className={className}>
+      <GluestackText
+        size={size}
+        isTruncated={isTruncated}
+        bold={bold}
+        underline={underline}
+        strikeThrough={strikeThrough}
+        sub={sub}
+        italic={italic}
+        highlight={highlight}
+        ref={
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackText>
+          >
+        }
+      >
+        {text}
+      </GluestackText>
+    </GluestackBox>
   ),
 };
 

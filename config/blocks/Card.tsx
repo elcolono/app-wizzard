@@ -1,5 +1,5 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Card as GluestackCard } from "../../components/ui/card";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
@@ -24,6 +24,7 @@ const variantOptions = [
 ];
 
 const Card: ComponentConfig<CardProps> = {
+  inline: false,
   fields: {
     className: ClassNameGeneratorField("Classes", {
       text: false,
@@ -47,7 +48,13 @@ const Card: ComponentConfig<CardProps> = {
     variant: "elevated",
     content: [{ type: "Text", props: { text: "Card content" } }],
   },
-  render: ({ content: Content, className, size, variant }) => {
+  render: ({
+    content: Content,
+    className,
+    size,
+    variant,
+    puck,
+  }: WithPuckProps<CardProps>) => {
     const CardDropZone = React.forwardRef<any, any>(
       function CardDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -57,7 +64,11 @@ const Card: ComponentConfig<CardProps> = {
         return (
           <GluestackCard
             {...props}
-            ref={ref}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackCard>
+              >
+            }
             className={mergedClassName}
             size={size}
             variant={variant}

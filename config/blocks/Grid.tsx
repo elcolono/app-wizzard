@@ -1,6 +1,7 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
+import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type GridProps = {
   className: string;
@@ -9,8 +10,13 @@ export type GridProps = {
 };
 
 const Grid: ComponentConfig<GridProps> = {
+  inline: false,
   fields: {
-    className: { type: "text" },
+    className: ClassNameGeneratorField("Classes", {
+      alignment: true,
+      padding: true,
+      margin: true,
+    }),
     columnsClassName: { type: "text", label: "Columns (e.g. grid-cols-12)" },
     content: { type: "slot", allow: ["GridItem"] },
   },
@@ -76,7 +82,12 @@ const Grid: ComponentConfig<GridProps> = {
       },
     ],
   },
-  render: ({ className, columnsClassName, content: Content }) => {
+  render: ({
+    className,
+    columnsClassName,
+    content: Content,
+    puck,
+  }: WithPuckProps<GridProps>) => {
     const GridDropZone = React.forwardRef<any, any>(
       function GridDropZone(props, ref) {
         const mergedClassName = [className, props?.className]
@@ -92,7 +103,11 @@ const Grid: ComponentConfig<GridProps> = {
         return (
           <GluestackGrid
             {...props}
-            ref={ref}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackGrid>
+              >
+            }
             className={mergedClassName}
             _extra={{ className: mergedColumnsClassName }}
           />

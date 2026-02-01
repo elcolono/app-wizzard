@@ -114,8 +114,10 @@ const splitTokens = (value?: string) =>
 
 const mergeTokens = (tokens: string[]) => tokens.join(" ").trim();
 
-const removeTokens = (tokens: string[], predicate: (token: string) => boolean) =>
-  tokens.filter((token) => !predicate(token));
+const removeTokens = (
+  tokens: string[],
+  predicate: (token: string) => boolean,
+) => tokens.filter((token) => !predicate(token));
 
 const parsePaddingValue = (value?: string): PaddingSides => {
   const sides: PaddingSides = {
@@ -346,7 +348,9 @@ const replaceTokenFromSet = (
   tokenSet: Set<string>,
   nextToken: string,
 ) => {
-  const tokens = removeTokens(splitTokens(value), (token) => tokenSet.has(token));
+  const tokens = removeTokens(splitTokens(value), (token) =>
+    tokenSet.has(token),
+  );
   if (nextToken) {
     tokens.push(nextToken);
   }
@@ -404,7 +408,9 @@ const TextTool = ({
           <select
             value={weight}
             onChange={(event) =>
-              onChange(replaceTokenFromSet(value, weightSet, event.target.value))
+              onChange(
+                replaceTokenFromSet(value, weightSet, event.target.value),
+              )
             }
             disabled={readOnly}
           >
@@ -597,17 +603,11 @@ const PaddingTool = ({
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <span style={{ fontSize: 11, color: "#64748b" }}>
-            {activeSide === "all"
-              ? "all"
-              : sidePrefixes[activeSide]}
+            {activeSide === "all" ? "all" : sidePrefixes[activeSide]}
           </span>
           <button
             type="button"
-            onClick={() =>
-              onChange(
-                setPaddingSide(value, activeSide, ""),
-              )
-            }
+            onClick={() => onChange(setPaddingSide(value, activeSide, ""))}
             disabled={readOnly}
             style={{
               borderRadius: 6,
@@ -817,7 +817,11 @@ const ClassNameGeneratorView = ({
       {tools.alignment ? (
         <div>
           <div style={{ marginBottom: 6 }}>Alignment</div>
-          <AlignmentTool value={value} onChange={onChange} readOnly={readOnly} />
+          <AlignmentTool
+            value={value}
+            onChange={onChange}
+            readOnly={readOnly}
+          />
         </div>
       ) : null}
       {tools.padding ? (
@@ -851,6 +855,12 @@ const ClassNameGeneratorField = (
 ): CustomField<string> => ({
   type: "custom",
   label,
+  ai: {
+    instructions: "Generate Tailwind css classes for the component.",
+    schema: {
+      type: "string",
+    },
+  },
   render: ({ id, value, onChange, readOnly, field }) => (
     <ClassNameGeneratorView
       id={id}

@@ -1,7 +1,8 @@
 import React from "react";
-import type { ComponentConfig } from "@puckeditor/core";
+import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Button as GluestackButton } from "../../components/ui/button";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { Box as GluestackBox } from "../../components/ui/box";
 
 export type ButtonProps = {
   content: any;
@@ -47,7 +48,7 @@ const Button: ComponentConfig<ButtonProps> = {
       alignment: true,
     }),
   },
-  inline: true,
+  inline: false,
   defaultProps: {
     content: [{ type: "ButtonText", props: { text: "Button" } }],
     variant: "solid",
@@ -55,22 +56,31 @@ const Button: ComponentConfig<ButtonProps> = {
     size: "md",
     className: null,
   },
-  render: ({ variant, action, size, content: Content, className, puck }) => {
+  render: ({
+    variant,
+    action,
+    size,
+    content: Content,
+    className,
+    puck,
+  }: WithPuckProps<ButtonProps>) => {
     const ButtonDropZone = React.forwardRef<any, any>(
       function ButtonDropZone(props, ref) {
         return (
-          <GluestackButton
-            {...props}
-            ref={
-              puck.dragRef as React.Ref<
-                React.ComponentRef<typeof GluestackButton>
-              >
-            }
-            variant={variant}
-            action={action}
-            size={size}
-            className={className}
-          />
+          <GluestackBox>
+            <GluestackButton
+              {...props}
+              ref={
+                puck.dragRef as unknown as React.Ref<
+                  React.ComponentRef<typeof GluestackButton>
+                >
+              }
+              variant={variant}
+              action={action}
+              size={size}
+              className={className}
+            />
+          </GluestackBox>
         );
       },
     );
