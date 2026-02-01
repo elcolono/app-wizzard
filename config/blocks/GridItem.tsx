@@ -9,8 +9,23 @@ export type GridItemProps = {
   content: any;
 };
 
+const setRefs =
+  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
+  (value: T | null) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+        return;
+      }
+
+      if (ref && typeof ref === "object" && "current" in ref) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+
 const GridItem: ComponentConfig<GridItemProps> = {
-  inline: false,
+  inline: true,
   fields: {
     className: ClassNameGeneratorField("Classes", {
       alignment: true,
@@ -43,14 +58,17 @@ const GridItem: ComponentConfig<GridItemProps> = {
           .filter(Boolean)
           .join(" ");
 
+        const mergedRef = setRefs<React.ComponentRef<typeof GluestackGridItem>>(
+          ref,
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackGridItem>
+          >,
+        );
+
         return (
           <GluestackGridItem
             {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackGridItem>
-              >
-            }
+            ref={mergedRef}
             className={mergedClassName}
             _extra={{ className: mergedColumnsClassName }}
           />
@@ -58,7 +76,7 @@ const GridItem: ComponentConfig<GridItemProps> = {
       },
     );
 
-    return <Content as={GridItemDropZone} />;
+    return <Content as={GridItemDropZone} minEmptyHeight={200} />;
   },
 };
 

@@ -9,6 +9,21 @@ export type VStackProps = {
   content: any;
 };
 
+const setRefs =
+  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
+  (value: T | null) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+        return;
+      }
+
+      if (ref && typeof ref === "object" && "current" in ref) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+
 const spaceOptions = [
   { label: "XS", value: "xs" },
   { label: "SM", value: "sm" },
@@ -35,10 +50,7 @@ const VStack: ComponentConfig<VStackProps> = {
     },
   },
   defaultProps: {
-    content: [
-      { type: "Box", props: { className: "h-60 w-60 bg-light-500" } },
-      { type: "Box", props: { className: "h-60 w-60 bg-light-500" } },
-    ],
+    content: [],
     className: "",
     space: "md",
   },
@@ -54,14 +66,17 @@ const VStack: ComponentConfig<VStackProps> = {
           .filter(Boolean)
           .join(" ");
 
+        const mergedRef = setRefs<React.ComponentRef<typeof GluestackVStack>>(
+          ref,
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackVStack>
+          >,
+        );
+
         return (
           <GluestackVStack
             {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackVStack>
-              >
-            }
+            ref={mergedRef}
             className={mergedClassName}
             space={space}
           />
@@ -69,7 +84,7 @@ const VStack: ComponentConfig<VStackProps> = {
       },
     );
 
-    return <Content as={VStackDropZone} />;
+    return <Content as={VStackDropZone} minEmptyHeight={200} />;
   },
 };
 

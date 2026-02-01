@@ -10,6 +10,21 @@ export type HStackProps = {
   content: any;
 };
 
+const setRefs =
+  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
+  (value: T | null) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+        return;
+      }
+
+      if (ref && typeof ref === "object" && "current" in ref) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
+
 const spaceOptions = [
   { label: "XS", value: "xs" },
   { label: "SM", value: "sm" },
@@ -52,15 +67,18 @@ const HStack: ComponentConfig<HStackProps> = {
           .filter(Boolean)
           .join(" ");
 
+        const mergedRef = setRefs<React.ComponentRef<typeof GluestackHStack>>(
+          ref,
+          puck.dragRef as unknown as React.Ref<
+            React.ComponentRef<typeof GluestackHStack>
+          >,
+        );
+
         return (
           <GluestackBox>
             <GluestackHStack
               {...props}
-              ref={
-                puck.dragRef as unknown as React.Ref<
-                  React.ComponentRef<typeof GluestackHStack>
-                >
-              }
+              ref={mergedRef}
               className={mergedClassName}
               space={space}
             />
@@ -69,7 +87,7 @@ const HStack: ComponentConfig<HStackProps> = {
       },
     );
 
-    return <Content as={HStackDropZone} />;
+    return <Content as={HStackDropZone} minEmptyHeight={200} />;
   },
 };
 

@@ -1,5 +1,5 @@
-import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
+import React from "react";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
 import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
@@ -22,62 +22,27 @@ const Grid: ComponentConfig<GridProps> = {
   },
   defaultProps: {
     className: "gap-4",
-    columnsClassName: "grid-cols-10",
+    columnsClassName: "grid-cols-9",
     content: [
       {
         type: "GridItem",
         props: {
-          className: "bg-background-50 p-6 rounded-md",
+          className: "bg-background-50 p-3 rounded-md text-center",
           columnsClassName: "col-span-3",
         },
       },
       {
         type: "GridItem",
         props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-5",
+          className: "bg-background-50 p-3 rounded-md text-center",
+          columnsClassName: "col-span-3",
         },
       },
       {
         type: "GridItem",
         props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-2",
-        },
-      },
-      {
-        type: "GridItem",
-        props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-4",
-        },
-      },
-      {
-        type: "GridItem",
-        props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-6",
-        },
-      },
-      {
-        type: "GridItem",
-        props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-2",
-        },
-      },
-      {
-        type: "GridItem",
-        props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-4",
-        },
-      },
-      {
-        type: "GridItem",
-        props: {
-          className: "bg-background-50 p-6 rounded-md",
-          columnsClassName: "col-span-4",
+          className: "bg-background-50 p-3 rounded-md text-center",
+          columnsClassName: "col-span-3",
         },
       },
     ],
@@ -99,6 +64,40 @@ const Grid: ComponentConfig<GridProps> = {
         ]
           .filter(Boolean)
           .join(" ");
+
+        // return (
+        //   <GluestackGrid
+        //     className="gap-4"
+        //     _extra={{
+        //       className: "grid-cols-9",
+        //     }}
+        //   >
+        //     <GluestackGridItem
+        //       className="bg-background-50 p-3 rounded-md text-center"
+        //       _extra={{
+        //         className: "col-span-3",
+        //       }}
+        //     >
+        //       <GluestackText>A</GluestackText>
+        //     </GluestackGridItem>
+        //     <GluestackGridItem
+        //       className="bg-background-50 p-3 rounded-md text-center"
+        //       _extra={{
+        //         className: "col-span-3",
+        //       }}
+        //     >
+        //       <GluestackText>B</GluestackText>
+        //     </GluestackGridItem>
+        //     <GluestackGridItem
+        //       className="bg-background-50 p-3 rounded-md text-center"
+        //       _extra={{
+        //         className: "col-span-3",
+        //       }}
+        //     >
+        //       <GluestackText>C</GluestackText>
+        //     </GluestackGridItem>
+        //   </GluestackGrid>
+        // );
 
         return (
           <GluestackGrid
