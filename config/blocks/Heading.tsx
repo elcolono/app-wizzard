@@ -44,10 +44,19 @@ const alignmentOptions = [
 const Heading: ComponentConfig<HeadingProps> = {
   inline: false,
   fields: {
-    title: { type: "text" },
+    title: { type: "text", contentEditable: true },
     size: {
       type: "select",
       options: sizeOptions,
+      ai: {
+        instructions:
+          "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
+      },
+    },
+    textAlignment: {
+      type: "radio",
+      label: "Text alignment",
+      options: alignmentOptions,
     },
     className: ClassNameGeneratorField("Classes", {
       text: false,
@@ -55,11 +64,6 @@ const Heading: ComponentConfig<HeadingProps> = {
       margin: true,
       alignment: true,
     }),
-    textAlignment: {
-      type: "radio",
-      label: "Text alignment",
-      options: alignmentOptions,
-    },
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
     underline: CheckboxField("Underline"),

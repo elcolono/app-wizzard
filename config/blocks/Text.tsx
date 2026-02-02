@@ -38,7 +38,7 @@ const Text: ComponentConfig<TextProps> = {
       padding: true,
       margin: true,
     }),
-    text: { type: "text" },
+    text: { type: "text", contentEditable: true },
     size: {
       type: "select",
       options: sizeOptions,
