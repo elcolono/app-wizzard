@@ -8,6 +8,12 @@ export type HeadingProps = {
   title: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
   className: string;
+  textAlignment:
+    | ""
+    | "text-left"
+    | "text-center"
+    | "text-right"
+    | "text-justify";
   isTruncated: boolean;
   bold: boolean;
   underline: boolean;
@@ -29,6 +35,12 @@ const sizeOptions = [
   { label: "5XL", value: "5xl" },
 ];
 
+const alignmentOptions = [
+  { label: "Left", value: "text-left" },
+  { label: "Center", value: "text-center" },
+  { label: "Right", value: "text-right" },
+];
+
 const Heading: ComponentConfig<HeadingProps> = {
   inline: false,
   fields: {
@@ -43,6 +55,11 @@ const Heading: ComponentConfig<HeadingProps> = {
       margin: true,
       alignment: true,
     }),
+    textAlignment: {
+      type: "radio",
+      label: "Text alignment",
+      options: alignmentOptions,
+    },
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
     underline: CheckboxField("Underline"),
@@ -55,6 +72,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     title: "Heading",
     className: "",
     size: "md",
+    textAlignment: "text-left",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -67,6 +85,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     title,
     className,
     size,
+    textAlignment,
     isTruncated,
     bold,
     underline,
@@ -77,7 +96,7 @@ const Heading: ComponentConfig<HeadingProps> = {
     puck,
   }: WithPuckProps<HeadingProps>) => (
     <GluestackHeading
-      className={className}
+      className={[className, textAlignment].filter(Boolean).join(" ")}
       size={size}
       isTruncated={isTruncated}
       bold={bold}

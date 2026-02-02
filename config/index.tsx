@@ -1,4 +1,5 @@
 import type { Config } from "@puckeditor/core";
+import RootWrapper from "../components/RootWrapper";
 import Heading from "./blocks/Heading";
 import Text from "./blocks/Text";
 import Box from "./blocks/Box";
@@ -19,6 +20,11 @@ import Alert from "./blocks/Alert";
 import Icon from "./blocks/Icon";
 
 export const config: Config = {
+  root: {
+    render: ({ children }) => {
+      return <RootWrapper>{children}</RootWrapper>;
+    },
+  },
   categories: {
     typography: {
       components: ["Heading", "Text"],

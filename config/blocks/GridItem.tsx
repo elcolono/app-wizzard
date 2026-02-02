@@ -5,6 +5,69 @@ import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 
 export type GridItemProps = {
   className: string;
+  columnsBase:
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "full"
+    | "auto";
+  columnsSm:
+    | ""
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "full"
+    | "auto";
+  columnsMd:
+    | ""
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "full"
+    | "auto";
+  columnsLg:
+    | ""
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "full"
+    | "auto";
   columnsClassName: string;
   content: any;
 };
@@ -24,6 +87,28 @@ const setRefs =
     });
   };
 
+const columnsBaseOptions = [
+  { label: "1", value: "1" },
+  { label: "2", value: "2" },
+  { label: "3", value: "3" },
+  { label: "4", value: "4" },
+  { label: "5", value: "5" },
+  { label: "6", value: "6" },
+  { label: "7", value: "7" },
+  { label: "8", value: "8" },
+  { label: "9", value: "9" },
+  { label: "10", value: "10" },
+  { label: "11", value: "11" },
+  { label: "12", value: "12" },
+  { label: "Full", value: "full" },
+  { label: "Auto", value: "auto" },
+];
+
+const columnsResponsiveOptions = [
+  { label: "Default", value: "" },
+  ...columnsBaseOptions,
+];
+
 const GridItem: ComponentConfig<GridItemProps> = {
   inline: true,
   fields: {
@@ -32,16 +117,47 @@ const GridItem: ComponentConfig<GridItemProps> = {
       padding: true,
       margin: true,
     }),
-    columnsClassName: { type: "text", label: "Column span (e.g. col-span-3)" },
+    columnsBase: {
+      type: "select",
+      label: "Column span",
+      options: columnsBaseOptions,
+    },
+    columnsSm: {
+      type: "select",
+      label: "Column span (sm)",
+      options: columnsResponsiveOptions,
+    },
+    columnsMd: {
+      type: "select",
+      label: "Column span (md)",
+      options: columnsResponsiveOptions,
+    },
+    columnsLg: {
+      type: "select",
+      label: "Column span (lg)",
+      options: columnsResponsiveOptions,
+    },
+    columnsClassName: {
+      type: "text",
+      label: "Column span (advanced classes)",
+    },
     content: { type: "slot" },
   },
   defaultProps: {
     className: "bg-background-50 p-6 rounded-md",
-    columnsClassName: "col-span-3",
+    columnsBase: "1",
+    columnsSm: "",
+    columnsMd: "",
+    columnsLg: "",
+    columnsClassName: "",
     content: [],
   },
   render: ({
     className,
+    columnsBase,
+    columnsSm,
+    columnsMd,
+    columnsLg,
     columnsClassName,
     content: Content,
     puck,
@@ -51,7 +167,16 @@ const GridItem: ComponentConfig<GridItemProps> = {
         const mergedClassName = [className, props?.className]
           .filter(Boolean)
           .join(" ");
+        const responsiveColumnsClassName = [
+          `col-span-${columnsBase}`,
+          columnsSm ? `sm:col-span-${columnsSm}` : "",
+          columnsMd ? `md:col-span-${columnsMd}` : "",
+          columnsLg ? `lg:col-span-${columnsLg}` : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
         const mergedColumnsClassName = [
+          responsiveColumnsClassName,
           columnsClassName,
           props?._extra?.className,
         ]
