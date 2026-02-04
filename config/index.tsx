@@ -18,6 +18,7 @@ import Progress from "./blocks/Progress";
 import Spinner from "./blocks/Spinner";
 import Alert from "./blocks/Alert";
 import Icon from "./blocks/Icon";
+import Avatar from "./blocks/Avatar";
 
 export const config: Config = {
   root: {
@@ -45,7 +46,7 @@ export const config: Config = {
       components: ["Progress", "Spinner", "Alert"],
     },
     media: {
-      components: ["Image", "Icon"],
+      components: ["Image", "Icon", "Avatar"],
     },
     forms: {
       components: ["Button", "ButtonText"],
@@ -70,6 +71,7 @@ export const config: Config = {
     Spinner,
     Alert,
     Icon,
+    Avatar,
   },
 };
 

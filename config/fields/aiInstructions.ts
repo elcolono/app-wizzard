@@ -9,6 +9,13 @@ export const aiInstructions = {
   imageAlt: "Accessible alt text for the image.",
   imageSize: "Image size token for width/height.",
   iconName: "Choose an icon from the list.",
+  iconClassName: "Tailwind classes for the icon (e.g., stroke-white, text-*).",
+  avatarType: "Choose avatar type: standard avatar or icon avatar.",
+  avatarFallbackText: "Text shown when no avatar image is available.",
+  avatarFallbackClassName:
+    "Tailwind classes for the fallback text inside the avatar.",
+  avatarImageClassName: "Tailwind classes for the avatar image.",
+  avatarBadgeClassName: "Tailwind classes for the avatar badge.",
   alignment:
     "Text alignment using Tailwind: text-left, text-center, text-right, text-justify.",
   maxWidth:
