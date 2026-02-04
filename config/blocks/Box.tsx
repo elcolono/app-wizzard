@@ -5,7 +5,7 @@ import type {
   WithPuckProps,
 } from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type BoxProps = {
   className: string;
@@ -15,36 +15,37 @@ export type BoxProps = {
 const Box: ComponentConfig<BoxProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
-    content: { type: "slot" },
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "",
   },
   render: ({ content: Content, className, puck }: WithPuckProps<BoxProps>) => {
-    const BoxDropZone = React.forwardRef<any, any>(
-      function BoxDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
+    const BoxDropZone = React.forwardRef<any, any>(function BoxDropZone(
+      props,
+      ref
+    ) {
+      const mergedClassName = [className, props?.className]
+        .filter(Boolean)
+        .join(" ");
 
-        return (
-          <GluestackBox
-            {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackBox>
-              >
-            }
-            className={mergedClassName}
-          />
-        );
-      },
-    );
+      return (
+        <GluestackBox
+          {...props}
+          ref={
+            puck.dragRef as unknown as React.Ref<
+              React.ComponentRef<typeof GluestackBox>
+            >
+          }
+          className={mergedClassName}
+        />
+      );
+    });
 
     return <Content as={BoxDropZone} minEmptyHeight={300} />;
   },

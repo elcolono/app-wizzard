@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { VStack as GluestackVStack } from "../../components/ui/vstack";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type VStackProps = {
   className: string;
@@ -38,15 +38,16 @@ const spaceOptions = [
 const VStack: ComponentConfig<VStackProps> = {
   inline: false,
   fields: {
-    content: { type: "slot" },
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
     space: {
       type: "select",
       options: spaceOptions,
+      ai: { instructions: aiInstructions.spacing },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   defaultProps: {
@@ -60,29 +61,30 @@ const VStack: ComponentConfig<VStackProps> = {
     content: Content,
     puck,
   }: WithPuckProps<VStackProps>) => {
-    const VStackDropZone = React.forwardRef<any, any>(
-      function VStackDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
+    const VStackDropZone = React.forwardRef<any, any>(function VStackDropZone(
+      props,
+      ref
+    ) {
+      const mergedClassName = [className, props?.className]
+        .filter(Boolean)
+        .join(" ");
 
-        const mergedRef = setRefs<React.ComponentRef<typeof GluestackVStack>>(
-          ref,
-          puck.dragRef as unknown as React.Ref<
-            React.ComponentRef<typeof GluestackVStack>
-          >,
-        );
+      const mergedRef = setRefs<React.ComponentRef<typeof GluestackVStack>>(
+        ref,
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackVStack>
+        >
+      );
 
-        return (
-          <GluestackVStack
-            {...props}
-            ref={mergedRef}
-            className={mergedClassName}
-            space={space}
-          />
-        );
-      },
-    );
+      return (
+        <GluestackVStack
+          {...props}
+          ref={mergedRef}
+          className={mergedClassName}
+          space={space}
+        />
+      );
+    });
 
     return <Content as={VStackDropZone} minEmptyHeight={200} />;
   },

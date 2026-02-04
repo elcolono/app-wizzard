@@ -1,8 +1,8 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { HStack as GluestackHStack } from "../../components/ui/hstack";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import { Box as GluestackBox } from "../../components/ui/box";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type HStackProps = {
   className: string;
@@ -39,15 +39,16 @@ const spaceOptions = [
 const HStack: ComponentConfig<HStackProps> = {
   inline: false,
   fields: {
-    content: { type: "slot" },
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
     space: {
       type: "select",
       options: spaceOptions,
+      ai: { instructions: aiInstructions.spacing },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   defaultProps: {
@@ -61,31 +62,32 @@ const HStack: ComponentConfig<HStackProps> = {
     content: Content,
     puck,
   }: WithPuckProps<HStackProps>) => {
-    const HStackDropZone = React.forwardRef<any, any>(
-      function HStackDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
+    const HStackDropZone = React.forwardRef<any, any>(function HStackDropZone(
+      props,
+      ref
+    ) {
+      const mergedClassName = [className, props?.className]
+        .filter(Boolean)
+        .join(" ");
 
-        const mergedRef = setRefs<React.ComponentRef<typeof GluestackHStack>>(
-          ref,
-          puck.dragRef as unknown as React.Ref<
-            React.ComponentRef<typeof GluestackHStack>
-          >,
-        );
+      const mergedRef = setRefs<React.ComponentRef<typeof GluestackHStack>>(
+        ref,
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackHStack>
+        >
+      );
 
-        return (
-          <GluestackBox>
-            <GluestackHStack
-              {...props}
-              ref={mergedRef}
-              className={mergedClassName}
-              space={space}
-            />
-          </GluestackBox>
-        );
-      },
-    );
+      return (
+        <GluestackBox>
+          <GluestackHStack
+            {...props}
+            ref={mergedRef}
+            className={mergedClassName}
+            space={space}
+          />
+        </GluestackBox>
+      );
+    });
 
     return <Content as={HStackDropZone} minEmptyHeight={200} />;
   },

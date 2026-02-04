@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Button as GluestackButton } from "../../components/ui/button";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 import { Box as GluestackBox } from "../../components/ui/box";
 
 export type ButtonProps = {
@@ -14,7 +14,11 @@ export type ButtonProps = {
 
 const Button: ComponentConfig<ButtonProps> = {
   fields: {
-    content: { type: "slot", allow: ["ButtonText"] },
+    content: {
+      type: "slot",
+      allow: ["ButtonText"],
+      ai: { instructions: aiInstructions.slotContent },
+    },
     variant: {
       type: "select",
       options: [
@@ -22,6 +26,7 @@ const Button: ComponentConfig<ButtonProps> = {
         { label: "Outline", value: "outline" },
         { label: "Link", value: "link" },
       ],
+      ai: { instructions: aiInstructions.buttonVariant },
     },
     action: {
       type: "select",
@@ -31,6 +36,7 @@ const Button: ComponentConfig<ButtonProps> = {
         { label: "Positive", value: "positive" },
         { label: "Negative", value: "negative" },
       ],
+      ai: { instructions: aiInstructions.buttonAction },
     },
     size: {
       type: "select",
@@ -40,13 +46,13 @@ const Button: ComponentConfig<ButtonProps> = {
         { label: "MD", value: "md" },
         { label: "LG", value: "lg" },
       ],
+      ai: { instructions: aiInstructions.buttonSize },
     },
-    className: ClassNameGeneratorField("Classes", {
-      text: false,
-      padding: true,
-      margin: true,
-      alignment: true,
-    }),
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   inline: false,
   defaultProps: {
@@ -64,26 +70,27 @@ const Button: ComponentConfig<ButtonProps> = {
     className,
     puck,
   }: WithPuckProps<ButtonProps>) => {
-    const ButtonDropZone = React.forwardRef<any, any>(
-      function ButtonDropZone(props, ref) {
-        return (
-          <GluestackBox>
-            <GluestackButton
-              {...props}
-              ref={
-                puck.dragRef as unknown as React.Ref<
-                  React.ComponentRef<typeof GluestackButton>
-                >
-              }
-              variant={variant}
-              action={action}
-              size={size}
-              className={className}
-            />
-          </GluestackBox>
-        );
-      },
-    );
+    const ButtonDropZone = React.forwardRef<any, any>(function ButtonDropZone(
+      props,
+      ref
+    ) {
+      return (
+        <GluestackBox>
+          <GluestackButton
+            {...props}
+            ref={
+              puck.dragRef as unknown as React.Ref<
+                React.ComponentRef<typeof GluestackButton>
+              >
+            }
+            variant={variant}
+            action={action}
+            size={size}
+            className={className}
+          />
+        </GluestackBox>
+      );
+    });
 
     return <Content as={ButtonDropZone} />;
   },

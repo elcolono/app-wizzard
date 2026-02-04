@@ -2,7 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Alert as GluestackAlert, AlertText } from "../../components/ui/alert";
 import CheckboxField from "../fields/Checkbox";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type AlertProps = {
   className: string;
@@ -47,18 +47,18 @@ const sizeOptions = [
 const Alert: ComponentConfig<AlertProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
-    text: { type: "text" },
+    text: {
+      type: "text",
+      contentEditable: true,
+      ai: { instructions: aiInstructions.textContent },
+    },
     variant: {
       type: "select",
       options: [
         { label: "Solid", value: "solid" },
         { label: "Outline", value: "outline" },
       ],
+      ai: { instructions: aiInstructions.variant },
     },
     action: {
       type: "select",
@@ -69,10 +69,12 @@ const Alert: ComponentConfig<AlertProps> = {
         { label: "Info", value: "info" },
         { label: "Muted", value: "muted" },
       ],
+      ai: { instructions: aiInstructions.action },
     },
     size: {
       type: "select",
       options: sizeOptions,
+      ai: { instructions: aiInstructions.sizeToken },
     },
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
@@ -81,6 +83,11 @@ const Alert: ComponentConfig<AlertProps> = {
     sub: CheckboxField("Sub"),
     italic: CheckboxField("Italic"),
     highlight: CheckboxField("Highlight"),
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "",

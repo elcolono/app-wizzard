@@ -1,8 +1,8 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Heading as GluestackHeading } from "../../components/ui/heading";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type HeadingProps = {
   title: string;
@@ -44,26 +44,24 @@ const alignmentOptions = [
 const Heading: ComponentConfig<HeadingProps> = {
   inline: false,
   fields: {
-    title: { type: "text", contentEditable: true },
+    title: {
+      type: "text",
+      contentEditable: true,
+      ai: { instructions: aiInstructions.textContent },
+    },
     size: {
       type: "select",
       options: sizeOptions,
       ai: {
-        instructions:
-          "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
+        instructions: aiInstructions.headingSize,
       },
     },
     textAlignment: {
       type: "radio",
       label: "Text alignment",
       options: alignmentOptions,
+      ai: { instructions: aiInstructions.alignment },
     },
-    className: ClassNameGeneratorField("Classes", {
-      text: false,
-      padding: true,
-      margin: true,
-      alignment: true,
-    }),
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
     underline: CheckboxField("Underline"),
@@ -71,6 +69,13 @@ const Heading: ComponentConfig<HeadingProps> = {
     sub: CheckboxField("Sub"),
     italic: CheckboxField("Italic"),
     highlight: CheckboxField("Highlight"),
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: {
+        instructions: aiInstructions.className,
+      },
+    },
   },
   defaultProps: {
     title: "Heading",

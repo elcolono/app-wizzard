@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Divider as GluestackDivider } from "../../components/ui/divider";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type DividerProps = {
   className: string;
@@ -11,16 +11,18 @@ export type DividerProps = {
 const Divider: ComponentConfig<DividerProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
     orientation: {
       type: "select",
       options: [
         { label: "Horizontal", value: "horizontal" },
         { label: "Vertical", value: "vertical" },
       ],
+      ai: { instructions: aiInstructions.orientation },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   render: ({ className, orientation, puck }: WithPuckProps<DividerProps>) => (

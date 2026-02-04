@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Card as GluestackCard } from "../../components/ui/card";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type CardProps = {
   className: string;
@@ -26,21 +26,22 @@ const variantOptions = [
 const Card: ComponentConfig<CardProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      text: false,
-      padding: true,
-      margin: true,
-      alignment: true,
-    }),
     size: {
       type: "select",
       options: sizeOptions,
+      ai: { instructions: aiInstructions.sizeToken },
     },
     variant: {
       type: "select",
       options: variantOptions,
+      ai: { instructions: aiInstructions.variant },
     },
-    content: { type: "slot" },
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "",
@@ -55,27 +56,28 @@ const Card: ComponentConfig<CardProps> = {
     variant,
     puck,
   }: WithPuckProps<CardProps>) => {
-    const CardDropZone = React.forwardRef<any, any>(
-      function CardDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
+    const CardDropZone = React.forwardRef<any, any>(function CardDropZone(
+      props,
+      ref
+    ) {
+      const mergedClassName = [className, props?.className]
+        .filter(Boolean)
+        .join(" ");
 
-        return (
-          <GluestackCard
-            {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackCard>
-              >
-            }
-            className={mergedClassName}
-            size={size}
-            variant={variant}
-          />
-        );
-      },
-    );
+      return (
+        <GluestackCard
+          {...props}
+          ref={
+            puck.dragRef as unknown as React.Ref<
+              React.ComponentRef<typeof GluestackCard>
+            >
+          }
+          className={mergedClassName}
+          size={size}
+          variant={variant}
+        />
+      );
+    });
 
     return <Content as={CardDropZone} minEmptyHeight={300} />;
   },

@@ -1,8 +1,10 @@
 import { CustomField } from "@puckeditor/core";
+import { checkboxInstruction } from "./aiInstructions";
 
 const CheckboxField = (label: string): CustomField<boolean> => ({
   type: "custom",
   ai: {
+    instructions: checkboxInstruction(label),
     schema: {
       type: "boolean",
     },

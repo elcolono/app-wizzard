@@ -2,7 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Spinner as GluestackSpinner } from "../../components/ui/spinner";
 import CheckboxField from "../fields/Checkbox";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type SpinnerProps = {
   className: string;
@@ -14,19 +14,21 @@ export type SpinnerProps = {
 const Spinner: ComponentConfig<SpinnerProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
     size: {
       type: "select",
       options: [
         { label: "Small", value: "small" },
         { label: "Large", value: "large" },
       ],
+      ai: { instructions: aiInstructions.sizeToken },
     },
-    color: { type: "text" },
+    color: { type: "text", ai: { instructions: aiInstructions.spinnerColor } },
     animating: CheckboxField("Animating"),
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "",

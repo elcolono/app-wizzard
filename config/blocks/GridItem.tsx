@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { GridItem as GluestackGridItem } from "../../components/ui/grid";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type GridItemProps = {
   className: string;
@@ -112,36 +112,41 @@ const columnsResponsiveOptions = [
 const GridItem: ComponentConfig<GridItemProps> = {
   inline: true,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
     columnsBase: {
       type: "select",
       label: "Column span",
       options: columnsBaseOptions,
+      ai: { instructions: aiInstructions.gridColumnSpan },
     },
     columnsSm: {
       type: "select",
       label: "Column span (sm)",
       options: columnsResponsiveOptions,
+      ai: { instructions: aiInstructions.gridColumnSpan },
     },
     columnsMd: {
       type: "select",
       label: "Column span (md)",
       options: columnsResponsiveOptions,
+      ai: { instructions: aiInstructions.gridColumnSpan },
     },
     columnsLg: {
       type: "select",
       label: "Column span (lg)",
       options: columnsResponsiveOptions,
+      ai: { instructions: aiInstructions.gridColumnSpan },
     },
     columnsClassName: {
       type: "text",
       label: "Column span (advanced classes)",
+      ai: { instructions: aiInstructions.gridColumnSpanAdvanced },
     },
-    content: { type: "slot" },
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "bg-background-50 p-6 rounded-md",
@@ -187,7 +192,7 @@ const GridItem: ComponentConfig<GridItemProps> = {
           ref,
           puck.dragRef as unknown as React.Ref<
             React.ComponentRef<typeof GluestackGridItem>
-          >,
+          >
         );
 
         return (
@@ -198,7 +203,7 @@ const GridItem: ComponentConfig<GridItemProps> = {
             _extra={{ className: mergedColumnsClassName }}
           />
         );
-      },
+      }
     );
 
     return <Content as={GridItemDropZone} minEmptyHeight={200} />;

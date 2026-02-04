@@ -1,6 +1,6 @@
 import React, { type ComponentType } from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 import {
   Icon as GluestackIcon,
   AddIcon,
@@ -204,17 +204,20 @@ const iconOptions = iconNames.map((name) => ({
 const IconBlock: ComponentConfig<IconProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
     icon: {
       type: "select",
       options: iconOptions,
+      ai: { instructions: aiInstructions.iconName },
     },
     size: {
       type: "select",
       options: sizeOptions,
+      ai: { instructions: aiInstructions.sizeToken },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   defaultProps: {

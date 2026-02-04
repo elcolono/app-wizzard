@@ -1,7 +1,7 @@
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import React from "react";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type GridProps = {
   className: string;
@@ -79,11 +79,6 @@ export type GridProps = {
 const Grid: ComponentConfig<GridProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      alignment: false,
-      padding: false,
-      margin: false,
-    }),
     columnsBase: {
       type: "select",
       label: "Columns",
@@ -104,6 +99,7 @@ const Grid: ComponentConfig<GridProps> = {
         { label: "Auto", value: "auto" },
         { label: "Subgrid", value: "subgrid" },
       ],
+      ai: { instructions: aiInstructions.gridColumns },
     },
     columnsSm: {
       type: "select",
@@ -126,6 +122,7 @@ const Grid: ComponentConfig<GridProps> = {
         { label: "Auto", value: "auto" },
         { label: "Subgrid", value: "subgrid" },
       ],
+      ai: { instructions: aiInstructions.gridColumns },
     },
     columnsMd: {
       type: "select",
@@ -148,6 +145,7 @@ const Grid: ComponentConfig<GridProps> = {
         { label: "Auto", value: "auto" },
         { label: "Subgrid", value: "subgrid" },
       ],
+      ai: { instructions: aiInstructions.gridColumns },
     },
     columnsLg: {
       type: "select",
@@ -170,12 +168,23 @@ const Grid: ComponentConfig<GridProps> = {
         { label: "Auto", value: "auto" },
         { label: "Subgrid", value: "subgrid" },
       ],
+      ai: { instructions: aiInstructions.gridColumns },
     },
     columnsClassName: {
       type: "text",
       label: "Columns (advanced classes)",
+      ai: { instructions: aiInstructions.gridColumnsAdvanced },
     },
-    content: { type: "slot", allow: ["GridItem"] },
+    content: {
+      type: "slot",
+      allow: ["GridItem"],
+      ai: { instructions: aiInstructions.slotContent },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "gap-4",
@@ -218,75 +227,76 @@ const Grid: ComponentConfig<GridProps> = {
     content: Content,
     puck,
   }: WithPuckProps<GridProps>) => {
-    const GridDropZone = React.forwardRef<any, any>(
-      function GridDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
-        const responsiveColumnsClassName = [
-          `grid-cols-${columnsBase}`,
-          columnsSm ? `sm:grid-cols-${columnsSm}` : "",
-          columnsMd ? `md:grid-cols-${columnsMd}` : "",
-          columnsLg ? `lg:grid-cols-${columnsLg}` : "",
-        ]
-          .filter(Boolean)
-          .join(" ");
-        const mergedColumnsClassName = [
-          responsiveColumnsClassName,
-          columnsClassName,
-          props?._extra?.className,
-        ]
-          .filter(Boolean)
-          .join(" ");
+    const GridDropZone = React.forwardRef<any, any>(function GridDropZone(
+      props,
+      ref
+    ) {
+      const mergedClassName = [className, props?.className]
+        .filter(Boolean)
+        .join(" ");
+      const responsiveColumnsClassName = [
+        `grid-cols-${columnsBase}`,
+        columnsSm ? `sm:grid-cols-${columnsSm}` : "",
+        columnsMd ? `md:grid-cols-${columnsMd}` : "",
+        columnsLg ? `lg:grid-cols-${columnsLg}` : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+      const mergedColumnsClassName = [
+        responsiveColumnsClassName,
+        columnsClassName,
+        props?._extra?.className,
+      ]
+        .filter(Boolean)
+        .join(" ");
 
-        // return (
-        //   <GluestackGrid
-        //     className="gap-4"
-        //     _extra={{
-        //       className: "grid-cols-9",
-        //     }}
-        //   >
-        //     <GluestackGridItem
-        //       className="bg-background-50 p-3 rounded-md text-center"
-        //       _extra={{
-        //         className: "col-span-3",
-        //       }}
-        //     >
-        //       <GluestackText>A</GluestackText>
-        //     </GluestackGridItem>
-        //     <GluestackGridItem
-        //       className="bg-background-50 p-3 rounded-md text-center"
-        //       _extra={{
-        //         className: "col-span-3",
-        //       }}
-        //     >
-        //       <GluestackText>B</GluestackText>
-        //     </GluestackGridItem>
-        //     <GluestackGridItem
-        //       className="bg-background-50 p-3 rounded-md text-center"
-        //       _extra={{
-        //         className: "col-span-3",
-        //       }}
-        //     >
-        //       <GluestackText>C</GluestackText>
-        //     </GluestackGridItem>
-        //   </GluestackGrid>
-        // );
+      // return (
+      //   <GluestackGrid
+      //     className="gap-4"
+      //     _extra={{
+      //       className: "grid-cols-9",
+      //     }}
+      //   >
+      //     <GluestackGridItem
+      //       className="bg-background-50 p-3 rounded-md text-center"
+      //       _extra={{
+      //         className: "col-span-3",
+      //       }}
+      //     >
+      //       <GluestackText>A</GluestackText>
+      //     </GluestackGridItem>
+      //     <GluestackGridItem
+      //       className="bg-background-50 p-3 rounded-md text-center"
+      //       _extra={{
+      //         className: "col-span-3",
+      //       }}
+      //     >
+      //       <GluestackText>B</GluestackText>
+      //     </GluestackGridItem>
+      //     <GluestackGridItem
+      //       className="bg-background-50 p-3 rounded-md text-center"
+      //       _extra={{
+      //         className: "col-span-3",
+      //       }}
+      //     >
+      //       <GluestackText>C</GluestackText>
+      //     </GluestackGridItem>
+      //   </GluestackGrid>
+      // );
 
-        return (
-          <GluestackGrid
-            {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackGrid>
-              >
-            }
-            className={mergedClassName}
-            _extra={{ className: mergedColumnsClassName }}
-          />
-        );
-      },
-    );
+      return (
+        <GluestackGrid
+          {...props}
+          ref={
+            puck.dragRef as unknown as React.Ref<
+              React.ComponentRef<typeof GluestackGrid>
+            >
+          }
+          className={mergedClassName}
+          _extra={{ className: mergedColumnsClassName }}
+        />
+      );
+    });
 
     return <Content as={GridDropZone} />;
   },

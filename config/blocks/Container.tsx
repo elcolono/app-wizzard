@@ -5,7 +5,7 @@ import type {
   WithPuckProps,
 } from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type ContainerProps = {
   backgroundClassName: string;
@@ -44,14 +44,23 @@ const maxWidthOptions = [
 const Container: ComponentConfig<ContainerProps> = {
   inline: false,
   fields: {
-    backgroundClassName: { type: "text", label: "Background classes" },
-    className: ClassNameGeneratorField("Classes", {
-      alignment: true,
-      padding: true,
-      margin: true,
-    }),
-    maxWidth: { type: "select", options: maxWidthOptions, label: "Max width" },
-    content: { type: "slot" },
+    backgroundClassName: {
+      type: "text",
+      label: "Background classes",
+      ai: { instructions: aiInstructions.backgroundClassName },
+    },
+    maxWidth: {
+      type: "select",
+      options: maxWidthOptions,
+      label: "Max width",
+      ai: { instructions: aiInstructions.maxWidth },
+    },
+    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     backgroundClassName: "bg-background-50 py-8",
@@ -75,7 +84,7 @@ const Container: ComponentConfig<ContainerProps> = {
         return (
           <GluestackBox {...props} ref={ref} className={mergedClassName} />
         );
-      },
+      }
     );
 
     return (

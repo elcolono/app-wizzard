@@ -1,9 +1,9 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Text as GluestackText } from "../../components/ui/text";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
 import CheckboxField from "../fields/Checkbox";
 import { Box as GluestackBox } from "../../components/ui/box";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type TextProps = {
   className?: string;
@@ -33,15 +33,15 @@ const sizeOptions = [
 const Text: ComponentConfig<TextProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      text: false,
-      padding: true,
-      margin: true,
-    }),
-    text: { type: "text", contentEditable: true },
+    text: {
+      type: "text",
+      contentEditable: true,
+      ai: { instructions: aiInstructions.textContent },
+    },
     size: {
       type: "select",
       options: sizeOptions,
+      ai: { instructions: aiInstructions.textSize },
     },
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
@@ -50,6 +50,11 @@ const Text: ComponentConfig<TextProps> = {
     sub: CheckboxField("Sub"),
     italic: CheckboxField("Italic"),
     highlight: CheckboxField("Highlight"),
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     text: "Text",

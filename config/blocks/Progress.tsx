@@ -4,7 +4,7 @@ import {
   Progress as GluestackProgress,
   ProgressFilledTrack,
 } from "../../components/ui/progress";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type ProgressProps = {
   className: string;
@@ -16,11 +16,10 @@ export type ProgressProps = {
 const Progress: ComponentConfig<ProgressProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
-    value: { type: "number" },
+    value: {
+      type: "number",
+      ai: { instructions: aiInstructions.progressValue },
+    },
     size: {
       type: "select",
       options: [
@@ -31,6 +30,7 @@ const Progress: ComponentConfig<ProgressProps> = {
         { label: "XL", value: "xl" },
         { label: "2XL", value: "2xl" },
       ],
+      ai: { instructions: aiInstructions.sizeToken },
     },
     orientation: {
       type: "select",
@@ -38,6 +38,12 @@ const Progress: ComponentConfig<ProgressProps> = {
         { label: "Horizontal", value: "horizontal" },
         { label: "Vertical", value: "vertical" },
       ],
+      ai: { instructions: aiInstructions.orientation },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   defaultProps: {

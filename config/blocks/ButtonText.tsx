@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { ButtonText as GluestackButtonText } from "../../components/ui/button";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type ButtonTextProps = {
   className: string;
@@ -11,11 +11,12 @@ export type ButtonTextProps = {
 const ButtonText: ComponentConfig<ButtonTextProps> = {
   inline: false,
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
-    text: { type: "text" },
+    text: { type: "text", ai: { instructions: aiInstructions.textContent } },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
+    },
   },
   defaultProps: {
     className: "",

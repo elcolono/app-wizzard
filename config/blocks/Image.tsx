@@ -1,7 +1,7 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Image as GluestackImage } from "../../components/ui/image";
-import ClassNameGeneratorField from "../fields/ClassNameGenerator";
+import { aiInstructions } from "../fields/aiInstructions";
 
 export type ImageProps = {
   className: string;
@@ -23,15 +23,17 @@ const sizeOptions = [
 
 const Image: ComponentConfig<ImageProps> = {
   fields: {
-    className: ClassNameGeneratorField("Classes", {
-      padding: true,
-      margin: true,
-    }),
-    source: { type: "text" },
-    alt: { type: "text" },
+    source: { type: "text", ai: { instructions: aiInstructions.imageSource } },
+    alt: { type: "text", ai: { instructions: aiInstructions.imageAlt } },
     size: {
       type: "select",
       options: sizeOptions,
+      ai: { instructions: aiInstructions.imageSize },
+    },
+    className: {
+      type: "textarea",
+      label: "Classes",
+      ai: { instructions: aiInstructions.className },
     },
   },
   defaultProps: {
