@@ -19,6 +19,7 @@ import Spinner from "./blocks/Spinner";
 import Alert from "./blocks/Alert";
 import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
+import AvatarGroup from "./blocks/AvatarGroup";
 
 export const config: Config = {
   root: {
@@ -46,7 +47,7 @@ export const config: Config = {
       components: ["Progress", "Spinner", "Alert"],
     },
     media: {
-      components: ["Image", "Icon", "Avatar"],
+      components: ["Image", "Icon", "Avatar", "AvatarGroup"],
     },
     forms: {
       components: ["Button", "ButtonText"],
@@ -72,6 +73,7 @@ export const config: Config = {
     Alert,
     Icon,
     Avatar,
+    AvatarGroup,
   },
 };
 
