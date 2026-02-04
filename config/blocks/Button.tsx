@@ -5,6 +5,8 @@ import { aiInstructions } from "../fields/aiInstructions";
 import { Box as GluestackBox } from "../../components/ui/box";
 
 export type ButtonProps = {
+  // showSpinner?: boolean;
+  // showText?: boolean;
   content: any;
   variant: "solid" | "outline" | "link";
   action: "primary" | "secondary" | "positive" | "negative";
@@ -13,10 +15,53 @@ export type ButtonProps = {
 };
 
 const Button: ComponentConfig<ButtonProps> = {
+  // resolveData(data) {
+  //   const content = Array.isArray(data.props.content) ? data.props.content : [];
+  //   const hasSpinner = content.some((item) => item?.type === "ButtonSpinner");
+  //   const hasText = content.some((item) => item?.type === "ButtonText");
+
+  //   if (data.props.showSpinner && !hasSpinner) {
+  //     data.props.content = [
+  //       {
+  //         type: "ButtonSpinner",
+  //         props: {
+  //           size: "small",
+  //           color: "",
+  //           className: "",
+  //         },
+  //       },
+  //       ...(Array.isArray(data.props.content) ? data.props.content : content),
+  //     ];
+  //   }
+
+  //   if (!data.props.showSpinner && hasSpinner) {
+  //     data.props.content = content.filter(
+  //       (item) => item?.type !== "ButtonSpinner"
+  //     );
+  //   }
+
+  //   if (data.props.showText && !hasText) {
+  //     data.props.content = [
+  //       ...(Array.isArray(data.props.content) ? data.props.content : content),
+  //       { type: "ButtonText", props: { text: "Button" } },
+  //     ];
+  //   }
+
+  //   if (!data.props.showText && hasText) {
+  //     const next = (
+  //       Array.isArray(data.props.content) ? data.props.content : content
+  //     ).filter((item) => item?.type !== "ButtonText");
+  //     data.props.content = next;
+  //   }
+
+  //   return data;
+  // },
   fields: {
+    // showSpinner: CheckboxField("Show spinner"),
+    // showText: CheckboxField("Show text"),
     content: {
       type: "slot",
-      allow: ["ButtonText"],
+      allow: ["ButtonText", "ButtonSpinner", "ButtonIcon"],
       ai: { instructions: aiInstructions.slotContent },
     },
     variant: {
@@ -56,7 +101,11 @@ const Button: ComponentConfig<ButtonProps> = {
   },
   inline: false,
   defaultProps: {
-    content: [{ type: "ButtonText", props: { text: "Button" } }],
+    content: [
+      { type: "ButtonIcon", props: { icon: "ArrowRightIcon" } },
+      { type: "ButtonText", props: { text: "Button" } },
+    ],
+    // showText: true,
     variant: "solid",
     action: "primary",
     size: "md",

@@ -40,6 +40,12 @@ export const aiInstructions = {
   buttonVariant: "Button variant (solid/outline/link).",
   buttonAction: "Button action style (primary/secondary/positive/negative).",
   buttonSize: "Button size token (xs/sm/md/lg).",
+  buttonSpinnerSize: "Spinner size (small or large).",
+  buttonSpinnerColor: "Spinner color token or CSS color string.",
+  buttonIconSize: "Button icon size token (xs/sm/md/lg/xl) or custom size.",
+  buttonGroupSpace: "Spacing between buttons (gap-*).",
+  buttonGroupDirection:
+    "Direction of the button group (row, column, row-reverse, column-reverse).",
   headingSize:
     "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
   textSize:

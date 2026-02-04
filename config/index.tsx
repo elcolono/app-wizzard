@@ -12,6 +12,9 @@ import Container from "./blocks/Container";
 import Card from "./blocks/Card";
 import Button from "./blocks/Button";
 import ButtonText from "./blocks/ButtonText";
+import ButtonSpinner from "./blocks/ButtonSpinner";
+import ButtonIcon from "./blocks/ButtonIcon";
+import ButtonGroup from "./blocks/ButtonGroup";
 import Center from "./blocks/Center";
 import Image from "./blocks/Image";
 import Progress from "./blocks/Progress";
@@ -50,7 +53,13 @@ export const config: Config = {
       components: ["Image", "Icon", "Avatar", "AvatarGroup"],
     },
     forms: {
-      components: ["Button", "ButtonText"],
+      components: [
+        "Button",
+        "ButtonText",
+        "ButtonSpinner",
+        "ButtonIcon",
+        "ButtonGroup",
+      ],
     },
   },
   components: {
@@ -66,6 +75,9 @@ export const config: Config = {
     Card,
     Button,
     ButtonText,
+    ButtonSpinner,
+    ButtonIcon,
+    ButtonGroup,
     Center,
     Image,
     Progress,
