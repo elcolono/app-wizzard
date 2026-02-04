@@ -2,6 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { GridItem as GluestackGridItem } from "../../components/ui/grid";
 import { aiInstructions } from "../fields/aiInstructions";
+import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type GridItemProps = {
   className: string;
@@ -141,7 +142,11 @@ const GridItem: ComponentConfig<GridItemProps> = {
       label: "Column span (advanced classes)",
       ai: { instructions: aiInstructions.gridColumnSpanAdvanced },
     },
-    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    content: {
+      type: "slot",
+      disallow: CHILD_ONLY_COMPONENTS,
+      ai: { instructions: aiInstructions.slotContent },
+    },
     className: {
       type: "textarea",
       label: "Classes",

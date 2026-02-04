@@ -2,6 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Button as GluestackButton } from "../../components/ui/button";
 import { aiInstructions } from "../fields/aiInstructions";
+import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
 import { Box as GluestackBox } from "../../components/ui/box";
 
 export type ButtonProps = {
@@ -61,7 +62,7 @@ const Button: ComponentConfig<ButtonProps> = {
     // showText: CheckboxField("Show text"),
     content: {
       type: "slot",
-      allow: ["ButtonText", "ButtonSpinner", "ButtonIcon"],
+      allow: SLOT_ONLY_CHILDREN.Button,
       ai: { instructions: aiInstructions.slotContent },
     },
     variant: {

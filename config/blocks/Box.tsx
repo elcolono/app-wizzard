@@ -6,6 +6,7 @@ import type {
 } from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
+import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type BoxProps = {
   className: string;
@@ -15,7 +16,11 @@ export type BoxProps = {
 const Box: ComponentConfig<BoxProps> = {
   inline: false,
   fields: {
-    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    content: {
+      type: "slot",
+      disallow: CHILD_ONLY_COMPONENTS,
+      ai: { instructions: aiInstructions.slotContent },
+    },
     className: {
       type: "textarea",
       label: "Classes",

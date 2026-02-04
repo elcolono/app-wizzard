@@ -2,6 +2,7 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import React from "react";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
 import { aiInstructions } from "../fields/aiInstructions";
+import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
 
 export type GridProps = {
   className: string;
@@ -177,7 +178,7 @@ const Grid: ComponentConfig<GridProps> = {
     },
     content: {
       type: "slot",
-      allow: ["GridItem"],
+      allow: SLOT_ONLY_CHILDREN.Grid,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {

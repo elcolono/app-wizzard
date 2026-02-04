@@ -2,6 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Card as GluestackCard } from "../../components/ui/card";
 import { aiInstructions } from "../fields/aiInstructions";
+import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type CardProps = {
   className: string;
@@ -36,7 +37,11 @@ const Card: ComponentConfig<CardProps> = {
       options: variantOptions,
       ai: { instructions: aiInstructions.variant },
     },
-    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    content: {
+      type: "slot",
+      disallow: CHILD_ONLY_COMPONENTS,
+      ai: { instructions: aiInstructions.slotContent },
+    },
     className: {
       type: "textarea",
       label: "Classes",

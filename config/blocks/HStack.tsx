@@ -3,6 +3,7 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { HStack as GluestackHStack } from "../../components/ui/hstack";
 import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
+import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type HStackProps = {
   className: string;
@@ -39,7 +40,11 @@ const spaceOptions = [
 const HStack: ComponentConfig<HStackProps> = {
   inline: false,
   fields: {
-    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    content: {
+      type: "slot",
+      disallow: CHILD_ONLY_COMPONENTS,
+      ai: { instructions: aiInstructions.slotContent },
+    },
     space: {
       type: "select",
       options: spaceOptions,

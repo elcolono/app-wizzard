@@ -2,6 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Center as GluestackCenter } from "../../components/ui/center";
 import { aiInstructions } from "../fields/aiInstructions";
+import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type CenterProps = {
   className: string;
@@ -11,7 +12,11 @@ export type CenterProps = {
 const Center: ComponentConfig<CenterProps> = {
   inline: false,
   fields: {
-    content: { type: "slot", ai: { instructions: aiInstructions.slotContent } },
+    content: {
+      type: "slot",
+      disallow: CHILD_ONLY_COMPONENTS,
+      ai: { instructions: aiInstructions.slotContent },
+    },
     className: {
       type: "textarea",
       label: "Classes",
