@@ -25,6 +25,8 @@ import Spinner from "./blocks/Spinner";
 import Alert from "./blocks/Alert";
 import AlertText from "./blocks/AlertText";
 import AlertIcon from "./blocks/AlertIcon";
+import Accordion from "./blocks/Accordion";
+import AccordionItem from "./blocks/AccordionItem";
 import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
@@ -51,7 +53,14 @@ export const config: Config = {
       ],
     },
     dataDisplay: {
-      components: ["Card", "Badge", "BadgeText", "BadgeIcon"],
+      components: [
+        "Card",
+        "Badge",
+        "BadgeText",
+        "BadgeIcon",
+        "Accordion",
+        "AccordionItem",
+      ],
     },
     feedback: {
       components: ["Progress", "Spinner", "Alert", "AlertText", "AlertIcon"],
@@ -95,6 +104,8 @@ export const config: Config = {
     Alert,
     AlertText,
     AlertIcon,
+    Accordion,
+    AccordionItem,
     Icon,
     Avatar,
     AvatarGroup,

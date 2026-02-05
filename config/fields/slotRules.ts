@@ -2,6 +2,7 @@ export const SLOT_ONLY_CHILDREN: Record<string, string[]> = {
   Button: ["ButtonText", "ButtonSpinner", "ButtonIcon"],
   Badge: ["BadgeText", "BadgeIcon"],
   Alert: ["AlertText", "AlertIcon"],
+  Accordion: ["AccordionItem"],
   Grid: ["GridItem"],
 };
 
