@@ -5,6 +5,8 @@
 .puck-root {
   --background: #ffffff;
   --foreground: #171717;
+  --theme-primary: #0ea5e9;
+  --theme-secondary: #64748b;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,5 +1,6 @@
 import type { Config } from "@puckeditor/core";
 import RootWrapper from "../components/RootWrapper";
+import { THEME_DEFAULTS } from "./theme";
 import Heading from "./blocks/Heading";
 import Text from "./blocks/Text";
 import Box from "./blocks/Box";
@@ -35,8 +36,31 @@ import AvatarGroup from "./blocks/AvatarGroup";
 
 export const config: Config = {
   root: {
-    render: ({ children }) => {
-      return <RootWrapper>{children}</RootWrapper>;
+    defaultProps: {
+      primary: THEME_DEFAULTS.primary,
+      secondary: THEME_DEFAULTS.secondary,
+    },
+    fields: {
+      primary: {
+        label: "Primary color (hex)",
+        type: "text",
+      },
+      secondary: {
+        label: "Secondary color (hex)",
+        type: "text",
+      },
+    },
+    render: (props) => {
+      const { children, primary, secondary } = props as {
+        children: React.ReactNode;
+        primary?: string;
+        secondary?: string;
+      };
+      return (
+        <RootWrapper primary={primary} secondary={secondary}>
+          {children}
+        </RootWrapper>
+      );
     },
   },
   categories: {

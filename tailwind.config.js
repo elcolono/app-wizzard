@@ -4,6 +4,7 @@ module.exports = {
   content: [
     './app/**/*.{html,js,jsx,ts,tsx,mdx}',
     './components/**/*.{html,js,jsx,ts,tsx,mdx}',
+    './config/**/*.{html,js,jsx,ts,tsx,mdx}',
     './*.{html,js,jsx,ts,tsx,mdx}',
     './src/**/*.{html,js,jsx,ts,tsx,mdx}',
   ],
@@ -93,6 +94,9 @@ module.exports = {
     },
     {
       pattern: /(bg|text|border|ring|outline)-(white|black|transparent|current)/,
+    },
+    {
+      pattern: /(bg|text|border|ring|outline|fill|stroke)-(themePrimary|themeSecondary)/,
     },
   ],
   theme: {
@@ -252,6 +256,9 @@ module.exports = {
           info: 'rgb(var(--color-indicator-info)/<alpha-value>)',
           error: 'rgb(var(--color-indicator-error)/<alpha-value>)',
         },
+        // Puck theme (set via root fields; use in classNames e.g. bg-themePrimary, text-themeSecondary)
+        themePrimary: 'var(--theme-primary)',
+        themeSecondary: 'var(--theme-secondary)',
       },
       fontFamily: {
         heading: undefined,
