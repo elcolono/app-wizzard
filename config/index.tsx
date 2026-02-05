@@ -23,6 +23,8 @@ import Image from "./blocks/Image";
 import Progress from "./blocks/Progress";
 import Spinner from "./blocks/Spinner";
 import Alert from "./blocks/Alert";
+import AlertText from "./blocks/AlertText";
+import AlertIcon from "./blocks/AlertIcon";
 import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
@@ -52,7 +54,7 @@ export const config: Config = {
       components: ["Card", "Badge", "BadgeText", "BadgeIcon"],
     },
     feedback: {
-      components: ["Progress", "Spinner", "Alert"],
+      components: ["Progress", "Spinner", "Alert", "AlertText", "AlertIcon"],
     },
     media: {
       components: ["Image", "Icon", "Avatar", "AvatarGroup"],
@@ -91,6 +93,8 @@ export const config: Config = {
     Progress,
     Spinner,
     Alert,
+    AlertText,
+    AlertIcon,
     Icon,
     Avatar,
     AvatarGroup,

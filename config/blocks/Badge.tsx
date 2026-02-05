@@ -3,7 +3,6 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Badge as GluestackBadge } from "../../components/ui/badge";
 import { aiInstructions } from "../fields/aiInstructions";
 import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
-import { Box as GluestackBox } from "../../components/ui/box";
 
 export type BadgeProps = {
   content: any;
@@ -56,7 +55,13 @@ const Badge: ComponentConfig<BadgeProps> = {
   },
   inline: false,
   defaultProps: {
-    content: [{ type: "BadgeText", props: { text: "Badge" } }, { type: "BadgeIcon", props: { iconName: "GlobeIcon", className: "ml-2" } }],
+    content: [
+      { type: "BadgeText", props: { text: "Badge" } },
+      {
+        type: "BadgeIcon",
+        props: { iconName: "GlobeIcon", className: "ml-2" },
+      },
+    ],
     action: "muted",
     variant: "solid",
     size: "md",
@@ -68,28 +73,19 @@ const Badge: ComponentConfig<BadgeProps> = {
     size,
     content: Content,
     className,
-    puck,
   }: WithPuckProps<BadgeProps>) => {
     const BadgeDropZone = React.forwardRef<any, any>(function BadgeDropZone(
       props,
       ref
     ) {
       return (
-        <GluestackBox
-          ref={
-            puck.dragRef as unknown as React.Ref<
-              React.ComponentRef<typeof GluestackBox>
-            >
-          }
-        >
-          <GluestackBadge
-            {...props}
-            action={action}
-            variant={variant}
-            size={size}
-            className={className}
-          />
-        </GluestackBox>
+        <GluestackBadge
+          {...props}
+          action={action}
+          variant={variant}
+          size={size}
+          className={className}
+        />
       );
     });
 

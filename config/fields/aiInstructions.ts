@@ -49,6 +49,9 @@ export const aiInstructions = {
   badgeAction: "Badge color scheme: error, warning, success, info, muted.",
   badgeVariant: "Badge style: solid or outline.",
   badgeSize: "Badge size: sm, md, lg.",
+  alertAction: "Alert color scheme: error, warning, success, info, muted.",
+  alertVariant: "Alert style: solid or outline.",
+  alertIconSize: "Alert icon size: 2xs, xs, sm, md, lg, xl.",
   headingSize:
     "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
   textSize:
