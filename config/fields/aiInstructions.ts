@@ -56,6 +56,11 @@ export const aiInstructions = {
   accordionVariant: "Accordion style: filled or unfilled.",
   accordionSize: "Accordion size: sm, md, lg.",
   accordionItemValue: "Unique value for this accordion item (e.g. 'a', 'b').",
+  inputVariant: "Input style: outline, rounded, or underlined.",
+  inputSize: "Input size: sm, md, lg, xl.",
+  inputPlaceholder: "Placeholder text when the input is empty.",
+  textareaSize: "Textarea size: sm, md, lg, xl.",
+  textareaPlaceholder: "Placeholder text when the textarea is empty.",
   headingSize:
     "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
   textSize:

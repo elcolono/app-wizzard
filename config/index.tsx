@@ -27,6 +27,8 @@ import AlertText from "./blocks/AlertText";
 import AlertIcon from "./blocks/AlertIcon";
 import Accordion from "./blocks/Accordion";
 import AccordionItem from "./blocks/AccordionItem";
+import Input from "./blocks/Input";
+import TextArea from "./blocks/TextArea";
 import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
@@ -68,13 +70,15 @@ export const config: Config = {
     media: {
       components: ["Image", "Icon", "Avatar", "AvatarGroup"],
     },
-    forms: {
+    form: {
       components: [
         "Button",
         "ButtonText",
         "ButtonSpinner",
         "ButtonIcon",
         "ButtonGroup",
+        "Input",
+        "TextArea",
       ],
     },
   },
@@ -106,6 +110,8 @@ export const config: Config = {
     AlertIcon,
     Accordion,
     AccordionItem,
+    Input,
+    TextArea,
     Icon,
     Avatar,
     AvatarGroup,
