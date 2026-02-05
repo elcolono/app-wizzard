@@ -46,6 +46,9 @@ export const aiInstructions = {
   buttonGroupSpace: "Spacing between buttons (gap-*).",
   buttonGroupDirection:
     "Direction of the button group (row, column, row-reverse, column-reverse).",
+  badgeAction: "Badge color scheme: error, warning, success, info, muted.",
+  badgeVariant: "Badge style: solid or outline.",
+  badgeSize: "Badge size: sm, md, lg.",
   headingSize:
     "Tailwind mapping for Heading sizes: 5xl->text-6xl, 4xl->text-5xl, 3xl->text-4xl, 2xl->text-3xl, xl->text-2xl, lg->text-xl, md->text-lg, sm->text-base, xs->text-sm.",
   textSize:

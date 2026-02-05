@@ -15,6 +15,9 @@ import ButtonText from "./blocks/ButtonText";
 import ButtonSpinner from "./blocks/ButtonSpinner";
 import ButtonIcon from "./blocks/ButtonIcon";
 import ButtonGroup from "./blocks/ButtonGroup";
+import Badge from "./blocks/Badge";
+import BadgeText from "./blocks/BadgeText";
+import BadgeIcon from "./blocks/BadgeIcon";
 import Center from "./blocks/Center";
 import Image from "./blocks/Image";
 import Progress from "./blocks/Progress";
@@ -43,8 +46,10 @@ export const config: Config = {
         "Grid",
         "GridItem",
         "Container",
-        "Card",
       ],
+    },
+    dataDisplay: {
+      components: ["Card", "Badge", "BadgeText", "BadgeIcon"],
     },
     feedback: {
       components: ["Progress", "Spinner", "Alert"],
@@ -78,6 +83,9 @@ export const config: Config = {
     ButtonSpinner,
     ButtonIcon,
     ButtonGroup,
+    Badge,
+    BadgeText,
+    BadgeIcon,
     Center,
     Image,
     Progress,
