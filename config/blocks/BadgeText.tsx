@@ -9,7 +9,7 @@ export type BadgeTextProps = {
 };
 
 const BadgeText: ComponentConfig<BadgeTextProps> = {
-  inline: false,
+  inline: true,
   fields: {
     text: {
       type: "text",

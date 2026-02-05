@@ -190,7 +190,7 @@ export type BadgeIconProps = {
 };
 
 const BadgeIcon: ComponentConfig<BadgeIconProps> = {
-  inline: false,
+  inline: true,
   fields: {
     iconName: {
       type: "select",
