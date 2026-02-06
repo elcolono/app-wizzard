@@ -1,0 +1,3236 @@
+data: {
+    "type": "data-new-chat-created",
+    "data": {
+        "chatId": "chat_01KGQATR6XKA0HA5PMPE317MJB"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "start",
+    "messageId": "msg_01KGQATRBF3044PJ091A33WFBR"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "Ich"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " erst"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "elle"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " dir"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " eine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " moderne"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Hero"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " eine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Test"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "imonial"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " für"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " deine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Dev"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "-Agent"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "ur"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " passenden"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Übers"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "ch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "riften"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " kurzer"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Beschreibung"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Call"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "-to"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "-"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "Action"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " einem"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Kunden"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "feedback"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "-B"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "ereich"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "."
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Ich"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " begin"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "ne"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " jetzt"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " dem"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": " Ent"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "wurf"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "delta": "!"
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_05138551fe488a0e006984c80c509481a29dc917dcaff4c92b"
+        }
+    }
+}
+
+data: {
+    "type": "tool-input-start",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "toolName": "createPage"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "description"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "Hero"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Section"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " ("
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "mod"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "erne"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Übers"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "chrift"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " S"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "logan"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Button"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ")"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " und"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Test"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "imonial"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Section"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " ("
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "K"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "unden"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "mein"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "ung"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ")"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " für"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " eine"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Dev"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "-Agent"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "ur"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "."
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Beim"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Hero"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " große"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Head"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "line"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Sub"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "headline"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Call"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "-to"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "Action"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "."
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Test"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "imonial"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " mit"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Z"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "itat"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Kunde"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " &"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " ev"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "tl"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "."
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": " Bild"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": ".\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "inputTextDelta": "}"
+}
+
+data: {
+    "type": "data-tool-status",
+    "id": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "data": {
+        "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+        "status": {
+            "loading": true,
+            "label": "Creating page..."
+        }
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "reset"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "tool-input-available",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "toolName": "createPage",
+    "input": {
+        "description": "Hero Section (moderne Überschrift, Slogan, Button) und Testimonial Section (Kundenmeinung) für eine Dev-Agentur. Beim Hero große Headline, Subheadline, Call-to-Action. Testimonial mit Zitat, Kunde & evtl. Bild."
+    },
+    "providerMetadata": {
+        "openai": {
+            "itemId": "fc_05138551fe488a0e006984c80f650c81a2bccf783c77825366"
+        }
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero &"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Test"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial Dev"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial Dev-Agent"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial Dev-Agentur"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial Dev-Agentur Landing"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Hero & Testimonial Dev-Agentur Landing Page"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kunden"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmein"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für eine"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für eine moderne"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für eine moderne Dev"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für eine moderne Dev-Agent"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Hero Section und Kundenmeinung für eine moderne Dev-Agentur"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "type": "Container",
+        "index": 0,
+        "zone": "root:default-zone"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray-100"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray-100 py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray-100 py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "backgroundClassName": "bg-gray-100 py-16"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "maxWidth": "4xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "className": "mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "className": "mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-200b452a-7555-41a1-8e1a-2872554bce4a",
+        "props": {
+            "className": "mb-12"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Container-200b452a-7555-41a1-8e1a-2872554bce4a:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "type": "Heading",
+        "index": 0,
+        "zone": "VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir entwickeln"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir entwickeln Ihre"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir entwickeln Ihre digitale"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir entwickeln Ihre digitale Zukunft"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "title": "Wir entwickeln Ihre digitale Zukunft."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "size": "5xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "type": "Text",
+        "index": 1,
+        "zone": "VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Ind"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individ"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Software"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert –"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahren"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Prof"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "text": "Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "size": "xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04",
+        "props": {
+            "className": "text-gray-600 text-center mb-8"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "type": "Button",
+        "index": 2,
+        "zone": "VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "type": "ButtonText",
+        "index": 0,
+        "zone": "Button-9a851b93-3742-4edf-b535-efa15cf395a3:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "text": "Jetzt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "text": "Jetzt Projekt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "text": "Jetzt Projekt an"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "text": "Jetzt Projekt anfragen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "className": "font"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b",
+        "props": {
+            "className": "font-semibold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "props": {
+            "variant": "solid"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "props": {
+            "action": "primary"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "props": {
+            "className": "mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Button-9a851b93-3742-4edf-b535-efa15cf395a3",
+        "props": {
+            "className": "mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "type": "Container",
+        "index": 1,
+        "zone": "root:default-zone"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "backgroundClassName": "bg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "backgroundClassName": "bg-white"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "backgroundClassName": "bg-white py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "backgroundClassName": "bg-white py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "backgroundClassName": "bg-white py-12"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "maxWidth": "2xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "className": "rounded-xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "className": "rounded-xl shadow"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-53e7119c-96e8-4728-83a3-fdaa49067518",
+        "props": {
+            "className": "rounded-xl shadow-md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-d970670e-8e28-48bf-9f57-806d83b6c5d0",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Container-53e7119c-96e8-4728-83a3-fdaa49067518:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "type": "Heading",
+        "index": 0,
+        "zone": "VStack-d970670e-8e28-48bf-9f57-806d83b6c5d0:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "title": "K"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "title": "Kunden"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "title": "Kundenst"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "title": "Kundenstimme"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "size": "2xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "className": "mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "className": "mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a9e7c099-62e1-41da-9c4c-b68fc0b27dfe",
+        "props": {
+            "className": "mb-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-c731fcb5-d5df-4159-8cd1-1024ce10bc3d",
+        "type": "Card",
+        "index": 1,
+        "zone": "VStack-d970670e-8e28-48bf-9f57-806d83b6c5d0:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-c731fcb5-d5df-4159-8cd1-1024ce10bc3d",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-c731fcb5-d5df-4159-8cd1-1024ce10bc3d",
+        "props": {
+            "variant": "elevated"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-81dd2732-ffad-4b34-b353-65b62e48ea3e",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-c731fcb5-d5df-4159-8cd1-1024ce10bc3d:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "type": "Text",
+        "index": 0,
+        "zone": "VStack-81dd2732-ffad-4b34-b353-65b62e48ea3e:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agent"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller la"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller laun"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moder"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moderner"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moderner, stabil"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moderner, stabiler"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moderner, stabiler Software"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "text": "„Dank der Zusammenarbeit mit dieser Agentur konnten wir unser Produkt schneller launchen und profitieren nun von moderner, stabiler Software.“"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "italic": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5f298650-022f-4a94-b860-44bf80c01630",
+        "props": {
+            "className": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "HStack-51dc6ce0-5b1d-4307-831d-bf96816050d9",
+        "type": "HStack",
+        "index": 1,
+        "zone": "VStack-81dd2732-ffad-4b34-b353-65b62e48ea3e:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "type": "Image",
+        "index": 0,
+        "zone": "HStack-51dc6ce0-5b1d-4307-831d-bf96816050d9:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64?text=K"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "source": "https://placehold.co/64x64?text=Kunde"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "alt": "K"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "alt": "Kunden"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "alt": "Kundenbild"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9b4b0c3f-eca6-408c-a283-cb0c75334090",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3",
+        "type": "VStack",
+        "index": 1,
+        "zone": "HStack-51dc6ce0-5b1d-4307-831d-bf96816050d9:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "type": "Text",
+        "index": 0,
+        "zone": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "text": "Anna"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "text": "Anna Me"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "text": "Anna Meier"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "className": "mt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "className": "mt-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-2a1695ef-7922-4870-b25d-966220c5fd46",
+        "props": {
+            "className": "mt-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "type": "Text",
+        "index": 1,
+        "zone": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "text": "CO"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "text": "COO"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "text": "COO, Fin"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "text": "COO, FinTech"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "text": "COO, FinTech Star"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-a7faab1e-9a7c-4928-b60e-acb513157090",
+        "props": {
+            "className": "text-gray-500"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3",
+        "props": {
+            "space": "xs"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3",
+        "props": {
+            "className": "ml"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3",
+        "props": {
+            "className": "ml-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-2c4b7175-0fac-41e4-b83f-db0a4a07d3f3",
+        "props": {
+            "className": "ml-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "tool-output-available",
+    "toolCallId": "call_gSdZrUSSFnU7ZLJibFQStaOR",
+    "output": {
+        "status": {
+            "loading": false,
+            "label": "Created page"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "Hero"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Head"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "line"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " S"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "logan"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Button"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " sowie"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " eine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Test"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "imonial"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " wurden"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " für"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " deine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " Dev"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "-Agent"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "ur"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": " erstellt"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "delta": "."
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_05138551fe488a0e006984c8275bbc81a28e25ce66f390804c"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "finish",
+    "finishReason": "stop",
+    "messageMetadata": {
+        "tokenUsage": {
+            "inputTokens": 18344,
+            "inputTokenDetails": {
+                "noCacheTokens": 9256,
+                "cacheReadTokens": 9088
+            },
+            "outputTokens": 143,
+            "outputTokenDetails": {
+                "textTokens": 143,
+                "reasoningTokens": 0
+            },
+            "totalTokens": 18487,
+            "reasoningTokens": 0,
+            "cachedInputTokens": 9088
+        }
+    }
+}
+
+data: {
+    "type": "data-send-screenshot",
+    "data": {
+        "id": "req_01KGQATR6MQG12C3T6RFG7KGH8",
+        "urls": [
+            {
+                "360": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQATR6MQG12C3T6RFG7KGH8/on-finish/screenshot-360.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T164112Z&X-Amz-Expires=600&X-Amz-Signature=097853881da3963b8a54ad0b46a1c324cf78eaff91f990aa83fa13ea71f94600&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "768": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQATR6MQG12C3T6RFG7KGH8/on-finish/screenshot-768.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T164112Z&X-Amz-Expires=600&X-Amz-Signature=8010bbec23a3813b9b72059034425f50ba2f2beecd23bd84de06f0398e7a32b4&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "1280": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQATR6MQG12C3T6RFG7KGH8/on-finish/screenshot-1280.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T164112Z&X-Amz-Expires=600&X-Amz-Signature=1937915eff4c1e65ced1e1f90c49477089fcb8248d6f914dd583933343b8f39f&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            }
+        ]
+    }
+}
+
+data: [DONE
+]

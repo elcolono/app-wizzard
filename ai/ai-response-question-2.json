@@ -1,0 +1,309 @@
+data: {
+    "type": "start",
+    "messageId": "msg_01KGQJJBVNZ19Z8WJ5VTVWVKAQ"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "Danke"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "!"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Soll"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " die"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " eine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Übers"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "chrift"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " ("
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "wie"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " „"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "Unser"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "“)"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " enthalten"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "?"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " hast"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " du"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " ein"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " bestimm"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "tes"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Thema"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " oder"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Stil"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " im"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " Kopf"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " ("
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "z"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": ".B"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "."
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " modern"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " minimal"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": "istisch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": " freundlich"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "delta": ")?"
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e7bac7988195a2861820a1725994"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "finish",
+    "finishReason": "stop",
+    "messageMetadata": {
+        "tokenUsage": {
+            "inputTokens": 9264,
+            "inputTokenDetails": {
+                "noCacheTokens": 48,
+                "cacheReadTokens": 9216
+            },
+            "outputTokens": 41,
+            "outputTokenDetails": {
+                "textTokens": 41,
+                "reasoningTokens": 0
+            },
+            "totalTokens": 9305,
+            "reasoningTokens": 0,
+            "cachedInputTokens": 9216
+        }
+    }
+}
+
+data: {
+    "type": "data-send-screenshot",
+    "data": {
+        "id": "req_01KGQJJBM6QDNHZC07HED2H1FT",
+        "urls": [
+            {
+                "360": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJJBM6QDNHZC07HED2H1FT/on-finish/screenshot-360.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185556Z&X-Amz-Expires=600&X-Amz-Signature=3e6930b52635ed6d1daea51ff908011226bfd21cac2e75d3ad946ab3a07ee231&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "768": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJJBM6QDNHZC07HED2H1FT/on-finish/screenshot-768.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185556Z&X-Amz-Expires=600&X-Amz-Signature=eeba2ecd346102bbfeee181e67ecc58cf2917ead7a3e23c724ad9c1686c0ec1e&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "1280": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJJBM6QDNHZC07HED2H1FT/on-finish/screenshot-1280.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185556Z&X-Amz-Expires=600&X-Amz-Signature=72000825aed5a5724cff29286addf7b876c60fbb5a8b39a1ac8b651d7192cf6a&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            }
+        ]
+    }
+}
+
+data: [DONE
+]

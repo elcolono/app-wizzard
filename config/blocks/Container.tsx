@@ -9,9 +9,8 @@ import { aiInstructions } from "../fields/aiInstructions";
 import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
 export type ContainerProps = {
-  backgroundClassName: string;
-  className: string;
-  maxWidth:
+  className?: string;
+  maxWidth?:
     | "sm"
     | "md"
     | "lg"
@@ -44,12 +43,11 @@ const maxWidthOptions = [
 
 const Container: ComponentConfig<ContainerProps> = {
   inline: false,
+  ai: {
+    instructions:
+      "Container is a layout wrapper that centers content horizontally (mx-auto) and limits its width (max-width). Use it to wrap the main content of a page or section so content does not stretch edge-to-edge on large screens. It can contain layout blocks (e.g. Box, VStack, Grid) and typography. Choose max-width (e.g. 6xl) and optionally add padding or other classes.",
+  },
   fields: {
-    backgroundClassName: {
-      type: "text",
-      label: "Background classes",
-      ai: { instructions: aiInstructions.backgroundClassName },
-    },
     maxWidth: {
       type: "select",
       options: maxWidthOptions,
@@ -68,21 +66,25 @@ const Container: ComponentConfig<ContainerProps> = {
     },
   },
   defaultProps: {
-    backgroundClassName: "bg-background-50 py-8",
-    className: "mx-auto w-full px-4",
     maxWidth: "6xl",
   },
   render: ({
     content: Content,
     className,
-    backgroundClassName,
     maxWidth,
     puck,
   }: WithPuckProps<ContainerProps>) => {
     const ContainerDropZone = React.forwardRef<any, any>(
       function ContainerDropZone(props, ref) {
-        const maxWidthClass = maxWidth === "none" ? "" : `max-w-${maxWidth}`;
-        const mergedClassName = [className, maxWidthClass, props?.className]
+        const resolvedMaxWidth = maxWidth ?? "6xl";
+        const maxWidthClass =
+          resolvedMaxWidth === "none" ? "" : `max-w-${resolvedMaxWidth}`;
+        const mergedClassName = [
+          "mx-auto",
+          maxWidthClass,
+          className,
+          props?.className,
+        ]
           .filter(Boolean)
           .join(" ");
 
@@ -94,7 +96,6 @@ const Container: ComponentConfig<ContainerProps> = {
 
     return (
       <GluestackBox
-        className={backgroundClassName}
         ref={
           puck.dragRef as unknown as React.Ref<
             React.ComponentRef<typeof GluestackBox>

@@ -1,0 +1,7754 @@
+data: {
+    "type": "start",
+    "messageId": "msg_01KGQJM3D5FVZGYZP0HRAJHFEX"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "Ich"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " erst"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "elle"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " eine"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Übers"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "chrift"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Fotos"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Namen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Rollen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " kurzen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Besch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "reib"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "ungen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " für"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " "
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "6"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Mitglieder"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " in"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " einem"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " freund"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "lichen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " modernen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": " Stil"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "delta": "."
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e7f3d05481959fe040e20b5cec7c"
+        }
+    }
+}
+
+data: {
+    "type": "tool-input-start",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "toolName": "createPage"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "description"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "Team"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Section"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " mit"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Übers"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "chrift"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " ('"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "Unser"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Team"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "'),"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " "
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "6"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Team"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "mitglied"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "ern"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " mit"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Foto"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Name"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Rolle"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " und"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " kurzer"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Beschreibung"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " freund"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "liches"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " modernes"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": " Design"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": ".\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "inputTextDelta": "}"
+}
+
+data: {
+    "type": "data-tool-status",
+    "id": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "data": {
+        "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+        "status": {
+            "loading": true,
+            "label": "Creating page..."
+        }
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "reset"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "tool-input-available",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "toolName": "createPage",
+    "input": {
+        "description": "Team Section mit Überschrift ('Unser Team'), 6 Teammitgliedern mit Foto, Name, Rolle und kurzer Beschreibung, freundliches modernes Design."
+    },
+    "providerMetadata": {
+        "openai": {
+            "itemId": "fc_0f5a47e4a34c7ccb006984e7f4a23c81959e50f37534449bfb"
+        }
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Unser"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "primary": "Unser Team"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "L"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreat"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köp"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köpfe"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köpfe hinter"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köpfe hinter unserem"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köpfe hinter unserem Erfolg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "updateRoot",
+        "props": {
+            "secondary": "Lerne die kreativen Köpfe hinter unserem Erfolg kennen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Container-ffbb6c9f-5451-4633-9c73-2f67c513ec34",
+        "type": "Container",
+        "index": 0,
+        "zone": "root:default-zone"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Container-ffbb6c9f-5451-4633-9c73-2f67c513ec34",
+        "props": {
+            "maxWidth": "6xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-d8c59ee8-2b87-4c38-950f-d36dd2914571",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Container-ffbb6c9f-5451-4633-9c73-2f67c513ec34:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "type": "Heading",
+        "index": 0,
+        "zone": "VStack-d8c59ee8-2b87-4c38-950f-d36dd2914571:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "title": "Unser"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "title": "Unser Team"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "size": "3xl"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue-700 mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue-700 mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-9548619e-2cd3-40d5-848c-a7e28a80b7ce",
+        "props": {
+            "className": "text-blue-700 mb-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "type": "Text",
+        "index": 1,
+        "zone": "VStack-d8c59ee8-2b87-4c38-950f-d36dd2914571:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "L"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreat"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köp"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe hinter"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe hinter unserem"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe hinter unserem Erfolg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe hinter unserem Erfolg kennen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "text": "Lerne die kreativen Köpfe hinter unserem Erfolg kennen."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray-600 mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray-600 mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6f531582-f871-40c4-952b-12e76beaab8f",
+        "props": {
+            "className": "text-center text-gray-600 mb-8"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f",
+        "type": "Grid",
+        "index": 2,
+        "zone": "VStack-d8c59ee8-2b87-4c38-950f-d36dd2914571:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f",
+        "props": {
+            "columnsBase": "3"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-3418fc66-ad39-4baa-ad11-c6a5e8ef12f3",
+        "type": "GridItem",
+        "index": 0,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-3418fc66-ad39-4baa-ad11-c6a5e8ef12f3",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-1dee8620-f388-42eb-8d5a-18dccd501d28",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-3418fc66-ad39-4baa-ad11-c6a5e8ef12f3:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-1dee8620-f388-42eb-8d5a-18dccd501d28",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-1dee8620-f388-42eb-8d5a-18dccd501d28",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-1dee8620-f388-42eb-8d5a-18dccd501d28:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Marie"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Marie+"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Marie+Sch"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Marie+Schmidt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "alt": "Marie"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "alt": "Marie Schmidt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "alt": "Marie Schmidt Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-ccde5bae-3277-485d-8d02-07f946b5c560",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "props": {
+            "title": "Marie"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "props": {
+            "title": "Marie Schmidt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-188fdbb7-448f-4f5d-8e6f-90330be5756a",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "text": "Projekt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "text": "Projektmanager"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "text": "Projektmanagerin"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-3ab39415-b46e-4467-aab5-5499e01dea9b",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiv"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft und Prä"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft und Präz"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft und Präzision"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "text": "Immer motiviert und voller Ideen, organisiert Marie Projekte mit Leidenschaft und Präzision."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-99b7e230-039b-46bf-ba79-028ee152fc38",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-bc98b92c-5362-4b01-91d7-6bbbe753585d",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-b7f30216-ec56-4ae6-a3c6-1c0256c35c2a",
+        "type": "GridItem",
+        "index": 1,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-b7f30216-ec56-4ae6-a3c6-1c0256c35c2a",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-1f3905f4-c32e-4b7f-83d3-50ca447b1e79",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-b7f30216-ec56-4ae6-a3c6-1c0256c35c2a:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-1f3905f4-c32e-4b7f-83d3-50ca447b1e79",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-1f3905f4-c32e-4b7f-83d3-50ca447b1e79",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-1f3905f4-c32e-4b7f-83d3-50ca447b1e79:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text=David"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text=David+"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text=David+M"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text=David+Müll"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "source": "https://placehold.co/200x200?text=David+Müller"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "alt": "David"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "alt": "David Müller"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "alt": "David Müller Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-9fa7207f-2963-40dd-8483-f2e8f72a06af",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "props": {
+            "title": "David"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "props": {
+            "title": "David Müller"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-a2d24b41-c24a-4eb8-b4ba-5b8154ad7448",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "text": "Lead"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "text": "Lead Developer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-65e54b4e-5938-4364-a9f0-4d70b3cd5285",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte Umsetzung"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte Umsetzung digital"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte Umsetzung digitaler"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte Umsetzung digitaler Produkte"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "text": "David liebt Codes und technische Herausforderungen. Er sorgt für die perfekte Umsetzung digitaler Produkte."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-6ba101d5-5259-4557-ac2a-1df5f7a883c7",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-0465101b-cda2-4e49-ab6a-f242863def5f",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-2a066404-7f6b-4553-81a6-bdafce43ee32",
+        "type": "GridItem",
+        "index": 2,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-2a066404-7f6b-4553-81a6-bdafce43ee32",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-5fb98766-6459-4644-b8d3-40babb3b9bd8",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-2a066404-7f6b-4553-81a6-bdafce43ee32:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-5fb98766-6459-4644-b8d3-40babb3b9bd8",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-5fb98766-6459-4644-b8d3-40babb3b9bd8",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-5fb98766-6459-4644-b8d3-40babb3b9bd8:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Sarah"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Sarah+"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Sarah+K"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Sarah+Klein"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "alt": "Sarah"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "alt": "Sarah Klein"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "alt": "Sarah Klein Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-e2f00a77-e3a7-43be-a08a-1870925d7735",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "props": {
+            "title": "Sarah"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "props": {
+            "title": "Sarah Klein"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-4f81d129-c3e9-41a7-9fdc-96628d23f721",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "text": "UX"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "text": "UX/UI"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "text": "UX/UI Designer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "text": "UX/UI Designerin"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-da4cd0cb-a5fb-48cf-a71f-60d6679f0338",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah ent"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwir"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und fr"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer bege"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern –"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern – digital"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern – digital wie"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern – digital wie mensch"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern – digital wie menschlich"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "text": "Sarah entwirft intuitive und frische Designs, die Nutzer begeistern – digital wie menschlich."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-95111814-4e84-4e5e-ab8f-6b5bbbf7b73e",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-3f35d5ed-a319-46e3-b586-e298ce2e8333",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-de638415-4195-4376-8bda-30cce0dae281",
+        "type": "GridItem",
+        "index": 3,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-de638415-4195-4376-8bda-30cce0dae281",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-476524ac-f982-4779-9aa6-37871e7c758e",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-de638415-4195-4376-8bda-30cce0dae281:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-476524ac-f982-4779-9aa6-37871e7c758e",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-476524ac-f982-4779-9aa6-37871e7c758e",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-476524ac-f982-4779-9aa6-37871e7c758e:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Fel"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Felix"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Felix+B"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Felix+Bauer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "alt": "Fel"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "alt": "Felix"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "alt": "Felix Bauer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "alt": "Felix Bauer Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-2eae7c5d-6d44-4de7-9d09-811ac69b491e",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "title": "Fel"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "title": "Felix"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "title": "Felix Bauer"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-1decc7ee-0b64-457b-9a7d-a10ef23fdd02",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "text": "Marketing"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "text": "Marketing Exper"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "text": "Marketing Experte"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-7db54df7-caa1-4085-8e2d-69764301257a",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreat"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kamp"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampag"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen ver"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhil"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten zu"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten zu mehr"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten zu mehr Sicht"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten zu mehr Sichtbarkeit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "text": "Mit kreativen Kampagnen verhilft Felix unseren Produkten zu mehr Sichtbarkeit."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-4b447940-ecb4-4c64-b0d9-4292c077a2c1",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-a9426407-0ed4-4406-bd0d-ec012aa33126",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-7db8b2ef-ba48-426f-af73-68ae403d3d16",
+        "type": "GridItem",
+        "index": 4,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-7db8b2ef-ba48-426f-af73-68ae403d3d16",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-46a617a6-c93e-4822-810a-8112bbdcfdca",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-7db8b2ef-ba48-426f-af73-68ae403d3d16:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-46a617a6-c93e-4822-810a-8112bbdcfdca",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-46a617a6-c93e-4822-810a-8112bbdcfdca",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-46a617a6-c93e-4822-810a-8112bbdcfdca:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Laura"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Laura+"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Laura+We"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Laura+Weber"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "alt": "Laura"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "alt": "Laura Weber"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "alt": "Laura Weber Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-c65b0629-c98b-4a0c-bf65-adcb62d49abf",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "props": {
+            "title": "Laura"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "props": {
+            "title": "Laura Weber"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-972c587e-0b13-49a6-baee-b94cb907e4d7",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "text": "Content"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "text": "Content Strateg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "text": "Content Strategin"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-5fe28275-a225-4c7c-86ea-42e174abe616",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet unsere"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet unsere Kommunikation"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet unsere Kommunikation mit"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet unsere Kommunikation mit Herz"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "text": "Laura bringt Geschichten auf den Punkt und gestaltet unsere Kommunikation mit Herz."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d7bb5dd5-c34b-4ad6-bbb7-f5fb195767b1",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-e83c7270-427b-4bbd-8e79-e60c71800484",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "GridItem-be8c3f6a-5250-4b05-ae19-e3448e6453cf",
+        "type": "GridItem",
+        "index": 5,
+        "zone": "Grid-0fbe04aa-5441-494e-8ee7-b198ac0db46f:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "GridItem-be8c3f6a-5250-4b05-ae19-e3448e6453cf",
+        "props": {
+            "columnsBase": "2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "Card-947f7845-126d-4a4b-be50-1585a44884e9",
+        "type": "Card",
+        "index": 0,
+        "zone": "GridItem-be8c3f6a-5250-4b05-ae19-e3448e6453cf:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-947f7845-126d-4a4b-be50-1585a44884e9",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Card-947f7845-126d-4a4b-be50-1585a44884e9",
+        "props": {
+            "variant": "filled"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {
+            "content": []
+        },
+        "id": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63",
+        "type": "VStack",
+        "index": 0,
+        "zone": "Card-947f7845-126d-4a4b-be50-1585a44884e9:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "type": "Image",
+        "index": 0,
+        "zone": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://place"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text="
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jon"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jonas"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jonas+"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jonas+Sch"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jonas+Schul"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "source": "https://placehold.co/200x200?text=Jonas+Schulz"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "alt": "Jon"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "alt": "Jonas"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "alt": "Jonas Schul"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "alt": "Jonas Schulz"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "alt": "Jonas Schulz Foto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-4"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Image-47e0285c-9511-423f-800d-73c6f067c145",
+        "props": {
+            "className": "rounded-full mx-auto border-4 border-blue-200"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "type": "Heading",
+        "index": 1,
+        "zone": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "title": "Jon"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "title": "Jonas"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "title": "Jonas Schul"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "title": "Jonas Schulz"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "size": "lg"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "textAlignment": "text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Heading-11df793d-090d-410e-a320-a89917aff1cd",
+        "props": {
+            "bold": true
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "type": "Text",
+        "index": 2,
+        "zone": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "text": "Support"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "text": "Support &"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "text": "Support & QA"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "size": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700 text-center mb"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700 text-center mb-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-e688ee44-9c46-48cd-899c-f6466e752585",
+        "props": {
+            "className": "text-blue-700 text-center mb-1"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "add",
+        "props": {},
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "type": "Text",
+        "index": 3,
+        "zone": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63:content"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jon"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden bei"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden bei jeder"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden bei jeder Frage"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden bei jeder Frage weiter"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "text": "Jonas sorgt für die Qualität und hilft Kunden bei jeder Frage weiter."
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "size": "sm"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text-gray"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text-gray-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text-gray-600"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text-gray-600 text"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "Text-d0f44aa2-bde4-498a-9367-0d765ecd3308",
+        "props": {
+            "className": "text-gray-600 text-center"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63",
+        "props": {
+            "space": "md"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63",
+        "props": {
+            "className": "py"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63",
+        "props": {
+            "className": "py-"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "data-build-op",
+    "data": {
+        "op": "update",
+        "id": "VStack-6925a08a-c3c9-4c50-b703-91b135e2ed63",
+        "props": {
+            "className": "py-2"
+        }
+    },
+    "transient": true
+}
+
+data: {
+    "type": "tool-output-available",
+    "toolCallId": "call_nPVlrcPnRnRBUVrcHy6uT4Wf",
+    "output": {
+        "status": {
+            "loading": false,
+            "label": "Created page"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "Die"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Section"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Übers"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "chrift"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " freund"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "lichem"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Design"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " "
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "6"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Mitglied"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "ern"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " ("
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "inkl"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "usive"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Fotos"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Namen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Rollen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " Besch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "reib"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "ungen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": ")"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " wurde"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": " erstellt"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "delta": "."
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e851f54481958f382b7f01c259f4"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "finish",
+    "finishReason": "stop",
+    "messageMetadata": {
+        "tokenUsage": {
+            "inputTokens": 18740,
+            "inputTokenDetails": {
+                "noCacheTokens": 180,
+                "cacheReadTokens": 18560
+            },
+            "outputTokens": 109,
+            "outputTokenDetails": {
+                "textTokens": 109,
+                "reasoningTokens": 0
+            },
+            "totalTokens": 18849,
+            "reasoningTokens": 0,
+            "cachedInputTokens": 18560
+        }
+    }
+}
+
+data: {
+    "type": "data-send-screenshot",
+    "data": {
+        "id": "req_01KGQJM39TZ5VSH2MTSV7NPKS1",
+        "urls": [
+            {
+                "360": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJM39TZ5VSH2MTSV7NPKS1/on-finish/screenshot-360.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185827Z&X-Amz-Expires=600&X-Amz-Signature=d4930b22728dfa67c96003178f9eab0403a6c70881a9792fd4467a5e0369d87a&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "768": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJM39TZ5VSH2MTSV7NPKS1/on-finish/screenshot-768.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185827Z&X-Amz-Expires=600&X-Amz-Signature=ef054902ebf8c0c0e484e8471b12081ab806b97be68f06ab5dd0d633c39d799f&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "1280": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJM39TZ5VSH2MTSV7NPKS1/on-finish/screenshot-1280.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185827Z&X-Amz-Expires=600&X-Amz-Signature=0c443a7abce3318533f4483301f9e1cf4c0e85b2404fce221f4b9d340d38b482&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            }
+        ]
+    }
+}
+
+data: [DONE
+]

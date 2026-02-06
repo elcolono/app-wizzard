@@ -1,0 +1,245 @@
+data: {
+    "type": "data-new-chat-created",
+    "data": {
+        "chatId": "chat_01KGQJCF5YQ4YAJ6PJASDJTZS4"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "start",
+    "messageId": "msg_01KGQJCF8FHKKPWQHXW8Q3QVS5"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb"
+        }
+    }
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "Soll"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " das"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " nur"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Namen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Rollen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " zeigen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": ","
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " oder"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " auch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Fotos"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " und"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " kurze"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Besch"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "reib"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "ungen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "?"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Wie"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " viele"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " Team"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "mit"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "glieder"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " sollen"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " angezeigt"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": " werden"
+}
+
+data: {
+    "type": "text-delta",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "delta": "?"
+}
+
+data: {
+    "type": "text-end",
+    "id": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "msg_0f5a47e4a34c7ccb006984e6f9b1788195b64f536b4c1114fb"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "finish",
+    "finishReason": "stop",
+    "messageMetadata": {
+        "tokenUsage": {
+            "inputTokens": 9215,
+            "inputTokenDetails": {
+                "noCacheTokens": 9215,
+                "cacheReadTokens": 0
+            },
+            "outputTokens": 29,
+            "outputTokenDetails": {
+                "textTokens": 29,
+                "reasoningTokens": 0
+            },
+            "totalTokens": 9244,
+            "reasoningTokens": 0,
+            "cachedInputTokens": 0
+        }
+    }
+}
+
+data: {
+    "type": "data-send-screenshot",
+    "data": {
+        "id": "req_01KGQJCF5QN4VTV2Z23KY6XSPT",
+        "urls": [
+            {
+                "360": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJCF5QN4VTV2Z23KY6XSPT/on-finish/screenshot-360.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185242Z&X-Amz-Expires=600&X-Amz-Signature=36692c5e6ae4bd09cfeea68096a5823cc9648da79f6961b75a0c1a3142bdef6b&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "768": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJCF5QN4VTV2Z23KY6XSPT/on-finish/screenshot-768.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185242Z&X-Amz-Expires=600&X-Amz-Signature=41f65b4f3f599435a73054db596789d6364424eaa02698f9c80e9fc65528ebaa&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            },
+            {
+                "1280": "https://screenshots-production.d25d1427410802f9a1c63e07c1e3bc29.r2.cloudflarestorage.com/req_01KGQJCF5QN4VTV2Z23KY6XSPT/on-finish/screenshot-1280.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=75185943ca03c06926c4638f29934aa5%2F20260205%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260205T185242Z&X-Amz-Expires=600&X-Amz-Signature=19c2d54f1afbb79e27de38770bc1c4f2888d5801f164a96ef723e202ef5bf567&X-Amz-SignedHeaders=host&x-amz-checksum-crc32=AAAAAA%3D%3D&x-amz-sdk-checksum-algorithm=CRC32&x-id=PutObject"
+            }
+        ]
+    }
+}
+
+data: [DONE
+]

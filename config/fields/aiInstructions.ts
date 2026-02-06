@@ -5,8 +5,10 @@ export const aiInstructions = {
     "Tailwind classes for the outer/background wrapper (e.g., bg-*, py-*, etc.).",
   textContent: "Editable text content.",
   slotContent: "Add child components to this slot.",
-  imageSource: "Image URL or path for the image source.",
-  imageAlt: "Accessible alt text for the image.",
+  imageSource:
+    "Use loremflickr placeholder images. URL structure: https://loremflickr.com/[width]/[height]/[search_term] (e.g. https://loremflickr.com/1600/900/yoga). Use width, height and a descriptive English search term.",
+  imageAlt:
+    "Accessible alt text describing the image (e.g. the topic or search term used for the image).",
   imageSize: "Image size token for width/height.",
   iconName: "Choose an icon from the list.",
   iconClassName: "Tailwind classes for the icon (e.g., stroke-white, text-*).",
