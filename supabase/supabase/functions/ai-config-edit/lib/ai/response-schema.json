@@ -1,0 +1,100 @@
+{
+  "title": "GeminiResponse",
+  "description": "Array of operations returned by Gemini. Each item must either be a JSON Patch operation or a structured migration operation.",
+  "type": "array",
+  "items": {
+    "anyOf": [
+      {
+        "type": "object",
+        "required": ["type", "operation", "path"],
+        "additionalProperties": true,
+        "properties": {
+          "type": {
+            "const": "patch",
+            "description": "Discriminator signalling a JSON Patch operation."
+          },
+          "operation": {
+            "enum": ["add", "replace", "remove"],
+            "description": "RFC 6902 operation to apply."
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "description": "JSON Pointer path targeting app_config."
+          },
+          "value": {
+            "description": "Value to apply for add/replace operations. Optional for remove."
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": ["type", "operation", "table"],
+        "additionalProperties": true,
+        "properties": {
+          "type": {
+            "const": "migration",
+            "description": "Discriminator signalling a migration operation."
+          },
+          "operation": {
+            "enum": [
+              "create_table",
+              "add_column",
+              "drop_column",
+              "alter_table",
+              "create_index",
+              "drop_table",
+              "seed_rows"
+            ],
+            "description": "Type of migration to perform."
+          },
+          "table": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Target table name (schema defaults to public)."
+          },
+          "schema": {
+            "type": "object",
+            "description": "Column definitions for create_table operations.",
+            "additionalProperties": {}
+          },
+          "column": {
+            "type": "object",
+            "description": "Column definition for add_column operations.",
+            "additionalProperties": {}
+          },
+          "index": {
+            "type": "object",
+            "description": "Index metadata for create_index operations.",
+            "additionalProperties": {}
+          },
+          "changes": {
+            "type": "array",
+            "description": "Array of human readable change notes for alter_table operations.",
+            "items": { "type": "string" }
+          },
+          "rows": {
+            "type": "array",
+            "description": "Seed data rows for seed_rows operations.",
+            "items": { "type": "object" }
+          },
+          "mode": {
+            "enum": ["insert", "upsert"],
+            "description": "Mode for seed_rows operations (insert or upsert)."
+          },
+          "onConflict": {
+            "type": "string",
+            "description": "Conflict handling key for seed_rows operations."
+          },
+          "max_rows": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10,
+            "description": "Maximum number of rows allowed in seed_rows operations (<=10)."
+          }
+        }
+      }
+    ]
+  }
+}
+

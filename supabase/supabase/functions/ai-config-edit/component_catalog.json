@@ -1,0 +1,432 @@
+[
+  {
+    "type": "vstack",
+    "category": "layout",
+    "description": "Vertical stack container with optional spacing and utility classes.",
+    "props": {
+      "space": {
+        "type": "enum",
+        "default": "md",
+        "values": [
+          {
+            "value": "xs",
+            "sizePx": 4,
+            "rem": 0.25,
+            "description": "Tight spacing for elements that should feel closely related."
+          },
+          {
+            "value": "sm",
+            "sizePx": 8,
+            "rem": 0.5,
+            "description": "Small spacing for compact layouts and list items."
+          },
+          {
+            "value": "md",
+            "sizePx": 16,
+            "rem": 1,
+            "description": "Default comfortable spacing between cards or sections."
+          },
+          {
+            "value": "lg",
+            "sizePx": 24,
+            "rem": 1.5,
+            "description": "Expanded spacing for feature sections or breathing room."
+          },
+          {
+            "value": "xl",
+            "sizePx": 32,
+            "rem": 2,
+            "description": "Large spacing for hero sections and major layout breaks."
+          },
+          {
+            "value": "2xl",
+            "sizePx": 40,
+            "rem": 2.5,
+            "description": "Very large spacing reserved for banners or segmented areas."
+          }
+        ]
+      },
+      "className": { "type": "string", "description": "Tailwind utility classes applied to the stack wrapper." }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["loop"]
+  },
+  {
+    "type": "hstack",
+    "category": "layout",
+    "description": "Horizontal stack container with configurable spacing.",
+    "props": {
+      "space": {
+        "type": "enum",
+        "default": "md",
+        "values": [
+          {
+            "value": "xs",
+            "sizePx": 4,
+            "rem": 0.25,
+            "description": "Minimal gap between items, good for icon rows."
+          },
+          {
+            "value": "sm",
+            "sizePx": 8,
+            "rem": 0.5,
+            "description": "Tight horizontal spacing for text + icon combos."
+          },
+          {
+            "value": "md",
+            "sizePx": 16,
+            "rem": 1,
+            "description": "Balanced spacing for standard button rows or cards."
+          },
+          {
+            "value": "lg",
+            "sizePx": 24,
+            "rem": 1.5,
+            "description": "Generous spacing for feature callouts in a row."
+          },
+          {
+            "value": "xl",
+            "sizePx": 32,
+            "rem": 2,
+            "description": "Large gaps to separate groups of content."
+          },
+          {
+            "value": "2xl",
+            "sizePx": 40,
+            "rem": 2.5,
+            "description": "Extra large spacing for hero layouts and wide screens."
+          }
+        ]
+      },
+      "className": { "type": "string", "description": "Tailwind utility classes applied to the stack wrapper." }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["loop"]
+  },
+  {
+    "type": "scroll-view",
+    "category": "layout",
+    "description": "Scrollable container. Supports vertical or horizontal scrolling and pull-to-refresh.",
+    "props": {
+      "horizontal": { "type": "boolean", "default": false },
+      "showsVerticalScrollIndicator": { "type": "boolean", "default": false },
+      "contentContainerStyle": { "type": "object", "description": "Style props forwarded to ScrollView content container." },
+      "className": { "type": "string" },
+      "refreshControl": { "type": "object", "fields": { "enabled": "boolean", "tintColor": "string" } }
+    },
+    "supportsChildren": true,
+    "dataBindings": []
+  },
+  {
+    "type": "box",
+    "category": "layout",
+    "description": "Generic container that forwards props to a Box primitive.",
+    "props": {
+      "className": { "type": "string" },
+      "padding": { "type": "string | number" },
+      "rounded": { "type": "string" }
+    },
+    "supportsChildren": true,
+    "dataBindings": []
+  },
+  {
+    "type": "grid",
+    "category": "layout",
+    "description": "Responsive grid container supporting Tailwind-like gap utilities and breakpoint-aware column counts. Grid Layout is not supported in React Native, so _extra.className is used to pass grid-cols-* classnames for universal (web + native) support. This provides an SSR-friendly solution for responsiveness. Both className and _extra.className can be used.",
+    "props": {
+      "className": { "type": "string", "description": "General Tailwind utility classes applied to the grid wrapper." },
+      "_extra": {
+        "type": "object",
+        "description": "Object containing className for grid column configuration. Required for grid functionality.",
+        "fields": {
+          "className": {
+            "type": "string",
+            "description": "Accepts grid-cols-* className only (where * ranges from 1 to 12). Default value is grid-cols-12. Supports responsive breakpoints (e.g., md:grid-cols-6). This is extracted to provide universal grid support across web and native platforms."
+          }
+        }
+      }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["loop", "className"]
+  },
+  {
+    "type": "grid-item",
+    "category": "layout",
+    "description": "Child element for Grid that reads responsive col-span utilities. Grid Layout is not supported in React Native, so _extra.className is used to pass col-span-* classnames for universal (web + native) support. This provides an SSR-friendly solution for responsiveness. Both className and _extra.className can be used.",
+    "props": {
+      "className": { "type": "string", "description": "General Tailwind utility classes applied to the grid item." },
+      "_extra": {
+        "type": "object",
+        "description": "Object containing className for column span configuration. Required for grid functionality.",
+        "fields": {
+          "className": {
+            "type": "string",
+            "description": "Accepts col-span-* className only (where * ranges from 1 to 12). Default value is col-span-1. Supports responsive breakpoints (e.g., md:col-span-4). This is extracted to provide universal grid support across web and native platforms."
+          }
+        }
+      }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["className"]
+  },
+  {
+    "type": "text",
+    "category": "typography",
+    "description": "Base text component with typography presets.",
+    "props": {
+      "size": {
+        "type": "enum",
+        "default": "md",
+        "values": [
+          { "value": "xs", "fontSizePx": 12, "description": "Caption text or legal copy." },
+          { "value": "sm", "fontSizePx": 14, "description": "Secondary text or helper labels." },
+          { "value": "md", "fontSizePx": 16, "description": "Default body text size." },
+          { "value": "lg", "fontSizePx": 18, "description": "Lead text or emphasized paragraphs." },
+          { "value": "xl", "fontSizePx": 20, "description": "Small headings or highlight statements." },
+          { "value": "2xl", "fontSizePx": 24, "description": "Sub-headers or hero captions." },
+          { "value": "3xl", "fontSizePx": 30, "description": "Hero text on marketing pages." },
+          { "value": "4xl", "fontSizePx": 36, "description": "Large hero statements." },
+          { "value": "5xl", "fontSizePx": 48, "description": "Dominant hero display text." },
+          { "value": "6xl", "fontSizePx": 60, "description": "Extra large hero text reserved for splash sections." }
+        ]
+      },
+      "fontWeight": {
+        "type": "enum",
+        "values": [
+          { "value": "light", "weight": 300, "description": "Soft emphasis, rarely used." },
+          { "value": "normal", "weight": 400, "description": "Default reading weight." },
+          { "value": "medium", "weight": 500, "description": "Slight emphasis for labels." },
+          { "value": "semibold", "weight": 600, "description": "Headings or callouts." },
+          { "value": "bold", "weight": 700, "description": "Strong emphasis or buttons." }
+        ]
+      },
+      "color": { "type": "string", "description": "Text color token or hex value (defaults to theme body color)." },
+      "numberOfLines": { "type": "number", "description": "Clamp the text to n lines." },
+      "className": { "type": "string", "description": "Utility classes applied to the text element." }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "i18n", "static"]
+  },
+  {
+    "type": "heading",
+    "category": "typography",
+    "description": "Semantic heading with extended typography props.",
+    "props": {
+      "size": {
+        "type": "enum",
+        "default": "lg",
+        "values": [
+          { "value": "sm", "fontSizePx": 18, "description": "Section labels or small card titles." },
+          { "value": "md", "fontSizePx": 22, "description": "Standard section heading." },
+          { "value": "lg", "fontSizePx": 28, "description": "Primary page heading." },
+          { "value": "xl", "fontSizePx": 32, "description": "Hero subheading." },
+          { "value": "2xl", "fontSizePx": 36, "description": "Hero heading for marketing sections." },
+          { "value": "3xl", "fontSizePx": 42, "description": "Hero headline." },
+          { "value": "4xl", "fontSizePx": 48, "description": "Large hero display text." },
+          { "value": "5xl", "fontSizePx": 56, "description": "Dominant hero headline." },
+          { "value": "6xl", "fontSizePx": 64, "description": "Extra large hero statement." }
+        ]
+      },
+      "fontFamily": { "type": "string", "description": "Optional font token (defaults to theme heading font)." },
+      "fontWeight": {
+        "type": "enum",
+        "values": [
+          { "value": "light", "weight": 300, "description": "Elegant hero titles." },
+          { "value": "normal", "weight": 400, "description": "Subtle heading." },
+          { "value": "medium", "weight": 500, "description": "Balanced heading weight." },
+          { "value": "semibold", "weight": 600, "description": "Default heading emphasis." },
+          { "value": "bold", "weight": 700, "description": "Strong hero titles." }
+        ]
+      },
+      "className": { "type": "string", "description": "Utility classes for additional styling." }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "i18n", "static"]
+  },
+  {
+    "type": "image",
+    "category": "media",
+    "description": "Optimized image component backed by Next/Image. Requires size props.",
+    "props": {
+      "source": { "type": "string | { uri: string }", "description": "Absolute URL to image. Use data binding for dynamic sources." },
+      "width": { "type": "number", "required": true, "description": "Rendered width in pixels for layout (Next/Image requirement)." },
+      "height": { "type": "number", "required": true, "description": "Rendered height in pixels; pair with width to maintain aspect ratio." },
+      "alt": { "type": "string", "default": "Image", "description": "Accessible description of the image content." },
+      "className": { "type": "string", "description": "Utility classes for rounding, shadows, etc." }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "static"]
+  },
+  {
+    "type": "avatar",
+    "category": "media",
+    "description": "Avatar wrapper supporting nested avatar-image.",
+    "props": {
+      "width": { "type": "number", "default": 48 },
+      "height": { "type": "number", "default": 48 },
+      "rounded": { "type": "string", "default": "full" },
+      "className": { "type": "string" }
+    },
+    "supportsChildren": true,
+    "dataBindings": []
+  },
+  {
+    "type": "avatar-image",
+    "category": "media",
+    "description": "Child of avatar providing the actual image source.",
+    "props": {
+      "source": { "type": "string | { uri: string }" },
+      "alt": { "type": "string" }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "static"]
+  },
+  {
+    "type": "button",
+    "category": "interactive",
+    "description": "Button container controlling variant, size, and handlers. Text lives in button-text child.",
+    "props": {
+      "variant": {
+        "type": "enum",
+        "default": "solid",
+        "values": [
+          { "value": "solid", "description": "Primary filled button with brand color." },
+          { "value": "outline", "description": "Border-only button for secondary actions." },
+          { "value": "ghost", "description": "Text-like button for tertiary or subtle actions." }
+        ]
+      },
+      "size": {
+        "type": "enum",
+        "default": "md",
+        "values": [
+          { "value": "xs", "heightPx": 28, "description": "Tight spaces like table rows." },
+          { "value": "sm", "heightPx": 32, "description": "Secondary buttons or dense layouts." },
+          { "value": "md", "heightPx": 40, "description": "Default button height." },
+          { "value": "lg", "heightPx": 48, "description": "Primary CTA buttons." },
+          { "value": "xl", "heightPx": 56, "description": "Large hero CTAs or full-width actions." }
+        ]
+      },
+      "className": { "type": "string", "description": "Utility classes for layout adjustments." },
+      "isDisabled": { "type": "boolean", "description": "Disable button interaction." }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["className"]
+  },
+  {
+    "type": "button-text",
+    "category": "interactive",
+    "description": "Child component providing the visible button label.",
+    "props": {
+      "className": { "type": "string" }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "i18n", "path", "static"]
+  },
+  {
+    "type": "pressable",
+    "category": "interactive",
+    "description": "Wraps content with press handlers. Often used with vstack child.",
+    "props": {
+      "className": { "type": "string" },
+      "accessibilityLabel": { "type": "string" }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["className"]
+  },
+  {
+    "type": "input",
+    "category": "forms",
+    "description": "Input wrapper that hosts input-field and optional icons.",
+    "props": {
+      "size": {
+        "type": "enum",
+        "default": "md",
+        "values": [
+          { "value": "sm", "heightPx": 36, "description": "Compact form layouts." },
+          { "value": "md", "heightPx": 44, "description": "Default input height." },
+          { "value": "lg", "heightPx": 52, "description": "Large forms or mobile friendly inputs." }
+        ]
+      },
+      "variant": { "type": "string", "description": "Visual style token defined in theme (e.g., outline, filled)." },
+      "className": { "type": "string", "description": "Utility classes applied to the input wrapper." }
+    },
+    "supportsChildren": true,
+    "dataBindings": []
+  },
+  {
+    "type": "input-field",
+    "category": "forms",
+    "description": "Text input element accepting value and placeholder bindings.",
+    "props": {
+      "placeholder": { "type": "string", "description": "Hint text displayed when empty." },
+      "value": { "type": "string", "description": "Controlled value bound via data binding or handlers." },
+      "type": {
+        "type": "enum",
+        "values": [
+          { "value": "text", "description": "Default text input." },
+          { "value": "email", "description": "Email keyboard / validation hints." },
+          { "value": "password", "description": "Obscured input with password keyboard." },
+          { "value": "number", "description": "Numeric keyboard for digits." }
+        ]
+      }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "static"]
+  },
+  {
+    "type": "input-icon",
+    "category": "forms",
+    "description": "Places an icon inside an input.",
+    "props": {
+      "name": { "type": "string", "description": "Icon name from Icon set." },
+      "color": { "type": "string" },
+      "size": { "type": "number", "default": 16 }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["path", "static"]
+  },
+  {
+    "type": "form-control",
+    "category": "forms",
+    "description": "Wrapper for label, input, and errors. Hosts form-control-error children.",
+    "props": {
+      "isRequired": { "type": "boolean" },
+      "className": { "type": "string" }
+    },
+    "supportsChildren": true,
+    "dataBindings": []
+  },
+  {
+    "type": "form-control-error-text",
+    "category": "forms",
+    "description": "Text element shown when the field has an error.",
+    "props": {
+      "className": { "type": "string" }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "path", "static"]
+  },
+  {
+    "type": "link",
+    "category": "interactive",
+    "description": "Anchor element with optional child link-text.",
+    "props": {
+      "href": { "type": "string", "required": true },
+      "target": { "type": "enum", "values": ["_self", "_blank"] },
+      "className": { "type": "string" }
+    },
+    "supportsChildren": true,
+    "dataBindings": ["path", "className"]
+  },
+  {
+    "type": "link-text",
+    "category": "interactive",
+    "description": "Text child for link component.",
+    "props": {
+      "className": { "type": "string" }
+    },
+    "supportsChildren": false,
+    "dataBindings": ["text", "i18n", "path", "static"]
+  }
+]
+
