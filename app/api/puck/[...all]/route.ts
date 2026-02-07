@@ -3,8 +3,6 @@
 import { puckHandler } from "@puckeditor/cloud-client";
 
 export const POST = (request) => {
-  console.log("SUPABASE_URL", process.env.SUPABASE_URL);
-  console.log("SUPABASE_ANON_KEY", process.env.SUPABASE_ANON_KEY);
   return puckHandler(request, {
     host: process.env.SUPABASE_URL,
     apiKey: process.env.SUPABASE_ANON_KEY,
