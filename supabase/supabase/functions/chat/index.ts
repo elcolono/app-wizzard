@@ -35,11 +35,113 @@ const createAdminClient = () =>
     ? createClient(ENV.SUPABASE_URL, ENV.SUPABASE_ROLE_KEY)
     : null;
 
+const isValidBuildOp = (op: any): boolean => {
+  if (!op || typeof op !== "object" || typeof op.op !== "string") return false;
+  switch (op.op) {
+    case "reset":
+      return true;
+    case "updateRoot":
+      return op.props && typeof op.props === "object";
+    case "add":
+      return (
+        typeof op.type === "string" &&
+        op.type.length > 0 &&
+        typeof op.id === "string" &&
+        op.id.length > 0 &&
+        typeof op.index === "number" &&
+        typeof op.zone === "string" &&
+        op.zone.length > 0
+      );
+    case "update":
+      return (
+        typeof op.id === "string" &&
+        op.id.length > 0 &&
+        op.props &&
+        typeof op.props === "object"
+      );
+    case "move":
+      return (
+        typeof op.id === "string" &&
+        op.id.length > 0 &&
+        typeof op.index === "number" &&
+        typeof op.zone === "string" &&
+        op.zone.length > 0
+      );
+    case "delete":
+      return typeof op.id === "string" && op.id.length > 0;
+    default:
+      return false;
+  }
+};
+
+const normalizeBuildOps = (build: any[]) => {
+  const containerTypes = new Set(["Container", "Box", "VStack", "HStack"]);
+  const zoneIndex = new Map<string, number>();
+  let currentParentId: string | null = null;
+
+  return build.map((op) => {
+    if (!op || typeof op !== "object") return op;
+
+    if (op.op === "reset") {
+      currentParentId = null;
+      zoneIndex.clear();
+      return op;
+    }
+
+    if (op.op !== "add") {
+      return { ...op, props: op.props || op.value || {} };
+    }
+
+    const normalized = { ...op, props: op.props || op.value || {} };
+    if (
+      typeof normalized.type !== "string" ||
+      typeof normalized.id !== "string"
+    )
+      return normalized;
+
+    let zone = normalized.zone;
+    if (!zone || zone === "content") {
+      zone = currentParentId
+        ? `${currentParentId}:content`
+        : "root:default-zone";
+    }
+    normalized.zone = zone;
+
+    const nextIndex = zoneIndex.get(zone) ?? 0;
+    const usedIndex =
+      typeof normalized.index === "number" ? normalized.index : nextIndex;
+    normalized.index = usedIndex;
+    zoneIndex.set(zone, Math.max(nextIndex, usedIndex + 1));
+
+    if (containerTypes.has(normalized.type)) {
+      currentParentId = normalized.id;
+    }
+
+    return normalized;
+  });
+};
+
+/**
+ * Normalizes zone for a single "add" op: UI expects "parentId:slot" (e.g. "root:default-zone").
+ * Bare "content" or missing zone → root-level "root:default-zone".
+ */
+function normalizeTransientZone(op: any): string {
+  const z = op?.zone;
+  if (z != null && typeof z === "string" && z.includes(":")) return z;
+  return "root:default-zone";
+}
+
 /**
  * Manages the SSE stream and Puck-specific message formatting
  */
 class PuckStreamManager {
   private encoder = new TextEncoder();
+  private resetSent = new Set<string>();
+  /** Number of build ops already sent for each tool call (to avoid duplicate transient events). */
+  private lastSentBuildLength = new Map<string, number>();
+  /** Last tool status label sent per tool call (to avoid spamming data-tool-status). */
+  private lastToolStatusLabel = new Map<string, string>();
+
   constructor(private controller: ReadableStreamDefaultController) {}
 
   send(data: unknown) {
@@ -48,40 +150,64 @@ class PuckStreamManager {
     );
   }
 
-  // Hilfsmethode für saubere Tool-Status-Updates
   sendToolStatus(toolCallId: string, label: string, loading: boolean) {
     this.send({
       type: "data-tool-status",
-      id: toolCallId, // Hier ist 'id' korrekt für data- Events
+      id: toolCallId,
       data: { status: { loading, label } },
     });
   }
 
-  // 1. In der PuckStreamManager Klasse:
+  markResetSent(toolCallId: string) {
+    this.resetSent.add(toolCallId);
+  }
+
   handleLiveParsing(fullArgs: string, toolCallId: string) {
     try {
       const partial = parse(fullArgs);
       if (!partial || !Array.isArray(partial.build)) return;
 
+      // Tool status only when description actually changed (avoid one status per delta)
       if (partial.description) {
-        this.sendToolStatus(toolCallId, partial.description, true);
+        const prev = this.lastToolStatusLabel.get(toolCallId);
+        if (prev !== partial.description) {
+          this.lastToolStatusLabel.set(toolCallId, partial.description);
+          this.sendToolStatus(toolCallId, partial.description, true);
+        }
       }
 
-      partial.build.forEach((op: any, i: number) => {
-        if (op.op) {
-          // Wir senden das Objekt flacher, passend zum funktionierenden Beispiel
-          this.send({
-            type: "data-build-op",
-            transient: true,
-            data: {
-              ...op,
-              id: op.id || `temp_${toolCallId}_${i}`,
-              // Falls 'props' vorhanden sind, stelle sicher, dass sie gesendet werden
-              props: op.props || op.value || {},
-            },
-          });
+      const build = partial.build;
+      const sentCount = this.lastSentBuildLength.get(toolCallId) ?? 0;
+      // Only emit ops we haven't sent yet (avoids duplicate data-build-op for same op)
+      if (build.length <= sentCount) return;
+
+      for (let i = sentCount; i < build.length; i++) {
+        const op = build[i];
+        if (!op || typeof op !== "object" || typeof op.op !== "string")
+          continue;
+        if (!isValidBuildOp(op)) continue;
+
+        if (op.op === "reset") {
+          if (this.resetSent.has(toolCallId)) continue;
+          this.resetSent.add(toolCallId);
         }
-      });
+
+        const payload: any = {
+          ...op,
+          props: op.props ?? op.value ?? {},
+        };
+        // UI expects "parentId:slot" (e.g. "root:default-zone"); bare "content" → root-level
+        if (op.op === "add") {
+          payload.zone = normalizeTransientZone(op);
+        }
+
+        this.send({
+          type: "data-build-op",
+          transient: true,
+          data: payload,
+        });
+      }
+      this.lastSentBuildLength.set(toolCallId, build.length);
     } catch (_) {}
   }
 }
@@ -273,8 +399,12 @@ serve(async (req) => {
   const stream = new ReadableStream({
     async start(controller) {
       const manager = new PuckStreamManager(controller);
+      const chatId =
+        payload.chatId && String(payload.chatId).trim()
+          ? payload.chatId
+          : `chat_${crypto.randomUUID()}`;
       const ids = {
-        chat: payload.chatId ?? `chat_${crypto.randomUUID()}`,
+        chat: chatId,
         msg: payload.messageId ?? `msg_${crypto.randomUUID()}`,
         text: `msg_${crypto.randomUUID().replace(/-/g, "")}`,
       };
@@ -325,6 +455,7 @@ serve(async (req) => {
                     transient: true,
                     data: { op: "reset" },
                   });
+                  manager.markResetSent(id);
                 }
               }
 
@@ -346,12 +477,37 @@ serve(async (req) => {
                   .from("ai_tool_calls")
                   .upsert({ id, tool_name: name, tool_args: input });
 
+              const normalizedBuild = Array.isArray(input?.build)
+                ? normalizeBuildOps(input.build)
+                : null;
+              const outputInput = normalizedBuild
+                ? { ...input, build: normalizedBuild }
+                : input;
+
+              if (input?.description) {
+                manager.sendToolStatus(id, input.description, false);
+              }
+
+              if (normalizedBuild) {
+                normalizedBuild.forEach((op: any) => {
+                  if (!isValidBuildOp(op)) return;
+                  manager.send({
+                    type: "data-build-op",
+                    transient: true,
+                    data: {
+                      ...op,
+                      props: op.props || op.value || {},
+                    },
+                  });
+                });
+              }
+
               // Erstens: Bestätige den Input
               manager.send({
                 type: "tool-input-available",
                 toolCallId: id,
                 toolName: name,
-                input,
+                input: outputInput,
               });
 
               // ZWEITENS (WICHTIG): Sende ein explizites Output-Event,
