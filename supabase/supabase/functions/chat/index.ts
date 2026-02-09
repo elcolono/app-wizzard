@@ -1,374 +1,321 @@
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { parse } from "https://esm.sh/best-effort-json-parser";
 import { corsHeaders } from "../_shard/cors.ts";
 
-const EXPECTED_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY");
-const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
-const OPENAI_MODEL = Deno.env.get("OPENAI_MODEL") ?? "gpt-4o-mini";
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-
-// Types for Puck messages
-type PuckMessagePart = { type: string; text?: string };
-type PuckMessage = { role: string; parts?: PuckMessagePart[] };
-
-type OpenAIMessage = { role: "system" | "user" | "assistant"; content: string };
-
-type ToolCallState = { id: string; name?: string; argsText: string };
-type OpenAITool = {
-  type: "function";
-  function: { name: string; description?: string; parameters: unknown };
+// --- Configuration & Constants ---
+const ENV = {
+  ANON_KEY: Deno.env.get("SUPABASE_ANON_KEY"),
+  OPENAI_KEY: Deno.env.get("OPENAI_API_KEY"),
+  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o-mini",
+  SUPABASE_URL: Deno.env.get("SUPABASE_URL"),
+  SUPABASE_ROLE_KEY: Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),
 };
 
-// Stream headers
 const STREAM_HEADERS = {
   ...corsHeaders,
-  "Content-Type": "text/event-stream; charset=utf-8",
+  "Content-Type": "text-event-stream; charset=utf-8",
   "Cache-Control": "no-cache, no-transform",
   Connection: "keep-alive",
 };
 
-const TOOL_CALL_TABLE = "ai_tool_calls";
+// --- Types ---
+type OpenAIMessage = { role: "system" | "user" | "assistant"; content: string };
 
-const createAdminClient = () => {
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    return null;
+interface ToolCallState {
+  id: string;
+  name?: string;
+  argsText: string;
+}
+
+// --- Helper Functions ---
+
+const createAdminClient = () =>
+  ENV.SUPABASE_URL && ENV.SUPABASE_ROLE_KEY
+    ? createClient(ENV.SUPABASE_URL, ENV.SUPABASE_ROLE_KEY)
+    : null;
+
+/**
+ * Manages the SSE stream and Puck-specific message formatting
+ */
+class PuckStreamManager {
+  private encoder = new TextEncoder();
+  constructor(private controller: ReadableStreamDefaultController) {}
+
+  send(data: unknown) {
+    this.controller.enqueue(
+      this.encoder.encode(`data: ${JSON.stringify(data)}\n\n`)
+    );
   }
-  return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-};
 
-// Sends a chunk to the client
-const sendChunk = (
-  controller: ReadableStreamDefaultController,
-  data: unknown
-) => {
-  const encoder = new TextEncoder();
-  controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
-};
-
-const collectTextParts = (message: PuckMessage): string => {
-  const parts = Array.isArray(message.parts) ? message.parts : [];
-  return parts
-    .filter((part) => part?.type === "text" && typeof part.text === "string")
-    .map((part) => part.text)
-    .join("");
-};
-
-// Converts Puck messages to OpenAI messages
-const toOpenAIMessages = (payload: {
-  context?: string;
-  messages?: PuckMessage[];
-}): OpenAIMessage[] => {
-  const output: OpenAIMessage[] = [];
-  if (payload.context && typeof payload.context === "string") {
-    output.push({ role: "system", content: payload.context });
+  // Hilfsmethode für saubere Tool-Status-Updates
+  sendToolStatus(toolCallId: string, label: string, loading: boolean) {
+    this.send({
+      type: "data-tool-status",
+      id: toolCallId, // Hier ist 'id' korrekt für data- Events
+      data: { status: { loading, label } },
+    });
   }
-  const messages = Array.isArray(payload.messages) ? payload.messages : [];
-  for (const message of messages) {
-    const content = collectTextParts(message);
-    if (!content) continue;
-    if (message.role === "assistant") {
-      output.push({ role: "assistant", content });
-    } else {
-      output.push({ role: "user", content });
-    }
-  }
-  return output;
-};
 
-// Builds OpenAI tools from Puck tools
-const buildOpenAITools = (
-  tools: Record<string, any> | undefined
-): OpenAITool[] => {
-  if (!tools || typeof tools !== "object") return [];
-  return Object.values(tools)
-    .map((tool: any) => {
-      if (!tool?.name || !tool?.inputSchema) return null;
-      return {
+  handleLiveParsing(fullArgs: string, toolCallId: string) {
+    try {
+      const partial = parse(fullArgs);
+      if (!partial) return;
+
+      if (partial.description) {
+        this.sendToolStatus(toolCallId, partial.description, true);
+      }
+
+      if (Array.isArray(partial.build)) {
+        partial.build.forEach((op: any, i: number) => {
+          if (op.op) {
+            // Nur senden, wenn die Operation valide aussieht
+            this.send({
+              type: "data-build-op",
+              transient: true,
+              data: {
+                op: op.op,
+                path: op.path || "content",
+                value: op.props || op.value || {}, // Puck erwartet oft 'value'
+                id: `${toolCallId}_${i}`,
+              },
+            });
+          }
+        });
+      }
+    } catch (_) {}
+  }
+}
+
+/**
+ * Conversions: Puck -> OpenAI
+ */
+const Transformers = {
+  messages(messages: any[] = [], context?: string): OpenAIMessage[] {
+    const aiMsgs: OpenAIMessage[] = context
+      ? [{ role: "system", content: context }]
+      : [];
+
+    messages.forEach((m) => {
+      const content =
+        m.parts
+          ?.filter((p: any) => p.type === "text")
+          .map((p: any) => p.text)
+          .join("") || "";
+      if (content)
+        aiMsgs.push({
+          role: m.role === "assistant" ? "assistant" : "user",
+          content,
+        });
+    });
+
+    return aiMsgs;
+  },
+
+  tools(tools: Record<string, any> = {}) {
+    return Object.values(tools)
+      .filter((t) => t?.name && t?.inputSchema)
+      .map((t) => ({
         type: "function",
         function: {
-          name: tool.name,
-          description: tool.description,
-          parameters: tool.inputSchema,
+          name: t.name,
+          description: t.description,
+          parameters: t.inputSchema,
         },
-      } as OpenAITool;
-    })
-    .filter(Boolean) as OpenAITool[];
+      }));
+  },
 };
 
-// Streams OpenAI messages
-const streamOpenAI = async (
-  openAIMessages: OpenAIMessage[],
-  tools: OpenAITool[],
-  onDelta: (text: string) => void,
-  onToolDelta: (toolCallId: string, delta: string, name?: string) => void,
-  onToolComplete: (
-    toolCallId: string,
-    name: string,
-    input: unknown,
-    providerId?: string
-  ) => void,
-  onProviderId: (providerId: string) => void
-) => {
-  if (!OPENAI_API_KEY) {
-    throw new Error("Missing OPENAI_API_KEY");
+// --- Core Logic ---
+
+async function streamOpenAI(
+  messages: OpenAIMessage[],
+  tools: any[],
+  callbacks: {
+    onDelta: (t: string) => void;
+    onToolDelta: (
+      id: string,
+      delta: string,
+      full: string,
+      name?: string
+    ) => void;
+    onToolComplete: (
+      id: string,
+      name: string,
+      input: any,
+      providerId?: string
+    ) => void;
+    onStart: (providerId: string) => void;
   }
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+) {
+  if (!ENV.OPENAI_KEY) throw new Error("Missing OpenAI API Key");
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
+      Authorization: `Bearer ${ENV.OPENAI_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: OPENAI_MODEL,
-      messages: openAIMessages,
+      model: ENV.OPENAI_MODEL,
+      messages,
       tools: tools.length > 0 ? tools : undefined,
-      tool_choice: tools.length > 0 ? "auto" : undefined,
       stream: true,
-      temperature: 0.7,
     }),
   });
 
-  if (!res.ok || !res.body) {
-    const errorText = await res.text();
-    throw new Error(`OpenAI error ${res.status}: ${errorText}`);
-  }
+  if (!response.ok) throw new Error(`OpenAI error: ${response.status}`);
 
-  const reader = res.body.getReader();
+  const reader = response.body!.getReader();
   const decoder = new TextDecoder();
-  let buffer = "";
-  let providerId: string | undefined;
   const toolCalls = new Map<string, ToolCallState>();
+  let providerId: string | undefined;
+  let buffer = "";
 
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
+
     buffer += decoder.decode(value, { stream: true });
     const lines = buffer.split("\n");
     buffer = lines.pop() ?? "";
 
     for (const line of lines) {
       const trimmed = line.trim();
-      if (!trimmed.startsWith("data:")) continue;
-      const data = trimmed.slice(5).trim();
-      if (data === "[DONE]") return;
-      try {
-        const json = JSON.parse(data);
-        if (!providerId && typeof json?.id === "string") {
-          providerId = json.id;
-          onProviderId(providerId);
-        }
-        const delta = json?.choices?.[0]?.delta?.content;
-        if (typeof delta === "string" && delta.length > 0) {
-          onDelta(delta);
-        }
-        const toolDeltas = json?.choices?.[0]?.delta?.tool_calls;
-        if (Array.isArray(toolDeltas)) {
-          for (const toolDelta of toolDeltas) {
-            const toolId = toolDelta?.id;
-            const callId = toolId || `call_${toolDelta?.index ?? "unknown"}`;
-            const name = toolDelta?.function?.name;
-            const argsDelta = toolDelta?.function?.arguments ?? "";
+      if (!trimmed.startsWith("data:") || trimmed === "data: [DONE]") continue;
 
-            if (!toolCalls.has(callId)) {
-              toolCalls.set(callId, { id: callId, name, argsText: "" });
-            }
-            const state = toolCalls.get(callId)!;
-            if (name) state.name = name;
-            if (typeof argsDelta === "string" && argsDelta.length > 0) {
-              state.argsText += argsDelta;
-              onToolDelta(callId, argsDelta, state.name);
-            }
+      const json = JSON.parse(trimmed.slice(5));
+      if (!providerId && json.id) {
+        providerId = json.id;
+        callbacks.onStart(providerId);
+      }
+
+      const delta = json.choices?.[0]?.delta;
+      if (delta?.content) callbacks.onDelta(delta.content);
+
+      if (delta?.tool_calls) {
+        for (const tc of delta.tool_calls) {
+          const id = tc.id || `call_${tc.index}`;
+          if (!toolCalls.has(id))
+            toolCalls.set(id, { id, name: tc.function?.name, argsText: "" });
+
+          const state = toolCalls.get(id)!;
+          if (tc.function?.name) state.name = tc.function.name;
+          if (tc.function?.arguments) {
+            state.argsText += tc.function.arguments;
+            callbacks.onToolDelta(
+              id,
+              tc.function.arguments,
+              state.argsText,
+              state.name
+            );
           }
         }
-      } catch {
-        // ignore malformed chunks
       }
     }
   }
 
+  // Finalize Tool Calls
   for (const state of toolCalls.values()) {
-    let input: unknown = state.argsText;
+    let parsedArgs;
     try {
-      input = JSON.parse(state.argsText);
+      parsedArgs = JSON.parse(state.argsText);
     } catch {
-      // keep raw string
+      parsedArgs = state.argsText;
     }
-    onToolComplete(state.id, state.name ?? "tool", input, providerId);
+    callbacks.onToolComplete(
+      state.id,
+      state.name || "tool",
+      parsedArgs,
+      providerId
+    );
   }
-};
+}
 
-console.log("chat handler up and running!");
+// --- Server Handler ---
 
-serve(async (req: Request) => {
-  console.log("chat request:", req);
-  if (req.method === "OPTIONS") {
+serve(async (req) => {
+  if (req.method === "OPTIONS")
     return new Response("ok", { headers: corsHeaders });
-  }
+  if (req.headers.get("x-api-key") !== ENV.ANON_KEY)
+    return new Response("Unauthorized", { status: 401 });
 
-  if (req.method !== "POST") {
-    return new Response("Method Not Allowed", {
-      status: 405,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  // Puck cloud-client sendet den Anon Key im Header "x-api-key" (vgl. cloud-api.ts)
-  const apiKey = req.headers.get("x-api-key");
-  if (!EXPECTED_ANON_KEY || apiKey !== EXPECTED_ANON_KEY) {
-    return new Response(
-      JSON.stringify({ error: "Unauthorized: x-api-key missing or invalid" }),
-      {
-        status: 401,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
-  }
-
-  let payload: any;
-  try {
-    payload = await req.json();
-  } catch (error) {
-    console.error("chat error:", error);
-    return new Response(
-      JSON.stringify({ success: false, error: "Invalid JSON payload" }),
-      {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
-  }
+  const payload = await req.json();
 
   const stream = new ReadableStream({
     async start(controller) {
-      const chatId = payload?.chatId ?? `chat_${crypto.randomUUID()}`;
-      const messageId = payload?.messageId ?? `msg_${crypto.randomUUID()}`;
-      const textId = `msg_${crypto.randomUUID().replaceAll("-", "")}`;
-      let providerId: string | undefined;
+      const manager = new PuckStreamManager(controller);
+      const ids = {
+        chat: payload.chatId ?? `chat_${crypto.randomUUID()}`,
+        msg: payload.messageId ?? `msg_${crypto.randomUUID()}`,
+        text: `msg_${crypto.randomUUID().replace(/-/g, "")}`,
+      };
 
-      sendChunk(controller, {
+      manager.send({
         type: "data-new-chat-created",
-        data: { chatId },
+        data: { chatId: ids.chat },
         transient: true,
       });
-      sendChunk(controller, { type: "start", messageId });
-      sendChunk(controller, { type: "start-step" });
+      manager.send({ type: "start", messageId: ids.msg });
+      manager.send({ type: "start-step" });
 
       try {
-        const openAIMessages = toOpenAIMessages(payload);
-        const openAITools = buildOpenAITools(payload?.tools);
-        let textStarted = false;
         const toolStarted = new Set<string>();
 
         await streamOpenAI(
-          openAIMessages,
-          openAITools,
-          (delta) => {
-            if (!textStarted) {
-              textStarted = true;
-              sendChunk(controller, {
+          Transformers.messages(payload.messages, payload.context),
+          Transformers.tools(payload.tools),
+          {
+            onStart: (id) =>
+              manager.send({
                 type: "text-start",
-                id: textId,
-                providerMetadata: providerId
-                  ? { openai: { itemId: providerId } }
-                  : undefined,
+                id: ids.text, // Muss ein String sein
+                providerMetadata: { openai: { itemId: id } },
+              }),
+            onDelta: (delta) =>
+              manager.send({
+                type: "text-delta",
+                id: ids.text,
+                delta: delta, // Muss ein String sein
+              }),
+            onToolDelta: (id, delta, full, name) => {
+              if (!toolStarted.has(id)) {
+                toolStarted.add(id);
+                manager.send({
+                  type: "tool-input-start",
+                  toolCallId: id,
+                  toolName: name || "tool", // Darf nicht undefined sein
+                });
+              }
+              manager.send({
+                type: "tool-input-delta",
+                toolCallId: id,
+                inputTextDelta: delta,
               });
-            }
-            sendChunk(controller, { type: "text-delta", id: textId, delta });
-          },
-          (toolCallId, argsDelta, toolName) => {
-            if (!toolStarted.has(toolCallId)) {
-              toolStarted.add(toolCallId);
-              sendChunk(controller, {
-                type: "tool-input-start",
-                toolCallId,
-                toolName: toolName ?? "tool",
+              manager.handleLiveParsing(full, id);
+            },
+            onToolComplete: async (id, name, input) => {
+              const db = createAdminClient();
+              if (db)
+                await db
+                  .from("ai_tool_calls")
+                  .upsert({ id, tool_name: name, tool_args: input });
+
+              manager.send({
+                type: "tool-input-available",
+                toolCallId: id,
+                toolName: name,
+                input,
               });
-              sendChunk(controller, {
-                type: "data-tool-status",
-                id: toolCallId,
-                data: {
-                  toolCallId,
-                  status: {
-                    loading: true,
-                    label: `Running ${toolName ?? "tool"}...`,
-                  },
-                },
-              });
-            }
-            sendChunk(controller, {
-              type: "tool-input-delta",
-              toolCallId,
-              inputTextDelta: argsDelta,
-            });
-          },
-          async (toolCallId, toolName, input, openaiId) => {
-            const supabaseAdmin = createAdminClient();
-            if (!supabaseAdmin) {
-              console.warn(
-                "SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY missing; cannot persist tool context."
-              );
-            } else {
-              await supabaseAdmin.from(TOOL_CALL_TABLE).upsert({
-                id: toolCallId,
-                created_at: new Date().toISOString(),
-                messages: openAIMessages,
-                tools: openAITools,
-                tool_name: toolName ?? "tool",
-                tool_args: input ?? {},
-              });
-            }
-            sendChunk(controller, {
-              type: "tool-input-available",
-              toolCallId,
-              toolName,
-              input,
-              providerMetadata: openaiId
-                ? { openai: { itemId: openaiId } }
-                : undefined,
-            });
-            sendChunk(controller, {
-              type: "tool-output-available",
-              toolCallId,
-              output: {
-                status: {
-                  loading: false,
-                  label: `Tool call ${toolName} received`,
-                },
-              },
-            });
-          },
-          (openaiId) => {
-            providerId = openaiId;
-            if (!textStarted) {
-              sendChunk(controller, {
-                type: "text-start",
-                id: textId,
-                providerMetadata: { openai: { itemId: openaiId } },
-              });
-              textStarted = true;
-            }
+              manager.sendToolStatus(id, "Erfolgreich erstellt!", false);
+            },
           }
         );
 
-        if (textStarted) {
-          sendChunk(controller, {
-            type: "text-end",
-            id: textId,
-            providerMetadata: providerId
-              ? { openai: { itemId: providerId } }
-              : undefined,
-          });
-        }
-        sendChunk(controller, { type: "finish-step" });
-        sendChunk(controller, { type: "finish" });
-      } catch (error) {
-        console.error("openai error:", error);
-        sendChunk(controller, {
-          type: "error",
-          errorText: error instanceof Error ? error.message : "Unknown error",
-        });
-        sendChunk(controller, { type: "finish" });
+        manager.send({ type: "finish-step" });
+        manager.send({ type: "finish" });
+      } catch (err) {
+        manager.send({ type: "error", errorText: err.message });
       } finally {
         controller.close();
       }
