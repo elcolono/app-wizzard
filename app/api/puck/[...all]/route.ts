@@ -3,7 +3,7 @@
 import { puckHandler, tool } from "@puckeditor/cloud-client";
 import { z } from "zod";
 
-// Das atomare Schema bleibt die Basis für die Kommunikation
+// Das atomare Schema für die Operationen (Bleibt gleich)
 const BuildOperationSchema = z.discriminatedUnion("op", [
   z.object({ op: z.literal("reset") }),
   z.object({
@@ -16,7 +16,7 @@ const BuildOperationSchema = z.discriminatedUnion("op", [
     id: z.string(),
     props: z.record(z.string(), z.any()).default({}),
     index: z.number(),
-    zone: z.string(),
+    zone: z.string().optional(),
   }),
   z.object({
     op: z.literal("update"),
@@ -33,35 +33,61 @@ const BuildOperationSchema = z.discriminatedUnion("op", [
 ]);
 
 const createPageInputSchema = z.object({
-  description: z.string().describe("Summary of the design"),
-  build: z.array(BuildOperationSchema).describe("List of atomic operations"),
+  description: z
+    .string()
+    .describe("A brief description of what is being built."),
+  build: z
+    .array(BuildOperationSchema)
+    .describe("The sequence of atomic operations to execute."),
 });
 
-export const POST = (request) => {
+export const POST = async (request: Request) => {
+  // 1. Request klonen, um den Body für uns UND den puckHandler nutzbar zu machen
+  const clonedRequest = request.clone();
+  const body = await clonedRequest.json();
+  const { config, pageData } = body;
+
+  // 2. Den Kontext für die KI vorbereiten
+  // Wir geben ihr die Kategorien und die exakte Definition der Komponentenfelder
+  const componentDefinitions = JSON.stringify(
+    config?.components || {},
+    null,
+    2
+  );
+  const categories = JSON.stringify(config?.categories || {}, null, 2);
+
   return puckHandler(request, {
     host: process.env.SUPABASE_URL,
     apiKey: process.env.SUPABASE_ANON_KEY,
     ai: {
-      context: "You are a professional web designer.",
+      context: `You are an expert web designer. 
+                CURRENT PAGE STATE: ${JSON.stringify(pageData?.content || [])}
+                
+                COMPONENT LIBRARY (Categories):
+                ${categories}
+
+                DETAILED COMPONENT DEFINITIONS (Fields & Tailwind Instructions):
+                ${componentDefinitions}
+
+                RULES:
+                1. Always use Tailwind classes in the 'className' prop.
+                2. For layout components (Box, HStack, VStack, etc.), nested components go into the 'content' prop.
+                3. Respect the 'ai.instructions' provided in the component definitions.`,
       tools: {
         createPage: tool({
           name: "createPage",
-          // Hier liegen jetzt die "Marschbefehle" für die KI
-          description: `Build a page structure using atomic operations. 
-            Instructions:
-            1. Always start with {'op': 'reset'} to clear the canvas.
-            2. Use 'updateRoot' for global page settings.
-            3. Use 'add' to create components with a unique UUID.
-            4. Use 'update' to refine props (e.g., typing text) for a streaming effect.
-            
-            Available Components & Props (EXTRACT FROM CONFIG)`,
+          description: `Build or modify the page using atomic operations.
+            - Use 'reset' for a blank canvas.
+            - Use 'add' to insert components.
+            - IDs must be unique UUIDs.
+            - Nested layout: components inside 'Box' or 'Stack' belong in 'props.content'.`,
           inputSchema: createPageInputSchema,
           execute: async (input) => {
             return {
               build: input.build,
               status: {
                 loading: false,
-                label: `Generiert: ${input.description}`,
+                label: `Applying design: ${input.description}`,
               },
             };
           },

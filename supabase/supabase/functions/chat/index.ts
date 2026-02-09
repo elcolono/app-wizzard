@@ -150,6 +150,9 @@ async function streamOpenAI(
 ) {
   if (!ENV.OPENAI_KEY) throw new Error("Missing OpenAI API Key");
 
+  console.log("messages", messages);
+  console.log("tools", tools);
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
