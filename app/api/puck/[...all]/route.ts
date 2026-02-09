@@ -60,19 +60,23 @@ export const POST = async (request: Request) => {
     host: process.env.SUPABASE_URL,
     apiKey: process.env.SUPABASE_ANON_KEY,
     ai: {
-      context: `You are an expert web designer. 
-                CURRENT PAGE STATE: ${JSON.stringify(pageData?.content || [])}
-                
-                COMPONENT LIBRARY (Categories):
-                ${categories}
-
-                DETAILED COMPONENT DEFINITIONS (Fields & Tailwind Instructions):
-                ${componentDefinitions}
-
-                RULES:
-                1. Always use Tailwind classes in the 'className' prop.
-                2. For layout components (Box, HStack, VStack, etc.), nested components go into the 'content' prop.
-                3. Respect the 'ai.instructions' provided in the component definitions.`,
+      context: `You are an expert web designer using the Puck editor.
+          
+          STRICT RULES FOR GENERATION:
+          1. IDs: Every 'id' must be a unique UUID (e.g., '550e8400-e29b-41d4-a716-446655440000'). Never use 'container-1'.
+          2. SLOTS/ZONES: To nest a component inside another, the 'zone' property MUST match the slot field name. 
+             - For Box, HStack, VStack, and Container, the slot name is 'content'. 
+             - Example: If a Heading is inside a Box, its 'zone' is 'content' and its parent 'id' must match the Box's id.
+          3. PROPS ARE MANDATORY: Never add a component with empty props. 
+             - For 'Heading', set 'title' and 'size'.
+             - For 'Text', set 'text'.
+             - Use 'className' for Tailwind: Add padding (p-8, py-20), alignment, and colors (bg-primary, text-white).
+          4. LAYOUT FLOW: 
+             - Start with a 'Container' or 'Box' for the section wrapper.
+             - Use 'VStack' for vertical spacing within the hero.
+          
+          COMPONENT LIBRARY: ${categories}
+          DEFINITIONS: ${componentDefinitions}`,
       tools: {
         createPage: tool({
           name: "createPage",

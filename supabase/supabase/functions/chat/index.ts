@@ -57,32 +57,31 @@ class PuckStreamManager {
     });
   }
 
+  // 1. In der PuckStreamManager Klasse:
   handleLiveParsing(fullArgs: string, toolCallId: string) {
     try {
       const partial = parse(fullArgs);
-      if (!partial) return;
+      if (!partial || !Array.isArray(partial.build)) return;
 
       if (partial.description) {
         this.sendToolStatus(toolCallId, partial.description, true);
       }
 
-      if (Array.isArray(partial.build)) {
-        partial.build.forEach((op: any, i: number) => {
-          if (op.op) {
-            // Nur senden, wenn die Operation valide aussieht
-            this.send({
-              type: "data-build-op",
-              transient: true,
-              data: {
-                op: op.op,
-                path: op.path || "content",
-                value: op.props || op.value || {}, // Puck erwartet oft 'value'
-                id: `${toolCallId}_${i}`,
-              },
-            });
-          }
-        });
-      }
+      partial.build.forEach((op: any, i: number) => {
+        if (op.op) {
+          // Wir senden das Objekt flacher, passend zum funktionierenden Beispiel
+          this.send({
+            type: "data-build-op",
+            transient: true,
+            data: {
+              ...op,
+              id: op.id || `temp_${toolCallId}_${i}`,
+              // Falls 'props' vorhanden sind, stelle sicher, dass sie gesendet werden
+              props: op.props || op.value || {},
+            },
+          });
+        }
+      });
     } catch (_) {}
   }
 }
@@ -150,9 +149,6 @@ async function streamOpenAI(
 ) {
   if (!ENV.OPENAI_KEY) throw new Error("Missing OpenAI API Key");
 
-  console.log("messages", messages);
-  console.log("tools", tools);
-
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -171,15 +167,18 @@ async function streamOpenAI(
 
   const reader = response.body!.getReader();
   const decoder = new TextDecoder();
-  const toolCalls = new Map<string, ToolCallState>();
+  const toolCallsByIndex = new Map<number, ToolCallState>();
+  const toolCallsById = new Map<string, ToolCallState>();
   let providerId: string | undefined;
   let buffer = "";
 
   while (true) {
     const { done, value } = await reader.read();
-    if (done) break;
-
-    buffer += decoder.decode(value, { stream: true });
+    if (done) {
+      buffer += decoder.decode();
+    } else {
+      buffer += decoder.decode(value, { stream: true });
+    }
     const lines = buffer.split("\n");
     buffer = lines.pop() ?? "";
 
@@ -187,46 +186,72 @@ async function streamOpenAI(
       const trimmed = line.trim();
       if (!trimmed.startsWith("data:") || trimmed === "data: [DONE]") continue;
 
-      const json = JSON.parse(trimmed.slice(5));
-      if (!providerId && json.id) {
-        providerId = json.id;
-        callbacks.onStart(providerId);
-      }
+      try {
+        const json = JSON.parse(trimmed.slice(5));
+        if (!providerId && json.id) {
+          providerId = json.id;
+          callbacks.onStart(providerId);
+        }
 
-      const delta = json.choices?.[0]?.delta;
-      if (delta?.content) callbacks.onDelta(delta.content);
+        const delta = json.choices?.[0]?.delta;
+        if (delta?.content) callbacks.onDelta(delta.content);
 
-      if (delta?.tool_calls) {
-        for (const tc of delta.tool_calls) {
-          const id = tc.id || `call_${tc.index}`;
-          if (!toolCalls.has(id))
-            toolCalls.set(id, { id, name: tc.function?.name, argsText: "" });
+        if (delta?.tool_calls) {
+          for (const tc of delta.tool_calls) {
+            const index = tc.index ?? 0;
+            const existing = toolCallsByIndex.get(index);
+            const initialId = tc.id || existing?.id || `call_${index}`;
 
-          const state = toolCalls.get(id)!;
-          if (tc.function?.name) state.name = tc.function.name;
-          if (tc.function?.arguments) {
-            state.argsText += tc.function.arguments;
+            let state = existing;
+            if (!state) {
+              state = {
+                id: initialId,
+                name: tc.function?.name || "",
+                argsText: "",
+              };
+              toolCallsByIndex.set(index, state);
+              toolCallsById.set(state.id, state);
+            }
+
+            if (tc.id && state.id !== tc.id) {
+              toolCallsById.delete(state.id);
+              state.id = tc.id;
+              toolCallsById.set(state.id, state);
+            }
+
+            if (tc.function?.name) {
+              state.name = tc.function.name;
+            }
+
+            if (tc.function?.arguments) {
+              state.argsText += tc.function.arguments;
+            }
+
             callbacks.onToolDelta(
-              id,
-              tc.function.arguments,
+              state.id,
+              tc.function?.arguments || "",
               state.argsText,
               state.name
             );
           }
         }
+      } catch (e) {
+        console.error("Error parsing SSE line:", trimmed, e);
       }
     }
+
+    if (done) break;
   }
 
   // Finalize Tool Calls
-  for (const state of toolCalls.values()) {
+  for (const state of toolCallsByIndex.values()) {
     let parsedArgs;
     try {
       parsedArgs = JSON.parse(state.argsText);
     } catch {
       parsedArgs = state.argsText;
     }
-    callbacks.onToolComplete(
+    await callbacks.onToolComplete(
       state.id,
       state.name || "tool",
       parsedArgs,
@@ -281,22 +306,39 @@ serve(async (req) => {
                 id: ids.text,
                 delta: delta, // Muss ein String sein
               }),
+            // Im serve-Handler innerhalb von streamOpenAI Callbacks:
             onToolDelta: (id, delta, full, name) => {
-              if (!toolStarted.has(id)) {
+              console.log("onToolDelta", id, delta, full, name);
+              // WICHTIG: Wir nutzen den Namen, sobald er vom streamOpenAI State geliefert wird
+              if (!toolStarted.has(id) && name) {
                 toolStarted.add(id);
                 manager.send({
                   type: "tool-input-start",
                   toolCallId: id,
-                  toolName: name || "tool", // Darf nicht undefined sein
+                  toolName: name, // Jetzt "createPage" statt "tool"
                 });
+
+                // Optional: Sofort ein Reset schicken, wenn das Tool createPage heißt
+                if (name === "createPage") {
+                  manager.send({
+                    type: "data-build-op",
+                    transient: true,
+                    data: { op: "reset" },
+                  });
+                }
               }
-              manager.send({
-                type: "tool-input-delta",
-                toolCallId: id,
-                inputTextDelta: delta,
-              });
-              manager.handleLiveParsing(full, id);
+
+              // Nur senden, wenn das Tool offiziell gestartet wurde
+              if (toolStarted.has(id)) {
+                manager.send({
+                  type: "tool-input-delta",
+                  toolCallId: id,
+                  inputTextDelta: delta,
+                });
+                manager.handleLiveParsing(full, id);
+              }
             },
+            // 2. Im serve-Handler bei onToolComplete:
             onToolComplete: async (id, name, input) => {
               const db = createAdminClient();
               if (db)
@@ -304,13 +346,23 @@ serve(async (req) => {
                   .from("ai_tool_calls")
                   .upsert({ id, tool_name: name, tool_args: input });
 
+              // Erstens: Bestätige den Input
               manager.send({
                 type: "tool-input-available",
                 toolCallId: id,
                 toolName: name,
                 input,
               });
-              manager.sendToolStatus(id, "Erfolgreich erstellt!", false);
+
+              // ZWEITENS (WICHTIG): Sende ein explizites Output-Event,
+              // damit das Frontend weiß, dass das Tool fertig ist.
+              manager.send({
+                type: "tool-output-available",
+                toolCallId: id,
+                output: {
+                  status: { loading: false, label: "Seite aktualisiert" },
+                },
+              });
             },
           }
         );
