@@ -167,7 +167,7 @@ class PuckStreamManager {
       const partial = parse(fullArgs);
       if (!partial || !Array.isArray(partial.build)) return;
 
-      // Tool status only when description actually changed (avoid one status per delta)
+      // Sobald description aus dem Stream geparst ist: data-tool-status (loading + Label)
       if (partial.description) {
         const prev = this.lastToolStatusLabel.get(toolCallId);
         if (prev !== partial.description) {
@@ -258,6 +258,7 @@ async function streamOpenAI(
   tools: any[],
   callbacks: {
     onDelta: (t: string) => void;
+    onEnd: () => void;
     onToolDelta: (
       id: string,
       delta: string,
@@ -297,6 +298,7 @@ async function streamOpenAI(
   const toolCallsById = new Map<string, ToolCallState>();
   let providerId: string | undefined;
   let buffer = "";
+  let textOpen = false;
 
   while (true) {
     const { done, value } = await reader.read();
@@ -317,12 +319,18 @@ async function streamOpenAI(
         if (!providerId && json.id) {
           providerId = json.id;
           callbacks.onStart(providerId);
+          textOpen = true;
         }
 
         const delta = json.choices?.[0]?.delta;
-        if (delta?.content) callbacks.onDelta(delta.content);
-
+        if (delta?.content) {
+          callbacks.onDelta(delta.content);
+        }
         if (delta?.tool_calls) {
+          if (textOpen) {
+            callbacks.onEnd();
+            textOpen = false;
+          }
           for (const tc of delta.tool_calls) {
             const index = tc.index ?? 0;
             const existing = toolCallsByIndex.get(index);
@@ -366,7 +374,10 @@ async function streamOpenAI(
       }
     }
 
-    if (done) break;
+    if (done) {
+      if (textOpen) callbacks.onEnd();
+      break;
+    }
   }
 
   // Finalize Tool Calls
@@ -419,36 +430,42 @@ serve(async (req) => {
 
       try {
         const toolStarted = new Set<string>();
+        let lastProviderId: string | undefined;
 
         await streamOpenAI(
           Transformers.messages(payload.messages, payload.context),
           Transformers.tools(payload.tools),
           {
-            onStart: (id) =>
+            onStart: (id) => {
+              lastProviderId = id;
               manager.send({
                 type: "text-start",
-                id: ids.text, // Muss ein String sein
+                id: ids.text,
                 providerMetadata: { openai: { itemId: id } },
-              }),
+              });
+            },
             onDelta: (delta) =>
               manager.send({
                 type: "text-delta",
                 id: ids.text,
-                delta: delta, // Muss ein String sein
+                delta,
+              }),
+            onEnd: () =>
+              manager.send({
+                type: "text-end",
+                id: ids.text,
+                providerMetadata: { openai: { itemId: lastProviderId } },
               }),
             // Im serve-Handler innerhalb von streamOpenAI Callbacks:
             onToolDelta: (id, delta, full, name) => {
-              console.log("onToolDelta", id, delta, full, name);
-              // WICHTIG: Wir nutzen den Namen, sobald er vom streamOpenAI State geliefert wird
+              // 1. Zuerst: tool-input-start (einmal pro Tool-Call)
               if (!toolStarted.has(id) && name) {
                 toolStarted.add(id);
                 manager.send({
                   type: "tool-input-start",
                   toolCallId: id,
-                  toolName: name, // Jetzt "createPage" statt "tool"
+                  toolName: name,
                 });
-
-                // Optional: Sofort ein Reset schicken, wenn das Tool createPage heißt
                 if (name === "createPage") {
                   manager.send({
                     type: "data-build-op",
@@ -459,18 +476,20 @@ serve(async (req) => {
                 }
               }
 
-              // Nur senden, wenn das Tool offiziell gestartet wurde
+              // 2. Pro Chunk: tool-input-delta mit dem rohen Delta (wie Ideal 326–349)
               if (toolStarted.has(id)) {
                 manager.send({
                   type: "tool-input-delta",
                   toolCallId: id,
                   inputTextDelta: delta,
                 });
+                // 3. Live-Parse: sobald description da ist → data-tool-status (wie Ideal 680–696)
                 manager.handleLiveParsing(full, id);
               }
             },
             // 2. Im serve-Handler bei onToolComplete:
             onToolComplete: async (id, name, input) => {
+              console.log("onToolComplete", id, name, input);
               const db = createAdminClient();
               if (db)
                 await db
