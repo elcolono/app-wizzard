@@ -14,7 +14,7 @@ const ENV = {
 
 const STREAM_HEADERS = {
   ...corsHeaders,
-  "Content-Type": "text-event-stream; charset=utf-8",
+  "Content-Type": "text/event-stream; charset=utf-8",
   "Cache-Control": "no-cache, no-transform",
   Connection: "keep-alive",
 };
@@ -219,89 +219,98 @@ class PuckStreamManager {
     this.buildStatusSent.add(toolCallId);
   }
 
-  handleLiveParsing(fullArgs: string, toolCallId: string) {
-    try {
-      const partial = parse(fullArgs);
-      if (!partial || !Array.isArray(partial.build)) return;
+  /**
+   * Verarbeitet bei jedem partial.build-Update nur das aktuellste Element (letztes im Array)
+   * und ruft processBuildOp dafür auf – solange bis ein neues Element dazukommt.
+   */
+  processBuildStream(partial: { build?: any[] }, toolCallId: string) {
+    const build = partial?.build;
+    if (!Array.isArray(build) || build.length === 0) return;
+    const lastOp = build[build.length - 1];
+    this.processBuildOp(lastOp, toolCallId);
+  }
 
-      // Sobald description aus dem Stream geparst ist: tool-input-delta (für Status/Label)
-      if (partial.description) {
-        const prev = this.lastToolStatusLabel.get(toolCallId);
-        if (prev !== partial.description) {
-          this.lastToolStatusLabel.set(toolCallId, partial.description);
-          this.sendToolInputDelta(toolCallId, partial.description);
-        }
+  processBuildOp(op: any, toolCallId: string) {
+    try {
+      if (!op || typeof op !== "object" || typeof op.op !== "string") return;
+      if (!isValidBuildOp(op)) return;
+
+      if (op.op === "reset") {
+        if (this.resetSent.has(toolCallId)) return;
+        this.resetSent.add(toolCallId);
+        this.lastSentRootProps.delete(toolCallId);
+        this.lastSentAddProps = new Map(
+          [...this.lastSentAddProps.entries()].filter(
+            ([k]) => !k.startsWith(`${toolCallId}:`)
+          )
+        );
+        this.lastSentUpdateProps = new Map(
+          [...this.lastSentUpdateProps.entries()].filter(
+            ([k]) => !k.startsWith(`${toolCallId}:`)
+          )
+        );
       }
 
-      const build = partial.build;
-      const sentCount = this.lastSentBuildLength.get(toolCallId) ?? 0;
-      if (build.length <= sentCount) return;
+      const payload: any = {
+        ...op,
+        props: op.props ?? op.value ?? {},
+      };
+      if (op.op === "add") {
+        payload.zone = normalizeTransientZone(op);
+      }
 
-      for (let i = sentCount; i < build.length; i++) {
-        const op = build[i];
-        if (!op || typeof op !== "object" || typeof op.op !== "string")
-          continue;
-        if (!isValidBuildOp(op)) continue;
-
-        if (op.op === "reset") {
-          if (this.resetSent.has(toolCallId)) continue;
-          this.resetSent.add(toolCallId);
-          this.lastSentRootProps.delete(toolCallId);
-          this.lastSentAddProps = new Map(
-            [...this.lastSentAddProps.entries()].filter(
-              ([k]) => !k.startsWith(`${toolCallId}:`)
-            )
-          );
-          this.lastSentUpdateProps = new Map(
-            [...this.lastSentUpdateProps.entries()].filter(
-              ([k]) => !k.startsWith(`${toolCallId}:`)
-            )
-          );
+      // updateRoot: pro Prop ein Event, nur wenn sich der Wert geändert hat
+      if (
+        op.op === "updateRoot" &&
+        payload.props &&
+        typeof payload.props === "object"
+      ) {
+        let last = this.lastSentRootProps.get(toolCallId);
+        if (!last) {
+          last = {};
+          this.lastSentRootProps.set(toolCallId, last);
         }
-
-        const payload: any = {
-          ...op,
-          props: op.props ?? op.value ?? {},
-        };
-        if (op.op === "add") {
-          payload.zone = normalizeTransientZone(op);
+        for (const key of Object.keys(payload.props)) {
+          const value = payload.props[key];
+          if (value === last[key]) continue;
+          last[key] = value;
+          this.send({
+            type: "data-build-op",
+            transient: true,
+            data: { op: "updateRoot", props: { [key]: value } },
+          });
         }
-
-        // updateRoot: pro Prop ein Event, nur wenn sich der Wert geändert hat
-        if (
-          op.op === "updateRoot" &&
-          payload.props &&
-          typeof payload.props === "object"
-        ) {
-          let last = this.lastSentRootProps.get(toolCallId);
-          if (!last) {
-            last = {};
-            this.lastSentRootProps.set(toolCallId, last);
-          }
-          for (const key of Object.keys(payload.props)) {
+      } else if (
+        op.op === "add" &&
+        payload.props &&
+        typeof payload.props === "object"
+      ) {
+        // add: pro Prop ein Event (nur id, type, index, zone + eine Prop), nur bei Änderung
+        const addKey = `${toolCallId}:${payload.id}`;
+        let last = this.lastSentAddProps.get(addKey);
+        if (!last) {
+          last = {};
+          this.lastSentAddProps.set(addKey, last);
+        }
+        const keys = Object.keys(payload.props);
+        if (keys.length === 0) {
+          this.send({
+            type: "data-build-op",
+            transient: true,
+            data: {
+              op: "add",
+              id: payload.id,
+              type: payload.type,
+              index: payload.index,
+              zone: payload.zone,
+              props: {},
+            },
+          });
+        } else {
+          for (const key of keys) {
             const value = payload.props[key];
             if (value === last[key]) continue;
             last[key] = value;
-            this.send({
-              type: "data-build-op",
-              transient: true,
-              data: { op: "updateRoot", props: { [key]: value } },
-            });
-          }
-        } else if (
-          op.op === "add" &&
-          payload.props &&
-          typeof payload.props === "object"
-        ) {
-          // add: pro Prop ein Event (nur id, type, index, zone + eine Prop), nur bei Änderung
-          const addKey = `${toolCallId}:${payload.id}`;
-          let last = this.lastSentAddProps.get(addKey);
-          if (!last) {
-            last = {};
-            this.lastSentAddProps.set(addKey, last);
-          }
-          const keys = Object.keys(payload.props);
-          if (keys.length === 0) {
             this.send({
               type: "data-build-op",
               transient: true,
@@ -311,65 +320,48 @@ class PuckStreamManager {
                 type: payload.type,
                 index: payload.index,
                 zone: payload.zone,
-                props: {},
-              },
-            });
-          } else {
-            for (const key of keys) {
-              const value = payload.props[key];
-              if (value === last[key]) continue;
-              last[key] = value;
-              this.send({
-                type: "data-build-op",
-                transient: true,
-                data: {
-                  op: "add",
-                  id: payload.id,
-                  type: payload.type,
-                  index: payload.index,
-                  zone: payload.zone,
-                  props: { [key]: value },
-                },
-              });
-            }
-          }
-        } else if (
-          op.op === "update" &&
-          payload.id &&
-          payload.props &&
-          typeof payload.props === "object"
-        ) {
-          // update: pro Prop ein Event (nur id + eine Prop), nur bei Änderung
-          const updateKey = `${toolCallId}:${payload.id}`;
-          let last = this.lastSentUpdateProps.get(updateKey);
-          if (!last) {
-            last = {};
-            this.lastSentUpdateProps.set(updateKey, last);
-          }
-          for (const key of Object.keys(payload.props)) {
-            const value = payload.props[key];
-            if (value === last[key]) continue;
-            last[key] = value;
-            this.send({
-              type: "data-build-op",
-              transient: true,
-              data: {
-                op: "update",
-                id: payload.id,
                 props: { [key]: value },
               },
             });
           }
-        } else {
+        }
+      } else if (
+        op.op === "update" &&
+        payload.id &&
+        payload.props &&
+        typeof payload.props === "object"
+      ) {
+        // update: pro Prop ein Event (nur id + eine Prop), nur bei Änderung
+        const updateKey = `${toolCallId}:${payload.id}`;
+        let last = this.lastSentUpdateProps.get(updateKey);
+        if (!last) {
+          last = {};
+          this.lastSentUpdateProps.set(updateKey, last);
+        }
+        for (const key of Object.keys(payload.props)) {
+          const value = payload.props[key];
+          if (value === last[key]) continue;
+          last[key] = value;
           this.send({
             type: "data-build-op",
             transient: true,
-            data: payload,
+            data: {
+              op: "update",
+              id: payload.id,
+              props: { [key]: value },
+            },
           });
         }
+      } else {
+        this.send({
+          type: "data-build-op",
+          transient: true,
+          data: payload,
+        });
       }
-      this.lastSentBuildLength.set(toolCallId, build.length);
-    } catch (_) {}
+    } catch (error) {
+      console.error("Error handling live parsing:", error);
+    }
   }
 }
 
@@ -630,11 +622,10 @@ serve(async (req) => {
                 });
               }
 
-              // 2. Pro Chunk: tool-input-delta mit dem rohen Delta (wie Ideal 326–349)
+              // 2. Pro Chunk: tool-input-delta mit dem rohen Delta
               if (toolStarted.has(id)) {
                 if (name === "createPage") {
                   const partial = parse(full);
-                  console.log("partial", partial);
 
                   if (!manager.hasResetSent(id)) {
                     manager.send({
@@ -646,7 +637,7 @@ serve(async (req) => {
                   }
 
                   // Einmal senden, wenn description stabil ist (gleich wie im vorherigen Chunk)
-                  if (partial.description) {
+                  if (partial?.description) {
                     const prev = manager.getPreviousDescription(id);
                     const alreadySent = manager.getLastSentDescription(id);
                     if (
@@ -671,20 +662,17 @@ serve(async (req) => {
                     manager.setPreviousDescription(id, partial.description);
                   }
 
+                  // Nur das letzte Element in partial.build pro Chunk verarbeiten
                   if (
+                    partial &&
                     Array.isArray(partial.build) &&
                     partial.build.length > 0
                   ) {
-                    // Einmalig data-tool-status (Creating page...) sobald build verfügbar ist
                     if (!manager.hasBuildStatusSent(id)) {
                       manager.sendToolStatus(id, "Creating page...", true);
                       manager.markBuildStatusSent(id);
                     }
-                    // manager.send({
-                    //   type: "data-build-op",
-                    //   transient: true,
-                    //   data: partial.build,
-                    // });
+                    manager.processBuildStream(partial, id);
                   }
                 }
               }
