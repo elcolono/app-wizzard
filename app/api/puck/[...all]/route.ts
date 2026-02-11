@@ -5,31 +5,61 @@ import { z } from "zod";
 
 // Das atomare Schema für die Operationen (Bleibt gleich)
 const BuildOperationSchema = z.discriminatedUnion("op", [
-  z.object({ op: z.literal("reset") }),
   z.object({
-    op: z.literal("updateRoot"),
-    props: z.record(z.string(), z.any()),
+    op: z
+      .literal("reset")
+      .describe("Clear the current page before rebuilding."),
   }),
   z.object({
-    op: z.literal("add"),
-    type: z.string(),
-    id: z.string(),
-    props: z.record(z.string(), z.any()).default({}),
-    index: z.number(),
-    zone: z.string().optional(),
+    op: z.literal("updateRoot").describe("Update root-level page metadata."),
+    props: z
+      .record(z.string(), z.any())
+      .describe("Root props to merge, e.g. page title or subtitle."),
   }),
   z.object({
-    op: z.literal("update"),
-    id: z.string(),
-    props: z.record(z.string(), z.any()),
+    op: z.literal("add").describe("Insert a new component instance."),
+    type: z
+      .string()
+      .describe("Component type key from the component library, e.g. Heading."),
+    id: z
+      .string()
+      .describe("Unique component id (prefer UUID-based ids for stability)."),
+    props: z
+      .record(z.string(), z.any())
+      .default({})
+      .describe(
+        "Initial component props matching the selected component type. Do not nest children here; use separate add ops with zone instead."
+      ),
+    index: z
+      .number()
+      .describe("Zero-based position of the component inside the target zone."),
+    zone: z
+      .string()
+      .describe(
+        "Target zone in parentId:slot format, e.g. root:default-zone or hero-container-1:content"
+      ),
   }),
   z.object({
-    op: z.literal("move"),
-    id: z.string(),
-    index: z.number(),
-    zone: z.string(),
+    op: z.literal("update").describe("Update props of an existing component."),
+    id: z.string().describe("Id of the component to update."),
+    props: z
+      .record(z.string(), z.any())
+      .describe("Partial props to merge into the existing component."),
   }),
-  z.object({ op: z.literal("delete"), id: z.string() }),
+  z.object({
+    op: z
+      .literal("move")
+      .describe("Move an existing component to a new place."),
+    id: z.string().describe("Id of the component to move."),
+    index: z
+      .number()
+      .describe("Zero-based destination index inside the target zone."),
+    zone: z.string().describe("Destination zone in parentId:slot format."),
+  }),
+  z.object({
+    op: z.literal("delete").describe("Remove an existing component."),
+    id: z.string().describe("Id of the component to delete."),
+  }),
 ]);
 
 const createPageInputSchema = z.object({
@@ -38,7 +68,18 @@ const createPageInputSchema = z.object({
     .describe("A brief description of what is being built."),
   build: z
     .array(BuildOperationSchema)
+    .default([])
     .describe("The sequence of atomic operations to execute."),
+});
+
+const createPageOutputSchema = z.object({
+  build: z
+    .array(BuildOperationSchema)
+    .describe("The resolved build operations that were applied."),
+  status: z.object({
+    loading: z.boolean().describe("Whether the page is still being processed."),
+    label: z.string().describe("Human-friendly status text."),
+  }),
 });
 
 export const POST = async (request: Request) => {
@@ -67,37 +108,44 @@ export const POST = async (request: Request) => {
           - If the request is clear, proceed: briefly say what you are about to do, then use the appropriate tool (e.g. createPage).
           - After a tool has finished, briefly confirm what was done (e.g. "Hero- und Testimonial-Section sind erstellt.").
           - Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
-
-          STRICT RULES FOR GENERATION:
-          1. IDs: Every 'id' must be a unique UUID (e.g., '550e8400-e29b-41d4-a716-446655440000'). Never use 'container-1'.
-          2. SLOTS/ZONES: To nest a component inside another, the 'zone' property MUST match the slot field name. 
-             - For Box, HStack, VStack, and Container, the slot name is 'content'. 
-             - Example: If a Heading is inside a Box, its 'zone' is 'content' and its parent 'id' must match the Box's id.
-          3. PROPS ARE MANDATORY: Never add a component with empty props. 
-             - For 'Heading', set 'title' and 'size'.
-             - For 'Text', set 'text'.
-             - Use 'className' for Tailwind: Add padding (p-8, py-20), alignment, and colors (bg-primary, text-white).
-          4. LAYOUT FLOW: 
-             - Start with a 'Container' or 'Box' for the section wrapper.
-             - Use 'VStack' for vertical spacing within the hero.
-
-          COMPONENT LIBRARY: ${categories}
-          DEFINITIONS: ${componentDefinitions}`,
+        `,
       tools: {
         createPage: tool({
           name: "createPage",
           description: `Build or modify the page using atomic operations.
-            - Use 'reset' for a blank canvas.
-            - Use 'add' to insert components.
-            - IDs must be unique UUIDs.
-            - Nested layout: components inside 'Box' or 'Stack' belong in 'props.content'.`,
+            - Build ops must use op: "reset" | "updateRoot" | "add" | "update" | "move" | "delete"
+            - For "add" and "update", ALL component fields go inside props (not top-level)
+            - "add" requires: type, id, index, zone, props
+            - Do NOT nest components inside props.content; children must be separate "add" ops with proper zone
+            - "zone" format: parentId:slot (e.g. root:default-zone or Container-uuid:content)
+            - Example add op:
+              {"op":"add","type":"Heading","id":"uuid","index":0,"zone":"root:default-zone","props":{"title":"...","size":"2xl","textAlignment":"text-center"}}
+            - Examples from a real run:
+              {"op":"reset"}
+              {"op":"updateRoot","props":{"primary":"Hero & Testimonial Dev-Agentur Landing Page"}}
+              {"op":"add","type":"Container","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","index":0,"zone":"root:default-zone","props":{"content":[]}}
+              {"op":"add","type":"VStack","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","index":0,"zone":"Container-200b452a-7555-41a1-8e1a-2872554bce4a:content","props":{"content":[]}}
+              {"op":"add","type":"Heading","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","index":0,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
+              {"op":"update","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","props":{"title":"Wir entwickeln Ihre digitale Zukunft.","size":"5xl","textAlignment":"text-center","bold":true}}
+              {"op":"add","type":"Text","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","index":1,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
+              {"op":"update","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","props":{"text":"Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business.","size":"xl","className":"text-gray-600 text-center mb-8"}}
+              {"op":"add","type":"Button","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","index":2,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{"content":[]}}
+              {"op":"add","type":"ButtonText","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","index":0,"zone":"Button-9a851b93-3742-4edf-b535-efa15cf395a3:content","props":{}}
+              {"op":"update","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","props":{"text":"Jetzt Projekt anfragen","className":"font-semibold"}}
+              {"op":"update","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","props":{"variant":"solid","action":"primary","size":"lg","className":"mx-auto"}}
+            - COMPONENT LIBRARY: ${categories}
+            - COMPONENT DEFINITIONS: ${componentDefinitions}`,
           inputSchema: createPageInputSchema,
+          outputSchema: createPageOutputSchema,
           execute: async (input) => {
+            const label = input.description
+              ? `Applying design: ${input.description}`
+              : "Applying design";
             return {
               build: input.build,
               status: {
                 loading: false,
-                label: `Applying design: ${input.description}`,
+                label,
               },
             };
           },
