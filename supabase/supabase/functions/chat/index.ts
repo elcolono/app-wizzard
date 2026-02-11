@@ -74,6 +74,12 @@ const isValidBuildOp = (op: any): boolean => {
   }
 };
 
+/**
+ * Normalizes a list of build ops so the Puck UI can apply them.
+ * - Ensures "add" ops have zone in "parentId:slot" form (e.g. "root:default-zone" or "Container-xyz:content").
+ * - Infers missing index per zone and tracks the current parent for nested "content" zones.
+ * - Leaves reset/update/move/delete as-is (only normalizes props).
+ */
 const normalizeBuildOps = (build: any[]) => {
   const containerTypes = new Set(["Container", "Box", "VStack", "HStack"]);
   const zoneIndex = new Map<string, number>();
@@ -99,6 +105,7 @@ const normalizeBuildOps = (build: any[]) => {
     )
       return normalized;
 
+    // Zone must be "parentId:slot". Bare "content" or missing → root or current container's content.
     let zone = normalized.zone;
     if (!zone || zone === "content") {
       zone = currentParentId
@@ -107,12 +114,14 @@ const normalizeBuildOps = (build: any[]) => {
     }
     normalized.zone = zone;
 
+    // Ensure numeric index per zone; reuse op.index or next free index.
     const nextIndex = zoneIndex.get(zone) ?? 0;
     const usedIndex =
       typeof normalized.index === "number" ? normalized.index : nextIndex;
     normalized.index = usedIndex;
     zoneIndex.set(zone, Math.max(nextIndex, usedIndex + 1));
 
+    // Containers become parents for following "content" children.
     if (containerTypes.has(normalized.type)) {
       currentParentId = normalized.id;
     }
@@ -141,6 +150,18 @@ class PuckStreamManager {
   private lastSentBuildLength = new Map<string, number>();
   /** Last tool status label sent per tool call (to avoid spamming data-tool-status). */
   private lastToolStatusLabel = new Map<string, string>();
+  /** Zuletzt in tool-input-available gesendete description (nur einmal senden wenn stabil). */
+  private lastSentDescription = new Map<string, string>();
+  /** Description aus dem vorherigen Chunk (zum Erkennen, ob description stabil ist). */
+  private previousDescription = new Map<string, string>();
+  /** Ob für diesen Tool-Call schon "Creating page..." (data-tool-status) beim ersten build gesendet wurde. */
+  private buildStatusSent = new Set<string>();
+  /** Pro Tool-Call: zuletzt gesendete Werte pro Root-Prop (primary, secondary), damit wir nur bei Änderung senden. */
+  private lastSentRootProps = new Map<string, Record<string, unknown>>();
+  /** Pro Tool-Call + Komponenten-id: zuletzt gesendete Props bei add, damit wir nur bei Änderung senden. */
+  private lastSentAddProps = new Map<string, Record<string, unknown>>();
+  /** Pro Tool-Call + Komponenten-id: zuletzt gesendete Props bei update, damit wir nur bei Änderung senden. */
+  private lastSentUpdateProps = new Map<string, Record<string, unknown>>();
 
   constructor(private controller: ReadableStreamDefaultController) {}
 
@@ -154,12 +175,48 @@ class PuckStreamManager {
     this.send({
       type: "data-tool-status",
       id: toolCallId,
-      data: { status: { loading, label } },
+      data: { toolCallId, status: { loading, label } },
     });
+  }
+
+  sendToolInputDelta(toolCallId: string, delta: string) {
+    this.send({
+      type: "tool-input-delta",
+      toolCallId,
+      inputTextDelta: delta,
+    });
+  }
+
+  hasResetSent(toolCallId: string): boolean {
+    return this.resetSent.has(toolCallId);
   }
 
   markResetSent(toolCallId: string) {
     this.resetSent.add(toolCallId);
+  }
+
+  getLastSentDescription(toolCallId: string): string | undefined {
+    return this.lastSentDescription.get(toolCallId);
+  }
+
+  setLastSentDescription(toolCallId: string, description: string) {
+    this.lastSentDescription.set(toolCallId, description);
+  }
+
+  getPreviousDescription(toolCallId: string): string | undefined {
+    return this.previousDescription.get(toolCallId);
+  }
+
+  setPreviousDescription(toolCallId: string, description: string) {
+    this.previousDescription.set(toolCallId, description);
+  }
+
+  hasBuildStatusSent(toolCallId: string): boolean {
+    return this.buildStatusSent.has(toolCallId);
+  }
+
+  markBuildStatusSent(toolCallId: string) {
+    this.buildStatusSent.add(toolCallId);
   }
 
   handleLiveParsing(fullArgs: string, toolCallId: string) {
@@ -167,18 +224,17 @@ class PuckStreamManager {
       const partial = parse(fullArgs);
       if (!partial || !Array.isArray(partial.build)) return;
 
-      // Sobald description aus dem Stream geparst ist: data-tool-status (loading + Label)
+      // Sobald description aus dem Stream geparst ist: tool-input-delta (für Status/Label)
       if (partial.description) {
         const prev = this.lastToolStatusLabel.get(toolCallId);
         if (prev !== partial.description) {
           this.lastToolStatusLabel.set(toolCallId, partial.description);
-          this.sendToolStatus(toolCallId, partial.description, true);
+          this.sendToolInputDelta(toolCallId, partial.description);
         }
       }
 
       const build = partial.build;
       const sentCount = this.lastSentBuildLength.get(toolCallId) ?? 0;
-      // Only emit ops we haven't sent yet (avoids duplicate data-build-op for same op)
       if (build.length <= sentCount) return;
 
       for (let i = sentCount; i < build.length; i++) {
@@ -190,22 +246,127 @@ class PuckStreamManager {
         if (op.op === "reset") {
           if (this.resetSent.has(toolCallId)) continue;
           this.resetSent.add(toolCallId);
+          this.lastSentRootProps.delete(toolCallId);
+          this.lastSentAddProps = new Map(
+            [...this.lastSentAddProps.entries()].filter(
+              ([k]) => !k.startsWith(`${toolCallId}:`)
+            )
+          );
+          this.lastSentUpdateProps = new Map(
+            [...this.lastSentUpdateProps.entries()].filter(
+              ([k]) => !k.startsWith(`${toolCallId}:`)
+            )
+          );
         }
 
         const payload: any = {
           ...op,
           props: op.props ?? op.value ?? {},
         };
-        // UI expects "parentId:slot" (e.g. "root:default-zone"); bare "content" → root-level
         if (op.op === "add") {
           payload.zone = normalizeTransientZone(op);
         }
 
-        this.send({
-          type: "data-build-op",
-          transient: true,
-          data: payload,
-        });
+        // updateRoot: pro Prop ein Event, nur wenn sich der Wert geändert hat
+        if (
+          op.op === "updateRoot" &&
+          payload.props &&
+          typeof payload.props === "object"
+        ) {
+          let last = this.lastSentRootProps.get(toolCallId);
+          if (!last) {
+            last = {};
+            this.lastSentRootProps.set(toolCallId, last);
+          }
+          for (const key of Object.keys(payload.props)) {
+            const value = payload.props[key];
+            if (value === last[key]) continue;
+            last[key] = value;
+            this.send({
+              type: "data-build-op",
+              transient: true,
+              data: { op: "updateRoot", props: { [key]: value } },
+            });
+          }
+        } else if (
+          op.op === "add" &&
+          payload.props &&
+          typeof payload.props === "object"
+        ) {
+          // add: pro Prop ein Event (nur id, type, index, zone + eine Prop), nur bei Änderung
+          const addKey = `${toolCallId}:${payload.id}`;
+          let last = this.lastSentAddProps.get(addKey);
+          if (!last) {
+            last = {};
+            this.lastSentAddProps.set(addKey, last);
+          }
+          const keys = Object.keys(payload.props);
+          if (keys.length === 0) {
+            this.send({
+              type: "data-build-op",
+              transient: true,
+              data: {
+                op: "add",
+                id: payload.id,
+                type: payload.type,
+                index: payload.index,
+                zone: payload.zone,
+                props: {},
+              },
+            });
+          } else {
+            for (const key of keys) {
+              const value = payload.props[key];
+              if (value === last[key]) continue;
+              last[key] = value;
+              this.send({
+                type: "data-build-op",
+                transient: true,
+                data: {
+                  op: "add",
+                  id: payload.id,
+                  type: payload.type,
+                  index: payload.index,
+                  zone: payload.zone,
+                  props: { [key]: value },
+                },
+              });
+            }
+          }
+        } else if (
+          op.op === "update" &&
+          payload.id &&
+          payload.props &&
+          typeof payload.props === "object"
+        ) {
+          // update: pro Prop ein Event (nur id + eine Prop), nur bei Änderung
+          const updateKey = `${toolCallId}:${payload.id}`;
+          let last = this.lastSentUpdateProps.get(updateKey);
+          if (!last) {
+            last = {};
+            this.lastSentUpdateProps.set(updateKey, last);
+          }
+          for (const key of Object.keys(payload.props)) {
+            const value = payload.props[key];
+            if (value === last[key]) continue;
+            last[key] = value;
+            this.send({
+              type: "data-build-op",
+              transient: true,
+              data: {
+                op: "update",
+                id: payload.id,
+                props: { [key]: value },
+              },
+            });
+          }
+        } else {
+          this.send({
+            type: "data-build-op",
+            transient: true,
+            data: payload,
+          });
+        }
       }
       this.lastSentBuildLength.set(toolCallId, build.length);
     } catch (_) {}
@@ -458,6 +619,7 @@ serve(async (req) => {
               }),
             // Im serve-Handler innerhalb von streamOpenAI Callbacks:
             onToolDelta: (id, delta, full, name) => {
+              // console.log("onToolDelta", id, delta, full, name);
               // 1. Zuerst: tool-input-start (einmal pro Tool-Call)
               if (!toolStarted.has(id) && name) {
                 toolStarted.add(id);
@@ -466,78 +628,113 @@ serve(async (req) => {
                   toolCallId: id,
                   toolName: name,
                 });
-                if (name === "createPage") {
-                  manager.send({
-                    type: "data-build-op",
-                    transient: true,
-                    data: { op: "reset" },
-                  });
-                  manager.markResetSent(id);
-                }
               }
 
               // 2. Pro Chunk: tool-input-delta mit dem rohen Delta (wie Ideal 326–349)
               if (toolStarted.has(id)) {
-                manager.send({
-                  type: "tool-input-delta",
-                  toolCallId: id,
-                  inputTextDelta: delta,
-                });
-                // 3. Live-Parse: sobald description da ist → data-tool-status (wie Ideal 680–696)
-                manager.handleLiveParsing(full, id);
+                if (name === "createPage") {
+                  const partial = parse(full);
+                  console.log("partial", partial);
+
+                  if (!manager.hasResetSent(id)) {
+                    manager.send({
+                      type: "data-build-op",
+                      transient: true,
+                      data: { op: "reset" },
+                    });
+                    manager.markResetSent(id);
+                  }
+
+                  // Einmal senden, wenn description stabil ist (gleich wie im vorherigen Chunk)
+                  if (partial.description) {
+                    const prev = manager.getPreviousDescription(id);
+                    const alreadySent = manager.getLastSentDescription(id);
+                    if (
+                      prev === partial.description &&
+                      alreadySent === undefined
+                    ) {
+                      manager.send({
+                        type: "tool-input-available",
+                        toolCallId: id,
+                        toolName: name,
+                        input: {
+                          description: partial.description,
+                        },
+                        providerMetadata: {
+                          openai: {
+                            itemId: lastProviderId,
+                          },
+                        },
+                      });
+                      manager.setLastSentDescription(id, partial.description);
+                    }
+                    manager.setPreviousDescription(id, partial.description);
+                  }
+
+                  if (
+                    Array.isArray(partial.build) &&
+                    partial.build.length > 0
+                  ) {
+                    // Einmalig data-tool-status (Creating page...) sobald build verfügbar ist
+                    if (!manager.hasBuildStatusSent(id)) {
+                      manager.sendToolStatus(id, "Creating page...", true);
+                      manager.markBuildStatusSent(id);
+                    }
+                    // manager.send({
+                    //   type: "data-build-op",
+                    //   transient: true,
+                    //   data: partial.build,
+                    // });
+                  }
+                }
               }
             },
             // 2. Im serve-Handler bei onToolComplete:
             onToolComplete: async (id, name, input) => {
-              console.log("onToolComplete", id, name, input);
-              const db = createAdminClient();
-              if (db)
-                await db
-                  .from("ai_tool_calls")
-                  .upsert({ id, tool_name: name, tool_args: input });
-
-              const normalizedBuild = Array.isArray(input?.build)
-                ? normalizeBuildOps(input.build)
-                : null;
-              const outputInput = normalizedBuild
-                ? { ...input, build: normalizedBuild }
-                : input;
-
-              if (input?.description) {
-                manager.sendToolStatus(id, input.description, false);
-              }
-
-              if (normalizedBuild) {
-                normalizedBuild.forEach((op: any) => {
-                  if (!isValidBuildOp(op)) return;
-                  manager.send({
-                    type: "data-build-op",
-                    transient: true,
-                    data: {
-                      ...op,
-                      props: op.props || op.value || {},
-                    },
-                  });
-                });
-              }
-
-              // Erstens: Bestätige den Input
-              manager.send({
-                type: "tool-input-available",
-                toolCallId: id,
-                toolName: name,
-                input: outputInput,
-              });
-
-              // ZWEITENS (WICHTIG): Sende ein explizites Output-Event,
-              // damit das Frontend weiß, dass das Tool fertig ist.
-              manager.send({
-                type: "tool-output-available",
-                toolCallId: id,
-                output: {
-                  status: { loading: false, label: "Seite aktualisiert" },
-                },
-              });
+              // console.log("onToolComplete", id, name, input);
+              // const db = createAdminClient();
+              // if (db)
+              //   await db
+              //     .from("ai_tool_calls")
+              //     .upsert({ id, tool_name: name, tool_args: input });
+              // const normalizedBuild = Array.isArray(input?.build)
+              //   ? normalizeBuildOps(input.build)
+              //   : null;
+              // const outputInput = normalizedBuild
+              //   ? { ...input, build: normalizedBuild }
+              //   : input;
+              // if (input?.description) {
+              //   manager.sendToolStatus(id, input.description, false);
+              // }
+              // if (normalizedBuild) {
+              //   normalizedBuild.forEach((op: any) => {
+              //     if (!isValidBuildOp(op)) return;
+              //     manager.send({
+              //       type: "data-build-op",
+              //       transient: true,
+              //       data: {
+              //         ...op,
+              //         props: op.props || op.value || {},
+              //       },
+              //     });
+              //   });
+              // }
+              // // Erstens: Bestätige den Input
+              // manager.send({
+              //   type: "tool-input-available",
+              //   toolCallId: id,
+              //   toolName: name,
+              //   input: outputInput,
+              // });
+              // // ZWEITENS (WICHTIG): Sende ein explizites Output-Event,
+              // // damit das Frontend weiß, dass das Tool fertig ist.
+              // manager.send({
+              //   type: "tool-output-available",
+              //   toolCallId: id,
+              //   output: {
+              //     status: { loading: false, label: "Seite aktualisiert" },
+              //   },
+              // });
             },
           }
         );

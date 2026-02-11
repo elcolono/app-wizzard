@@ -1,0 +1,1849 @@
+data: {
+    "type": "data-new-chat-created",
+    "data": {
+        "chatId": "chat_ead4348e-1a97-4b64-b6be-d1427b28476a"
+    },
+    "transient": true
+}
+
+data: {
+    "type": "start",
+    "messageId": "msg_270533b2-4836-45b2-a2e4-e63ebdff2c85"
+}
+
+data: {
+    "type": "start-step"
+}
+
+data: {
+    "type": "text-start",
+    "id": "msg_69a5ee99f4e641388c7a98c8396f031e",
+    "providerMetadata": {
+        "openai": {
+            "itemId": "chatcmpl-D7RQ4ewlJpVeQ1CvgmwLIFThZW5tE"
+        }
+    }
+}
+
+data: {
+    "type": "tool-input-start",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "toolName": "createPage"
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "reset"
+    }
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": ""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "description"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Hero"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " section"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " layout"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " with"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " a"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Container"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " VStack"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " for"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " spacing"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Heading"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": ","
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " and"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " components"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": ".\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "build"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":["
+}
+
+data: {
+    "type": "data-tool-status",
+    "id": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "data": {
+        "status": {
+            "loading": true,
+            "label": "Hero section layout with a Container, VStack for spacing, Heading, and Text components."
+        }
+    }
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "op"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "reset"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\"},{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "op"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "add"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "type"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Container"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "id"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "915"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "a"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "0"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "ef"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "b"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-b"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "867"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "451"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "1"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "dde"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "738"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "688"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "2"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "e"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "dc"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "0"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "zone"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "content"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "props"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "max"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Width"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "6"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "xl"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "class"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Name"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "mx"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-auto"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " p"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "8"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\"}"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "},{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "op"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "add"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "type"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "V"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Stack"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "id"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "d"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "1"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "8"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "88"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "a"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "854"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "5"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "48"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "cd"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "ac"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "8"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "ec"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "282"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "88"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "3"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "0"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "zone"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "content"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "props"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "space"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "lg"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "class"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Name"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-center"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\"}"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "},{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "op"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "add"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "type"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Heading"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "id"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "582"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "301"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "2"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "170"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "3"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "4"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "3"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "d"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "89"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "8"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-a"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "1"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "eb"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "587"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "1"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "cf"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "5"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "e"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "zone"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "content"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "props"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "title"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Welcome"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " to"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Our"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Website"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "size"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "2"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "xl"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "class"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Name"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-gray"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "800"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " font"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-bold"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\"}"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "},{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "op"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "add"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "type"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "id"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "60"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "d"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "527"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "fd"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-b"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "4"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "d"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "4"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "d"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "e"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "17"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "62"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "1"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "c"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "9"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "aa"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "06"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "f"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "0"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "zone"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "content"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "props"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":{\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Discover"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " a"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " world"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " of"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " amazing"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " content"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " and"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " features"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " designed"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " just"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " for"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " you"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "."
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " Explore"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": " now"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "!"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\",\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "class"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "Name"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\":\""
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "text"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-gray"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "-"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "600"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "\"}}"
+}
+
+data: {
+    "type": "tool-input-delta",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "inputTextDelta": "]}"
+}
+
+data: {
+    "type": "data-tool-status",
+    "id": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "data": {
+        "status": {
+            "loading": false,
+            "label": "Hero section layout with a Container, VStack for spacing, Heading, and Text components."
+        }
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "reset",
+        "props": {}
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "add",
+        "type": "Container",
+        "id": "915a0efb-b867-4511-9dde-7386882e9dc0",
+        "zone": "root:default-zone",
+        "props": {
+            "maxWidth": "6xl",
+            "className": "mx-auto p-8"
+        },
+        "index": 0
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "add",
+        "type": "VStack",
+        "id": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0",
+        "zone": "915a0efb-b867-4511-9dde-7386882e9dc0:content",
+        "props": {
+            "space": "lg",
+            "className": "text-center"
+        },
+        "index": 0
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "add",
+        "type": "Heading",
+        "id": "582c3012-1703-4f3d-89c8-a1eb5871cf5e",
+        "zone": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0:content",
+        "props": {
+            "title": "Welcome to Our Website",
+            "size": "2xl",
+            "className": "text-gray-800 font-bold"
+        },
+        "index": 0
+    }
+}
+
+data: {
+    "type": "data-build-op",
+    "transient": true,
+    "data": {
+        "op": "add",
+        "type": "Text",
+        "id": "60d527fd-bc9f-4d4d-9e17-62f1c9aa06f0",
+        "zone": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0:content",
+        "props": {
+            "text": "Discover a world of amazing content and features designed just for you. Explore now!",
+            "className": "text-gray-600"
+        },
+        "index": 1
+    }
+}
+
+data: {
+    "type": "tool-input-available",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "toolName": "createPage",
+    "input": {
+        "description": "Hero section layout with a Container, VStack for spacing, Heading, and Text components.",
+        "build": [
+            {
+                "op": "reset"
+            },
+            {
+                "op": "add",
+                "type": "Container",
+                "id": "915a0efb-b867-4511-9dde-7386882e9dc0",
+                "zone": "root:default-zone",
+                "props": {
+                    "maxWidth": "6xl",
+                    "className": "mx-auto p-8"
+                },
+                "index": 0
+            },
+            {
+                "op": "add",
+                "type": "VStack",
+                "id": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0",
+                "zone": "915a0efb-b867-4511-9dde-7386882e9dc0:content",
+                "props": {
+                    "space": "lg",
+                    "className": "text-center"
+                },
+                "index": 0
+            },
+            {
+                "op": "add",
+                "type": "Heading",
+                "id": "582c3012-1703-4f3d-89c8-a1eb5871cf5e",
+                "zone": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0:content",
+                "props": {
+                    "title": "Welcome to Our Website",
+                    "size": "2xl",
+                    "className": "text-gray-800 font-bold"
+                },
+                "index": 0
+            },
+            {
+                "op": "add",
+                "type": "Text",
+                "id": "60d527fd-bc9f-4d4d-9e17-62f1c9aa06f0",
+                "zone": "d1f8f88a-8545-48cd-9ac8-fec28288c3c0:content",
+                "props": {
+                    "text": "Discover a world of amazing content and features designed just for you. Explore now!",
+                    "className": "text-gray-600"
+                },
+                "index": 1
+            }
+        ]
+    }
+}
+
+data: {
+    "type": "tool-output-available",
+    "toolCallId": "call_qY0myS0TgJyHOyfj1ZvLvvFL",
+    "output": {
+        "status": {
+            "loading": false,
+            "label": "Seite aktualisiert"
+        }
+    }
+}
+
+data: {
+    "type": "finish-step"
+}
+
+data: {
+    "type": "finish"
+}
+
+data: [DONE
+]
