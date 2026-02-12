@@ -94,6 +94,8 @@ class PuckStreamManager {
   private lastSentPayloadByOp = new Map<string, string>();
   /** Track add ops sent per toolCallId+component id (add should only be sent once). */
   private addSentByToolCall = new Map<string, Set<string>>();
+  /** Track last build array length per toolCallId. */
+  private lastBuildLengthByToolCall = new Map<string, number>();
 
   constructor(private controller: ReadableStreamDefaultController) {}
 
@@ -169,7 +171,17 @@ class PuckStreamManager {
     const build = partial?.build;
     if (!Array.isArray(build) || build.length === 0) return;
     const lastOp = build[build.length - 1];
-    this.processBuildOp(lastOp, toolCallId);
+    const previousLength = this.lastBuildLengthByToolCall.get(toolCallId) ?? 0;
+    if (build.length > previousLength) {
+      if (build.length >= 2) {
+        const previousOp = build[build.length - 2];
+        this.processBuildOp(previousOp, toolCallId);
+      }
+      this.lastBuildLengthByToolCall.set(toolCallId, build.length);
+    }
+    if (lastOp?.op !== "add") {
+      this.processBuildOp(lastOp, toolCallId);
+    }
   }
 
   processBuildOp(op: any, toolCallId: string) {
@@ -188,6 +200,7 @@ class PuckStreamManager {
           )
         );
         this.addSentByToolCall.delete(toolCallId);
+        this.lastBuildLengthByToolCall.delete(toolCallId);
       }
 
       const payload: any = {
@@ -195,13 +208,60 @@ class PuckStreamManager {
         props: normalized.props ?? normalized.value ?? {},
       };
 
+      const opKey = `${toolCallId}:${payload.op}:${payload.id ?? "root"}`;
+      const signature = JSON.stringify(payload);
+
+      if (
+        payload.op === "add" &&
+        payload.props &&
+        typeof payload.props === "object"
+      ) {
+        const { content, ...rest } = payload.props as Record<string, unknown>;
+        const hasOtherProps = Object.keys(rest).length > 0;
+        if (hasOtherProps) {
+          const addPayload = {
+            ...payload,
+            props: content !== undefined ? { content } : {},
+          };
+          const addKey = `${toolCallId}:add:${addPayload.id ?? "root"}`;
+          const addSignature = JSON.stringify(addPayload);
+          if (this.lastSentPayloadByOp.get(addKey) !== addSignature) {
+            if (!this.hasAddSent(toolCallId, addPayload.id)) {
+              this.markAddSent(toolCallId, addPayload.id);
+              this.lastSentPayloadByOp.set(addKey, addSignature);
+              this.send({
+                type: "data-build-op",
+                transient: true,
+                data: addPayload,
+              });
+            }
+          }
+
+          const updatePayload = {
+            op: "update",
+            id: payload.id,
+            props: rest,
+          };
+          const updateKey = `${toolCallId}:update:${
+            updatePayload.id ?? "root"
+          }`;
+          const updateSignature = JSON.stringify(updatePayload);
+          if (this.lastSentPayloadByOp.get(updateKey) !== updateSignature) {
+            this.lastSentPayloadByOp.set(updateKey, updateSignature);
+            this.send({
+              type: "data-build-op",
+              transient: true,
+              data: updatePayload,
+            });
+          }
+          return;
+        }
+      }
+
       if (payload.op === "add" && typeof payload.id === "string") {
         if (this.hasAddSent(toolCallId, payload.id)) return;
         this.markAddSent(toolCallId, payload.id);
       }
-
-      const opKey = `${toolCallId}:${payload.op}:${payload.id ?? "root"}`;
-      const signature = JSON.stringify(payload);
       if (this.lastSentPayloadByOp.get(opKey) === signature) return;
       this.lastSentPayloadByOp.set(opKey, signature);
 
@@ -476,9 +536,6 @@ serve(async (req) => {
 
               // 2. Pro Chunk: tool-input-delta mit dem rohen Delta
               if (toolStarted.has(id)) {
-                if (delta) {
-                  manager.sendToolInputDelta(id, delta);
-                }
                 if (name === "createPage") {
                   const partial = parse(full);
 
@@ -536,6 +593,15 @@ serve(async (req) => {
             onToolComplete: async (id, name, input) => {
               console.log("onToolComplete", id, name, input);
               if (name !== "createPage") return;
+
+              if (
+                input?.build &&
+                Array.isArray(input.build) &&
+                input.build.length
+              ) {
+                const lastOp = input.build[input.build.length - 1];
+                manager.processBuildOp(lastOp, id);
+              }
 
               if (input?.description) {
                 manager.sendToolStatus(id, input.description, false);

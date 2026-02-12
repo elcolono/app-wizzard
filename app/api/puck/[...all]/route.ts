@@ -28,7 +28,7 @@ const BuildOperationSchema = z.discriminatedUnion("op", [
       .record(z.string(), z.any())
       .default({})
       .describe(
-        "Initial component props matching the selected component type. Do not nest children here; use separate add ops with zone instead."
+        "Initial props for add. Only set content: [] if the component has a content slot. All other props must be sent via update."
       ),
     index: z
       .number()
@@ -108,6 +108,7 @@ export const POST = async (request: Request) => {
           - If the request is clear, proceed: briefly say what you are about to do, then use the appropriate tool (e.g. createPage).
           - After a tool has finished, briefly confirm what was done (e.g. "Hero- und Testimonial-Section sind erstellt.").
           - Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
+          - NEVER include JSON, build ops, or code blocks in plain text replies. Use the createPage tool for all operations only.
         `,
       tools: {
         createPage: tool({
@@ -116,6 +117,8 @@ export const POST = async (request: Request) => {
             - Build ops must use op: "reset" | "updateRoot" | "add" | "update" | "move" | "delete"
             - For "add" and "update", ALL component fields go inside props (not top-level)
             - "add" requires: type, id, index, zone, props
+            - "add" props MUST be empty or { content: [] } if the component has a content slot
+            - All other props MUST be sent via "update" or "updateRoot"
             - Do NOT nest components inside props.content; children must be separate "add" ops with proper zone
             - "zone" format: parentId:slot (e.g. root:default-zone or Container-uuid:content)
             - Example add op:
