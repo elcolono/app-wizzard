@@ -81,25 +81,23 @@ const Text: ComponentConfig<TextProps> = {
     highlight,
     puck,
   }: WithPuckProps<TextProps>) => (
-    <GluestackBox className={className}>
-      <GluestackText
-        size={size}
-        isTruncated={isTruncated}
-        bold={bold}
-        underline={underline}
-        strikeThrough={strikeThrough}
-        sub={sub}
-        italic={italic}
-        highlight={highlight}
-        ref={
-          puck.dragRef as unknown as React.Ref<
-            React.ComponentRef<typeof GluestackText>
-          >
-        }
-      >
-        {text}
-      </GluestackText>
-    </GluestackBox>
+    <GluestackText
+      size={size}
+      isTruncated={isTruncated}
+      bold={bold}
+      underline={underline}
+      strikeThrough={strikeThrough}
+      sub={sub}
+      italic={italic}
+      highlight={highlight}
+      ref={
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackText>
+        >
+      }
+    >
+      {text}
+    </GluestackText>
   ),
 };
 

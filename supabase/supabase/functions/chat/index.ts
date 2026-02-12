@@ -163,6 +163,56 @@ class PuckStreamManager {
     this.addSentByToolCall.set(toolCallId, set);
   }
 
+  private splitAddPropsToUpdate(payload: any, toolCallId: string): boolean {
+    if (
+      payload.op !== "add" ||
+      !payload.props ||
+      typeof payload.props !== "object"
+    ) {
+      return false;
+    }
+
+    const { content, ...rest } = payload.props as Record<string, unknown>;
+    const hasOtherProps = Object.keys(rest).length > 0;
+    if (!hasOtherProps) return false;
+
+    const addPayload = {
+      ...payload,
+      props: content !== undefined ? { content } : {},
+    };
+    const addKey = `${toolCallId}:add:${addPayload.id ?? "root"}`;
+    const addSignature = JSON.stringify(addPayload);
+    if (this.lastSentPayloadByOp.get(addKey) !== addSignature) {
+      if (!this.hasAddSent(toolCallId, addPayload.id)) {
+        this.markAddSent(toolCallId, addPayload.id);
+        this.lastSentPayloadByOp.set(addKey, addSignature);
+        this.send({
+          type: "data-build-op",
+          transient: true,
+          data: addPayload,
+        });
+      }
+    }
+
+    const updatePayload = {
+      op: "update",
+      id: payload.id,
+      props: rest,
+    };
+    const updateKey = `${toolCallId}:update:${updatePayload.id ?? "root"}`;
+    const updateSignature = JSON.stringify(updatePayload);
+    if (this.lastSentPayloadByOp.get(updateKey) !== updateSignature) {
+      this.lastSentPayloadByOp.set(updateKey, updateSignature);
+      this.send({
+        type: "data-build-op",
+        transient: true,
+        data: updatePayload,
+      });
+    }
+
+    return true;
+  }
+
   /**
    * Verarbeitet bei jedem partial.build-Update nur das aktuellste Element (letztes im Array)
    * und ruft processBuildOp dafür auf – solange bis ein neues Element dazukommt.
@@ -211,52 +261,7 @@ class PuckStreamManager {
       const opKey = `${toolCallId}:${payload.op}:${payload.id ?? "root"}`;
       const signature = JSON.stringify(payload);
 
-      if (
-        payload.op === "add" &&
-        payload.props &&
-        typeof payload.props === "object"
-      ) {
-        const { content, ...rest } = payload.props as Record<string, unknown>;
-        const hasOtherProps = Object.keys(rest).length > 0;
-        if (hasOtherProps) {
-          const addPayload = {
-            ...payload,
-            props: content !== undefined ? { content } : {},
-          };
-          const addKey = `${toolCallId}:add:${addPayload.id ?? "root"}`;
-          const addSignature = JSON.stringify(addPayload);
-          if (this.lastSentPayloadByOp.get(addKey) !== addSignature) {
-            if (!this.hasAddSent(toolCallId, addPayload.id)) {
-              this.markAddSent(toolCallId, addPayload.id);
-              this.lastSentPayloadByOp.set(addKey, addSignature);
-              this.send({
-                type: "data-build-op",
-                transient: true,
-                data: addPayload,
-              });
-            }
-          }
-
-          const updatePayload = {
-            op: "update",
-            id: payload.id,
-            props: rest,
-          };
-          const updateKey = `${toolCallId}:update:${
-            updatePayload.id ?? "root"
-          }`;
-          const updateSignature = JSON.stringify(updatePayload);
-          if (this.lastSentPayloadByOp.get(updateKey) !== updateSignature) {
-            this.lastSentPayloadByOp.set(updateKey, updateSignature);
-            this.send({
-              type: "data-build-op",
-              transient: true,
-              data: updatePayload,
-            });
-          }
-          return;
-        }
-      }
+      if (this.splitAddPropsToUpdate(payload, toolCallId)) return;
 
       if (payload.op === "add" && typeof payload.id === "string") {
         if (this.hasAddSent(toolCallId, payload.id)) return;
@@ -350,6 +355,10 @@ async function streamOpenAI(
       model: ENV.OPENAI_MODEL,
       messages,
       tools: tools.length > 0 ? tools : undefined,
+      tool_choice:
+        tools.length > 0
+          ? { type: "function", function: { name: "createPage" } }
+          : undefined,
       stream: true,
     }),
   });
@@ -522,7 +531,7 @@ serve(async (req) => {
               }),
             // Im serve-Handler innerhalb von streamOpenAI Callbacks:
             onToolDelta: (id, delta, full, name) => {
-              // console.log("onToolDelta", id, delta, full, name);
+              console.log("onToolDelta", id, delta, full, name);
               // console.log("onToolDelta", id, delta, full, name);
               // 1. Zuerst: tool-input-start (einmal pro Tool-Call)
               if (!toolStarted.has(id) && name) {

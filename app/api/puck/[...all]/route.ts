@@ -123,19 +123,21 @@ export const POST = async (request: Request) => {
             - "zone" format: parentId:slot (e.g. root:default-zone or Container-uuid:content)
             - Example add op:
               {"op":"add","type":"Heading","id":"uuid","index":0,"zone":"root:default-zone","props":{"title":"...","size":"2xl","textAlignment":"text-center"}}
-            - Examples from a real run:
+            - Examples from a real run (hero section with rich Tailwind classes):
               {"op":"reset"}
               {"op":"updateRoot","props":{"primary":"Hero & Testimonial Dev-Agentur Landing Page"}}
               {"op":"add","type":"Container","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","index":0,"zone":"root:default-zone","props":{"content":[]}}
+              {"op":"update","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","props":{"maxWidth":"6xl","className":"px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50"}}
               {"op":"add","type":"VStack","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","index":0,"zone":"Container-200b452a-7555-41a1-8e1a-2872554bce4a:content","props":{"content":[]}}
+              {"op":"update","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","props":{"space":"lg","className":"gap-6 md:gap-8 max-w-3xl mx-auto items-center"}}
               {"op":"add","type":"Heading","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","index":0,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
-              {"op":"update","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","props":{"title":"Wir entwickeln Ihre digitale Zukunft.","size":"5xl","textAlignment":"text-center","bold":true}}
+              {"op":"update","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","props":{"title":"Wir entwickeln Ihre digitale Zukunft.","size":"5xl","textAlignment":"text-center","bold":true,"className":"text-gray-900 tracking-tight"}}
               {"op":"add","type":"Text","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","index":1,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
-              {"op":"update","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","props":{"text":"Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business.","size":"xl","className":"text-gray-600 text-center mb-8"}}
+              {"op":"update","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","props":{"text":"Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business.","size":"xl","className":"text-gray-600 text-center mb-8 max-w-2xl"}}
               {"op":"add","type":"Button","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","index":2,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{"content":[]}}
               {"op":"add","type":"ButtonText","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","index":0,"zone":"Button-9a851b93-3742-4edf-b535-efa15cf395a3:content","props":{}}
               {"op":"update","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","props":{"text":"Jetzt Projekt anfragen","className":"font-semibold"}}
-              {"op":"update","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","props":{"variant":"solid","action":"primary","size":"lg","className":"mx-auto"}}
+              {"op":"update","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","props":{"variant":"solid","action":"primary","size":"lg","className":"mx-auto px-8 py-3 rounded-lg shadow-lg hover:opacity-90 transition"}}
             - COMPONENT LIBRARY: ${categories}
             - COMPONENT DEFINITIONS: ${componentDefinitions}`,
           inputSchema: createPageInputSchema,

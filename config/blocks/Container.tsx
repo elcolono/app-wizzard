@@ -45,7 +45,7 @@ const Container: ComponentConfig<ContainerProps> = {
   inline: false,
   ai: {
     instructions:
-      "Container is a layout wrapper that centers content horizontally (mx-auto) and limits its width (max-width). Use it to wrap the main content of a page or section so content does not stretch edge-to-edge on large screens. It can contain layout blocks (e.g. Box, VStack, Grid) and typography. Choose max-width (e.g. 6xl) and optionally add padding or other classes.",
+      "Container is a layout wrapper that centers content horizontally (mx-auto) and limits its width (max-width). It is otherwise nearly unstyled, so ALWAYS add padding via className (e.g. px-4 sm:px-6 lg:px-8, py-8/py-12) to prevent edge-to-edge content. Use it to wrap the main content of a page or section so content does not stretch on large screens. It can contain layout blocks (e.g. Box, VStack, Grid) and typography. Choose max-width (e.g. 6xl) and add spacing or other utility classes as needed.",
   },
   fields: {
     maxWidth: {
