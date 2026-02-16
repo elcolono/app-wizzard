@@ -103,43 +103,62 @@ export const POST = async (request: Request) => {
     ai: {
       context: `You are an expert web designer. You are helping a user to build a website.
 
-          COMMUNICATION:
-          - If the user's request is unclear or ambiguous, ask a short follow-up question instead of guessing (e.g. "Soll die Hero-Section eher minimalistisch oder mit viel Text sein?").
-          - If the request is clear, proceed: briefly say what you are about to do, then use the appropriate tool (e.g. createPage).
-          - After a tool has finished, briefly confirm what was done (e.g. "Hero- und Testimonial-Section sind erstellt.").
-          - Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
-          - NEVER include JSON, build ops, or code blocks in plain text replies. Use the createPage tool for all operations only.
-        `,
+--- ROLE ---
+Expert web designer; build websites using the createPage tool only.
+
+--- COMMUNICATION ---
+- If the user's request is unclear or ambiguous, ask a short follow-up question (e.g. "Soll die Hero-Section eher minimalistisch oder mit viel Text sein?").
+- If the request is clear: briefly say what you are about to do, then use createPage.
+- After a tool has finished, briefly confirm what was done (e.g. "Hero- und Testimonial-Section sind erstellt.").
+- Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
+- NEVER include JSON, build ops, or code blocks in plain text. Use the createPage tool for all operations only.`,
+
       tools: {
         createPage: tool({
           name: "createPage",
           description: `Build or modify the page using atomic operations.
-            - Build ops must use op: "reset" | "updateRoot" | "add" | "update" | "move" | "delete"
-            - For "add" and "update", ALL component fields go inside props (not top-level)
-            - "add" requires: type, id, index, zone, props
-            - "add" props MUST be empty or { content: [] } if the component has a content slot
-            - All other props MUST be sent via "update" or "updateRoot"
-            - Do NOT nest components inside props.content; children must be separate "add" ops with proper zone
-            - "zone" format: parentId:slot (e.g. root:default-zone or Container-uuid:content)
-            - Example add op:
-              {"op":"add","type":"Heading","id":"uuid","index":0,"zone":"root:default-zone","props":{"title":"...","size":"2xl","textAlignment":"text-center"}}
-            - Examples from a real run (hero section with rich Tailwind classes):
-              {"op":"reset"}
-              {"op":"updateRoot","props":{"primary":"Hero & Testimonial Dev-Agentur Landing Page"}}
-              {"op":"add","type":"Container","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","index":0,"zone":"root:default-zone","props":{"content":[]}}
-              {"op":"update","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","props":{"maxWidth":"6xl","className":"px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50"}}
-              {"op":"add","type":"VStack","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","index":0,"zone":"Container-200b452a-7555-41a1-8e1a-2872554bce4a:content","props":{"content":[]}}
-              {"op":"update","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","props":{"space":"lg","className":"gap-6 md:gap-8 max-w-3xl mx-auto items-center"}}
-              {"op":"add","type":"Heading","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","index":0,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
-              {"op":"update","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","props":{"title":"Wir entwickeln Ihre digitale Zukunft.","size":"5xl","textAlignment":"text-center","bold":true,"className":"text-gray-900 tracking-tight"}}
-              {"op":"add","type":"Text","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","index":1,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
-              {"op":"update","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","props":{"text":"Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business.","size":"xl","className":"text-gray-600 text-center mb-8 max-w-2xl"}}
-              {"op":"add","type":"Button","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","index":2,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{"content":[]}}
-              {"op":"add","type":"ButtonText","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","index":0,"zone":"Button-9a851b93-3742-4edf-b535-efa15cf395a3:content","props":{}}
-              {"op":"update","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","props":{"text":"Jetzt Projekt anfragen","className":"font-semibold"}}
-              {"op":"update","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","props":{"variant":"solid","action":"primary","size":"lg","className":"mx-auto px-8 py-3 rounded-lg shadow-lg hover:opacity-90 transition"}}
-            - COMPONENT LIBRARY: ${categories}
-            - COMPONENT DEFINITIONS: ${componentDefinitions}`,
+
+--- PURPOSE ---
+Execute a sequence of build ops to create or update the page. When the user asks for a "website" or "page", always output a FULL structure: at least one Container with content (e.g. Hero: Heading, Text, optional Button). Never respond with only reset + updateRoot.
+
+--- OPERATIONS ---
+Ops: "reset" | "updateRoot" | "add" | "update" | "move" | "delete"
+- For "add" and "update", ALL component fields go inside props (not top-level).
+- "add" requires: type, id, index, zone, props.
+- "add" props MUST be empty {} or { content: [] } if the component has a content slot. All other props MUST be sent via a following "update".
+- Do NOT nest components inside props.content; children are separate "add" ops with the correct zone.
+
+--- ZONE FORMAT ---
+parentId:slot — e.g. root:default-zone (root level) or Container-uuid:content (inside a container). Never use root:content; root zone is always root:default-zone.
+
+--- SEQUENCE ---
+For each component: first "add" (with empty props or { content: [] }), then "update" with the real props. Repeat for children.
+
+--- EXAMPLE (add then update for one component) ---
+{"op":"add","type":"Heading","id":"uuid","index":0,"zone":"root:default-zone","props":{}}
+{"op":"update","id":"uuid","props":{"title":"...","size":"2xl","textAlignment":"text-center"}}
+
+--- FULL EXAMPLE (hero section with Tailwind) ---
+{"op":"reset"}
+{"op":"updateRoot","props":{"primary":"Hero & Testimonial Dev-Agentur Landing Page"}}
+{"op":"add","type":"Container","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","index":0,"zone":"root:default-zone","props":{"content":[]}}
+{"op":"update","id":"Container-200b452a-7555-41a1-8e1a-2872554bce4a","props":{"maxWidth":"6xl","className":"px-4 sm:px-6 lg:px-8 py-16 md:py-24 bg-gray-50"}}
+{"op":"add","type":"VStack","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","index":0,"zone":"Container-200b452a-7555-41a1-8e1a-2872554bce4a:content","props":{"content":[]}}
+{"op":"update","id":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317","props":{"space":"lg","className":"gap-6 md:gap-8 max-w-3xl mx-auto items-center"}}
+{"op":"add","type":"Heading","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","index":0,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
+{"op":"update","id":"Heading-aacd19a0-67a7-432e-a970-c5a7dc67daab","props":{"title":"Wir entwickeln Ihre digitale Zukunft.","size":"5xl","textAlignment":"text-center","bold":true,"className":"text-gray-900 tracking-tight"}}
+{"op":"add","type":"Text","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","index":1,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{}}
+{"op":"update","id":"Text-81f14cc7-1eed-48c0-a87a-409d7e30fa04","props":{"text":"Individuelle Softwareentwicklung, die begeistert – von erfahrenen Profis für Ihr Business.","size":"xl","className":"text-gray-600 text-center mb-8 max-w-2xl"}}
+{"op":"add","type":"Button","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","index":2,"zone":"VStack-dfd1ad5a-8376-457c-a01a-a3d7190ca317:content","props":{"content":[]}}
+{"op":"add","type":"ButtonText","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","index":0,"zone":"Button-9a851b93-3742-4edf-b535-efa15cf395a3:content","props":{}}
+{"op":"update","id":"ButtonText-1e2324d1-d7a6-4cd8-a562-25d5c416597b","props":{"text":"Jetzt Projekt anfragen","className":"font-semibold"}}
+{"op":"update","id":"Button-9a851b93-3742-4edf-b535-efa15cf395a3","props":{"variant":"solid","action":"primary","size":"lg","className":"mx-auto px-8 py-3 rounded-lg shadow-lg hover:opacity-90 transition"}}
+
+--- COMPONENT LIBRARY ---
+${categories}
+
+--- COMPONENT DEFINITIONS ---
+${componentDefinitions}`,
           inputSchema: createPageInputSchema,
           outputSchema: createPageOutputSchema,
           execute: async (input) => {

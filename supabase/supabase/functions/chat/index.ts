@@ -358,7 +358,7 @@ async function streamOpenAI(
       tool_choice:
         tools.length > 0
           ? { type: "function", function: { name: "createPage" } }
-          : undefined,
+          : "none",
       stream: true,
     }),
   });
