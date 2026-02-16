@@ -355,11 +355,9 @@ async function streamOpenAI(
       model: ENV.OPENAI_MODEL,
       messages,
       tools: tools.length > 0 ? tools : undefined,
-      tool_choice:
-        tools.length > 0
-          ? { type: "function", function: { name: "createPage" } }
-          : "none",
+      tool_choice: tools.length > 0 ? "auto" : undefined,
       stream: true,
+      max_tokens: 16384,
     }),
   });
 
