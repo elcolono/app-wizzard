@@ -501,6 +501,9 @@ serve(async (req) => {
       manager.send({ type: "start", messageId: ids.msg });
       manager.send({ type: "start-step" });
 
+      // Early feedback so the UI shows something immediately (before OpenAI responds)
+      manager.sendToolStatus("thinking", "Thinking…", true);
+
       try {
         const toolStarted = new Set<string>();
         let lastProviderId: string | undefined;
