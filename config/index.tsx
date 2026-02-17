@@ -106,40 +106,75 @@ export const config: Config = {
       ],
     },
   },
-  components: {
-    Heading,
-    Text,
-    Box,
-    Divider,
-    HStack,
-    VStack,
-    Grid,
-    GridItem,
-    Container,
-    Card,
-    Button,
-    ButtonText,
-    ButtonSpinner,
-    ButtonIcon,
-    ButtonGroup,
-    Badge,
-    BadgeText,
-    BadgeIcon,
-    Center,
-    Image,
-    Progress,
-    Spinner,
-    Alert,
-    AlertText,
-    AlertIcon,
-    Accordion,
-    AccordionItem,
-    Input,
-    TextArea,
-    Icon,
-    Avatar,
-    AvatarGroup,
-  },
+  components: (() => {
+    const base = {
+      Heading,
+      Text,
+      Box,
+      Divider,
+      HStack,
+      VStack,
+      Grid,
+      GridItem,
+      Container,
+      Card,
+      Button,
+      ButtonText,
+      ButtonSpinner,
+      ButtonIcon,
+      ButtonGroup,
+      Badge,
+      BadgeText,
+      BadgeIcon,
+      Center,
+      Image,
+      Progress,
+      Spinner,
+      Alert,
+      AlertText,
+      AlertIcon,
+      Accordion,
+      AccordionItem,
+      Input,
+      TextArea,
+      Icon,
+      Avatar,
+      AvatarGroup,
+    } as const;
+
+    const wrap = (component: any) => {
+      if (!component) return component;
+      const existing = component.resolvePermissions;
+      return {
+        ...component,
+        resolvePermissions: async (data: any, params: any) => {
+          const id = data?.id ?? data?.props?.id;
+          const basePerms = existing
+            ? await existing(data, params)
+            : params.permissions;
+          if (typeof id !== "string") return basePerms;
+          if (
+            id.startsWith("layout-header-") ||
+            id.startsWith("layout-footer-")
+          ) {
+            return {
+              ...basePerms,
+              drag: false,
+              delete: false,
+              duplicate: false,
+              edit: false,
+              insert: false,
+            };
+          }
+          return basePerms;
+        },
+      };
+    };
+
+    return Object.fromEntries(
+      Object.entries(base).map(([key, component]) => [key, wrap(component)])
+    );
+  })(),
 };
 
 export default config;
