@@ -6,7 +6,7 @@ import { corsHeaders } from "../_shard/cors.ts";
 const ENV = {
   ANON_KEY: Deno.env.get("SUPABASE_ANON_KEY"),
   OPENAI_KEY: Deno.env.get("OPENAI_API_KEY"),
-  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o-mini",
+  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o",
   SUPABASE_URL: Deno.env.get("SUPABASE_URL"),
   SUPABASE_ROLE_KEY: Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),
 };
@@ -357,7 +357,7 @@ async function streamOpenAI(
       tools: tools.length > 0 ? tools : undefined,
       tool_choice: tools.length > 0 ? "auto" : undefined,
       stream: true,
-      max_tokens: 16384,
+      max_tokens: 16384, // gpt-4o-mini max; higher values cause 400
     }),
   });
 
