@@ -14,6 +14,25 @@ import { Client } from "./client";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getPage } from "../../lib/get-page";
+import type { Data } from "@puckeditor/core";
+
+const HEADER_PATH = "/_layout/header";
+const FOOTER_PATH = "/_layout/footer";
+
+const mergeLayout = (
+  page: Data,
+  header?: Data | null,
+  footer?: Data | null
+): Data => {
+  const headerContent = header?.content ?? [];
+  const footerContent = footer?.content ?? [];
+  const pageContent = page?.content ?? [];
+
+  return {
+    ...page,
+    content: [...headerContent, ...pageContent, ...footerContent],
+  };
+};
 
 export async function generateMetadata({
   params,
@@ -41,7 +60,15 @@ export default async function Page({
     return notFound();
   }
 
-  return <Client data={data} />;
+  if (path === HEADER_PATH || path === FOOTER_PATH) {
+    return <Client data={data} />;
+  }
+
+  const header = getPage(HEADER_PATH);
+  const footer = getPage(FOOTER_PATH);
+  const merged = mergeLayout(data, header, footer);
+
+  return <Client data={merged} />;
 }
 
 // Force Next.js to produce static pages: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic

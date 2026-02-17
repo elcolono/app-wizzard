@@ -5,13 +5,15 @@ import { Puck } from "@puckeditor/core";
 import config from "../../../config";
 import { createAiPlugin } from "@puckeditor/plugin-ai";
 import "@puckeditor/plugin-ai/styles.css";
+import { layoutPlugin } from "../../../config/plugins/layouts";
 
 const aiPlugin = createAiPlugin();
+const layoutsPlugin = layoutPlugin();
 
 export function Client({ path, data }: { path: string; data: Partial<Data> }) {
   return (
     <Puck
-      plugins={[aiPlugin]}
+      plugins={[aiPlugin, layoutsPlugin]}
       config={config}
       data={data}
       onPublish={async (data) => {
