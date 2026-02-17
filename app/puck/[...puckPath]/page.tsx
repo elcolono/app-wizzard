@@ -15,6 +15,10 @@ import "@puckeditor/core/puck.css";
 import { Client } from "./client";
 import { Metadata } from "next";
 import { getPage } from "../../../lib/get-page";
+import type { Data } from "@puckeditor/core";
+
+const HEADER_PATH = "/_layout/header";
+const FOOTER_PATH = "/_layout/footer";
 
 export async function generateMetadata({
   params,
@@ -38,7 +42,18 @@ export default async function Page({
   const path = `/${puckPath.join("/")}`;
   const data = getPage(path);
 
-  return <Client path={path} data={data || {}} />;
+  const isLayoutPage = path === HEADER_PATH || path === FOOTER_PATH;
+  const headerData: Data | null = isLayoutPage ? null : getPage(HEADER_PATH);
+  const footerData: Data | null = isLayoutPage ? null : getPage(FOOTER_PATH);
+
+  return (
+    <Client
+      path={path}
+      data={data || {}}
+      headerData={headerData ?? undefined}
+      footerData={footerData ?? undefined}
+    />
+  );
 }
 
 export const dynamic = "force-dynamic";
