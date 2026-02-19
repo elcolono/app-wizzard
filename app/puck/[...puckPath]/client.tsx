@@ -25,7 +25,7 @@ type ClientProps = {
 type InlineActionBarProps = {
   label?: string;
   children: React.ReactNode;
-  parentAction: React.ReactNode;
+  parentAction?: React.ReactNode;
 };
 
 function InlineWizardActionBar({
@@ -33,11 +33,14 @@ function InlineWizardActionBar({
   children,
   parentAction,
 }: InlineActionBarProps) {
-  const selectedItem = usePuck((s) => s.selectedItem);
+  const { selectedItem } = usePuck();
 
   const onOpenInlineWizard = React.useCallback(() => {
     if (typeof window === "undefined") return;
-    const id = selectedItem?.props?.id ?? selectedItem?.id ?? "unknown";
+    const id =
+      typeof selectedItem?.props?.id === "string"
+        ? selectedItem.props.id
+        : "unknown";
     const type = selectedItem?.type ?? "unknown";
     window.alert(`Inline Wizard (next step)\nComponent: ${type}\nID: ${id}`);
   }, [selectedItem]);
@@ -45,10 +48,10 @@ function InlineWizardActionBar({
   const actions = React.useMemo(() => {
     const items = React.Children.toArray(children);
     const duplicateIndex = items.findIndex(
-      (item) =>
-        React.isValidElement(item) &&
-        typeof item.props?.label === "string" &&
-        item.props.label === "Duplicate"
+      (item) => {
+        if (!React.isValidElement<{ label?: string }>(item)) return false;
+        return item.props.label === "Duplicate";
+      }
     );
 
     const wizardAction = (
@@ -73,7 +76,9 @@ function InlineWizardActionBar({
   }, [children, onOpenInlineWizard]);
 
   return (
-    <ActionBar label={label} parentAction={parentAction}>
+    <ActionBar label={label}>
+      {parentAction}
+      {parentAction ? <ActionBar.Separator /> : null}
       {actions}
     </ActionBar>
   );
