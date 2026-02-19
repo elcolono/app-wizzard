@@ -1,6 +1,6 @@
 export const aiInstructions = {
   className:
-    "Add Tailwind classes for this component. Use utilities for spacing, layout, colors, typography, borders, shadows, etc.",
+    "Add Tailwind classes for this component. Use utilities for spacing, layout, colors, typography, borders, shadows, etc. Important: `text-center` only centers text. To center block elements (e.g., Avatar, Image, Button), use layout utilities such as `self-center`/`mx-auto` for single elements or `flex items-center justify-center` on the parent.",
   backgroundClassName:
     "Tailwind classes for the outer/background wrapper (e.g., bg-*, py-*, etc.).",
   textContent: "Editable text content.",
