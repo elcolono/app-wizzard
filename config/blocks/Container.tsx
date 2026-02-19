@@ -45,7 +45,7 @@ const Container: ComponentConfig<ContainerProps> = {
   inline: false,
   ai: {
     instructions:
-      "Container is a layout wrapper that centers content horizontally (mx-auto) and limits its width (max-width). It is otherwise nearly unstyled, so ALWAYS add padding via className (e.g. px-4 sm:px-6 lg:px-8, py-8/py-12) to prevent edge-to-edge content. Use it to wrap the main content of a page or section so content does not stretch on large screens. It can contain layout blocks (e.g. Box, VStack, Grid) and typography. Choose max-width (e.g. 6xl) and add spacing or other utility classes as needed.",
+      "Container has two layers: an outer full-width wrapper (uses className for backgrounds/padding/spacing) and an inner centered wrapper (uses maxWidth only). Use className for section styling like bg, px/py, borders. Use maxWidth to constrain inner content width.",
   },
   fields: {
     maxWidth: {
@@ -79,12 +79,7 @@ const Container: ComponentConfig<ContainerProps> = {
         const resolvedMaxWidth = maxWidth ?? "6xl";
         const maxWidthClass =
           resolvedMaxWidth === "none" ? "" : `max-w-${resolvedMaxWidth}`;
-        const mergedClassName = [
-          "mx-auto",
-          maxWidthClass,
-          className,
-          props?.className,
-        ]
+        const mergedClassName = ["mx-auto", maxWidthClass, props?.className]
           .filter(Boolean)
           .join(" ");
 
@@ -96,6 +91,7 @@ const Container: ComponentConfig<ContainerProps> = {
 
     return (
       <GluestackBox
+        className={className}
         ref={
           puck.dragRef as unknown as React.Ref<
             React.ComponentRef<typeof GluestackBox>
