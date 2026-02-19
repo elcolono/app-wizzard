@@ -1,11 +1,12 @@
 "use client";
 
 import type { Data } from "@puckeditor/core";
-import { Puck, Render } from "@puckeditor/core";
+import { ActionBar, Puck, Render, usePuck } from "@puckeditor/core";
 import config from "../../../config";
 import { createAiPlugin } from "@puckeditor/plugin-ai";
 import "@puckeditor/plugin-ai/styles.css";
 import React from "react";
+import { WandSparkles } from "lucide-react";
 
 const aiPlugin = createAiPlugin();
 const HEADER_PATH = "/_layout/header";
@@ -20,6 +21,63 @@ type ClientProps = {
   headerData?: Data;
   footerData?: Data;
 };
+
+type InlineActionBarProps = {
+  label?: string;
+  children: React.ReactNode;
+  parentAction: React.ReactNode;
+};
+
+function InlineWizardActionBar({
+  label,
+  children,
+  parentAction,
+}: InlineActionBarProps) {
+  const selectedItem = usePuck((s) => s.selectedItem);
+
+  const onOpenInlineWizard = React.useCallback(() => {
+    if (typeof window === "undefined") return;
+    const id = selectedItem?.props?.id ?? selectedItem?.id ?? "unknown";
+    const type = selectedItem?.type ?? "unknown";
+    window.alert(`Inline Wizard (next step)\nComponent: ${type}\nID: ${id}`);
+  }, [selectedItem]);
+
+  const actions = React.useMemo(() => {
+    const items = React.Children.toArray(children);
+    const duplicateIndex = items.findIndex(
+      (item) =>
+        React.isValidElement(item) &&
+        typeof item.props?.label === "string" &&
+        item.props.label === "Duplicate"
+    );
+
+    const wizardAction = (
+      <ActionBar.Action
+        key="inline-wizard-action"
+        onClick={onOpenInlineWizard}
+        label="Inline Wizard"
+      >
+        <WandSparkles size={16} />
+      </ActionBar.Action>
+    );
+
+    if (duplicateIndex === -1) {
+      return [...items, wizardAction];
+    }
+
+    return [
+      ...items.slice(0, duplicateIndex + 1),
+      wizardAction,
+      ...items.slice(duplicateIndex + 1),
+    ];
+  }, [children, onOpenInlineWizard]);
+
+  return (
+    <ActionBar label={label} parentAction={parentAction}>
+      {actions}
+    </ActionBar>
+  );
+}
 
 export function Client({ path, data, headerData, footerData }: ClientProps) {
   const isHeaderPath = path === HEADER_PATH;
@@ -129,6 +187,7 @@ export function Client({ path, data, headerData, footerData }: ClientProps) {
       config={config}
       data={injectLayout}
       overrides={{
+        actionBar: InlineWizardActionBar,
         headerActions: ({ children }) => (
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <select
