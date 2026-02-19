@@ -12,6 +12,7 @@ import GridItem from "./blocks/GridItem";
 import Container from "./blocks/Container";
 import Card from "./blocks/Card";
 import Button from "./blocks/Button";
+import DarkModeButton from "./blocks/DarkModeButton";
 import ButtonText from "./blocks/ButtonText";
 import ButtonSpinner from "./blocks/ButtonSpinner";
 import ButtonIcon from "./blocks/ButtonIcon";
@@ -97,6 +98,7 @@ export const config: Config = {
     form: {
       components: [
         "Button",
+        "DarkModeButton",
         "ButtonText",
         "ButtonSpinner",
         "ButtonIcon",
@@ -119,6 +121,7 @@ export const config: Config = {
       Container,
       Card,
       Button,
+      DarkModeButton,
       ButtonText,
       ButtonSpinner,
       ButtonIcon,
