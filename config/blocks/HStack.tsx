@@ -1,7 +1,6 @@
 import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { HStack as GluestackHStack } from "../../components/ui/hstack";
-import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
 import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 
@@ -38,7 +37,7 @@ const spaceOptions = [
 ];
 
 const HStack: ComponentConfig<HStackProps> = {
-  inline: false,
+  inline: true,
   fields: {
     content: {
       type: "slot",
@@ -83,14 +82,12 @@ const HStack: ComponentConfig<HStackProps> = {
       );
 
       return (
-        <GluestackBox>
-          <GluestackHStack
-            {...props}
-            ref={mergedRef}
-            className={mergedClassName}
-            space={space}
-          />
-        </GluestackBox>
+        <GluestackHStack
+          {...props}
+          ref={mergedRef}
+          className={mergedClassName}
+          space={space}
+        />
       );
     });
 

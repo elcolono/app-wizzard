@@ -202,7 +202,7 @@ const iconOptions = iconNames.map((name) => ({
 }));
 
 const IconBlock: ComponentConfig<IconProps> = {
-  inline: false,
+  inline: true,
   fields: {
     icon: {
       type: "select",

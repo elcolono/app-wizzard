@@ -43,7 +43,7 @@ const Image: ComponentConfig<ImageProps> = {
     alt: "Image",
     size: "md",
   },
-  inline: false,
+  inline: true,
   render: ({
     className,
     source,

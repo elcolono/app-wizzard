@@ -14,7 +14,7 @@ export type ProgressProps = {
 };
 
 const Progress: ComponentConfig<ProgressProps> = {
-  inline: false,
+  inline: true,
   fields: {
     value: {
       type: "number",

@@ -16,7 +16,7 @@ export type TextAreaProps = {
 };
 
 const TextArea: ComponentConfig<TextAreaProps> = {
-  inline: false,
+  inline: true,
   fields: {
     size: {
       type: "select",

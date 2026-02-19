@@ -225,7 +225,7 @@ export type AvatarProps = {
 };
 
 const AvatarBlock: ComponentConfig<AvatarProps> = {
-  inline: false,
+  inline: true,
   resolveFields: (data) => {
     const avatarType = data.props.avatarType ?? "default";
     const baseFields = {

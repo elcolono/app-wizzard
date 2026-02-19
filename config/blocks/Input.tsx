@@ -14,7 +14,7 @@ export type InputProps = {
 };
 
 const Input: ComponentConfig<InputProps> = {
-  inline: false,
+  inline: true,
   fields: {
     variant: {
       type: "select",

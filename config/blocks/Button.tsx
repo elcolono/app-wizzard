@@ -3,7 +3,6 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Button as GluestackButton } from "../../components/ui/button";
 import { aiInstructions } from "../fields/aiInstructions";
 import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
-import { Box as GluestackBox } from "../../components/ui/box";
 
 export type ButtonProps = {
   // showSpinner?: boolean;
@@ -14,6 +13,21 @@ export type ButtonProps = {
   size: "xs" | "sm" | "md" | "lg";
   className: string;
 };
+
+const setRefs =
+  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
+  (value: T | null) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+        return;
+      }
+
+      if (ref && typeof ref === "object" && "current" in ref) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
 
 const Button: ComponentConfig<ButtonProps> = {
   // resolveData(data) {
@@ -100,7 +114,7 @@ const Button: ComponentConfig<ButtonProps> = {
       ai: { instructions: aiInstructions.className },
     },
   },
-  inline: false,
+  inline: true,
   defaultProps: {
     content: [
       { type: "ButtonIcon", props: { icon: "ArrowRightIcon" } },
@@ -124,21 +138,22 @@ const Button: ComponentConfig<ButtonProps> = {
       props,
       ref
     ) {
+      const mergedRef = setRefs<React.ComponentRef<typeof GluestackButton>>(
+        ref,
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackButton>
+        >
+      );
+
       return (
-        <GluestackBox>
-          <GluestackButton
-            {...props}
-            ref={
-              puck.dragRef as unknown as React.Ref<
-                React.ComponentRef<typeof GluestackButton>
-              >
-            }
-            variant={variant}
-            action={action}
-            size={size}
-            className={className}
-          />
-        </GluestackBox>
+        <GluestackButton
+          {...props}
+          ref={mergedRef}
+          variant={variant}
+          action={action}
+          size={size}
+          className={className}
+        />
       );
     });
 

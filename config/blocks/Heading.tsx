@@ -42,7 +42,7 @@ const alignmentOptions = [
 ];
 
 const Heading: ComponentConfig<HeadingProps> = {
-  inline: false,
+  inline: true,
   fields: {
     title: {
       type: "text",

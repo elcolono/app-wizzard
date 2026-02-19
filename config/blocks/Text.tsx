@@ -31,7 +31,7 @@ const sizeOptions = [
 ];
 
 const Text: ComponentConfig<TextProps> = {
-  inline: false,
+  inline: true,
   fields: {
     text: {
       type: "text",

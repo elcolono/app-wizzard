@@ -12,7 +12,7 @@ export type SpinnerProps = {
 };
 
 const Spinner: ComponentConfig<SpinnerProps> = {
-  inline: false,
+  inline: true,
   fields: {
     size: {
       type: "select",

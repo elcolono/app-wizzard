@@ -9,7 +9,7 @@ export type DividerProps = {
 };
 
 const Divider: ComponentConfig<DividerProps> = {
-  inline: false,
+  inline: true,
   fields: {
     orientation: {
       type: "select",
