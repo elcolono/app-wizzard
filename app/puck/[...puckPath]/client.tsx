@@ -60,6 +60,14 @@ function InlineWizardActionBar({
     );
   }, [prompt, selectedItem]);
 
+  const onWizardInputKeyDown = React.useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      // Keep editor-level shortcuts from firing while typing in the wizard.
+      event.stopPropagation();
+    },
+    []
+  );
+
   const actions = React.useMemo(() => {
     const items = React.Children.toArray(children);
     const duplicateIndex = items.findIndex(
@@ -128,6 +136,7 @@ function InlineWizardActionBar({
           <textarea
             value={prompt}
             onChange={(event) => setPrompt(event.target.value)}
+            onKeyDown={onWizardInputKeyDown}
             placeholder="z.B. Mache diesen Button primär und größer"
             rows={4}
             style={{
