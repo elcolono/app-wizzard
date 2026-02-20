@@ -27,6 +27,34 @@ interface ToolCallState {
   argsText: string;
 }
 
+const isPageBuildTool = (name?: string): boolean =>
+  name === "createPage" || name === "updatePage";
+
+const getToolLoadingLabel = (name?: string): string =>
+  name === "updatePage" ? "Updating page..." : "Creating page...";
+
+const getToolDoneLabel = (name?: string): string =>
+  name === "updatePage" ? "Updated page" : "Created page";
+
+const collectIdsFromContent = (content: any, ids = new Set<string>()): Set<string> => {
+  if (!Array.isArray(content)) return ids;
+  for (const item of content) {
+    if (!item || typeof item !== "object") continue;
+    const props = (item as any).props ?? {};
+    const id =
+      typeof (item as any).id === "string"
+        ? (item as any).id
+        : typeof props.id === "string"
+        ? props.id
+        : undefined;
+    if (id) ids.add(id);
+    if (Array.isArray(props.content)) {
+      collectIdsFromContent(props.content, ids);
+    }
+  }
+  return ids;
+};
+
 // --- Helper Functions ---
 
 const isValidBuildOp = (op: any): boolean => {
@@ -96,8 +124,15 @@ class PuckStreamManager {
   private addSentByToolCall = new Map<string, Set<string>>();
   /** Track last build array length per toolCallId. */
   private lastBuildLengthByToolCall = new Map<string, number>();
+  /** Track known component IDs so update/move/delete ops are only streamed for existing items. */
+  private knownComponentIds = new Set<string>();
 
-  constructor(private controller: ReadableStreamDefaultController) {}
+  constructor(
+    private controller: ReadableStreamDefaultController,
+    initialComponentIds: string[] = []
+  ) {
+    for (const id of initialComponentIds) this.knownComponentIds.add(id);
+  }
 
   send(data: unknown) {
     this.controller.enqueue(
@@ -185,6 +220,9 @@ class PuckStreamManager {
     if (this.lastSentPayloadByOp.get(addKey) !== addSignature) {
       if (!this.hasAddSent(toolCallId, addPayload.id)) {
         this.markAddSent(toolCallId, addPayload.id);
+        if (typeof addPayload.id === "string") {
+          this.knownComponentIds.add(addPayload.id);
+        }
         this.lastSentPayloadByOp.set(addKey, addSignature);
         this.send({
           type: "data-build-op",
@@ -210,6 +248,16 @@ class PuckStreamManager {
       });
     }
 
+    return true;
+  }
+
+  private hasNonEmptyProps(props: unknown): boolean {
+    if (!props || typeof props !== "object") return false;
+    const entries = Object.entries(props as Record<string, unknown>);
+    if (entries.length === 0) return false;
+    for (const [, value] of entries) {
+      if (typeof value === "string" && value.trim() === "") return false;
+    }
     return true;
   }
 
@@ -244,6 +292,7 @@ class PuckStreamManager {
       if (normalized.op === "reset") {
         if (this.resetSent.has(toolCallId)) return;
         this.resetSent.add(toolCallId);
+        this.knownComponentIds.clear();
         this.lastSentPayloadByOp = new Map(
           [...this.lastSentPayloadByOp.entries()].filter(
             ([k]) => !k.startsWith(`${toolCallId}:`)
@@ -258,6 +307,15 @@ class PuckStreamManager {
         props: normalized.props ?? normalized.value ?? {},
       };
 
+      if (
+        (payload.op === "update" || payload.op === "move" || payload.op === "delete") &&
+        typeof payload.id === "string" &&
+        !this.knownComponentIds.has(payload.id)
+      ) {
+        return;
+      }
+      if (payload.op === "update" && !this.hasNonEmptyProps(payload.props)) return;
+
       const opKey = `${toolCallId}:${payload.op}:${payload.id ?? "root"}`;
       const signature = JSON.stringify(payload);
 
@@ -266,6 +324,7 @@ class PuckStreamManager {
       if (payload.op === "add" && typeof payload.id === "string") {
         if (this.hasAddSent(toolCallId, payload.id)) return;
         this.markAddSent(toolCallId, payload.id);
+        this.knownComponentIds.add(payload.id);
       }
       if (this.lastSentPayloadByOp.get(opKey) === signature) return;
       this.lastSentPayloadByOp.set(opKey, signature);
@@ -480,7 +539,10 @@ serve(async (req) => {
 
   const stream = new ReadableStream({
     async start(controller) {
-      const manager = new PuckStreamManager(controller);
+      const initialComponentIds = Array.from(
+        collectIdsFromContent(payload?.pageData?.content)
+      );
+      const manager = new PuckStreamManager(controller, initialComponentIds);
       const chatId =
         payload.chatId && String(payload.chatId).trim()
           ? payload.chatId
@@ -546,17 +608,8 @@ serve(async (req) => {
 
               // 2. Pro Chunk: tool-input-delta mit dem rohen Delta
               if (toolStarted.has(id)) {
-                if (name === "createPage") {
+                if (isPageBuildTool(name)) {
                   const partial = parse(full);
-
-                  if (!manager.hasResetSent(id)) {
-                    manager.send({
-                      type: "data-build-op",
-                      transient: true,
-                      data: { op: "reset" },
-                    });
-                    manager.markResetSent(id);
-                  }
 
                   // Einmal senden, wenn description stabil ist (gleich wie im vorherigen Chunk)
                   if (partial?.description) {
@@ -591,7 +644,7 @@ serve(async (req) => {
                     partial.build.length > 0
                   ) {
                     if (!manager.hasBuildStatusSent(id)) {
-                      manager.sendToolStatus(id, "Creating page...", true);
+                      manager.sendToolStatus(id, getToolLoadingLabel(name), true);
                       manager.markBuildStatusSent(id);
                     }
                     manager.processBuildStream(partial, id);
@@ -602,7 +655,7 @@ serve(async (req) => {
             // 2. Im serve-Handler bei onToolComplete:
             onToolComplete: async (id, name, input) => {
               console.log("onToolComplete", id, name, input);
-              if (name !== "createPage") return;
+              if (!isPageBuildTool(name)) return;
 
               if (
                 input?.build &&
@@ -616,14 +669,14 @@ serve(async (req) => {
               if (input?.description) {
                 manager.sendToolStatus(id, input.description, false);
               } else {
-                manager.sendToolStatus(id, "Created page", false);
+                manager.sendToolStatus(id, getToolDoneLabel(name), false);
               }
 
               manager.send({
                 type: "tool-output-available",
                 toolCallId: id,
                 output: {
-                  status: { loading: false, label: "Created page" },
+                  status: { loading: false, label: getToolDoneLabel(name) },
                 },
               });
             },

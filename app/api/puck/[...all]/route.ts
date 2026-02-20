@@ -3,6 +3,114 @@
 import { puckHandler, tool } from "@puckeditor/cloud-client";
 import { z } from "zod";
 
+const HEADING_SIZE_ORDER = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl"];
+
+type PageComponent = {
+  type?: string;
+  id?: string;
+  props?: Record<string, any>;
+};
+
+function collectComponents(content: any, acc: PageComponent[] = []): PageComponent[] {
+  if (!Array.isArray(content)) return acc;
+  for (const item of content) {
+    if (!item || typeof item !== "object") continue;
+    const props = (item as any).props ?? {};
+    const id =
+      typeof (item as any).id === "string"
+        ? (item as any).id
+        : typeof props.id === "string"
+        ? props.id
+        : undefined;
+    acc.push({ type: (item as any).type, id, props });
+    if (Array.isArray(props.content)) {
+      collectComponents(props.content, acc);
+    }
+  }
+  return acc;
+}
+
+function isIncreaseIntent(text: string): boolean {
+  return /(vergr(?:ö|oe)ß|gr(?:ö|oe)ßer|bigger|larger|increase|enlarge)/i.test(
+    text
+  );
+}
+
+function getNextHeadingSize(current?: string): string | undefined {
+  if (!current) return undefined;
+  const index = HEADING_SIZE_ORDER.indexOf(current);
+  if (index === -1 || index >= HEADING_SIZE_ORDER.length - 1) return undefined;
+  return HEADING_SIZE_ORDER[index + 1];
+}
+
+function normalizeUpdateBuild(
+  build: Array<any>,
+  description: string,
+  pageData: any
+): Array<any> {
+  const components = collectComponents(pageData?.content);
+  const byId = new Map<string, PageComponent>();
+  for (const c of components) {
+    if (c.id) byId.set(c.id, c);
+  }
+
+  const increaseIntent = isIncreaseIntent(description ?? "");
+  const teamHeading = components.find(
+    (c) =>
+      c.type === "Heading" &&
+      typeof c.props?.title === "string" &&
+      /team/i.test(c.props.title)
+  );
+
+  const normalized: any[] = [];
+
+  for (const op of build ?? []) {
+    if (!op || typeof op !== "object") continue;
+    if (op.op !== "update") {
+      normalized.push(op);
+      continue;
+    }
+
+    const nextOp: any = { ...op, props: { ...(op.props ?? {}) } };
+    const hasId = typeof nextOp.id === "string" && byId.has(nextOp.id);
+    if (!hasId && typeof nextOp.id === "string" && /team/i.test(nextOp.id)) {
+      if (teamHeading?.id) nextOp.id = teamHeading.id;
+    }
+
+    const existing = typeof nextOp.id === "string" ? byId.get(nextOp.id) : undefined;
+    if (!existing) continue;
+
+    if (Object.prototype.hasOwnProperty.call(nextOp.props, "size")) {
+      const rawSize = nextOp.props.size;
+      const currentSize =
+        typeof existing.props?.size === "string" ? existing.props.size : undefined;
+
+      if (typeof rawSize === "string" && rawSize.trim() === "") {
+        delete nextOp.props.size;
+      }
+
+      const requestedSize =
+        typeof nextOp.props.size === "string" ? nextOp.props.size : undefined;
+      if (
+        increaseIntent &&
+        existing.type === "Heading" &&
+        currentSize &&
+        (!requestedSize ||
+          requestedSize === currentSize ||
+          !HEADING_SIZE_ORDER.includes(requestedSize))
+      ) {
+        const nextSize = getNextHeadingSize(currentSize);
+        if (nextSize) nextOp.props.size = nextSize;
+      }
+    }
+
+    if (Object.keys(nextOp.props ?? {}).length === 0) continue;
+    normalized.push(nextOp);
+  }
+
+  return normalized;
+}
+
 // Das atomare Schema für die Operationen (Bleibt gleich)
 const BuildOperationSchema = z.discriminatedUnion("op", [
   z.object({
@@ -10,6 +118,59 @@ const BuildOperationSchema = z.discriminatedUnion("op", [
       .literal("reset")
       .describe("Clear the current page before rebuilding."),
   }),
+  z.object({
+    op: z.literal("updateRoot").describe("Update root-level page metadata."),
+    props: z
+      .record(z.string(), z.any())
+      .describe("Root props to merge, e.g. page title or subtitle."),
+  }),
+  z.object({
+    op: z.literal("add").describe("Insert a new component instance."),
+    type: z
+      .string()
+      .describe("Component type key from the component library, e.g. Heading."),
+    id: z
+      .string()
+      .describe("Unique component id (prefer UUID-based ids for stability)."),
+    props: z
+      .record(z.string(), z.any())
+      .default({})
+      .describe(
+        "Initial props for add. Only set content: [] if the component has a content slot. All other props must be sent via update."
+      ),
+    index: z
+      .number()
+      .describe("Zero-based position of the component inside the target zone."),
+    zone: z
+      .string()
+      .describe(
+        "Target zone in parentId:slot format, e.g. root:default-zone or hero-container-1:content"
+      ),
+  }),
+  z.object({
+    op: z.literal("update").describe("Update props of an existing component."),
+    id: z.string().describe("Id of the component to update."),
+    props: z
+      .record(z.string(), z.any())
+      .describe("Partial props to merge into the existing component."),
+  }),
+  z.object({
+    op: z
+      .literal("move")
+      .describe("Move an existing component to a new place."),
+    id: z.string().describe("Id of the component to move."),
+    index: z
+      .number()
+      .describe("Zero-based destination index inside the target zone."),
+    zone: z.string().describe("Destination zone in parentId:slot format."),
+  }),
+  z.object({
+    op: z.literal("delete").describe("Remove an existing component."),
+    id: z.string().describe("Id of the component to delete."),
+  }),
+]);
+
+const UpdateBuildOperationSchema = z.discriminatedUnion("op", [
   z.object({
     op: z.literal("updateRoot").describe("Update root-level page metadata."),
     props: z
@@ -82,6 +243,26 @@ const createPageOutputSchema = z.object({
   }),
 });
 
+const updatePageInputSchema = z.object({
+  description: z
+    .string()
+    .describe("A brief description of what is being changed."),
+  build: z
+    .array(UpdateBuildOperationSchema)
+    .default([])
+    .describe("The sequence of atomic update operations to execute."),
+});
+
+const updatePageOutputSchema = z.object({
+  build: z
+    .array(UpdateBuildOperationSchema)
+    .describe("The resolved update operations that were applied."),
+  status: z.object({
+    loading: z.boolean().describe("Whether the page is still being processed."),
+    label: z.string().describe("Human-friendly status text."),
+  }),
+});
+
 export const POST = async (request: Request) => {
   // 1. Request klonen, um den Body für uns UND den puckHandler nutzbar zu machen
   const clonedRequest = request.clone();
@@ -101,19 +282,23 @@ export const POST = async (request: Request) => {
     host: process.env.SUPABASE_URL,
     apiKey: process.env.SUPABASE_ANON_KEY,
     ai: {
-      context: `You are an expert web designer. You are helping a user to build a website.
+      context: `You are an expert web designer. You are helping a user to build and edit websites.
 
 --- ROLE ---
-Expert web designer; build websites using the createPage tool only.
+Expert web designer; use createPage for full rebuilds/new pages and updatePage for changes to existing pages.
 
 --- COMMUNICATION ---
 - When the user asks for a "website", "full page", or "agency site": do NOT call createPage immediately. First suggest sections (e.g. Hero, Services, Team, Testimonials, Contact, CTA) and ask which they want or if they want a standard set (e.g. "I can build Hero, Services, and Testimonials. Which sections do you want, or should I create all three?"). Only call createPage after they confirm or say e.g. "all" / "build everything".
 - CRITICAL: Call createPage exactly ONCE per request. Put ALL sections (Hero, Über Uns, Services, etc.) in a single build array in one createPage call. Never call createPage multiple times for different sections—one call builds the entire page.
+- For edits on an existing page (e.g. "make Team title bigger", "change button color", "move section"): ALWAYS use updatePage, never createPage.
+- updatePage MUST NOT include a reset op.
+- For updatePage, use REAL existing component ids from pageData (e.g. "Heading-Team"), never invented placeholder ids.
+- For relative changes like "vergrößern"/"größer machen", choose a value that is actually larger than the current one.
 - If the user's request is unclear or ambiguous in other ways, ask a short follow-up question (e.g. "Soll die Hero-Section eher minimalistisch oder mit viel Text sein?").
-- If the request is clear and section choice is already decided: briefly say what you are about to do, then use createPage tool only and don't respond with text.
+- If the request is clear and section choice is already decided: briefly say what you are about to do, then call the correct tool (createPage or updatePage) and don't respond with text.
 - After a tool has finished, briefly confirm what was done (e.g. "Hero-, Services- und Testimonial-Section sind erstellt.").
 - Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
-- NEVER include JSON, build ops, or code blocks in plain text. Use the createPage tool for all operations only.`,
+- NEVER include JSON, build ops, or code blocks in plain text. Use only tools for all operations.`,
 
       tools: {
         createPage: tool({
@@ -169,6 +354,51 @@ ${componentDefinitions}`,
               : "Applying design";
             return {
               build: input.build,
+              status: {
+                loading: false,
+                label,
+              },
+            };
+          },
+        }),
+        updatePage: tool({
+          name: "updatePage",
+          description: `Update an existing page using atomic operations without resetting it.
+
+--- PURPOSE ---
+Use updatePage for incremental edits to existing pages. Do not rebuild the whole page and never include a reset operation.
+
+--- OPERATIONS ---
+Ops: "updateRoot" | "add" | "update" | "move" | "delete"
+- For "add" and "update", ALL component fields go inside props (not top-level).
+- "add" requires: type, id, index, zone, props.
+- "add" props MUST be empty {} or { content: [] } if the component has a content slot. All other props MUST be sent via a following "update".
+- Do NOT nest components inside props.content; children are separate "add" ops with the correct zone.
+
+--- ZONE FORMAT ---
+parentId:slot — e.g. root:default-zone (root level) or Container-uuid:content (inside a container). Never use root:content; root zone is always root:default-zone.
+
+--- EXAMPLE (increase Team title size) ---
+{"op":"update","id":"Heading-TEAM_TITLE_ID","props":{"size":"3xl"}}
+
+--- COMPONENT LIBRARY ---
+${categories}
+
+--- COMPONENT DEFINITIONS ---
+${componentDefinitions}`,
+          inputSchema: updatePageInputSchema,
+          outputSchema: updatePageOutputSchema,
+          execute: async (input) => {
+            const normalizedBuild = normalizeUpdateBuild(
+              input.build,
+              input.description ?? "",
+              pageData
+            );
+            const label = input.description
+              ? `Applying update: ${input.description}`
+              : "Applying update";
+            return {
+              build: normalizedBuild,
               status: {
                 loading: false,
                 label,
