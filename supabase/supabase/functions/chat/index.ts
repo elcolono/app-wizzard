@@ -6,7 +6,7 @@ import { corsHeaders } from "../_shard/cors.ts";
 const ENV = {
   ANON_KEY: Deno.env.get("SUPABASE_ANON_KEY"),
   OPENAI_KEY: Deno.env.get("OPENAI_API_KEY"),
-  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o",
+  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o-mini",
   SUPABASE_URL: Deno.env.get("SUPABASE_URL"),
   SUPABASE_ROLE_KEY: Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),
 };

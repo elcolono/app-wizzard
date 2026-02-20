@@ -3,18 +3,6 @@
 import { puckHandler, tool } from "@puckeditor/cloud-client";
 import { z } from "zod";
 
-const HEADING_SIZE_ORDER = [
-  "xs",
-  "sm",
-  "md",
-  "lg",
-  "xl",
-  "2xl",
-  "3xl",
-  "4xl",
-  "5xl",
-];
-
 type PageComponent = {
   type?: string;
   id?: string;
@@ -59,17 +47,58 @@ function isIncreaseIntent(text: string): boolean {
   );
 }
 
-function getNextHeadingSize(current?: string): string | undefined {
-  if (!current) return undefined;
-  const index = HEADING_SIZE_ORDER.indexOf(current);
-  if (index === -1 || index >= HEADING_SIZE_ORDER.length - 1) return undefined;
-  return HEADING_SIZE_ORDER[index + 1];
+function getFieldOptionValues(
+  config: any,
+  componentType: string | undefined,
+  fieldName: string,
+): string[] {
+  if (!componentType) return [];
+  const field = config?.components?.[componentType]?.fields?.[fieldName];
+  const options = Array.isArray(field?.options) ? field.options : [];
+  return options
+    .map((option: any) =>
+      typeof option === "string"
+        ? option
+        : typeof option?.value === "string"
+          ? option.value
+          : undefined,
+    )
+    .filter((value: string | undefined): value is string => Boolean(value));
+}
+
+function getNextOptionValue(
+  options: string[],
+  current?: string,
+): string | undefined {
+  if (!current || options.length === 0) return undefined;
+  const index = options.indexOf(current);
+  if (index === -1 || index >= options.length - 1) return undefined;
+  return options[index + 1];
+}
+
+function isClassUpdateKey(key: string): boolean {
+  return key === "class" || key === "className";
+}
+
+function areValuesEqual(a: unknown, b: unknown): boolean {
+  if (Object.is(a, b)) return true;
+  if (typeof a !== typeof b) return false;
+  if (a == null || b == null) return false;
+  if (typeof a === "object") {
+    try {
+      return JSON.stringify(a) === JSON.stringify(b);
+    } catch {
+      return false;
+    }
+  }
+  return false;
 }
 
 function normalizeUpdateBuild(
   build: Array<any>,
   description: string,
   pageData: any,
+  config: any,
 ): Array<any> {
   const components = collectComponents(pageData?.content);
   const byId = new Map<string, PageComponent>();
@@ -110,6 +139,7 @@ function normalizeUpdateBuild(
         typeof existing.props?.size === "string"
           ? existing.props.size
           : undefined;
+      const sizeOptions = getFieldOptionValues(config, existing.type, "size");
 
       if (typeof rawSize === "string" && rawSize.trim() === "") {
         delete nextOp.props.size;
@@ -119,14 +149,20 @@ function normalizeUpdateBuild(
         typeof nextOp.props.size === "string" ? nextOp.props.size : undefined;
       if (
         increaseIntent &&
-        existing.type === "Heading" &&
         currentSize &&
         (!requestedSize ||
           requestedSize === currentSize ||
-          !HEADING_SIZE_ORDER.includes(requestedSize))
+          (sizeOptions.length > 0 && !sizeOptions.includes(requestedSize)))
       ) {
-        const nextSize = getNextHeadingSize(currentSize);
+        const nextSize = getNextOptionValue(sizeOptions, currentSize);
         if (nextSize) nextOp.props.size = nextSize;
+      }
+    }
+
+    for (const [key, value] of Object.entries(nextOp.props ?? {})) {
+      if (isClassUpdateKey(key)) continue;
+      if (areValuesEqual(existing.props?.[key], value)) {
+        delete nextOp.props[key];
       }
     }
 
@@ -197,8 +233,7 @@ function summarizeAppliedBuild(
 
   if (
     created.some(
-      (c) =>
-        /hero/i.test(c.id) || /hero/i.test(c.type) || /hero/i.test(c.zone),
+      (c) => /hero/i.test(c.id) || /hero/i.test(c.type) || /hero/i.test(c.zone),
     )
   ) {
     notes.add("hero_section_present");
@@ -443,6 +478,7 @@ ${componentDefinitions}`,
               buildWithoutUnconfirmedReset,
               input.description ?? "",
               pageData,
+              config,
             );
             const label = input.description
               ? `Applying update: ${input.description}`
