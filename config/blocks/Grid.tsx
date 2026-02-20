@@ -6,7 +6,7 @@ import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
 
 export type GridProps = {
   className: string;
-  columnsBase:
+  columnsMobile:
     | "1"
     | "2"
     | "3"
@@ -22,7 +22,7 @@ export type GridProps = {
     | "none"
     | "auto"
     | "subgrid";
-  columnsSm:
+  columnsTablet:
     | ""
     | "1"
     | "2"
@@ -39,24 +39,7 @@ export type GridProps = {
     | "none"
     | "auto"
     | "subgrid";
-  columnsMd:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "none"
-    | "auto"
-    | "subgrid";
-  columnsLg:
+  columnsDesktop:
     | ""
     | "1"
     | "2"
@@ -80,33 +63,10 @@ export type GridProps = {
 const Grid: ComponentConfig<GridProps> = {
   inline: false,
   fields: {
-    columnsBase: {
-      type: "select",
-      label: "Columns",
-      options: [
-        { label: "1", value: "1" },
-        { label: "2", value: "2" },
-        { label: "3", value: "3" },
-        { label: "4", value: "4" },
-        { label: "5", value: "5" },
-        { label: "6", value: "6" },
-        { label: "7", value: "7" },
-        { label: "8", value: "8" },
-        { label: "9", value: "9" },
-        { label: "10", value: "10" },
-        { label: "11", value: "11" },
-        { label: "12", value: "12" },
-        { label: "None", value: "none" },
-        { label: "Auto", value: "auto" },
-        { label: "Subgrid", value: "subgrid" },
-      ],
-      ai: { instructions: aiInstructions.gridColumns },
-    },
-    columnsSm: {
+    columnsMobile: {
       type: "select",
       label: "Columns (Mobile)",
       options: [
-        { label: "Default", value: "" },
         { label: "1", value: "1" },
         { label: "2", value: "2" },
         { label: "3", value: "3" },
@@ -125,7 +85,7 @@ const Grid: ComponentConfig<GridProps> = {
       ],
       ai: { instructions: aiInstructions.gridColumns },
     },
-    columnsMd: {
+    columnsTablet: {
       type: "select",
       label: "Columns (Tablet)",
       options: [
@@ -148,7 +108,7 @@ const Grid: ComponentConfig<GridProps> = {
       ],
       ai: { instructions: aiInstructions.gridColumns },
     },
-    columnsLg: {
+    columnsDesktop: {
       type: "select",
       label: "Columns (Desktop)",
       options: [
@@ -189,10 +149,9 @@ const Grid: ComponentConfig<GridProps> = {
   },
   defaultProps: {
     className: "gap-4",
-    columnsBase: "3",
-    columnsSm: "",
-    columnsMd: "",
-    columnsLg: "",
+    columnsMobile: "3",
+    columnsTablet: "",
+    columnsDesktop: "",
     columnsClassName: "",
     content: [
       {
@@ -220,10 +179,9 @@ const Grid: ComponentConfig<GridProps> = {
   },
   render: ({
     className,
-    columnsBase,
-    columnsSm,
-    columnsMd,
-    columnsLg,
+    columnsMobile,
+    columnsTablet,
+    columnsDesktop,
     columnsClassName,
     content: Content,
     puck,
@@ -236,10 +194,9 @@ const Grid: ComponentConfig<GridProps> = {
         .filter(Boolean)
         .join(" ");
       const responsiveColumnsClassName = [
-        `grid-cols-${columnsBase}`,
-        columnsSm ? `sm:grid-cols-${columnsSm}` : "",
-        columnsMd ? `md:grid-cols-${columnsMd}` : "",
-        columnsLg ? `lg:grid-cols-${columnsLg}` : "",
+        `grid-cols-${columnsMobile}`,
+        columnsTablet ? `md:grid-cols-${columnsTablet}` : "",
+        columnsDesktop ? `lg:grid-cols-${columnsDesktop}` : "",
       ]
         .filter(Boolean)
         .join(" ");
