@@ -27,14 +27,24 @@ interface ToolCallState {
   argsText: string;
 }
 
+type BuildMemory = {
+  appliedOpsCount: number;
+  created: Array<{ id: string; type: string; zone: string }>;
+  updated: Array<{ id: string; changedKeys: string[] }>;
+  moved: Array<{ id: string; zone: string; index: number }>;
+  deleted: string[];
+  notes: string[];
+  humanSummary: string;
+};
+
 const isPageBuildTool = (name?: string): boolean =>
-  name === "createPage" || name === "updatePage";
+  name === "updatePage";
 
 const getToolLoadingLabel = (name?: string): string =>
-  name === "updatePage" ? "Updating page..." : "Creating page...";
+  name === "updatePage" ? "Updating page..." : "Applying page changes...";
 
 const getToolDoneLabel = (name?: string): string =>
-  name === "updatePage" ? "Updated page" : "Created page";
+  name === "updatePage" ? "Updated page" : "Applied page changes";
 
 const collectIdsFromContent = (content: any, ids = new Set<string>()): Set<string> => {
   if (!Array.isArray(content)) return ids;
@@ -53,6 +63,144 @@ const collectIdsFromContent = (content: any, ids = new Set<string>()): Set<strin
     }
   }
   return ids;
+};
+
+const isLikelyGerman = (text: string): boolean =>
+  /\b(und|oder|bitte|titel|größe|größer|seite|mach|baue|füge|ändern)\b/i.test(
+    text,
+  );
+
+const summarizeAppliedBuild = (build: Array<any>, description = ""): BuildMemory => {
+  const created: BuildMemory["created"] = [];
+  const updatedById = new Map<string, Set<string>>();
+  const moved: BuildMemory["moved"] = [];
+  const deleted: string[] = [];
+  const notes = new Set<string>();
+
+  for (const op of build ?? []) {
+    if (!op || typeof op !== "object" || typeof op.op !== "string") continue;
+
+    if (op.op === "reset") {
+      notes.add("full_rebuild");
+      continue;
+    }
+    if (op.op === "add") {
+      created.push({
+        id: typeof op.id === "string" ? op.id : "unknown",
+        type: typeof op.type === "string" ? op.type : "unknown",
+        zone: typeof op.zone === "string" ? op.zone : "root:default-zone",
+      });
+      continue;
+    }
+    if (op.op === "update" && typeof op.id === "string") {
+      const keys = Object.keys(op.props ?? {});
+      if (keys.length === 0) continue;
+      const set = updatedById.get(op.id) ?? new Set<string>();
+      for (const key of keys) set.add(key);
+      updatedById.set(op.id, set);
+      continue;
+    }
+    if (
+      op.op === "move" &&
+      typeof op.id === "string" &&
+      typeof op.zone === "string" &&
+      typeof op.index === "number"
+    ) {
+      moved.push({ id: op.id, zone: op.zone, index: op.index });
+      continue;
+    }
+    if (op.op === "delete" && typeof op.id === "string") {
+      deleted.push(op.id);
+    }
+  }
+
+  if (
+    created.some(
+      (c) =>
+        /hero/i.test(c.id) || /hero/i.test(c.type) || /hero/i.test(c.zone),
+    )
+  ) {
+    notes.add("hero_section_present");
+  }
+
+  if (
+    created.length === 0 &&
+    moved.length === 0 &&
+    deleted.length === 0 &&
+    !notes.has("full_rebuild") &&
+    updatedById.size > 0
+  ) {
+    notes.add("local_edit_only");
+  }
+
+  const updated = Array.from(updatedById.entries()).map(
+    ([id, changedKeySet]) => ({
+      id,
+      changedKeys: Array.from(changedKeySet).sort(),
+    }),
+  );
+  const appliedOpsCount = (build ?? []).filter(
+    (op) => op && typeof op === "object" && typeof op.op === "string",
+  ).length;
+  if (appliedOpsCount === 0) notes.add("no_changes_applied");
+
+  const german = isLikelyGerman(description);
+  const humanSummary =
+    appliedOpsCount > 0
+      ? german
+        ? `Änderungen angewendet: ${created.length} erstellt, ${updated.length} aktualisiert, ${moved.length} verschoben, ${deleted.length} gelöscht.`
+        : `Applied changes: ${created.length} created, ${updated.length} updated, ${moved.length} moved, ${deleted.length} deleted.`
+      : german
+      ? "Keine Änderungen angewendet."
+      : "No changes were applied.";
+
+  return {
+    appliedOpsCount,
+    created,
+    updated,
+    moved,
+    deleted,
+    notes: Array.from(notes),
+    humanSummary,
+  };
+};
+
+const asBuildMemory = (value: any): BuildMemory | undefined => {
+  if (!value || typeof value !== "object") return undefined;
+  if (typeof value.humanSummary !== "string") return undefined;
+  if (typeof value.appliedOpsCount !== "number") return undefined;
+  return value as BuildMemory;
+};
+
+const extractRecentBuildMemories = (messages: any[] = []): BuildMemory[] => {
+  const memories: BuildMemory[] = [];
+  for (const m of messages) {
+    const parts = Array.isArray(m?.parts) ? m.parts : [];
+    for (const p of parts) {
+      const candidates = [
+        p?.memory,
+        p?.output?.memory,
+        p?.result?.memory,
+        p?.data?.memory,
+      ];
+      for (const candidate of candidates) {
+        const memory = asBuildMemory(candidate);
+        if (memory) memories.push(memory);
+      }
+    }
+  }
+  return memories.slice(-2);
+};
+
+const formatBuildMemoryContext = (memories: BuildMemory[]): string | undefined => {
+  if (!memories.length) return undefined;
+  const lines = memories.map((memory, index) => {
+    const created = memory.created.map((c) => c.id).slice(0, 5).join(", ");
+    const updated = memory.updated.map((u) => u.id).slice(0, 5).join(", ");
+    const deleted = memory.deleted.slice(0, 5).join(", ");
+    return `Recent applied changes #${index + 1}: ${memory.humanSummary} created=[${created}] updated=[${updated}] deleted=[${deleted}] notes=[${memory.notes.join(", ")}]`;
+  });
+  return lines.join("\n");
 };
 
 // --- Helper Functions ---
@@ -345,9 +493,20 @@ class PuckStreamManager {
  */
 const Transformers = {
   messages(messages: any[] = [], context?: string): OpenAIMessage[] {
-    const aiMsgs: OpenAIMessage[] = context
-      ? [{ role: "system", content: context }]
-      : [];
+    const aiMsgs: OpenAIMessage[] = [];
+    if (context) aiMsgs.push({ role: "system", content: context });
+
+    const memoryContext = formatBuildMemoryContext(
+      extractRecentBuildMemories(messages),
+    );
+    if (memoryContext) {
+      aiMsgs.push({ role: "system", content: memoryContext });
+    }
+    aiMsgs.push({
+      role: "system",
+      content:
+        "When the latest user request is a local edit, execute only that local edit and do not repeat older build goals.",
+    });
 
     messages.forEach((m) => {
       const content =
@@ -656,6 +815,10 @@ serve(async (req) => {
             onToolComplete: async (id, name, input) => {
               console.log("onToolComplete", id, name, input);
               if (!isPageBuildTool(name)) return;
+              const memory = summarizeAppliedBuild(
+                Array.isArray(input?.build) ? input.build : [],
+                typeof input?.description === "string" ? input.description : "",
+              );
 
               if (
                 input?.build &&
@@ -666,7 +829,9 @@ serve(async (req) => {
                 manager.processBuildOp(lastOp, id);
               }
 
-              if (input?.description) {
+              if (memory.humanSummary) {
+                manager.sendToolStatus(id, memory.humanSummary, false);
+              } else if (input?.description) {
                 manager.sendToolStatus(id, input.description, false);
               } else {
                 manager.sendToolStatus(id, getToolDoneLabel(name), false);
@@ -677,6 +842,7 @@ serve(async (req) => {
                 toolCallId: id,
                 output: {
                   status: { loading: false, label: getToolDoneLabel(name) },
+                  memory,
                 },
               });
             },
