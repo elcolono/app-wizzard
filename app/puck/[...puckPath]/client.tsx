@@ -99,6 +99,9 @@ function InlineWizardActionBar({
       </ActionBar>
       {isWizardOpen ? (
         <div
+          onMouseDown={(event) => event.stopPropagation()}
+          onPointerDown={(event) => event.stopPropagation()}
+          onClick={(event) => event.stopPropagation()}
           style={{
             position: "absolute",
             top: "calc(100% + 8px)",
