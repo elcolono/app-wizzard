@@ -19,6 +19,12 @@ type BuildMemory = {
   humanSummary: string;
 };
 
+type ComponentIndexEntry = {
+  name: string;
+  description: string;
+  fieldNames: string[];
+};
+
 function collectComponents(
   content: any,
   acc: PageComponent[] = [],
@@ -171,6 +177,90 @@ function normalizeUpdateBuild(
   }
 
   return normalized;
+}
+
+function clampText(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+  return `${value.slice(0, maxLength - 1).trim()}…`;
+}
+
+function buildComponentIndex(components: any): ComponentIndexEntry[] {
+  if (!components || typeof components !== "object") return [];
+  return Object.entries(components)
+    .filter(([name]) => typeof name === "string" && name.length > 0)
+    .map(([name, definition]) => {
+      const fields =
+        definition && typeof definition === "object"
+          ? definition.fields
+          : undefined;
+      const fieldNames =
+        fields && typeof fields === "object" ? Object.keys(fields) : [];
+      const rawDescription =
+        definition &&
+        typeof definition === "object" &&
+        typeof definition.description === "string"
+          ? definition.description.trim()
+          : "";
+      const description = rawDescription
+        ? clampText(rawDescription, 180)
+        : fieldNames.length > 0
+          ? `Fields: ${fieldNames.slice(0, 10).join(", ")}`
+          : "No explicit fields metadata.";
+      return { name, description, fieldNames };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function createComponentNameLookup(components: any): Map<string, string> {
+  const lookup = new Map<string, string>();
+  if (!components || typeof components !== "object") return lookup;
+  for (const name of Object.keys(components)) {
+    lookup.set(name.toLowerCase(), name);
+  }
+  return lookup;
+}
+
+function parseComponentQuery(
+  query: string,
+  lookup: Map<string, string>,
+): { names: string[]; missing: string[] } {
+  const parts = query
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+  const names: string[] = [];
+  const missing: string[] = [];
+  const seenRequested = new Set<string>();
+  const seenResolved = new Set<string>();
+
+  for (const part of parts) {
+    const requestedKey = part.toLowerCase();
+    if (seenRequested.has(requestedKey)) continue;
+    seenRequested.add(requestedKey);
+    const resolved = lookup.get(requestedKey);
+    if (!resolved) {
+      missing.push(part);
+      continue;
+    }
+    if (seenResolved.has(resolved)) continue;
+    seenResolved.add(resolved);
+    names.push(resolved);
+  }
+
+  return { names, missing };
+}
+
+function pickComponentDefinitions(
+  components: any,
+  names: string[],
+): Record<string, unknown> {
+  const selected: Record<string, unknown> = {};
+  if (!components || typeof components !== "object") return selected;
+  for (const name of names) {
+    if (!(name in components)) continue;
+    selected[name] = components[name];
+  }
+  return selected;
 }
 
 function isLikelyGerman(text: string): boolean {
@@ -393,6 +483,26 @@ const updatePageOutputSchema = z.object({
   }),
 });
 
+const getComponentDefinitionsInputSchema = z.object({
+  query: z
+    .string()
+    .describe(
+      "Comma-separated component names to fetch, e.g. 'Container,Heading,Text,Button'.",
+    ),
+});
+
+const getComponentDefinitionsOutputSchema = z.object({
+  definitions: z
+    .record(z.string(), z.unknown())
+    .describe("Component definitions for all found component names."),
+  found: z
+    .array(z.string())
+    .describe("Resolved component names that were found."),
+  missing: z
+    .array(z.string())
+    .describe("Requested names that were not found in the component library."),
+});
+
 export const POST = async (request: Request) => {
   // 1. Request klonen, um den Body für uns UND den puckHandler nutzbar zu machen
   const clonedRequest = request.clone();
@@ -400,9 +510,9 @@ export const POST = async (request: Request) => {
   const { config, pageData } = body;
 
   // 2. Den Kontext für die KI vorbereiten
-  // Wir geben ihr die Kategorien und die exakte Definition der Komponentenfelder
-  const componentDefinitions = JSON.stringify(
-    config?.components || {},
+  // We provide categories + a compact component index; full definitions are fetched lazily via tool.
+  const componentIndex = JSON.stringify(
+    buildComponentIndex(config?.components || {}),
     null,
     2,
   );
@@ -415,15 +525,17 @@ export const POST = async (request: Request) => {
       context: `You are an expert web designer. You are helping a user to build and edit websites.
 
 --- ROLE ---
-Expert web designer; use only updatePage for both new pages and edits.
+Expert web designer; use getComponentDefinitions (read-only) and updatePage (mutating) to build and edit pages.
 
 --- COMMUNICATION ---
-- Use only updatePage. Never call any other page tool.
+- Use only getComponentDefinitions and updatePage. Never call any other page tools.
 - When the user asks for a "website", "full page", or "agency site": do NOT call updatePage immediately. First suggest sections (e.g. Hero, Services, Team, Testimonials, Contact, CTA) and ask which they want or if they want a standard set (e.g. "I can build Hero, Services, and Testimonials. Which sections do you want, or should I create all three?"). Only call updatePage after they confirm or say e.g. "all" / "build everything".
+- If you are unsure about component props/field names, call getComponentDefinitions first with one comma-separated query (e.g. "Container,Heading,Text,Button"), then call updatePage.
 - CRITICAL: Call updatePage exactly ONCE per request. Put ALL sections (Hero, Über Uns, Services, etc.) in a single build array in one updatePage call. Never split sections across multiple tool calls.
 - Prefer incremental updates without reset.
 - Use reset only when a full rebuild is explicitly necessary AND the user has explicitly confirmed reset/rebuild. If not confirmed, do not include reset and keep resetConfirmed=false.
 - For updatePage, use REAL existing component ids from pageData (e.g. "Heading-Team"), never invented placeholder ids.
+- Avoid unknown props: if a prop is uncertain or not listed in component fields, fetch the exact definitions via getComponentDefinitions before updatePage.
 - For relative changes like "vergrößern"/"größer machen", choose a value that is actually larger than the current one.
 - If the user's request is unclear or ambiguous in other ways, ask a short follow-up question (e.g. "Soll die Hero-Section eher minimalistisch oder mit viel Text sein?").
 - If the latest user request is a local edit (e.g. make title bigger/change color/text), execute only that local edit and do not repeat older build goals from the conversation.
@@ -433,6 +545,30 @@ Expert web designer; use only updatePage for both new pages and edits.
 - NEVER include JSON, build ops, or code blocks in plain text. Use only tools for all operations.`,
 
       tools: {
+        getComponentDefinitions: tool({
+          name: "getComponentDefinitions",
+          description: `Fetch exact component definitions for selected component names using a single comma-separated query.
+
+Use this when you need authoritative field/prop names before calling updatePage.
+Example query: "Container,Heading,Text,Button".
+Returns partial results: known components in definitions/found and unknown names in missing.`,
+          inputSchema: getComponentDefinitionsInputSchema,
+          outputSchema: getComponentDefinitionsOutputSchema,
+          execute: async (input) => {
+            const componentMap = config?.components || {};
+            const lookup = createComponentNameLookup(componentMap);
+            const parsed = parseComponentQuery(input.query ?? "", lookup);
+            const definitions = pickComponentDefinitions(
+              componentMap,
+              parsed.names,
+            );
+            return {
+              definitions,
+              found: parsed.names,
+              missing: parsed.missing,
+            };
+          },
+        }),
         updatePage: tool({
           name: "updatePage",
           description: `Build or update a page using atomic operations.
@@ -466,8 +602,10 @@ parentId:slot — e.g. root:default-zone (root level) or Container-uuid:content 
 --- COMPONENT LIBRARY ---
 ${categories}
 
---- COMPONENT DEFINITIONS ---
-${componentDefinitions}`,
+--- COMPONENT INDEX ---
+${componentIndex}
+
+Use getComponentDefinitions(query) when you need the exact definition for selected components before updatePage.`,
           inputSchema: updatePageInputSchema,
           outputSchema: updatePageOutputSchema,
           execute: async (input) => {

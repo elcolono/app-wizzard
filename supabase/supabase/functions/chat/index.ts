@@ -6,7 +6,7 @@ import { corsHeaders } from "../_shard/cors.ts";
 const ENV = {
   ANON_KEY: Deno.env.get("SUPABASE_ANON_KEY"),
   OPENAI_KEY: Deno.env.get("OPENAI_API_KEY"),
-  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o-mini",
+  OPENAI_MODEL: Deno.env.get("OPENAI_MODEL") ?? "gpt-4o",
   SUPABASE_URL: Deno.env.get("SUPABASE_URL"),
   SUPABASE_ROLE_KEY: Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"),
 };
@@ -38,12 +38,24 @@ type BuildMemory = {
 };
 
 const isPageBuildTool = (name?: string): boolean => name === "updatePage";
+const isComponentDefinitionTool = (name?: string): boolean =>
+  name === "getComponentDefinitions";
 
 const getToolLoadingLabel = (name?: string): string =>
-  name === "updatePage" ? "Updating page..." : "Applying page changes...";
+  name === "updatePage"
+    ? "Updating page..."
+    : name === "getComponentDefinitions"
+      ? "Loading component definitions..."
+      : "Running tool...";
 
 const getToolDoneLabel = (name?: string): string =>
-  name === "updatePage" ? "Updated page" : "Applied page changes";
+  name === "updatePage"
+    ? "Updated page"
+    : name === "getComponentDefinitions"
+      ? "Loaded component definitions"
+      : "Tool finished";
+
+const MAX_TOOL_ROUNDS = 3;
 
 const collectIdsFromContent = (
   content: any,
@@ -194,6 +206,63 @@ const extractRecentBuildMemories = (messages: any[] = []): BuildMemory[] => {
     }
   }
   return memories.slice(-2);
+};
+
+const createComponentNameLookup = (components: any): Map<string, string> => {
+  const lookup = new Map<string, string>();
+  if (!components || typeof components !== "object") return lookup;
+  for (const name of Object.keys(components)) {
+    if (typeof name === "string" && name.length > 0) {
+      lookup.set(name.toLowerCase(), name);
+    }
+  }
+  return lookup;
+};
+
+const parseComponentQuery = (
+  query: unknown,
+  lookup: Map<string, string>,
+): { names: string[]; missing: string[] } => {
+  const rawQuery = typeof query === "string" ? query : "";
+  const parts = rawQuery
+    .split(",")
+    .map((part) => part.trim())
+    .filter((part) => part.length > 0);
+
+  const names: string[] = [];
+  const missing: string[] = [];
+  const seenRequested = new Set<string>();
+  const seenResolved = new Set<string>();
+
+  for (const part of parts) {
+    const requestedKey = part.toLowerCase();
+    if (seenRequested.has(requestedKey)) continue;
+    seenRequested.add(requestedKey);
+
+    const resolved = lookup.get(requestedKey);
+    if (!resolved) {
+      missing.push(part);
+      continue;
+    }
+    if (seenResolved.has(resolved)) continue;
+    seenResolved.add(resolved);
+    names.push(resolved);
+  }
+
+  return { names, missing };
+};
+
+const pickComponentDefinitions = (
+  components: any,
+  names: string[],
+): Record<string, unknown> => {
+  const selected: Record<string, unknown> = {};
+  if (!components || typeof components !== "object") return selected;
+  for (const name of names) {
+    if (!(name in components)) continue;
+    selected[name] = components[name];
+  }
+  return selected;
 };
 
 const formatBuildMemoryContext = (
@@ -739,13 +808,21 @@ serve(async (req) => {
       manager.sendToolStatus("thinking", "Thinking…", true);
 
       try {
-        const toolStarted = new Set<string>();
-        let lastProviderId: string | undefined;
+        const tools = Transformers.tools(payload.tools);
+        const llmMessages = Transformers.messages(payload.messages, payload.context);
 
-        await streamOpenAI(
-          Transformers.messages(payload.messages, payload.context),
-          Transformers.tools(payload.tools),
-          {
+        for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
+          const toolStarted = new Set<string>();
+          const toolResults: Array<{
+            id: string;
+            name: string;
+            output: unknown;
+          }> = [];
+          let sawUpdatePage = false;
+          let lastProviderId: string | undefined;
+          let assistantText = "";
+
+          await streamOpenAI(llmMessages, tools, {
             onStart: (id) => {
               lastProviderId = id;
               manager.send({
@@ -754,23 +831,22 @@ serve(async (req) => {
                 providerMetadata: { openai: { itemId: id } },
               });
             },
-            onDelta: (delta) =>
+            onDelta: (delta) => {
+              assistantText += delta;
               manager.send({
                 type: "text-delta",
                 id: ids.text,
                 delta,
-              }),
+              });
+            },
             onEnd: () =>
               manager.send({
                 type: "text-end",
                 id: ids.text,
                 providerMetadata: { openai: { itemId: lastProviderId } },
               }),
-            // Im serve-Handler innerhalb von streamOpenAI Callbacks:
             onToolDelta: (id, delta, full, name) => {
               console.log("onToolDelta", id, delta, full, name);
-              // console.log("onToolDelta", id, delta, full, name);
-              // 1. Zuerst: tool-input-start (einmal pro Tool-Call)
               if (!toolStarted.has(id) && name) {
                 toolStarted.add(id);
                 manager.send({
@@ -778,62 +854,82 @@ serve(async (req) => {
                   toolCallId: id,
                   toolName: name,
                 });
+                if (!isPageBuildTool(name)) {
+                  manager.sendToolStatus(id, getToolLoadingLabel(name), true);
+                }
               }
 
-              // 2. Pro Chunk: tool-input-delta mit dem rohen Delta
-              if (toolStarted.has(id)) {
-                if (isPageBuildTool(name)) {
-                  const partial = parse(full);
+              if (toolStarted.has(id) && isPageBuildTool(name)) {
+                const partial = parse(full);
 
-                  // Einmal senden, wenn description stabil ist (gleich wie im vorherigen Chunk)
-                  if (partial?.description) {
-                    const prev = manager.getPreviousDescription(id);
-                    const alreadySent = manager.getLastSentDescription(id);
-                    if (
-                      prev === partial.description &&
-                      alreadySent === undefined
-                    ) {
-                      manager.send({
-                        type: "tool-input-available",
-                        toolCallId: id,
-                        toolName: name,
-                        input: {
-                          description: partial.description,
+                if (partial?.description) {
+                  const prev = manager.getPreviousDescription(id);
+                  const alreadySent = manager.getLastSentDescription(id);
+                  if (prev === partial.description && alreadySent === undefined) {
+                    manager.send({
+                      type: "tool-input-available",
+                      toolCallId: id,
+                      toolName: name,
+                      input: {
+                        description: partial.description,
+                      },
+                      providerMetadata: {
+                        openai: {
+                          itemId: lastProviderId,
                         },
-                        providerMetadata: {
-                          openai: {
-                            itemId: lastProviderId,
-                          },
-                        },
-                      });
-                      manager.setLastSentDescription(id, partial.description);
-                    }
-                    manager.setPreviousDescription(id, partial.description);
+                      },
+                    });
+                    manager.setLastSentDescription(id, partial.description);
                   }
+                  manager.setPreviousDescription(id, partial.description);
+                }
 
-                  // Nur das letzte Element in partial.build pro Chunk verarbeiten
-                  if (
-                    partial &&
-                    Array.isArray(partial.build) &&
-                    partial.build.length > 0
-                  ) {
-                    if (!manager.hasBuildStatusSent(id)) {
-                      manager.sendToolStatus(
-                        id,
-                        getToolLoadingLabel(name),
-                        true,
-                      );
-                      manager.markBuildStatusSent(id);
-                    }
-                    manager.processBuildStream(partial, id);
+                if (
+                  partial &&
+                  Array.isArray(partial.build) &&
+                  partial.build.length > 0
+                ) {
+                  if (!manager.hasBuildStatusSent(id)) {
+                    manager.sendToolStatus(id, getToolLoadingLabel(name), true);
+                    manager.markBuildStatusSent(id);
                   }
+                  manager.processBuildStream(partial, id);
                 }
               }
             },
-            // 2. Im serve-Handler bei onToolComplete:
             onToolComplete: async (id, name, input) => {
               console.log("onToolComplete", id, name, input);
+              if (isComponentDefinitionTool(name)) {
+                const componentMap = payload?.config?.components || {};
+                const lookup = createComponentNameLookup(componentMap);
+                const parsed = parseComponentQuery(input?.query, lookup);
+                const definitions = pickComponentDefinitions(
+                  componentMap,
+                  parsed.names,
+                );
+                const loadedCount = parsed.names.length;
+                const missingCount = parsed.missing.length;
+                const label =
+                  missingCount > 0
+                    ? `Loaded ${loadedCount} component definitions (${missingCount} missing)`
+                    : `Loaded ${loadedCount} component definitions`;
+                const output = {
+                  definitions,
+                  found: parsed.names,
+                  missing: parsed.missing,
+                };
+
+                toolResults.push({ id, name, output });
+                manager.sendToolStatus(id, label, false);
+                manager.send({
+                  type: "tool-output-available",
+                  toolCallId: id,
+                  output,
+                });
+                return;
+              }
               if (!isPageBuildTool(name)) return;
+              sawUpdatePage = true;
               const memory = summarizeAppliedBuild(
                 Array.isArray(input?.build) ? input.build : [],
                 typeof input?.description === "string" ? input.description : "",
@@ -856,17 +952,45 @@ serve(async (req) => {
                 manager.sendToolStatus(id, getToolDoneLabel(name), false);
               }
 
+              const output = {
+                status: { loading: false, label: getToolDoneLabel(name) },
+                memory,
+              };
+              toolResults.push({ id, name, output });
               manager.send({
                 type: "tool-output-available",
                 toolCallId: id,
-                output: {
-                  status: { loading: false, label: getToolDoneLabel(name) },
-                  memory,
-                },
+                output,
               });
             },
-          },
-        );
+          });
+
+          if (assistantText.trim().length > 0) {
+            llmMessages.push({ role: "assistant", content: assistantText });
+          }
+
+          if (sawUpdatePage || toolResults.length === 0) {
+            break;
+          }
+
+          llmMessages.push({
+            role: "system",
+            content:
+              "Tool results from previous step (JSON):\n" +
+              JSON.stringify(
+                toolResults.map((result) => ({
+                  toolCallId: result.id,
+                  toolName: result.name,
+                  output: result.output,
+                })),
+              ),
+          });
+          llmMessages.push({
+            role: "system",
+            content:
+              "Use the tool results above to continue the same user request. If definitions are sufficient, call updatePage exactly once now.",
+          });
+        }
 
         manager.send({ type: "finish-step" });
         manager.send({ type: "finish" });
