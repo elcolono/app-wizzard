@@ -29,6 +29,7 @@ function RootPropsPanel() {
     (key: string, value: unknown) => {
       dispatch({
         type: "setData",
+        recordHistory: true,
         data: (previous) => ({
           ...previous,
           root: {
