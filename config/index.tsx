@@ -7,6 +7,7 @@ import Box from "./blocks/Box";
 import Divider from "./blocks/Divider";
 import HStack from "./blocks/HStack";
 import VStack from "./blocks/VStack";
+import Spacer from "./blocks/Spacer";
 import Grid from "./blocks/Grid";
 import GridItem from "./blocks/GridItem";
 import Container from "./blocks/Container";
@@ -80,6 +81,7 @@ export const config: Config = {
         "Divider",
         "HStack",
         "VStack",
+        "Spacer",
         "Grid",
         "GridItem",
         "Container",
@@ -122,6 +124,7 @@ export const config: Config = {
       Divider,
       HStack,
       VStack,
+      Spacer,
       Grid,
       GridItem,
       Container,

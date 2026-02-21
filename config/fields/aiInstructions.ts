@@ -32,6 +32,8 @@ export const aiInstructions = {
     "Advanced Tailwind classes for column span (e.g., col-span-*, md:col-span-*).",
   spacing:
     "Spacing size token; maps to Tailwind gap-* utilities for stack spacing.",
+  spacerSize:
+    "Vertical spacer size token using Tailwind height classes: xs->h-1 (4px), sm->h-2 (8px), md->h-3 (12px), lg->h-4 (16px), xl->h-5 (20px), 2xl->h-6 (24px), 3xl->h-7 (28px), 4xl->h-8 (32px).",
   progressValue: "Progress value from 0 to 100.",
   spinnerColor: "Spinner color token or CSS color string.",
   orientation: "Orientation of the component (horizontal or vertical).",
