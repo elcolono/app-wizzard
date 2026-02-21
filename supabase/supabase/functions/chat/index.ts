@@ -37,8 +37,7 @@ type BuildMemory = {
   humanSummary: string;
 };
 
-const isPageBuildTool = (name?: string): boolean =>
-  name === "updatePage";
+const isPageBuildTool = (name?: string): boolean => name === "updatePage";
 
 const getToolLoadingLabel = (name?: string): string =>
   name === "updatePage" ? "Updating page..." : "Applying page changes...";
@@ -46,7 +45,10 @@ const getToolLoadingLabel = (name?: string): string =>
 const getToolDoneLabel = (name?: string): string =>
   name === "updatePage" ? "Updated page" : "Applied page changes";
 
-const collectIdsFromContent = (content: any, ids = new Set<string>()): Set<string> => {
+const collectIdsFromContent = (
+  content: any,
+  ids = new Set<string>(),
+): Set<string> => {
   if (!Array.isArray(content)) return ids;
   for (const item of content) {
     if (!item || typeof item !== "object") continue;
@@ -55,8 +57,8 @@ const collectIdsFromContent = (content: any, ids = new Set<string>()): Set<strin
       typeof (item as any).id === "string"
         ? (item as any).id
         : typeof props.id === "string"
-        ? props.id
-        : undefined;
+          ? props.id
+          : undefined;
     if (id) ids.add(id);
     if (Array.isArray(props.content)) {
       collectIdsFromContent(props.content, ids);
@@ -70,7 +72,10 @@ const isLikelyGerman = (text: string): boolean =>
     text,
   );
 
-const summarizeAppliedBuild = (build: Array<any>, description = ""): BuildMemory => {
+const summarizeAppliedBuild = (
+  build: Array<any>,
+  description = "",
+): BuildMemory => {
   const created: BuildMemory["created"] = [];
   const updatedById = new Map<string, Set<string>>();
   const moved: BuildMemory["moved"] = [];
@@ -116,8 +121,7 @@ const summarizeAppliedBuild = (build: Array<any>, description = ""): BuildMemory
 
   if (
     created.some(
-      (c) =>
-        /hero/i.test(c.id) || /hero/i.test(c.type) || /hero/i.test(c.zone),
+      (c) => /hero/i.test(c.id) || /hero/i.test(c.type) || /hero/i.test(c.zone),
     )
   ) {
     notes.add("hero_section_present");
@@ -151,8 +155,8 @@ const summarizeAppliedBuild = (build: Array<any>, description = ""): BuildMemory
         ? `Änderungen angewendet: ${created.length} erstellt, ${updated.length} aktualisiert, ${moved.length} verschoben, ${deleted.length} gelöscht.`
         : `Applied changes: ${created.length} created, ${updated.length} updated, ${moved.length} moved, ${deleted.length} deleted.`
       : german
-      ? "Keine Änderungen angewendet."
-      : "No changes were applied.";
+        ? "Keine Änderungen angewendet."
+        : "No changes were applied.";
 
   return {
     appliedOpsCount,
@@ -192,11 +196,19 @@ const extractRecentBuildMemories = (messages: any[] = []): BuildMemory[] => {
   return memories.slice(-2);
 };
 
-const formatBuildMemoryContext = (memories: BuildMemory[]): string | undefined => {
+const formatBuildMemoryContext = (
+  memories: BuildMemory[],
+): string | undefined => {
   if (!memories.length) return undefined;
   const lines = memories.map((memory, index) => {
-    const created = memory.created.map((c) => c.id).slice(0, 5).join(", ");
-    const updated = memory.updated.map((u) => u.id).slice(0, 5).join(", ");
+    const created = memory.created
+      .map((c) => c.id)
+      .slice(0, 5)
+      .join(", ");
+    const updated = memory.updated
+      .map((u) => u.id)
+      .slice(0, 5)
+      .join(", ");
     const deleted = memory.deleted.slice(0, 5).join(", ");
     return `Recent applied changes #${index + 1}: ${memory.humanSummary} created=[${created}] updated=[${updated}] deleted=[${deleted}] notes=[${memory.notes.join(", ")}]`;
   });
@@ -277,14 +289,14 @@ class PuckStreamManager {
 
   constructor(
     private controller: ReadableStreamDefaultController,
-    initialComponentIds: string[] = []
+    initialComponentIds: string[] = [],
   ) {
     for (const id of initialComponentIds) this.knownComponentIds.add(id);
   }
 
   send(data: unknown) {
     this.controller.enqueue(
-      this.encoder.encode(`data: ${JSON.stringify(data)}\n\n`)
+      this.encoder.encode(`data: ${JSON.stringify(data)}\n\n`),
     );
   }
 
@@ -443,8 +455,8 @@ class PuckStreamManager {
         this.knownComponentIds.clear();
         this.lastSentPayloadByOp = new Map(
           [...this.lastSentPayloadByOp.entries()].filter(
-            ([k]) => !k.startsWith(`${toolCallId}:`)
-          )
+            ([k]) => !k.startsWith(`${toolCallId}:`),
+          ),
         );
         this.addSentByToolCall.delete(toolCallId);
         this.lastBuildLengthByToolCall.delete(toolCallId);
@@ -456,13 +468,16 @@ class PuckStreamManager {
       };
 
       if (
-        (payload.op === "update" || payload.op === "move" || payload.op === "delete") &&
+        (payload.op === "update" ||
+          payload.op === "move" ||
+          payload.op === "delete") &&
         typeof payload.id === "string" &&
         !this.knownComponentIds.has(payload.id)
       ) {
         return;
       }
-      if (payload.op === "update" && !this.hasNonEmptyProps(payload.props)) return;
+      if (payload.op === "update" && !this.hasNonEmptyProps(payload.props))
+        return;
 
       const opKey = `${toolCallId}:${payload.op}:${payload.id ?? "root"}`;
       const signature = JSON.stringify(payload);
@@ -550,16 +565,16 @@ async function streamOpenAI(
       id: string,
       delta: string,
       full: string,
-      name?: string
+      name?: string,
     ) => void;
     onToolComplete: (
       id: string,
       name: string,
       input: any,
-      providerId?: string
+      providerId?: string,
     ) => void;
     onStart: (providerId: string) => void;
-  }
+  },
 ) {
   if (!ENV.OPENAI_KEY) throw new Error("Missing OpenAI API Key");
 
@@ -654,7 +669,7 @@ async function streamOpenAI(
               state.id,
               tc.function?.arguments || "",
               state.argsText,
-              state.name
+              state.name,
             );
           }
         }
@@ -681,7 +696,7 @@ async function streamOpenAI(
       state.id,
       state.name || "tool",
       parsedArgs,
-      providerId
+      providerId,
     );
   }
 }
@@ -699,7 +714,7 @@ serve(async (req) => {
   const stream = new ReadableStream({
     async start(controller) {
       const initialComponentIds = Array.from(
-        collectIdsFromContent(payload?.pageData?.content)
+        collectIdsFromContent(payload?.pageData?.content),
       );
       const manager = new PuckStreamManager(controller, initialComponentIds);
       const chatId =
@@ -803,7 +818,11 @@ serve(async (req) => {
                     partial.build.length > 0
                   ) {
                     if (!manager.hasBuildStatusSent(id)) {
-                      manager.sendToolStatus(id, getToolLoadingLabel(name), true);
+                      manager.sendToolStatus(
+                        id,
+                        getToolLoadingLabel(name),
+                        true,
+                      );
                       manager.markBuildStatusSent(id);
                     }
                     manager.processBuildStream(partial, id);
@@ -846,7 +865,7 @@ serve(async (req) => {
                 },
               });
             },
-          }
+          },
         );
 
         manager.send({ type: "finish-step" });
