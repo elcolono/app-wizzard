@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { AutoField, usePuck } from "@puckeditor/core";
-import { Settings2 } from "lucide-react";
+import { AutoField, FieldLabel, usePuck } from "@puckeditor/core";
+import { Hash, List, Settings2, Type } from "lucide-react";
 
 const toReadableLabel = (name: string) => {
   const withSpaces = name
@@ -10,6 +10,14 @@ const toReadableLabel = (name: string) => {
     .replace(/[-_]+/g, " ")
     .trim();
   return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1);
+};
+
+const getFieldIcon = (fieldType: string) => {
+  if (fieldType === "number") return <Hash size={16} />;
+  if (fieldType === "select" || fieldType === "radio") {
+    return <List size={16} />;
+  }
+  return <Type size={16} />;
 };
 
 function RootPropsPanel() {
@@ -50,26 +58,33 @@ function RootPropsPanel() {
         Page Settings
       </div>
       <div style={{ display: "grid", gap: 8 }}>
-        {Object.entries(rootFields).map(([name, field]) => {
+        {Object.entries(rootFields).map(([name, field], index) => {
           const label =
             (field as { label?: string }).label ?? toReadableLabel(name);
+          const fieldType = (field as { type?: string }).type ?? "text";
+          const labelIcon =
+            (field as { labelIcon?: React.ReactNode }).labelIcon ??
+            getFieldIcon(fieldType);
           return (
-            <div key={name}>
-              <div
-                style={{
-                  fontSize: 12,
-                  fontWeight: 500,
-                  color: "#374151",
-                  marginBottom: 4,
-                }}
-              >
-                {label}
-              </div>
-              <AutoField
-                value={(rootProps as Record<string, unknown>)[name]}
-                field={{ ...field, label: undefined }}
-                onChange={(value) => setRootProp(name, value)}
-              />
+            <div
+              key={name}
+              style={{
+                marginBottom: 10,
+                paddingTop: index === 0 ? 0 : 10,
+                paddingLeft: 12,
+                paddingRight: 12,
+                marginLeft: -12,
+                marginRight: -12,
+                borderTop: index === 0 ? "none" : "1px solid #e5e7eb",
+              }}
+            >
+              <FieldLabel label={label} icon={labelIcon}>
+                <AutoField
+                  value={(rootProps as Record<string, unknown>)[name]}
+                  field={{ ...field, label: undefined }}
+                  onChange={(value) => setRootProp(name, value)}
+                />
+              </FieldLabel>
             </div>
           );
         })}
@@ -84,4 +99,3 @@ export const rootPropsPlugin = {
   icon: <Settings2 size={16} />,
   render: () => <RootPropsPanel />,
 };
-
