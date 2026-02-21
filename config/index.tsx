@@ -38,10 +38,15 @@ import AvatarGroup from "./blocks/AvatarGroup";
 export const config: Config = {
   root: {
     defaultProps: {
+      pageTitle: "Untitled Page",
       primary: THEME_DEFAULTS.primary,
       secondary: THEME_DEFAULTS.secondary,
     },
     fields: {
+      pageTitle: {
+        label: "Page title (head)",
+        type: "text",
+      },
       primary: {
         label: "Primary color (hex)",
         type: "text",
@@ -54,6 +59,7 @@ export const config: Config = {
     render: (props) => {
       const { children, primary, secondary } = props as {
         children: React.ReactNode;
+        pageTitle?: string;
         primary?: string;
         secondary?: string;
       };
