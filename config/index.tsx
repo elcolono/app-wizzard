@@ -35,6 +35,7 @@ import TextArea from "./blocks/TextArea";
 import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
+import Hero from "./blocks/Hero";
 
 export const config: Config = {
   root: {
@@ -86,6 +87,9 @@ export const config: Config = {
         "GridItem",
         "Container",
       ],
+    },
+    section: {
+      components: ["Hero"],
     },
     dataDisplay: {
       components: [
@@ -152,6 +156,7 @@ export const config: Config = {
       Icon,
       Avatar,
       AvatarGroup,
+      Hero,
     } as const;
 
     const wrap = (component: any) => {
