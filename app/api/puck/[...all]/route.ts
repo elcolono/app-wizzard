@@ -188,7 +188,7 @@ function buildComponentIndex(components: any): ComponentIndexEntry[] {
   if (!components || typeof components !== "object") return [];
   return Object.entries(components)
     .filter(([name]) => typeof name === "string" && name.length > 0)
-    .map(([name, definition]) => {
+    .map(([name, definition]: [string, any]) => {
       const fields =
         definition && typeof definition === "object"
           ? definition.fields

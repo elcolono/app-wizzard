@@ -18,7 +18,12 @@ export const SECTION_COMPONENTS = [
   "FooterSection",
 ] as const;
 
+export const NON_NESTABLE_COMPONENTS = [
+  "Container",
+  ...SECTION_COMPONENTS,
+] as const;
+
 export const DISALLOWED_NESTED_COMPONENTS = [
   ...CHILD_ONLY_COMPONENTS,
-  ...SECTION_COMPONENTS,
+  ...NON_NESTABLE_COMPONENTS,
 ];
