@@ -2,7 +2,7 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import React from "react";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
 import { aiInstructions } from "../fields/aiInstructions";
-import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
+import { SECTION_COMPONENTS } from "../fields/slotRules";
 
 export type GridProps = {
   __createdBy?: string;
@@ -72,6 +72,21 @@ export type GridProps = {
   columnsClassName: string;
   content: any;
 };
+
+const setRefs =
+  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
+  (value: T | null) => {
+    refs.forEach((ref) => {
+      if (typeof ref === "function") {
+        ref(value);
+        return;
+      }
+
+      if (ref && typeof ref === "object" && "current" in ref) {
+        (ref as React.MutableRefObject<T | null>).current = value;
+      }
+    });
+  };
 
 function isDefaultTemplateGridItems(content: unknown): boolean {
   if (!Array.isArray(content) || content.length === 0) return false;
@@ -198,7 +213,7 @@ const Grid: ComponentConfig<GridProps> = {
     },
     content: {
       type: "slot",
-      disallow: DISALLOWED_NESTED_COMPONENTS,
+      disallow: SECTION_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {
@@ -247,15 +262,17 @@ const Grid: ComponentConfig<GridProps> = {
       ]
         .filter(Boolean)
         .join(" ");
+      const mergedRef = setRefs<React.ComponentRef<typeof GluestackGrid>>(
+        ref,
+        puck.dragRef as unknown as React.Ref<
+          React.ComponentRef<typeof GluestackGrid>
+        >
+      );
 
       return (
         <GluestackGrid
           {...props}
-          ref={
-            puck.dragRef as unknown as React.Ref<
-              React.ComponentRef<typeof GluestackGrid>
-            >
-          }
+          ref={mergedRef}
           className={mergedClassName}
           _extra={{ className: mergedColumnsClassName }}
         />

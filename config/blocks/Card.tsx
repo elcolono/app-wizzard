@@ -24,6 +24,8 @@ const variantOptions = [
   { label: "Filled", value: "filled" },
 ];
 
+const CARD_DISALLOWED_COMPONENTS = [...DISALLOWED_NESTED_COMPONENTS, "Card"];
+
 const Card: ComponentConfig<CardProps> = {
   inline: false,
   fields: {
@@ -39,7 +41,7 @@ const Card: ComponentConfig<CardProps> = {
     },
     content: {
       type: "slot",
-      disallow: DISALLOWED_NESTED_COMPONENTS,
+      disallow: CARD_DISALLOWED_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {
