@@ -5,63 +5,93 @@ import { aiInstructions } from "../fields/aiInstructions";
 import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
 
 export type GridProps = {
+  __createdBy?: string;
   className: string;
   columnsMobile:
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "none"
-    | "auto"
-    | "subgrid";
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "none"
+  | "auto"
+  | "subgrid";
   columnsTablet:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "none"
-    | "auto"
-    | "subgrid";
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "none"
+  | "auto"
+  | "subgrid";
   columnsDesktop:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "none"
-    | "auto"
-    | "subgrid";
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "none"
+  | "auto"
+  | "subgrid";
   columnsClassName: string;
   content: any;
 };
 
+function isDefaultTemplateGridItems(content: unknown): boolean {
+  if (!Array.isArray(content) || content.length === 0) return false;
+  return content.every((item) => {
+    if (!item || typeof item !== "object") return false;
+    if ((item as any).type !== "GridItem") return false;
+    const props = ((item as any).props ?? {}) as Record<string, unknown>;
+    const className = typeof props.className === "string" ? props.className : "";
+    const columnsClassName =
+      typeof props.columnsClassName === "string" ? props.columnsClassName : "";
+    const hasTemplateClass =
+      className === "bg-background-50 p-3 rounded-md text-center";
+    const hasTemplateColumnClass = columnsClassName === "col-span-1";
+    const contentItems = Array.isArray(props.content) ? props.content : [];
+    return hasTemplateClass && hasTemplateColumnClass && contentItems.length === 0;
+  });
+}
+
 const Grid: ComponentConfig<GridProps> = {
   inline: false,
+  resolveData(data) {
+    const props = (data?.props ?? {}) as Record<string, unknown>;
+    if (props.__createdBy !== "ai") return data;
+    if (!isDefaultTemplateGridItems(props.content)) return data;
+    return {
+      ...data,
+      props: {
+        ...props,
+        content: [],
+      },
+    };
+  },
   fields: {
     columnsMobile: {
       type: "select",
@@ -207,40 +237,6 @@ const Grid: ComponentConfig<GridProps> = {
       ]
         .filter(Boolean)
         .join(" ");
-
-      // return (
-      //   <GluestackGrid
-      //     className="gap-4"
-      //     _extra={{
-      //       className: "grid-cols-9",
-      //     }}
-      //   >
-      //     <GluestackGridItem
-      //       className="bg-background-50 p-3 rounded-md text-center"
-      //       _extra={{
-      //         className: "col-span-3",
-      //       }}
-      //     >
-      //       <GluestackText>A</GluestackText>
-      //     </GluestackGridItem>
-      //     <GluestackGridItem
-      //       className="bg-background-50 p-3 rounded-md text-center"
-      //       _extra={{
-      //         className: "col-span-3",
-      //       }}
-      //     >
-      //       <GluestackText>B</GluestackText>
-      //     </GluestackGridItem>
-      //     <GluestackGridItem
-      //       className="bg-background-50 p-3 rounded-md text-center"
-      //       _extra={{
-      //         className: "col-span-3",
-      //       }}
-      //     >
-      //       <GluestackText>C</GluestackText>
-      //     </GluestackGridItem>
-      //   </GluestackGrid>
-      // );
 
       return (
         <GluestackGrid

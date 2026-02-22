@@ -7,86 +7,86 @@ import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
 export type GridItemProps = {
   className: string;
   columnsBase:
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "full"
-    | "auto";
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "full"
+  | "auto";
   columnsSm:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "full"
-    | "auto";
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "full"
+  | "auto";
   columnsMd:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "full"
-    | "auto";
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "full"
+  | "auto";
   columnsLg:
-    | ""
-    | "1"
-    | "2"
-    | "3"
-    | "4"
-    | "5"
-    | "6"
-    | "7"
-    | "8"
-    | "9"
-    | "10"
-    | "11"
-    | "12"
-    | "full"
-    | "auto";
+  | ""
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "full"
+  | "auto";
   columnsClassName: string;
   content: any;
 };
 
 const setRefs =
   <T,>(...refs: Array<React.Ref<T> | undefined>) =>
-  (value: T | null) => {
-    refs.forEach((ref) => {
-      if (typeof ref === "function") {
-        ref(value);
-        return;
-      }
+    (value: T | null) => {
+      refs.forEach((ref) => {
+        if (typeof ref === "function") {
+          ref(value);
+          return;
+        }
 
-      if (ref && typeof ref === "object" && "current" in ref) {
-        (ref as React.MutableRefObject<T | null>).current = value;
-      }
-    });
-  };
+        if (ref && typeof ref === "object" && "current" in ref) {
+          (ref as React.MutableRefObject<T | null>).current = value;
+        }
+      });
+    };
 
 const columnsBaseOptions = [
   { label: "1", value: "1" },
@@ -154,7 +154,7 @@ const GridItem: ComponentConfig<GridItemProps> = {
     },
   },
   defaultProps: {
-    className: "bg-background-50 p-6 rounded-md",
+    className: "",
     columnsBase: "1",
     columnsSm: "",
     columnsMd: "",

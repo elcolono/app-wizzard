@@ -2,13 +2,13 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Text as GluestackText } from "../../components/ui/text";
 import CheckboxField from "../fields/Checkbox";
-import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
 
 export type TextProps = {
   className?: string;
   text: string;
   size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl";
+  textAlignment: "" | "text-left" | "text-center" | "text-right";
   isTruncated: boolean;
   bold: boolean;
   underline: boolean;
@@ -30,6 +30,12 @@ const sizeOptions = [
   { label: "5XL", value: "5xl" },
 ];
 
+const alignmentOptions = [
+  { label: "Left", value: "text-left" },
+  { label: "Center", value: "text-center" },
+  { label: "Right", value: "text-right" },
+];
+
 const Text: ComponentConfig<TextProps> = {
   inline: true,
   fields: {
@@ -42,6 +48,12 @@ const Text: ComponentConfig<TextProps> = {
       type: "select",
       options: sizeOptions,
       ai: { instructions: aiInstructions.textSize },
+    },
+    textAlignment: {
+      type: "radio",
+      label: "Text alignment",
+      options: alignmentOptions,
+      ai: { instructions: aiInstructions.alignment },
     },
     isTruncated: CheckboxField("Truncate"),
     bold: CheckboxField("Bold"),
@@ -60,6 +72,7 @@ const Text: ComponentConfig<TextProps> = {
     text: "Text",
     className: "",
     size: "md",
+    textAlignment: "text-left",
     isTruncated: false,
     bold: false,
     underline: false,
@@ -72,6 +85,7 @@ const Text: ComponentConfig<TextProps> = {
     text,
     className,
     size,
+    textAlignment,
     isTruncated,
     bold,
     underline,
@@ -82,6 +96,7 @@ const Text: ComponentConfig<TextProps> = {
     puck,
   }: WithPuckProps<TextProps>) => (
     <GluestackText
+      className={[className, textAlignment].filter(Boolean).join(" ")}
       size={size}
       isTruncated={isTruncated}
       bold={bold}
