@@ -36,6 +36,7 @@ import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
 import Hero from "./blocks/Hero";
+import HeroSimpleCentered from "./blocks/HeroSimpleCentered";
 import AboutSection from "./blocks/AboutSection";
 import ServicesSection from "./blocks/ServicesSection";
 import TestimonialsSection from "./blocks/TestimonialsSection";
@@ -165,6 +166,7 @@ export const config: Config = {
       Avatar,
       AvatarGroup,
       Hero,
+      HeroSimpleCentered,
       AboutSection,
       ServicesSection,
       TestimonialsSection,

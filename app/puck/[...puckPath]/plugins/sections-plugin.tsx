@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Drawer, usePuck } from "@puckeditor/core";
-import { LayoutTemplate } from "lucide-react";
+import { ChevronDown, ChevronUp, LayoutTemplate } from "lucide-react";
 import {
-  SECTION_PLUGIN_ITEMS,
+  SECTION_CATEGORIES,
   SectionPreviewDefinition,
 } from "../../../../config/sections/registry";
 
@@ -115,6 +115,19 @@ function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
         <div style={{ display: "flex", gap: 5 }}>
           <PreviewButton width="22%" />
           <PreviewButton width="22%" opacity={0.72} />
+        </div>
+      </div>
+    );
+  }
+
+  if (preview.layout === "heroCentered") {
+    return (
+      <div style={{ display: "grid", gap: 5, justifyItems: "center" }}>
+        <PreviewLine width="62%" height={7} />
+        <PreviewLine width="84%" height={5} opacity={0.78} />
+        <div style={{ display: "flex", gap: 5, justifyContent: "center" }}>
+          <PreviewButton width="26%" />
+          <PreviewButton width="26%" opacity={0.72} />
         </div>
       </div>
     );
@@ -253,65 +266,122 @@ function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
 
 function SectionsPanel() {
   const { config, getPermissions } = usePuck();
+  const [expandedByCategory, setExpandedByCategory] = React.useState<
+    Record<string, boolean>
+  >(() =>
+    Object.fromEntries(
+      SECTION_CATEGORIES.map((category) => [
+        category.id,
+        Boolean(category.defaultExpanded),
+      ])
+    )
+  );
+
+  const toggleCategory = React.useCallback((categoryId: string) => {
+    setExpandedByCategory((previous) => ({
+      ...previous,
+      [categoryId]: !previous[categoryId],
+    }));
+  }, []);
 
   return (
     <div style={{ padding: 12, overflowY: "auto" }}>
-      <Drawer>
-        {SECTION_PLUGIN_ITEMS.map(({ id, component, label, variant, preview }) => {
-          const resolvedLabel =
-            config.components[component]?.label ?? label ?? component;
-          const canInsert = getPermissions({ type: component }).insert;
-          const title =
-            variant && variant.length > 0
-              ? `${resolvedLabel} (${variant})`
-              : resolvedLabel;
-
+      <div style={{ display: "grid", gap: 8 }}>
+        {SECTION_CATEGORIES.map((category) => {
+          const isExpanded = expandedByCategory[category.id];
           return (
-            <Drawer.Item
-              key={id}
-              name={component}
-              label={title}
-              isDragDisabled={!canInsert}
+            <div
+              key={category.id}
+              className={`_ComponentList_1rrlt_1 ${isExpanded ? "_ComponentList--isExpanded_1rrlt_5" : ""}`}
             >
-              {({ children }) => (
-                <div
-                  style={{
-                    display: "grid",
-                    gap: 6,
-                    border: "1px solid rgba(17,24,39,0.12)",
-                    borderRadius: 10,
-                    padding: 7,
-                    background:
-                      "linear-gradient(180deg, rgba(17,24,39,0.03), rgba(17,24,39,0.08))",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: 11,
-                      fontWeight: 600,
-                      lineHeight: 1.2,
-                      color: "rgba(17,24,39,0.94)",
-                    }}
-                  >
-                    {children}
-                  </div>
-                  <div
-                    style={{
-                      border: "1px solid rgba(17,24,39,0.14)",
-                      borderRadius: 7,
-                      padding: 6,
-                      background: "rgba(255,255,255,0.72)",
-                      pointerEvents: "none",
-                    }}
-                  >
-                    <SectionPreview preview={preview} />
-                  </div>
+              <button
+                type="button"
+                className="_ComponentList-title_1rrlt_17"
+                title={`${isExpanded ? "Collapse" : "Expand"} ${category.label}`}
+                onClick={() => toggleCategory(category.id)}
+              >
+                <div>{category.label}</div>
+                <div className="_ComponentList-titleIcon_1rrlt_53">
+                  {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
                 </div>
-              )}
-            </Drawer.Item>
+              </button>
+              <div className="_ComponentList-content_1rrlt_9">
+                {isExpanded ? (
+                  <Drawer>
+                    {category.items.map(
+                      ({ id, component, label, variant, preview }) => {
+                        const resolvedLabel =
+                          config.components[component]?.label ?? label ?? component;
+                        const canInsert = getPermissions({ type: component }).insert;
+                        const normalizedVariant = (variant ?? "").trim();
+                        const labelWithVariant = resolvedLabel.trim();
+                        const hasVariantInLabel =
+                          normalizedVariant.length > 0 &&
+                          labelWithVariant
+                            .toLowerCase()
+                            .includes(normalizedVariant.toLowerCase());
+                        const title =
+                          normalizedVariant.length > 0 && !hasVariantInLabel
+                            ? `${labelWithVariant} (${normalizedVariant})`
+                            : labelWithVariant;
+
+                        return (
+                          <Drawer.Item
+                            key={id}
+                            name={component}
+                            label={title}
+                            isDragDisabled={!canInsert}
+                          >
+                            {({ children }) => (
+                              <div
+                                style={{
+                                  display: "grid",
+                                  gap: 6,
+                                  minWidth: 0,
+                                  border: "1px solid rgba(17,24,39,0.12)",
+                                  borderRadius: 10,
+                                  padding: 7,
+                                  background:
+                                    "linear-gradient(180deg, rgba(17,24,39,0.03), rgba(17,24,39,0.08))",
+                                }}
+                              >
+                                <div
+                                  style={{
+                                    fontSize: 11,
+                                    fontWeight: 600,
+                                    lineHeight: 1.2,
+                                    color: "rgba(17,24,39,0.94)",
+                                    minWidth: 0,
+                                    maxWidth: "100%",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  {children}
+                                </div>
+                                <div
+                                  style={{
+                                    border: "1px solid rgba(17,24,39,0.14)",
+                                    borderRadius: 7,
+                                    padding: 6,
+                                    background: "rgba(255,255,255,0.72)",
+                                    pointerEvents: "none",
+                                  }}
+                                >
+                                  <SectionPreview preview={preview} />
+                                </div>
+                              </div>
+                            )}
+                          </Drawer.Item>
+                        );
+                      }
+                    )}
+                  </Drawer>
+                ) : null}
+              </div>
+            </div>
           );
         })}
-      </Drawer>
+      </div>
     </div>
   );
 }

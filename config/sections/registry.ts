@@ -1,5 +1,6 @@
 export const SECTION_COMPONENTS = [
   "Hero",
+  "HeroSimpleCentered",
   "AboutSection",
   "ServicesSection",
   "TestimonialsSection",
@@ -12,6 +13,7 @@ export type SectionComponentName = (typeof SECTION_COMPONENTS)[number];
 
 export type SectionPreviewLayout =
   | "hero"
+  | "heroCentered"
   | "aboutSplit"
   | "servicesGrid"
   | "testimonialsGrid"
@@ -31,48 +33,117 @@ export type SectionPluginItem = {
   preview: SectionPreviewDefinition;
 };
 
-export const SECTION_PLUGIN_ITEMS: readonly SectionPluginItem[] = [
+export type SectionCategoryId =
+  | "hero"
+  | "about"
+  | "services"
+  | "testimonials"
+  | "cta"
+  | "contact"
+  | "footer";
+
+export type SectionCategory = {
+  id: SectionCategoryId;
+  label: string;
+  defaultExpanded?: boolean;
+  items: readonly SectionPluginItem[];
+};
+
+export const SECTION_CATEGORIES: readonly SectionCategory[] = [
   {
-    id: "hero-default",
-    component: "Hero",
+    id: "hero",
     label: "Hero",
-    variant: "Default",
-    preview: { layout: "hero" },
+    defaultExpanded: true,
+    items: [
+      {
+        id: "hero-default",
+        component: "Hero",
+        label: "Hero",
+        variant: "Default",
+        preview: { layout: "hero" },
+      },
+      {
+        id: "hero-simple-centered",
+        component: "HeroSimpleCentered",
+        label: "Hero",
+        variant: "Simple centered",
+        preview: { layout: "heroCentered" },
+      },
+    ],
   },
   {
-    id: "about-default",
-    component: "AboutSection",
-    label: "About Section",
-    preview: { layout: "aboutSplit" },
+    id: "about",
+    label: "About",
+    items: [
+      {
+        id: "about-default",
+        component: "AboutSection",
+        label: "About Section",
+        preview: { layout: "aboutSplit" },
+      },
+    ],
   },
   {
-    id: "services-default",
-    component: "ServicesSection",
-    label: "Services Section",
-    preview: { layout: "servicesGrid" },
+    id: "services",
+    label: "Services",
+    items: [
+      {
+        id: "services-default",
+        component: "ServicesSection",
+        label: "Services Section",
+        preview: { layout: "servicesGrid" },
+      },
+    ],
   },
   {
-    id: "testimonials-default",
-    component: "TestimonialsSection",
-    label: "Testimonials Section",
-    preview: { layout: "testimonialsGrid" },
+    id: "testimonials",
+    label: "Testimonials",
+    items: [
+      {
+        id: "testimonials-default",
+        component: "TestimonialsSection",
+        label: "Testimonials Section",
+        preview: { layout: "testimonialsGrid" },
+      },
+    ],
   },
   {
-    id: "cta-default",
-    component: "CtaSection",
-    label: "CTA Section",
-    preview: { layout: "ctaBox" },
+    id: "cta",
+    label: "CTA",
+    items: [
+      {
+        id: "cta-default",
+        component: "CtaSection",
+        label: "CTA Section",
+        preview: { layout: "ctaBox" },
+      },
+    ],
   },
   {
-    id: "contact-default",
-    component: "ContactSection",
-    label: "Contact Section",
-    preview: { layout: "contactSplit" },
+    id: "contact",
+    label: "Contact",
+    items: [
+      {
+        id: "contact-default",
+        component: "ContactSection",
+        label: "Contact Section",
+        preview: { layout: "contactSplit" },
+      },
+    ],
   },
   {
-    id: "footer-default",
-    component: "FooterSection",
-    label: "Footer Section",
-    preview: { layout: "footerSplit" },
+    id: "footer",
+    label: "Footer",
+    items: [
+      {
+        id: "footer-default",
+        component: "FooterSection",
+        label: "Footer Section",
+        preview: { layout: "footerSplit" },
+      },
+    ],
   },
 ];
+
+export const SECTION_PLUGIN_ITEMS: readonly SectionPluginItem[] =
+  SECTION_CATEGORIES.flatMap((category) => category.items);
