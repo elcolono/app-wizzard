@@ -36,6 +36,12 @@ import Icon from "./blocks/Icon";
 import Avatar from "./blocks/Avatar";
 import AvatarGroup from "./blocks/AvatarGroup";
 import Hero from "./blocks/Hero";
+import AboutSection from "./blocks/AboutSection";
+import ServicesSection from "./blocks/ServicesSection";
+import TestimonialsSection from "./blocks/TestimonialsSection";
+import CtaSection from "./blocks/CtaSection";
+import ContactSection from "./blocks/ContactSection";
+import FooterSection from "./blocks/FooterSection";
 
 export const config: Config = {
   root: {
@@ -89,7 +95,15 @@ export const config: Config = {
       ],
     },
     section: {
-      components: ["Hero"],
+      components: [
+        "Hero",
+        "AboutSection",
+        "ServicesSection",
+        "TestimonialsSection",
+        "CtaSection",
+        "ContactSection",
+        "FooterSection",
+      ],
     },
     dataDisplay: {
       components: [
@@ -157,6 +171,12 @@ export const config: Config = {
       Avatar,
       AvatarGroup,
       Hero,
+      AboutSection,
+      ServicesSection,
+      TestimonialsSection,
+      CtaSection,
+      ContactSection,
+      FooterSection,
     } as const;
 
     const wrap = (component: any) => {
