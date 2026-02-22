@@ -1,7 +1,7 @@
 "use client";
 
 import type { Data } from "@puckeditor/core";
-import { Puck, Render } from "@puckeditor/core";
+import { Puck, Render, blocksPlugin, outlinePlugin } from "@puckeditor/core";
 import config from "../../../config";
 import { createAiPlugin } from "@puckeditor/plugin-ai";
 import "@puckeditor/plugin-ai/styles.css";
@@ -129,7 +129,13 @@ export function Client({ path, data, headerData, footerData }: ClientProps) {
 
   return (
     <Puck
-      plugins={[rootPropsPlugin, sectionsPlugin, aiPlugin]}
+      plugins={[
+        sectionsPlugin,
+        blocksPlugin(),
+        outlinePlugin(),
+        rootPropsPlugin,
+        aiPlugin,
+      ]}
       config={config}
       data={injectLayout}
       overrides={{

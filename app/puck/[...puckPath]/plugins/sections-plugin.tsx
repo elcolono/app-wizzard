@@ -33,6 +33,6 @@ function SectionsPanel() {
 export const sectionsPlugin = {
   name: "sections",
   label: "Sections",
-  icon: <LayoutTemplate size={16} />,
+  icon: <LayoutTemplate size={24} />,
   render: () => <SectionsPanel />,
 };

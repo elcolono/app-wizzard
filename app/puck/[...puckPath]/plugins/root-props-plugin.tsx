@@ -97,6 +97,6 @@ function RootPropsPanel() {
 export const rootPropsPlugin = {
   name: "page",
   label: "Page",
-  icon: <Settings2 size={16} />,
+  icon: <Settings2 size={24} />,
   render: () => <RootPropsPanel />,
 };
