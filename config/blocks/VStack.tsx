@@ -2,7 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { VStack as GluestackVStack } from "../../components/ui/vstack";
 import { aiInstructions } from "../fields/aiInstructions";
-import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
+import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
 
 export type VStackProps = {
   className: string;
@@ -41,7 +41,7 @@ const VStack: ComponentConfig<VStackProps> = {
   fields: {
     content: {
       type: "slot",
-      disallow: CHILD_ONLY_COMPONENTS,
+      disallow: DISALLOWED_NESTED_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     space: {

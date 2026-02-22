@@ -2,7 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Center as GluestackCenter } from "../../components/ui/center";
 import { aiInstructions } from "../fields/aiInstructions";
-import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
+import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
 
 export type CenterProps = {
   className: string;
@@ -14,7 +14,7 @@ const Center: ComponentConfig<CenterProps> = {
   fields: {
     content: {
       type: "slot",
-      disallow: CHILD_ONLY_COMPONENTS,
+      disallow: DISALLOWED_NESTED_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {

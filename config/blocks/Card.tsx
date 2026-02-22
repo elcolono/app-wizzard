@@ -2,7 +2,7 @@ import React from "react";
 import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { Card as GluestackCard } from "../../components/ui/card";
 import { aiInstructions } from "../fields/aiInstructions";
-import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
+import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
 
 export type CardProps = {
   className: string;
@@ -39,7 +39,7 @@ const Card: ComponentConfig<CardProps> = {
     },
     content: {
       type: "slot",
-      disallow: CHILD_ONLY_COMPONENTS,
+      disallow: DISALLOWED_NESTED_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {

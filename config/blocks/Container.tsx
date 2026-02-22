@@ -6,7 +6,7 @@ import type {
 } from "@puckeditor/core";
 import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
-import { CHILD_ONLY_COMPONENTS } from "../fields/slotRules";
+import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
 
 export type ContainerProps = {
   className?: string;
@@ -56,7 +56,7 @@ const Container: ComponentConfig<ContainerProps> = {
     },
     content: {
       type: "slot",
-      disallow: CHILD_ONLY_COMPONENTS,
+      disallow: DISALLOWED_NESTED_COMPONENTS,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {
