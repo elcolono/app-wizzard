@@ -7,6 +7,7 @@ import { createAiPlugin } from "@puckeditor/plugin-ai";
 import "@puckeditor/plugin-ai/styles.css";
 import React from "react";
 import { rootPropsPlugin } from "./plugins/root-props-plugin";
+import { sectionsPlugin } from "./plugins/sections-plugin";
 import { InlineWizardActionBar } from "./components/inline-wizard-action-bar";
 
 const aiPlugin = createAiPlugin();
@@ -128,7 +129,7 @@ export function Client({ path, data, headerData, footerData }: ClientProps) {
 
   return (
     <Puck
-      plugins={[rootPropsPlugin, aiPlugin]}
+      plugins={[rootPropsPlugin, sectionsPlugin, aiPlugin]}
       config={config}
       data={injectLayout}
       overrides={{

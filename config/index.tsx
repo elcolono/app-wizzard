@@ -42,6 +42,7 @@ import TestimonialsSection from "./blocks/TestimonialsSection";
 import CtaSection from "./blocks/CtaSection";
 import ContactSection from "./blocks/ContactSection";
 import FooterSection from "./blocks/FooterSection";
+import { SECTION_COMPONENTS } from "./sections/registry";
 
 export const config: Config = {
   root: {
@@ -95,15 +96,8 @@ export const config: Config = {
       ],
     },
     section: {
-      components: [
-        "Hero",
-        "AboutSection",
-        "ServicesSection",
-        "TestimonialsSection",
-        "CtaSection",
-        "ContactSection",
-        "FooterSection",
-      ],
+      components: [...SECTION_COMPONENTS],
+      visible: false,
     },
     dataDisplay: {
       components: [

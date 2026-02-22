@@ -1,3 +1,5 @@
+import { SECTION_COMPONENTS } from "../sections/registry";
+
 export const SLOT_ONLY_CHILDREN: Record<string, string[]> = {
   Button: ["ButtonText", "ButtonSpinner", "ButtonIcon"],
   Badge: ["BadgeText", "BadgeIcon"],
@@ -7,16 +9,6 @@ export const SLOT_ONLY_CHILDREN: Record<string, string[]> = {
 };
 
 export const CHILD_ONLY_COMPONENTS = Object.values(SLOT_ONLY_CHILDREN).flat();
-
-export const SECTION_COMPONENTS = [
-  "Hero",
-  "AboutSection",
-  "ServicesSection",
-  "TestimonialsSection",
-  "CtaSection",
-  "ContactSection",
-  "FooterSection",
-] as const;
 
 export const NON_NESTABLE_COMPONENTS = [
   "Container",
