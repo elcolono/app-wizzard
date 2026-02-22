@@ -25,6 +25,25 @@ type ComponentIndexEntry = {
   fieldNames: string[];
 };
 
+type SectionExampleEntry = {
+  defaultProps: unknown;
+  summary: string;
+  hasDefaultProps: boolean;
+};
+
+const SECTION_COMPONENTS = [
+  "Hero",
+  "HeroSimpleCentered",
+  "AboutSection",
+  "ServicesSection",
+  "TestimonialsSection",
+  "CtaSection",
+  "ContactSection",
+  "FooterSection",
+] as const;
+
+const SECTION_COMPONENT_SET = new Set<string>(SECTION_COMPONENTS);
+
 function collectComponents(
   content: any,
   acc: PageComponent[] = [],
@@ -187,7 +206,12 @@ function clampText(value: string, maxLength: number): string {
 function buildComponentIndex(components: any): ComponentIndexEntry[] {
   if (!components || typeof components !== "object") return [];
   return Object.entries(components)
-    .filter(([name]) => typeof name === "string" && name.length > 0)
+    .filter(
+      ([name]) =>
+        typeof name === "string" &&
+        name.length > 0 &&
+        !SECTION_COMPONENT_SET.has(name),
+    )
     .map(([name, definition]: [string, any]) => {
       const fields =
         definition && typeof definition === "object"
@@ -259,6 +283,73 @@ function pickComponentDefinitions(
   for (const name of names) {
     if (!(name in components)) continue;
     selected[name] = components[name];
+  }
+  return selected;
+}
+
+function listTopContentTypes(content: unknown): string[] {
+  if (!Array.isArray(content)) return [];
+  return content
+    .map((item) =>
+      item &&
+      typeof item === "object" &&
+      typeof (item as any).type === "string" &&
+      (item as any).type.trim().length > 0
+        ? (item as any).type
+        : undefined,
+    )
+    .filter((name: string | undefined): name is string => Boolean(name));
+}
+
+function collectNestedContentTypes(
+  content: unknown,
+  acc = new Set<string>(),
+): Set<string> {
+  if (!Array.isArray(content)) return acc;
+  for (const item of content) {
+    if (!item || typeof item !== "object") continue;
+    const type = (item as any).type;
+    if (typeof type === "string" && type.trim().length > 0) {
+      acc.add(type);
+    }
+    collectNestedContentTypes((item as any).props?.content, acc);
+  }
+  return acc;
+}
+
+function summarizeSectionExample(defaultProps: any): string {
+  if (!defaultProps || typeof defaultProps !== "object") {
+    return "No default props available.";
+  }
+  const topLevelKeys = Object.keys(defaultProps);
+  const topLevelTypes = listTopContentTypes(defaultProps.content);
+  const nestedTypes = Array.from(
+    collectNestedContentTypes(defaultProps.content),
+  ).slice(0, 12);
+  const keyLabel = topLevelKeys.length > 0 ? topLevelKeys.join(", ") : "none";
+  const topLabel = topLevelTypes.length > 0 ? topLevelTypes.join(", ") : "none";
+  const nestedLabel = nestedTypes.length > 0 ? nestedTypes.join(", ") : "none";
+  return `Default props keys: ${keyLabel}. Top-level content types: ${topLabel}. Nested component sample: ${nestedLabel}.`;
+}
+
+function pickSectionExamples(
+  components: any,
+  names: string[],
+): Record<string, SectionExampleEntry> {
+  const selected: Record<string, SectionExampleEntry> = {};
+  if (!components || typeof components !== "object") return selected;
+  for (const name of names) {
+    if (!(name in components)) continue;
+    const definition = components[name];
+    const defaultProps =
+      definition && typeof definition === "object"
+        ? (definition as any).defaultProps
+        : undefined;
+    selected[name] = {
+      defaultProps: defaultProps ?? null,
+      summary: summarizeSectionExample(defaultProps),
+      hasDefaultProps: defaultProps !== undefined,
+    };
   }
   return selected;
 }
@@ -503,6 +594,37 @@ const getComponentDefinitionsOutputSchema = z.object({
     .describe("Requested names that were not found in the component library."),
 });
 
+const getSectionExamplesInputSchema = z.object({
+  query: z
+    .string()
+    .describe(
+      "Comma-separated section component names to fetch examples for, e.g. 'Hero,ServicesSection,FooterSection'.",
+    ),
+});
+
+const getSectionExamplesOutputSchema = z.object({
+  examples: z.record(
+    z.string(),
+    z.object({
+      defaultProps: z.unknown(),
+      summary: z
+        .string()
+        .describe(
+          "Compact summary of the section structure from defaultProps.",
+        ),
+      hasDefaultProps: z
+        .boolean()
+        .describe("Whether the section exposes defaultProps."),
+    }),
+  ),
+  found: z
+    .array(z.string())
+    .describe("Resolved section component names that were found."),
+  missing: z
+    .array(z.string())
+    .describe("Requested names that were not found in the section library."),
+});
+
 export const POST = async (request: Request) => {
   // 1. Request klonen, um den Body für uns UND den puckHandler nutzbar zu machen
   const clonedRequest = request.clone();
@@ -511,12 +633,22 @@ export const POST = async (request: Request) => {
 
   // 2. Den Kontext für die KI vorbereiten
   // We provide categories + a compact component index; full definitions are fetched lazily via tool.
+  const componentMap = config?.components || {};
+  const contextCategoriesRaw = config?.categories || {};
+  const contextCategories =
+    contextCategoriesRaw && typeof contextCategoriesRaw === "object"
+      ? Object.fromEntries(
+          Object.entries(contextCategoriesRaw).filter(
+            ([key]) => key !== "section",
+          ),
+        )
+      : {};
   const componentIndex = JSON.stringify(
-    buildComponentIndex(config?.components || {}),
+    buildComponentIndex(componentMap),
     null,
     2,
   );
-  const categories = JSON.stringify(config?.categories || {}, null, 2);
+  const categories = JSON.stringify(contextCategories, null, 2);
 
   return puckHandler(request, {
     host: process.env.SUPABASE_URL,
@@ -525,11 +657,17 @@ export const POST = async (request: Request) => {
       context: `You are an expert web designer. You are helping a user to build and edit websites.
 
 --- ROLE ---
-Expert web designer; use getComponentDefinitions (read-only) and updatePage (mutating) to build and edit pages.
+Expert web designer; use getSectionExamples and getComponentDefinitions (read-only) plus updatePage (mutating) to build and edit pages.
 
 --- COMMUNICATION ---
-- Use only getComponentDefinitions and updatePage. Never call any other page tools.
+- Use only getSectionExamples, getComponentDefinitions, and updatePage. Never call any other page tools.
+- Ideal build flow for new section/page builds must use all three tools in this order:
+  1) getSectionExamples (load examples/inspiration for target sections),
+  2) getComponentDefinitions (load exact field/prop config for used components like Button, Heading, Text, Grid, Card),
+  3) updatePage (apply the final build once).
+- Do not skip or reorder this flow for new builds unless the user explicitly asks for a very small local edit.
 - When the user asks for a "website", "full page", or "agency site": do NOT call updatePage immediately. First suggest sections (e.g. Hero, Services, Team, Testimonials, Contact, CTA) and ask which they want or if they want a standard set (e.g. "I can build Hero, Services, and Testimonials. Which sections do you want, or should I create all three?"). Only call updatePage after they confirm or say e.g. "all" / "build everything".
+- For section composition, call getSectionExamples first with comma-separated section names (e.g. "Hero,AboutSection,ServicesSection") to inspect default section structures.
 - If you are unsure about component props/field names, call getComponentDefinitions first with one comma-separated query (e.g. "Container,Heading,Text,Button"), then call updatePage.
 - CRITICAL: Call updatePage exactly ONCE per request. Put ALL sections (Hero, Über Uns, Services, etc.) in a single build array in one updatePage call. Never split sections across multiple tool calls.
 - Prefer incremental updates without reset.
@@ -542,53 +680,7 @@ Expert web designer; use getComponentDefinitions (read-only) and updatePage (mut
 - If the request is clear and section choice is already decided: briefly say what you are about to do, then call updatePage and don't respond with text.
 - After a tool has finished, briefly confirm what was done (e.g. "Hero-, Services- und Testimonial-Section sind erstellt.").
 - Keep all messages short and in the same language as the user. Do not respond with text only when you could execute a tool—either clarify or act.
-- NEVER include JSON, build ops, or code blocks in plain text. Use only tools for all operations.
-
---- DESIGN QUALITY BAR (MANDATORY FOR NEW PAGE BUILDS) ---
-- Build pages that feel intentionally designed, not placeholder-like. Avoid generic one-line sections and repeated "Heading + Text" only blocks.
-- Use existing layout components to create hierarchy and rhythm: prefer Container + VStack/HStack/Grid + Card/Box + Spacer over flat lists.
-- Use responsive structure for repeated content:
-  - Services/features/testimonials/team should use Grid with multiple columns (e.g. 1 column on mobile, 2-3 on larger screens).
-  - Repeated items should be composed as Card/Box blocks, not plain text rows.
-- Hero sections should include clear hierarchy (headline, supporting text, at least one CTA), not just image + single line text.
-- Use concrete, business-specific copy from the user brief (e.g. massage/wellness vocabulary), not vague filler text.
-- Maintain consistent spacing rhythm between sections/elements via Spacer and/or stack spacing props.
-- Keep class usage focused and minimal: short, purposeful className values only when needed for visual polish. Prefer component structure and props first.
-- Create clear visual separation between sections (e.g. background contrast, grouped cards, spacing blocks).
-- For full-page requests, include at least: Hero, trust/about block, services grid, testimonials/social proof, and contact/CTA unless the user asks otherwise.
-
---- TEAM SECTION EXAMPLE (USE AS QUALITY REFERENCE) ---
-- Use this component tree pattern (ids are examples; keep the same hierarchy):
-  Container (id: Team-Section, zone: root:default-zone)
-    VStack (id: Team-Intro, zone: Team-Section:content)
-      Text/Badge (id: Team-Eyebrow, zone: Team-Intro:content)
-      Heading (id: Team-Heading, zone: Team-Intro:content)
-      Text (id: Team-Subcopy, zone: Team-Intro:content)
-    Grid (id: Team-Grid, zone: Team-Section:content)
-      GridItem (id: Team-Item-1, zone: Team-Grid:content)
-        Card or Box (id: Team-Card-1, zone: Team-Item-1:content)
-          Image or Avatar (id: Team-Avatar-1, zone: Team-Card-1:content)
-          Heading (id: Team-Name-1, zone: Team-Card-1:content)
-          Text (id: Team-Role-1, zone: Team-Card-1:content)
-          Text (id: Team-Bio-1, zone: Team-Card-1:content)
-      GridItem (id: Team-Item-2, zone: Team-Grid:content)
-        Card or Box (id: Team-Card-2, zone: Team-Item-2:content)
-          Image or Avatar (id: Team-Avatar-2, zone: Team-Card-2:content)
-          Heading (id: Team-Name-2, zone: Team-Card-2:content)
-          Text (id: Team-Role-2, zone: Team-Card-2:content)
-          Text (id: Team-Bio-2, zone: Team-Card-2:content)
-      GridItem (id: Team-Item-3, zone: Team-Grid:content)
-        Card or Box (id: Team-Card-3, zone: Team-Item-3:content)
-          Image or Avatar (id: Team-Avatar-3, zone: Team-Card-3:content)
-          Heading (id: Team-Name-3, zone: Team-Card-3:content)
-          Text (id: Team-Role-3, zone: Team-Card-3:content)
-          Text (id: Team-Bio-3, zone: Team-Card-3:content)
-    Grid (id: Team-Metrics, zone: Team-Section:content)
-      GridItem -> Box -> Heading + Text (metric 1)
-      GridItem -> Box -> Heading + Text (metric 2)
-      GridItem -> Box -> Heading + Text (metric 3)
-- Keep classes minimal and intentional. Prefer structure/props over long class strings.
-- Copy should feel real and specific (names, roles, expertise), not placeholder lorem text.`,
+- NEVER include JSON, build ops, or code blocks in plain text. Use only tools for all operations.`,
 
       tools: {
         getComponentDefinitions: tool({
@@ -604,12 +696,44 @@ Returns partial results: known components in definitions/found and unknown names
             const componentMap = config?.components || {};
             const lookup = createComponentNameLookup(componentMap);
             const parsed = parseComponentQuery(input.query ?? "", lookup);
+            const sectionMissing = parsed.names.filter((name) =>
+              SECTION_COMPONENT_SET.has(name),
+            );
+            const resolvedNames = parsed.names.filter(
+              (name) => !SECTION_COMPONENT_SET.has(name),
+            );
             const definitions = pickComponentDefinitions(
               componentMap,
-              parsed.names,
+              resolvedNames,
             );
             return {
               definitions,
+              found: resolvedNames,
+              missing: [...parsed.missing, ...sectionMissing],
+            };
+          },
+        }),
+        getSectionExamples: tool({
+          name: "getSectionExamples",
+          description: `Fetch section examples from section component defaultProps using a single comma-separated query.
+
+Use this when composing new page sections and you need reliable section blueprints.
+Example query: "Hero,AboutSection,ServicesSection".
+Returns partial results: known section names in examples/found and unknown names in missing.`,
+          inputSchema: getSectionExamplesInputSchema,
+          outputSchema: getSectionExamplesOutputSchema,
+          execute: async (input) => {
+            const allComponents = config?.components || {};
+            const sectionMap = Object.fromEntries(
+              Object.entries(allComponents).filter(([name]) =>
+                SECTION_COMPONENT_SET.has(name),
+              ),
+            );
+            const lookup = createComponentNameLookup(sectionMap);
+            const parsed = parseComponentQuery(input.query ?? "", lookup);
+            const examples = pickSectionExamples(sectionMap, parsed.names);
+            return {
+              examples,
               found: parsed.names,
               missing: parsed.missing,
             };
@@ -638,7 +762,7 @@ parentId:slot — e.g. root:default-zone (root level) or Container-uuid:content 
 - Use Grid for repeated content (services/testimonials/team), and make it responsive with available grid column props.
 - Keep className usage concise and intentional; avoid long utility chains when structure/props can solve the layout.
 - Ensure each major section has meaningful content density (headline, explanatory copy, and where relevant CTA or proof points).
-- For Team sections, follow the explicit component tree above (intro block + responsive member card grid + metrics grid).
+- For Team sections, use getSectionExamples + available components to build intro + responsive member card grid + supporting proof blocks.
 
 --- MINI EXAMPLES ---
 1) Add then update:

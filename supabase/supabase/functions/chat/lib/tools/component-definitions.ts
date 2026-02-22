@@ -6,6 +6,17 @@ import {
 import type { ChatPayload, ToolResult } from "../types.ts";
 import { PuckStreamManager } from "../stream/manager.ts";
 
+const SECTION_COMPONENTS = new Set<string>([
+  "Hero",
+  "HeroSimpleCentered",
+  "AboutSection",
+  "ServicesSection",
+  "TestimonialsSection",
+  "CtaSection",
+  "ContactSection",
+  "FooterSection",
+]);
+
 export function handleComponentDefinitionsTool(params: {
   id: string;
   input: any;
@@ -17,17 +28,22 @@ export function handleComponentDefinitionsTool(params: {
   const componentMap = payload?.config?.components || {};
   const lookup = createComponentNameLookup(componentMap);
   const parsed = parseComponentQuery(input?.query, lookup);
-  const definitions = pickComponentDefinitions(componentMap, parsed.names);
-  const loadedCount = parsed.names.length;
-  const missingCount = parsed.missing.length;
+  const sectionMissing = parsed.names.filter((name) =>
+    SECTION_COMPONENTS.has(name),
+  );
+  const names = parsed.names.filter((name) => !SECTION_COMPONENTS.has(name));
+  const definitions = pickComponentDefinitions(componentMap, names);
+  const missing = [...parsed.missing, ...sectionMissing];
+  const loadedCount = names.length;
+  const missingCount = missing.length;
   const label =
     missingCount > 0
       ? `Loaded ${loadedCount} component definitions (${missingCount} missing)`
       : `Loaded ${loadedCount} component definitions`;
   const output = {
     definitions,
-    found: parsed.names,
-    missing: parsed.missing,
+    found: names,
+    missing,
   };
 
   toolResults.push({ id, name: "getComponentDefinitions", output });

@@ -22,11 +22,16 @@ export const isPageBuildTool = (name?: string): boolean => name === "updatePage"
 export const isComponentDefinitionTool = (name?: string): boolean =>
   name === "getComponentDefinitions";
 
+export const isSectionExamplesTool = (name?: string): boolean =>
+  name === "getSectionExamples";
+
 export const getToolLoadingLabel = (name?: string): string =>
   name === "updatePage"
     ? "Updating page..."
     : name === "getComponentDefinitions"
       ? "Loading component definitions..."
+      : name === "getSectionExamples"
+        ? "Loading section examples..."
       : "Running tool...";
 
 export const getToolDoneLabel = (name?: string): string =>
@@ -34,4 +39,6 @@ export const getToolDoneLabel = (name?: string): string =>
     ? "Updated page"
     : name === "getComponentDefinitions"
       ? "Loaded component definitions"
+      : name === "getSectionExamples"
+        ? "Loaded section examples"
       : "Tool finished";

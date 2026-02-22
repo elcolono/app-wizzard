@@ -32,5 +32,8 @@ export type ChatPayload = {
   messages?: any[];
   tools?: Record<string, any>;
   pageData?: { content?: any[] };
-  config?: { components?: Record<string, unknown> };
+  config?: {
+    components?: Record<string, unknown>;
+    categories?: Record<string, unknown>;
+  };
 };

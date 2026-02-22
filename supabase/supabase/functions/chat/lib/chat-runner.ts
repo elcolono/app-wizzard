@@ -3,6 +3,7 @@ import {
   getToolLoadingLabel,
   isComponentDefinitionTool,
   isPageBuildTool,
+  isSectionExamplesTool,
   MAX_TOOL_ROUNDS,
 } from "./config.ts";
 import { Transformers } from "./transformers.ts";
@@ -10,6 +11,7 @@ import { streamOpenAI } from "./openai/stream.ts";
 import { PuckStreamManager } from "./stream/manager.ts";
 import type { ChatPayload, OpenAIMessage, ToolResult } from "./types.ts";
 import { handleComponentDefinitionsTool } from "./tools/component-definitions.ts";
+import { handleSectionExamplesTool } from "./tools/section-examples.ts";
 import { handleUpdatePageTool } from "./tools/update-page.ts";
 
 export async function runChatSession(params: {
@@ -114,6 +116,16 @@ export async function runChatSession(params: {
           });
           return;
         }
+        if (isSectionExamplesTool(name)) {
+          handleSectionExamplesTool({
+            id,
+            input,
+            payload,
+            manager,
+            toolResults,
+          });
+          return;
+        }
         if (!isPageBuildTool(name)) return;
         sawUpdatePage = true;
         handleUpdatePageTool({ id, input, manager, toolResults });
@@ -143,7 +155,7 @@ export async function runChatSession(params: {
     llmMessages.push({
       role: "system",
       content:
-        "Use the tool results above to continue the same user request. If definitions are sufficient, call updatePage exactly once now.",
+        "Use the tool results above to continue the same user request. If section examples and definitions are sufficient, call updatePage exactly once now.",
     });
   }
 }
