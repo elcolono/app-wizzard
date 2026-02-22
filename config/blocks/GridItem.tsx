@@ -3,6 +3,7 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import { GridItem as GluestackGridItem } from "../../components/ui/grid";
 import { aiInstructions } from "../fields/aiInstructions";
 import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
+import EditorDragHandle from "./_shared/EditorDragHandle";
 
 export type GridItemProps = {
   className: string;
@@ -72,21 +73,6 @@ export type GridItemProps = {
   columnsClassName: string;
   content: any;
 };
-
-const setRefs =
-  <T,>(...refs: Array<React.Ref<T> | undefined>) =>
-    (value: T | null) => {
-      refs.forEach((ref) => {
-        if (typeof ref === "function") {
-          ref(value);
-          return;
-        }
-
-        if (ref && typeof ref === "object" && "current" in ref) {
-          (ref as React.MutableRefObject<T | null>).current = value;
-        }
-      });
-    };
 
 const columnsBaseOptions = [
   { label: "1", value: "1" },
@@ -172,46 +158,37 @@ const GridItem: ComponentConfig<GridItemProps> = {
     content: Content,
     puck,
   }: WithPuckProps<GridItemProps>) => {
-    const GridItemDropZone = React.forwardRef<any, any>(
-      function GridItemDropZone(props, ref) {
-        const mergedClassName = [className, props?.className]
-          .filter(Boolean)
-          .join(" ");
-        const responsiveColumnsClassName = [
-          `col-span-${columnsBase}`,
-          columnsSm ? `sm:col-span-${columnsSm}` : "",
-          columnsMd ? `md:col-span-${columnsMd}` : "",
-          columnsLg ? `lg:col-span-${columnsLg}` : "",
-        ]
-          .filter(Boolean)
-          .join(" ");
-        const mergedColumnsClassName = [
-          responsiveColumnsClassName,
-          columnsClassName,
-          props?._extra?.className,
-        ]
-          .filter(Boolean)
-          .join(" ");
+    const responsiveColumnsClassName = [
+      `col-span-${columnsBase}`,
+      columnsSm ? `sm:col-span-${columnsSm}` : "",
+      columnsMd ? `md:col-span-${columnsMd}` : "",
+      columnsLg ? `lg:col-span-${columnsLg}` : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
+    const mergedColumnsClassName = [responsiveColumnsClassName, columnsClassName]
+      .filter(Boolean)
+      .join(" ");
+    const mergedClassName = [className, puck.isEditing ? "relative" : ""]
+      .filter(Boolean)
+      .join(" ");
 
-        const mergedRef = setRefs<React.ComponentRef<typeof GluestackGridItem>>(
-          ref,
+    return (
+      <GluestackGridItem
+        ref={
           puck.dragRef as unknown as React.Ref<
             React.ComponentRef<typeof GluestackGridItem>
           >
-        );
-
-        return (
-          <GluestackGridItem
-            {...props}
-            ref={mergedRef}
-            className={mergedClassName}
-            _extra={{ className: mergedColumnsClassName }}
-          />
-        );
-      }
+        }
+        className={mergedClassName}
+        _extra={{ className: mergedColumnsClassName }}
+      >
+        {puck.isEditing ? (
+          <EditorDragHandle className="pointer-events-auto select-none" />
+        ) : null}
+        <Content minEmptyHeight={200} />
+      </GluestackGridItem>
     );
-
-    return <Content as={GridItemDropZone} minEmptyHeight={200} />;
   },
 };
 

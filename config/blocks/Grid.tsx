@@ -2,7 +2,7 @@ import type { ComponentConfig, WithPuckProps } from "@puckeditor/core";
 import React from "react";
 import { Grid as GluestackGrid } from "../../components/ui/grid";
 import { aiInstructions } from "../fields/aiInstructions";
-import { NON_NESTABLE_COMPONENTS } from "../fields/slotRules";
+import { SLOT_ONLY_CHILDREN } from "../fields/slotRules";
 
 export type GridProps = {
   __createdBy?: string;
@@ -213,7 +213,7 @@ const Grid: ComponentConfig<GridProps> = {
     },
     content: {
       type: "slot",
-      disallow: [...NON_NESTABLE_COMPONENTS],
+      allow: SLOT_ONLY_CHILDREN.Grid,
       ai: { instructions: aiInstructions.slotContent },
     },
     className: {
