@@ -31,6 +31,7 @@ export function PageSwitcherHeader({
   const [newPageName, setNewPageName] = React.useState("");
   const [selectedParent, setSelectedParent] = React.useState("/");
   const [isCreating, setIsCreating] = React.useState(false);
+  const [isCreateFormOpen, setIsCreateFormOpen] = React.useState(false);
   const [createError, setCreateError] = React.useState<string | null>(null);
   const [deleteError, setDeleteError] = React.useState<string | null>(null);
   const [deletingPath, setDeletingPath] = React.useState<string | null>(null);
@@ -94,6 +95,7 @@ export function PageSwitcherHeader({
       }
 
       setIsOpen(false);
+      setIsCreateFormOpen(false);
       setNewPageName("");
       setSelectedParent("/");
       onNavigate(result.path);
@@ -179,16 +181,60 @@ export function PageSwitcherHeader({
       updateMenuPosition();
     };
 
+    // Canvas clicks can happen inside an iframe, where mousedown on window
+    // won't fire. Close the switcher when focus moves into an iframe.
+    const handleWindowBlur = () => {
+      const activeElement = document.activeElement;
+      if (activeElement instanceof HTMLIFrameElement) {
+        setIsOpen(false);
+      }
+    };
+
+    const detachIframeListeners: Array<() => void> = [];
+    const registerIframeListeners = () => {
+      const frames = Array.from(document.querySelectorAll("iframe"));
+      frames.forEach((frame) => {
+        const attach = () => {
+          try {
+            const frameDoc = frame.contentWindow?.document;
+            if (!frameDoc) return;
+            const onFrameMouseDown = () => setIsOpen(false);
+            frameDoc.addEventListener("mousedown", onFrameMouseDown, true);
+            detachIframeListeners.push(() => {
+              frameDoc.removeEventListener("mousedown", onFrameMouseDown, true);
+            });
+          } catch {
+            // ignore cross-origin frames
+          }
+        };
+
+        if (frame.contentWindow?.document?.readyState === "complete") {
+          attach();
+        } else {
+          const onLoad = () => attach();
+          frame.addEventListener("load", onLoad, { once: true });
+          detachIframeListeners.push(() => {
+            frame.removeEventListener("load", onLoad);
+          });
+        }
+      });
+    };
+
+    registerIframeListeners();
+
     window.addEventListener("mousedown", handleOutsideClick);
     window.addEventListener("keydown", handleEscape);
     window.addEventListener("resize", handleReposition);
     window.addEventListener("scroll", handleReposition, true);
+    window.addEventListener("blur", handleWindowBlur);
 
     return () => {
       window.removeEventListener("mousedown", handleOutsideClick);
       window.removeEventListener("keydown", handleEscape);
       window.removeEventListener("resize", handleReposition);
       window.removeEventListener("scroll", handleReposition, true);
+      window.removeEventListener("blur", handleWindowBlur);
+      detachIframeListeners.forEach((detach) => detach());
     };
   }, [isOpen, updateMenuPosition]);
 
@@ -196,7 +242,9 @@ export function PageSwitcherHeader({
     title: string,
     items: PageSummary[],
     withTopBorder = false,
-    deletable = false
+    deletable = false,
+    headerAction?: React.ReactNode,
+    groupContent?: React.ReactNode
   ) => {
     if (items.length === 0) return null;
 
@@ -209,16 +257,27 @@ export function PageSwitcherHeader({
       >
         <div
           style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 8,
             padding: "4px 12px",
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: 0.4,
-            textTransform: "uppercase",
-            color: "#6b7280",
           }}
         >
-          {title}
+          <div
+            style={{
+              fontSize: 11,
+              fontWeight: 600,
+              letterSpacing: 0.4,
+              textTransform: "uppercase",
+              color: "#6b7280",
+            }}
+          >
+            {title}
+          </div>
+          {headerAction}
         </div>
+        {groupContent}
         {items.map((item) => {
           const active = item.path === path;
           const canDelete = deletable && item.path !== "/";
@@ -312,14 +371,19 @@ export function PageSwitcherHeader({
             ref={triggerRef}
             type="button"
             onClick={() => setIsOpen((open) => !open)}
+            title="Seite wechseln"
+            aria-haspopup="menu"
+            aria-expanded={isOpen}
             style={{
               border: "none",
-              background: "transparent",
+              background: isOpen ? "#f3f4f6" : "transparent",
               display: "flex",
               alignItems: "baseline",
               gap: 8,
-              padding: 0,
+              padding: "4px 8px",
+              borderRadius: 6,
               cursor: "pointer",
+              transition: "background-color 120ms ease",
             }}
           >
             <span style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
@@ -335,6 +399,17 @@ export function PageSwitcherHeader({
             >
               {path}
             </code>
+            <span
+              aria-hidden="true"
+              style={{
+                fontSize: 10,
+                color: "#6b7280",
+                transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                transition: "transform 120ms ease",
+              }}
+            >
+              ▼
+            </span>
           </button>
         ),
       });
@@ -370,121 +445,135 @@ export function PageSwitcherHeader({
               zIndex: MENU_Z_INDEX,
             }}
           >
-            <div
-              style={{
-                padding: "10px 12px 12px",
-                borderBottom: "1px solid #e5e7eb",
-                background: "#f9fafb",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  marginBottom: 8,
-                  color: "#111827",
-                }}
-              >
-                Add page
-              </div>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  color: "#6b7280",
-                  marginBottom: 4,
-                }}
-              >
-                Name
-              </label>
-              <input
-                type="text"
-                value={newPageName}
-                onChange={(event) => setNewPageName(event.target.value)}
-                placeholder="Team"
-                style={{
-                  width: "100%",
-                  height: 32,
-                  marginBottom: 8,
-                  padding: "0 8px",
-                  border: "1px solid #d1d5db",
-                  borderRadius: 6,
-                  fontSize: 13,
-                  background: "#fff",
-                }}
-              />
-
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  color: "#6b7280",
-                  marginBottom: 4,
-                }}
-              >
-                Subpage von
-              </label>
-              <select
-                value={selectedParent}
-                onChange={(event) => setSelectedParent(event.target.value)}
-                style={{
-                  width: "100%",
-                  height: 32,
-                  marginBottom: 8,
-                  padding: "0 8px",
-                  border: "1px solid #d1d5db",
-                  borderRadius: 6,
-                  fontSize: 13,
-                  background: "#fff",
-                }}
-              >
-                {parentOptions.map((item) => (
-                  <option key={item.path} value={item.path}>
-                    {item.title} ({item.path})
-                  </option>
-                ))}
-              </select>
-
+            {renderGroup(
+              "Pages",
+              pages,
+              false,
+              true,
               <button
                 type="button"
-                onClick={createPage}
-                disabled={isCreating || newPageName.trim().length === 0}
+                onClick={() => setIsCreateFormOpen((value) => !value)}
                 style={{
-                  width: "100%",
-                  height: 32,
-                  border: "none",
-                  borderRadius: 6,
-                  background:
-                    isCreating || newPageName.trim().length === 0
-                      ? "#9ca3af"
-                      : "#111827",
-                  color: "#fff",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor:
-                    isCreating || newPageName.trim().length === 0
-                      ? "not-allowed"
-                      : "pointer",
+                  border: "1px solid #d1d5db",
+                  borderRadius: 999,
+                  background: isCreateFormOpen ? "#111827" : "#fff",
+                  color: isCreateFormOpen ? "#fff" : "#374151",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  padding: "4px 8px",
+                  cursor: "pointer",
                 }}
               >
-                {isCreating ? "Creating..." : "Create page"}
-              </button>
-
-              {createError ? (
+                + Add
+              </button>,
+              isCreateFormOpen ? (
                 <div
                   style={{
-                    marginTop: 8,
-                    fontSize: 12,
-                    color: "#b91c1c",
+                    padding: "6px 12px 12px",
+                    borderBottom: "1px solid #e5e7eb",
+                    background: "#f9fafb",
                   }}
                 >
-                  {createError}
+                  <label
+                    style={{
+                      display: "block",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      marginBottom: 4,
+                    }}
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    value={newPageName}
+                    onChange={(event) => setNewPageName(event.target.value)}
+                    placeholder="Team"
+                    style={{
+                      width: "100%",
+                      height: 32,
+                      marginBottom: 8,
+                      padding: "0 8px",
+                      border: "1px solid #d1d5db",
+                      borderRadius: 6,
+                      fontSize: 13,
+                      background: "#fff",
+                    }}
+                  />
+
+                  <label
+                    style={{
+                      display: "block",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      color: "#6b7280",
+                      marginBottom: 4,
+                    }}
+                  >
+                    Subpage von
+                  </label>
+                  <select
+                    value={selectedParent}
+                    onChange={(event) => setSelectedParent(event.target.value)}
+                    style={{
+                      width: "100%",
+                      height: 32,
+                      marginBottom: 8,
+                      padding: "0 8px",
+                      border: "1px solid #d1d5db",
+                      borderRadius: 6,
+                      fontSize: 13,
+                      background: "#fff",
+                    }}
+                  >
+                    {parentOptions.map((item) => (
+                      <option key={item.path} value={item.path}>
+                        {item.title} ({item.path})
+                      </option>
+                    ))}
+                  </select>
+
+                  <button
+                    type="button"
+                    onClick={createPage}
+                    disabled={isCreating || newPageName.trim().length === 0}
+                    style={{
+                      width: "100%",
+                      height: 32,
+                      border: "none",
+                      borderRadius: 6,
+                      background:
+                        isCreating || newPageName.trim().length === 0
+                          ? "#9ca3af"
+                          : "#111827",
+                      color: "#fff",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      cursor:
+                        isCreating || newPageName.trim().length === 0
+                          ? "not-allowed"
+                          : "pointer",
+                    }}
+                  >
+                    {isCreating ? "Creating..." : "Create page"}
+                  </button>
+
+                  {createError ? (
+                    <div
+                      style={{
+                        marginTop: 8,
+                        fontSize: 12,
+                        color: "#b91c1c",
+                      }}
+                    >
+                      {createError}
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
-            {renderGroup("Pages", pages, false, true)}
+              ) : null
+            )}
             {deleteError ? (
               <div
                 style={{
