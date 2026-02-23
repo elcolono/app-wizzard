@@ -91,8 +91,12 @@ function buildMemberCard(member: TeamMember) {
                   source: member.imageUrl,
                   alt: member.name,
                   size: "full",
-                  className:
-                    "w-full h-auto aspect-[3/2] rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-outline-200",
+                  widthClass: "w-full",
+                  heightClass: "h-auto",
+                  aspectRatioClass: "aspect-[3/2]",
+                  borderRadiusClass: "rounded-2xl",
+                  objectFitClass: "object-cover",
+                  className: "",
                 },
               },
               {

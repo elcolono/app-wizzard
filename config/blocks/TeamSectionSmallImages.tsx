@@ -77,8 +77,10 @@ function buildMemberCard(member: TeamMember) {
                   source: member.imageUrl,
                   alt: member.name,
                   size: "md",
+                  borderRadiusClass: "rounded-full",
+                  objectFitClass: "object-cover",
                   className:
-                    "h-16 w-16 rounded-full object-cover outline outline-1 -outline-offset-1 outline-outline-200",
+                    "h-16 w-16 outline outline-1 -outline-offset-1 outline-outline-200",
                 },
               },
               {

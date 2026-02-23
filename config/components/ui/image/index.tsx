@@ -1,6 +1,6 @@
 import React from 'react';
 import { createImage } from '@gluestack-ui/core/image/creator';
-import { Platform, Image as RNImage } from 'react-native';
+import { Image as RNImage } from 'react-native';
 import { tva } from '@gluestack-ui/utils/nativewind-utils';
 import type { VariantProps } from '@gluestack-ui/utils/nativewind-utils';
 
@@ -15,7 +15,7 @@ const imageStyle = tva({
       'lg': 'h-24 w-24',
       'xl': 'h-32 w-32',
       '2xl': 'h-64 w-64',
-      'full': 'h-full w-full',
+      'full': 'w-full h-auto',
       'none': '',
     },
   },
@@ -30,17 +30,7 @@ const Image = React.forwardRef<
   ImageProps & { className?: string }
 >(function Image({ size = 'md', className, ...props }, ref) {
   return (
-    <UIImage
-      className={imageStyle({ size, class: className })}
-      {...props}
-      ref={ref}
-      // @ts-expect-error : web only
-      style={
-        Platform.OS === 'web'
-          ? { height: 'revert-layer', width: 'revert-layer' }
-          : undefined
-      }
-    />
+    <UIImage className={imageStyle({ size, class: className })} {...props} ref={ref} />
   );
 });
 
