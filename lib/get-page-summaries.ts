@@ -5,6 +5,7 @@ import {
   FOOTER_PATH,
   HEADER_PATH,
 } from "./page-seed";
+import { isLayoutPath } from "./page-path";
 
 export type PageSummary = {
   path: string;
@@ -38,7 +39,7 @@ export const getPageSummaries = (): PageSummary[] => {
         typeof titleFromData === "string" && titleFromData.trim()
           ? titleFromData.trim()
           : getFallbackTitle(path);
-      const isLayout = path.startsWith("/_layout/");
+      const isLayout = isLayoutPath(path);
 
       return { path, title, isLayout };
     })

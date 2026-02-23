@@ -28,12 +28,123 @@ export function PageSwitcherHeader({
 }: PageSwitcherHeaderProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 });
+  const [newPageName, setNewPageName] = React.useState("");
+  const [selectedParent, setSelectedParent] = React.useState("/");
+  const [isCreating, setIsCreating] = React.useState(false);
+  const [createError, setCreateError] = React.useState<string | null>(null);
+  const [deleteError, setDeleteError] = React.useState<string | null>(null);
+  const [deletingPath, setDeletingPath] = React.useState<string | null>(null);
   const triggerRef = React.useRef<HTMLButtonElement | null>(null);
   const menuRef = React.useRef<HTMLDivElement | null>(null);
+
+  const parentOptions = React.useMemo(() => {
+    const rootOption: PageSummary = {
+      path: "/",
+      title: "Home",
+      isLayout: false,
+    };
+    const withoutRoot = pages.filter((item) => item.path !== "/");
+    return [rootOption, ...withoutRoot];
+  }, [pages]);
 
   React.useEffect(() => {
     setIsOpen(false);
   }, [path]);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    setCreateError(null);
+    setDeleteError(null);
+  }, [isOpen]);
+
+  const getParentPath = (pagePath: string): string => {
+    if (pagePath === "/") return "/";
+    const segments = pagePath.split("/").filter(Boolean);
+    if (segments.length <= 1) return "/";
+    return `/${segments.slice(0, -1).join("/")}`;
+  };
+
+  const createPage = async () => {
+    const trimmedName = newPageName.trim();
+    if (!trimmedName || isCreating) return;
+
+    setIsCreating(true);
+    setCreateError(null);
+
+    try {
+      const response = await fetch("/puck/api/pages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: trimmedName,
+          parentPath: selectedParent,
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok || result?.status !== "ok" || !result?.path) {
+        setCreateError(
+          typeof result?.message === "string"
+            ? result.message
+            : "Seite konnte nicht erstellt werden."
+        );
+        return;
+      }
+
+      setIsOpen(false);
+      setNewPageName("");
+      setSelectedParent("/");
+      onNavigate(result.path);
+    } catch {
+      setCreateError("Unerwarteter Fehler beim Erstellen der Seite.");
+    } finally {
+      setIsCreating(false);
+    }
+  };
+
+  const deletePage = async (targetPath: string) => {
+    if (targetPath === "/" || deletingPath || isCreating) return;
+
+    const confirmed = window.confirm(
+      `Seite "${targetPath}" wirklich löschen?`
+    );
+    if (!confirmed) return;
+
+    setDeletingPath(targetPath);
+    setDeleteError(null);
+
+    try {
+      const response = await fetch("/puck/api/pages", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ path: targetPath }),
+      });
+      const result = await response.json();
+
+      if (!response.ok || result?.status !== "ok") {
+        setDeleteError(
+          typeof result?.message === "string"
+            ? result.message
+            : "Seite konnte nicht gelöscht werden."
+        );
+        return;
+      }
+
+      if (targetPath === path) {
+        onNavigate(getParentPath(targetPath));
+      } else {
+        onNavigate(path);
+      }
+    } catch {
+      setDeleteError("Unerwarteter Fehler beim Löschen der Seite.");
+    } finally {
+      setDeletingPath(null);
+    }
+  };
 
   const updateMenuPosition = React.useCallback(() => {
     const trigger = triggerRef.current;
@@ -84,7 +195,8 @@ export function PageSwitcherHeader({
   const renderGroup = (
     title: string,
     items: PageSummary[],
-    withTopBorder = false
+    withTopBorder = false,
+    deletable = false
   ) => {
     if (items.length === 0) return null;
 
@@ -109,38 +221,71 @@ export function PageSwitcherHeader({
         </div>
         {items.map((item) => {
           const active = item.path === path;
+          const canDelete = deletable && item.path !== "/";
+          const isDeleting = deletingPath === item.path;
           return (
-            <button
+            <div
               key={item.path}
-              type="button"
-              onClick={() => {
-                setIsOpen(false);
-                if (item.path !== path) onNavigate(item.path);
-              }}
               style={{
-                width: "100%",
-                textAlign: "left",
-                border: "none",
+                display: "flex",
+                alignItems: "stretch",
                 background: active ? "#f3f4f6" : "transparent",
-                padding: "8px 12px",
-                cursor: "pointer",
               }}
             >
-              <div style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>
-                {item.title}
-              </div>
-              <div
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (item.path !== path) onNavigate(item.path);
+                }}
                 style={{
-                  marginTop: 2,
-                  fontSize: 12,
-                  fontFamily:
-                    'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-                  color: "#6b7280",
+                  flex: 1,
+                  textAlign: "left",
+                  border: "none",
+                  background: "transparent",
+                  padding: "8px 12px",
+                  cursor: "pointer",
                 }}
               >
-                {item.path}
-              </div>
-            </button>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>
+                  {item.title}
+                </div>
+                <div
+                  style={{
+                    marginTop: 2,
+                    fontSize: 12,
+                    fontFamily:
+                      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+                    color: "#6b7280",
+                  }}
+                >
+                  {item.path}
+                </div>
+              </button>
+              {canDelete ? (
+                <button
+                  type="button"
+                  onClick={() => void deletePage(item.path)}
+                  disabled={isDeleting || Boolean(deletingPath) || isCreating}
+                  title="Delete page"
+                  style={{
+                    width: 66,
+                    border: "none",
+                    borderLeft: "1px solid #e5e7eb",
+                    background: "transparent",
+                    color: "#b91c1c",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    cursor:
+                      isDeleting || Boolean(deletingPath) || isCreating
+                        ? "not-allowed"
+                        : "pointer",
+                  }}
+                >
+                  {isDeleting ? "..." : "Delete"}
+                </button>
+              ) : null}
+            </div>
           );
         })}
       </div>
@@ -225,7 +370,132 @@ export function PageSwitcherHeader({
               zIndex: MENU_Z_INDEX,
             }}
           >
-            {renderGroup("Pages", pages)}
+            <div
+              style={{
+                padding: "10px 12px 12px",
+                borderBottom: "1px solid #e5e7eb",
+                background: "#f9fafb",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 12,
+                  fontWeight: 700,
+                  marginBottom: 8,
+                  color: "#111827",
+                }}
+              >
+                Add page
+              </div>
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#6b7280",
+                  marginBottom: 4,
+                }}
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                value={newPageName}
+                onChange={(event) => setNewPageName(event.target.value)}
+                placeholder="Team"
+                style={{
+                  width: "100%",
+                  height: 32,
+                  marginBottom: 8,
+                  padding: "0 8px",
+                  border: "1px solid #d1d5db",
+                  borderRadius: 6,
+                  fontSize: 13,
+                  background: "#fff",
+                }}
+              />
+
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: "#6b7280",
+                  marginBottom: 4,
+                }}
+              >
+                Subpage von
+              </label>
+              <select
+                value={selectedParent}
+                onChange={(event) => setSelectedParent(event.target.value)}
+                style={{
+                  width: "100%",
+                  height: 32,
+                  marginBottom: 8,
+                  padding: "0 8px",
+                  border: "1px solid #d1d5db",
+                  borderRadius: 6,
+                  fontSize: 13,
+                  background: "#fff",
+                }}
+              >
+                {parentOptions.map((item) => (
+                  <option key={item.path} value={item.path}>
+                    {item.title} ({item.path})
+                  </option>
+                ))}
+              </select>
+
+              <button
+                type="button"
+                onClick={createPage}
+                disabled={isCreating || newPageName.trim().length === 0}
+                style={{
+                  width: "100%",
+                  height: 32,
+                  border: "none",
+                  borderRadius: 6,
+                  background:
+                    isCreating || newPageName.trim().length === 0
+                      ? "#9ca3af"
+                      : "#111827",
+                  color: "#fff",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  cursor:
+                    isCreating || newPageName.trim().length === 0
+                      ? "not-allowed"
+                      : "pointer",
+                }}
+              >
+                {isCreating ? "Creating..." : "Create page"}
+              </button>
+
+              {createError ? (
+                <div
+                  style={{
+                    marginTop: 8,
+                    fontSize: 12,
+                    color: "#b91c1c",
+                  }}
+                >
+                  {createError}
+                </div>
+              ) : null}
+            </div>
+            {renderGroup("Pages", pages, false, true)}
+            {deleteError ? (
+              <div
+                style={{
+                  padding: "0 12px 8px",
+                  fontSize: 12,
+                  color: "#b91c1c",
+                }}
+              >
+                {deleteError}
+              </div>
+            ) : null}
             {renderGroup("Layouts", layouts, pages.length > 0)}
           </div>,
           document.body
