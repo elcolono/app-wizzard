@@ -15,6 +15,7 @@ import "@puckeditor/core/puck.css";
 import { Client } from "./client";
 import { Metadata } from "next";
 import { getPage } from "../../../lib/get-page";
+import { getPageSummaries } from "../../../lib/get-page-summaries";
 import type { Data } from "@puckeditor/core";
 import {
   createEmptyPageData,
@@ -51,6 +52,7 @@ export default async function Page({
   const footerData: Data | null = isLayoutPage
     ? null
     : getPage(FOOTER_PATH) ?? createEmptyPageData();
+  const pageSummaries = getPageSummaries();
 
   return (
     <Client
@@ -58,6 +60,7 @@ export default async function Page({
       data={data}
       headerData={headerData ?? undefined}
       footerData={footerData ?? undefined}
+      pageSummaries={pageSummaries}
     />
   );
 }
