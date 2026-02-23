@@ -1,4 +1,5 @@
 export const SECTION_COMPONENTS = [
+  "ConstrainedHeader",
   "Hero",
   "HeroSimpleCentered",
   "AboutSection",
@@ -14,6 +15,7 @@ export const SECTION_COMPONENTS = [
 export type SectionComponentName = (typeof SECTION_COMPONENTS)[number];
 
 export type SectionPreviewLayout =
+  | "headerConstrained"
   | "hero"
   | "heroCentered"
   | "aboutSplit"
@@ -38,6 +40,7 @@ export type SectionPluginItem = {
 };
 
 export type SectionCategoryId =
+  | "header"
   | "hero"
   | "about"
   | "services"
@@ -56,9 +59,23 @@ export type SectionCategory = {
 
 export const SECTION_CATEGORIES: readonly SectionCategory[] = [
   {
+    id: "header",
+    label: "Header",
+    defaultExpanded: true,
+    items: [
+      {
+        id: "header-constrained",
+        component: "ConstrainedHeader",
+        label: "Header",
+        variant: "Constrained",
+        preview: { layout: "headerConstrained" },
+      },
+    ],
+  },
+  {
     id: "hero",
     label: "Hero",
-    defaultExpanded: true,
+    defaultExpanded: false,
     items: [
       {
         id: "hero-default",

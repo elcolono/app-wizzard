@@ -32,6 +32,7 @@ type SectionExampleEntry = {
 };
 
 const SECTION_COMPONENTS = [
+  "ConstrainedHeader",
   "Hero",
   "HeroSimpleCentered",
   "AboutSection",

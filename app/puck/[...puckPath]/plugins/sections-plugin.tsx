@@ -108,6 +108,42 @@ function PreviewCard({
 }
 
 function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
+  if (preview.layout === "headerConstrained") {
+    return (
+      <div style={{ display: "grid", gap: 5 }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 2fr 1fr",
+            alignItems: "center",
+            gap: 5,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: 3,
+                background: "rgba(17,24,39,0.18)",
+              }}
+            />
+            <PreviewLine width="50%" height={4} opacity={0.75} />
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", gap: 4 }}>
+            <PreviewButton width="18%" height={6} opacity={0.78} />
+            <PreviewButton width="18%" height={6} opacity={0.72} />
+            <PreviewButton width="18%" height={6} opacity={0.66} />
+            <PreviewButton width="18%" height={6} opacity={0.6} />
+          </div>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <PreviewButton width="30%" height={6} opacity={0.75} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (preview.layout === "hero") {
     return (
       <div style={{ display: "grid", gap: 5 }}>
