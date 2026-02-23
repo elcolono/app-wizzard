@@ -11,6 +11,7 @@ const SECTION_COMPONENTS = new Set<string>([
   "AboutSection",
   "ServicesSection",
   "TeamSection",
+  "TeamSectionSmallImages",
   "TestimonialsSection",
   "CtaSection",
   "ContactSection",

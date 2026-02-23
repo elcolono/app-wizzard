@@ -207,6 +207,40 @@ function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
     );
   }
 
+  if (preview.layout === "teamSmallImages") {
+    return (
+      <div style={{ display: "grid", gap: 5 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 6 }}>
+          <div style={{ display: "grid", gap: 4 }}>
+            <PreviewLine width="70%" height={6} />
+            <PreviewLine width="92%" />
+            <PreviewLine width="82%" opacity={0.72} />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 4 }}>
+            {[0, 1, 2, 3].map((item) => (
+              <PreviewCard key={item}>
+                <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <div
+                    style={{
+                      width: 14,
+                      height: 14,
+                      borderRadius: 999,
+                      background: "rgba(17,24,39,0.16)",
+                    }}
+                  />
+                  <div style={{ display: "grid", gap: 3, flex: 1 }}>
+                    <PreviewLine width="72%" height={4} />
+                    <PreviewLine width="56%" height={3} opacity={0.72} />
+                  </div>
+                </div>
+              </PreviewCard>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (preview.layout === "testimonialsGrid") {
     return (
       <div style={{ display: "grid", gap: 5 }}>

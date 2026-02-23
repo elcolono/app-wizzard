@@ -4,6 +4,7 @@ export const SECTION_COMPONENTS = [
   "AboutSection",
   "ServicesSection",
   "TeamSection",
+  "TeamSectionSmallImages",
   "TestimonialsSection",
   "CtaSection",
   "ContactSection",
@@ -18,6 +19,7 @@ export type SectionPreviewLayout =
   | "aboutSplit"
   | "servicesGrid"
   | "teamGrid"
+  | "teamSmallImages"
   | "testimonialsGrid"
   | "ctaBox"
   | "contactSplit"
@@ -106,7 +108,15 @@ export const SECTION_CATEGORIES: readonly SectionCategory[] = [
         id: "team-default",
         component: "TeamSection",
         label: "Team Section",
+        variant: "Default",
         preview: { layout: "teamGrid" },
+      },
+      {
+        id: "team-small-images",
+        component: "TeamSectionSmallImages",
+        label: "Team Section",
+        variant: "With small images",
+        preview: { layout: "teamSmallImages" },
       },
     ],
   },

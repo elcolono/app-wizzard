@@ -44,6 +44,7 @@ import CtaSection from "./blocks/CtaSection";
 import ContactSection from "./blocks/ContactSection";
 import FooterSection from "./blocks/FooterSection";
 import TeamSection from "./blocks/TeamSection";
+import TeamSectionSmallImages from "./blocks/TeamSectionSmallImages";
 import { SECTION_COMPONENTS } from "./sections/registry";
 
 export const config: Config = {
@@ -172,6 +173,7 @@ export const config: Config = {
       ServicesSection,
       TestimonialsSection,
       TeamSection,
+      TeamSectionSmallImages,
       CtaSection,
       ContactSection,
       FooterSection,
