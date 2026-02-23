@@ -6,6 +6,7 @@ import config from "../../../config";
 import { createAiPlugin } from "@puckeditor/plugin-ai";
 import "@puckeditor/plugin-ai/styles.css";
 import React from "react";
+import { useRouter } from "next/navigation";
 import type { PageSummary } from "../../../lib/get-page-summaries";
 import { rootPropsPlugin } from "./plugins/root-props-plugin";
 import { sectionsPlugin } from "./plugins/sections-plugin";
@@ -35,6 +36,7 @@ export function Client({
   footerData,
   pageSummaries,
 }: ClientProps) {
+  const router = useRouter();
   const isHeaderPath = path === HEADER_PATH;
   const isFooterPath = path === FOOTER_PATH;
   const view: LayoutView = isHeaderPath
@@ -61,8 +63,8 @@ export function Client({
     } catch {
       // ignore storage errors
     }
-    window.location.href = `/puck${nextPath}`;
-  }, []);
+    router.push(`/puck${nextPath}`);
+  }, [router]);
 
   const isComponentArray = (value: unknown): value is Array<any> => {
     if (!Array.isArray(value)) return false;
