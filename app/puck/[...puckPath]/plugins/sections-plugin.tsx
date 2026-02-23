@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
-import { Drawer, usePuck } from "@puckeditor/core";
+import { Drawer, createUsePuck } from "@puckeditor/core";
 import { ChevronDown, ChevronUp, LayoutTemplate } from "lucide-react";
 import {
   SECTION_CATEGORIES,
   SectionPreviewDefinition,
 } from "../../../../config/sections/registry";
+
+const usePuck = createUsePuck();
 
 function PreviewLine({
   width = "100%",
@@ -330,7 +332,8 @@ function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
 }
 
 function SectionsPanel() {
-  const { config, getPermissions } = usePuck();
+  const config = usePuck((state) => state.config);
+  const getPermissions = usePuck((state) => state.getPermissions);
   const [expandedByCategory, setExpandedByCategory] = React.useState<
     Record<string, boolean>
   >(() =>

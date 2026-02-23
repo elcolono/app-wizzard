@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionBar, usePuck } from "@puckeditor/core";
+import { ActionBar, createUsePuck } from "@puckeditor/core";
 import { WandSparkles } from "lucide-react";
 import React from "react";
 
@@ -10,12 +10,14 @@ type InlineActionBarProps = {
   parentAction?: React.ReactNode;
 };
 
+const usePuck = createUsePuck();
+
 export function InlineWizardActionBar({
   label,
   children,
   parentAction,
 }: InlineActionBarProps) {
-  const { selectedItem } = usePuck();
+  const selectedItem = usePuck((state) => state.selectedItem);
   const [isWizardOpen, setIsWizardOpen] = React.useState(false);
   const [prompt, setPrompt] = React.useState("");
 
@@ -168,4 +170,3 @@ export function InlineWizardActionBar({
     </div>
   );
 }
-

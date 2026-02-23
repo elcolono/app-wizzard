@@ -1,6 +1,8 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import fs from "fs";
+import type { Data } from "@puckeditor/core";
+import { ensureLayoutEntries } from "../../../lib/page-seed";
 
 export async function POST(request: Request) {
   const payload = await request.json();
@@ -10,9 +12,10 @@ export async function POST(request: Request) {
       ? fs.readFileSync("database.json", "utf-8")
       : "{}"
   );
+  const seededData = ensureLayoutEntries(existingData as Record<string, Data>);
 
   const updatedData = {
-    ...existingData,
+    ...seededData,
     [payload.path]: payload.data,
   };
 

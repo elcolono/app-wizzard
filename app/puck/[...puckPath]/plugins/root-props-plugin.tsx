@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AutoField, FieldLabel, usePuck } from "@puckeditor/core";
+import { AutoField, FieldLabel, createUsePuck } from "@puckeditor/core";
 import { Hash, List, Settings2, Type } from "lucide-react";
 
 const toReadableLabel = (name: string) => {
@@ -20,8 +20,12 @@ const getFieldIcon = (fieldType: string) => {
   return <Type size={16} />;
 };
 
+const usePuck = createUsePuck();
+
 function RootPropsPanel() {
-  const { appState, config: puckConfig, dispatch } = usePuck();
+  const appState = usePuck((state) => state.appState);
+  const puckConfig = usePuck((state) => state.config);
+  const dispatch = usePuck((state) => state.dispatch);
   const rootFields = puckConfig.root?.fields ?? {};
   const rootProps = appState?.data?.root?.props ?? {};
 
