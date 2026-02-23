@@ -18,6 +18,8 @@ import ButtonText from "./blocks/ButtonText";
 import ButtonSpinner from "./blocks/ButtonSpinner";
 import ButtonIcon from "./blocks/ButtonIcon";
 import ButtonGroup from "./blocks/ButtonGroup";
+import Link from "./blocks/Link";
+import LinkText from "./blocks/LinkText";
 import Badge from "./blocks/Badge";
 import BadgeText from "./blocks/BadgeText";
 import BadgeIcon from "./blocks/BadgeIcon";
@@ -84,7 +86,7 @@ export const config: Config = {
   },
   categories: {
     typography: {
-      components: ["Heading", "Text"],
+      components: ["Heading", "Text", "LinkText"],
     },
     layout: {
       components: [
@@ -126,6 +128,7 @@ export const config: Config = {
         "ButtonSpinner",
         "ButtonIcon",
         "ButtonGroup",
+        "Link",
         "Input",
         "TextArea",
       ],
@@ -150,6 +153,8 @@ export const config: Config = {
       ButtonSpinner,
       ButtonIcon,
       ButtonGroup,
+      Link,
+      LinkText,
       Badge,
       BadgeText,
       BadgeIcon,

@@ -2,6 +2,7 @@ import { SECTION_COMPONENTS } from "../sections/registry";
 
 export const SLOT_ONLY_CHILDREN: Record<string, string[]> = {
   Button: ["ButtonText", "ButtonSpinner", "ButtonIcon"],
+  Link: ["LinkText"],
   Badge: ["BadgeText", "BadgeIcon"],
   Alert: ["AlertText", "AlertIcon"],
   Accordion: ["AccordionItem"],
