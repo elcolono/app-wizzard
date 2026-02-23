@@ -4,7 +4,7 @@ import { Box as GluestackBox } from "../../components/ui/box";
 import { aiInstructions } from "../fields/aiInstructions";
 import { DISALLOWED_NESTED_COMPONENTS } from "../fields/slotRules";
 
-export type TeamSectionProps = {
+export type TeamSectionLargeImagesProps = {
   className: string;
   content: any;
 };
@@ -180,7 +180,7 @@ function buildMemberCard(member: TeamMember) {
   };
 }
 
-const TeamSection: ComponentConfig<TeamSectionProps> = {
+const TeamSectionLargeImages: ComponentConfig<TeamSectionLargeImagesProps> = {
   inline: false,
   fields: {
     content: {
@@ -264,7 +264,7 @@ const TeamSection: ComponentConfig<TeamSectionProps> = {
     className,
     content: Content,
     puck,
-  }: WithPuckProps<TeamSectionProps>) => {
+  }: WithPuckProps<TeamSectionLargeImagesProps>) => {
     const DropZone = React.forwardRef<any, any>(function DropZone(props, ref) {
       const mergedClassName = [className, props?.className]
         .filter(Boolean)
@@ -286,4 +286,4 @@ const TeamSection: ComponentConfig<TeamSectionProps> = {
   },
 };
 
-export default TeamSection;
+export default TeamSectionLargeImages;

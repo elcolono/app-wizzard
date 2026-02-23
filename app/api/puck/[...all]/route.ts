@@ -36,7 +36,7 @@ const SECTION_COMPONENTS = [
   "HeroSimpleCentered",
   "AboutSection",
   "ServicesSection",
-  "TeamSection",
+  "TeamSectionLargeImages",
   "TeamSectionSmallImages",
   "TestimonialsSection",
   "CtaSection",

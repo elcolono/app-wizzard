@@ -3,7 +3,7 @@ export const SECTION_COMPONENTS = [
   "HeroSimpleCentered",
   "AboutSection",
   "ServicesSection",
-  "TeamSection",
+  "TeamSectionLargeImages",
   "TeamSectionSmallImages",
   "TestimonialsSection",
   "CtaSection",
@@ -105,10 +105,10 @@ export const SECTION_CATEGORIES: readonly SectionCategory[] = [
     label: "Team",
     items: [
       {
-        id: "team-default",
-        component: "TeamSection",
+        id: "team-large-images",
+        component: "TeamSectionLargeImages",
         label: "Team Section",
-        variant: "Default",
+        variant: "With large images",
         preview: { layout: "teamGrid" },
       },
       {
