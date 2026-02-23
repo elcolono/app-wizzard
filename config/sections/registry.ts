@@ -3,6 +3,7 @@ export const SECTION_COMPONENTS = [
   "HeroSimpleCentered",
   "AboutSection",
   "ServicesSection",
+  "TeamSection",
   "TestimonialsSection",
   "CtaSection",
   "ContactSection",
@@ -16,6 +17,7 @@ export type SectionPreviewLayout =
   | "heroCentered"
   | "aboutSplit"
   | "servicesGrid"
+  | "teamGrid"
   | "testimonialsGrid"
   | "ctaBox"
   | "contactSplit"
@@ -37,6 +39,7 @@ export type SectionCategoryId =
   | "hero"
   | "about"
   | "services"
+  | "team"
   | "testimonials"
   | "cta"
   | "contact"
@@ -92,6 +95,18 @@ export const SECTION_CATEGORIES: readonly SectionCategory[] = [
         component: "ServicesSection",
         label: "Services Section",
         preview: { layout: "servicesGrid" },
+      },
+    ],
+  },
+  {
+    id: "team",
+    label: "Team",
+    items: [
+      {
+        id: "team-default",
+        component: "TeamSection",
+        label: "Team Section",
+        preview: { layout: "teamGrid" },
       },
     ],
   },

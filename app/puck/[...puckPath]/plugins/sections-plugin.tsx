@@ -176,6 +176,37 @@ function SectionPreview({ preview }: { preview: SectionPreviewDefinition }) {
     );
   }
 
+  if (preview.layout === "teamGrid") {
+    return (
+      <div style={{ display: "grid", gap: 5 }}>
+        <PreviewLine width="42%" height={6} />
+        <PreviewLine width="88%" height={4} opacity={0.72} />
+        <div
+          style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 4 }}
+        >
+          {[0, 1, 2].map((item) => (
+            <PreviewCard key={item}>
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "3 / 2",
+                  borderRadius: 5,
+                  background: "rgba(17,24,39,0.14)",
+                }}
+              />
+              <PreviewLine width="74%" height={5} />
+              <PreviewLine width="58%" height={4} opacity={0.72} />
+              <div style={{ display: "flex", gap: 4 }}>
+                <PreviewButton width="28%" height={6} opacity={0.72} />
+                <PreviewButton width="44%" height={6} opacity={0.6} />
+              </div>
+            </PreviewCard>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (preview.layout === "testimonialsGrid") {
     return (
       <div style={{ display: "grid", gap: 5 }}>

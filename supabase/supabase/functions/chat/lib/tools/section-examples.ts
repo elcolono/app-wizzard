@@ -10,6 +10,7 @@ const SECTION_COMPONENTS = new Set<string>([
   "HeroSimpleCentered",
   "AboutSection",
   "ServicesSection",
+  "TeamSection",
   "TestimonialsSection",
   "CtaSection",
   "ContactSection",
